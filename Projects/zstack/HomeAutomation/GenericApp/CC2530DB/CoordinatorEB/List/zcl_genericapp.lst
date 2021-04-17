@@ -1,0 +1,1435 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               18/Apr/2021  01:42:03
+# Copyright 2004-2018 IAR Systems AB.
+# Evaluation license - IAR Embedded Workbench for 8051, Evaluation edition 10.30
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data_rom
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\Source\zcl_genericapp.c
+#    Command line       =  
+#        -f C:\users\slavko\Temp\EWdc2.tmp ("C:\Texas Instruments\Z-Stack
+#        3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\Source\zcl_genericapp.c"
+#        -D SECURE=1 -D TC_LINKKEY_JOIN -D NV_INIT -D NV_RESTORE -D xZTOOL_P1
+#        -D xMT_TASK -D xMT_APP_FUNC -D xMT_SYS_FUNC -D xMT_ZDO_FUNC -D
+#        xMT_ZDO_MGMT -D xMT_APP_CNF_FUNC -D LEGACY_LCD_DEBUG -D
+#        LCD_SUPPORTED=DEBUG -D MULTICAST_ENABLED=FALSE -D ZCL_READ -D
+#        ZCL_WRITE -D ZCL_BASIC -D ZCL_IDENTIFY -D ZCL_SCENES -D ZCL_GROUPS -lC
+#        "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\CoordinatorEB\List"
+#        -lA "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\CoordinatorEB\List"
+#        --diag_suppress Pe001,Pa010 -o "C:\Texas Instruments\Z-Stack
+#        3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\CoordinatorEB\Obj"
+#        -e --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data_rom --nr_virtual_regs 16 -f "C:\Texas
+#        Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wCoord.cfg"
+#        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRUE
+#        -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8 -DMAC_CFG_RX_MAX=5
+#        -DZDO_COORDINATOR -DRTR_NWK) -f "C:\Texas Instruments\Z-Stack
+#        3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg"
+#        (-DZIGBEEPRO -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
+#        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
+#        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
+#        -DBEACON_REQUEST_DELAY=100 -DBEACON_REQ_DELAY_MASK=0x00FF
+#        -DLINK_STATUS_JITTER_MASK=0x007F -DROUTE_EXPIRY_TIME=30
+#        -DAPSC_ACK_WAIT_DURATION_POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7
+#        -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3
+#        -DNWK_MAX_DATA_RETRIES=2 -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9
+#        -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40 -DNWK_MAX_BINDING_ENTRIES=4
+#        -DMAX_BINDING_CLUSTER_IDS=4 -DDEFAULT_KEY={0} -DMAC_MAX_FRAME_SIZE=116
+#        -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const __code"
+#        -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000
+#        -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440
+#        -DREJOIN_BACKOFF=900000 -DREJOIN_SCAN=900000 -DENABLE_LED4_DISABLE_S1)
+#        -f "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wZCL.cfg"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\" -I
+#        "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\Source\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\Source\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\ZMain\TI2530DB\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\hal\include\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\mac\include\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\mt\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\osal\include\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\services\saddr\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\services\sdata\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\af\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\bdb\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\gp\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\sec\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\sys\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\zcl\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\zmac\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\"
+#        -Ohz --require_prototypes)
+#    Locale             =  English_USA.1252
+#    List file          =  
+#        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\CoordinatorEB\List\zcl_genericapp.lst
+#    Object file        =  
+#        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\CoordinatorEB\Obj\zcl_genericapp.r51
+#
+###############################################################################
+
+C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\GenericApp\Source\zcl_genericapp.c
+      1          /**************************************************************************************************
+      2            Filename:       zcl_genericapp.c
+      3            Revised:        $Date: 2014-10-24 16:04:46 -0700 (Fri, 24 Oct 2014) $
+      4            Revision:       $Revision: 40796 $
+      5          
+      6          
+      7            Description:    Zigbee Cluster Library - sample device application.
+      8          
+      9          
+     10            Copyright 2006-2014 Texas Instruments Incorporated. All rights reserved.
+     11          
+     12            IMPORTANT: Your use of this Software is limited to those specific rights
+     13            granted under the terms of a software license agreement between the user
+     14            who downloaded the software, his/her employer (which must be your employer)
+     15            and Texas Instruments Incorporated (the "License").  You may not use this
+     16            Software unless you agree to abide by the terms of the License. The License
+     17            limits your use, and you acknowledge, that the Software may not be modified,
+     18            copied or distributed unless embedded on a Texas Instruments microcontroller
+     19            or used solely and exclusively in conjunction with a Texas Instruments radio
+     20            frequency transceiver, which is integrated into your product.  Other than for
+     21            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     22            works of, modify, distribute, perform, display or sell this Software and/or
+     23            its documentation for any purpose.
+     24          
+     25            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     26            PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     27            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     28            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     29            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     30            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     31            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     32            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     33            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     34            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     35            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     36          
+     37            Should you have any questions regarding your right to use this Software,
+     38            contact Texas Instruments Incorporated at www.TI.com.
+     39          **************************************************************************************************/
+     40          
+     41          /*********************************************************************
+     42            This application is a template to get started writing an application
+     43            from scratch.
+     44          
+     45            Look for the sections marked with "GENERICAPP_TODO" to add application
+     46            specific code.
+     47          
+     48            Note: if you would like your application to support automatic attribute
+     49            reporting, include the BDB_REPORTING compile flag.
+     50          *********************************************************************/
+     51          
+     52          /*********************************************************************
+     53           * INCLUDES
+     54           */
+     55          #include "ZComDef.h"
+     56          #include "ZDProfile.h" 	// NEW
+     57          #include "OSAL.h"
+     58          #include "AF.h"
+     59          #include "ZDApp.h"
+     60          #include "ZDObject.h"
+     61          #include "MT_SYS.h"
+     62          	 
+     63          	 
+     64          #include "DebugTrace.h" 	// NEW
+     65          #include "mt_uart.h" 		// NEW	 
+     66          
+     67          #include "nwk_util.h"
+     68          
+     69          #include "zcl.h"
+     70          #include "zcl_general.h"
+     71          #include "zcl_ha.h"
+     72          #include "zcl_diagnostic.h"
+     73          #include "zcl_genericapp.h"
+     74          
+     75          #include "bdb.h"
+     76          #include "bdb_interface.h"
+     77          #include "gp_interface.h"
+     78          
+     79          #if defined ( INTER_PAN )
+     80          #if defined ( BDB_TL_INITIATOR )
+     81            #include "bdb_touchlink_initiator.h"
+     82          #endif // BDB_TL_INITIATOR
+     83          #if defined ( BDB_TL_TARGET )
+     84            #include "bdb_touchlink_target.h"
+     85          #endif // BDB_TL_TARGET
+     86          #endif // INTER_PAN
+     87          
+     88          #if defined ( BDB_TL_INITIATOR ) || defined ( BDB_TL_TARGET )
+     89            #include "bdb_touchlink.h"
+     90          #endif
+     91          
+     92          #include "onboard.h"
+     93          
+     94          /* HAL */
+     95          #include "hal_lcd.h"
+     96          #include "hal_led.h"
+     97          #include "hal_key.h"
+     98          #include "hal_uart.h"
+     99          
+    100          /*********************************************************************
+    101           * MACROS
+    102           */
+    103          
+    104          
+    105          /*********************************************************************
+    106           * CONSTANTS
+    107           */
+    108          
+    109          
+    110          /*********************************************************************
+    111           * TYPEDEFS
+    112           */
+    113          
+    114          // NEW
+    115          typedef struct
+    116           {
+    117             unsigned char endPoint;
+    118             unsigned char extAddr[8];
+    119             unsigned char compressed_addr;
+    120           } EndDeviceInfo_t; 						//saved the end device information
+    121          // ENDNEW
+    122          
+    123          /*********************************************************************
+    124           * GLOBAL VARIABLES
+    125           */
+    126          byte zclGenericApp_TaskID;
+    127          
+    128          unsigned char device_count = 0;
+    129           
+    130           // NEW
+    131          // This list should be filled with Application specific Cluster IDs.
+    132          const cId_t GenericApp_ClusterList[GENERICAPP_MAX_CLUSTERS] =
+    133          {
+    134            GENERICAPP_CLUSTERID
+    135          };
+    136          
+    137          const SimpleDescriptionFormat_t GenericApp_SimpleDesc =
+    138          {
+    139            GENERICAPP_ENDPOINT,              //  int Endpoint;
+    140            GENERICAPP_PROFID,                //  uint16 AppProfId[2];
+    141            GENERICAPP_DEVICEID,              //  uint16 AppDeviceId[2];
+    142            GENERICAPP_DEVICE_VERSION,        //  int   AppDevVer:4;
+    143            GENERICAPP_FLAGS,                 //  int   AppFlags:4;
+    144            GENERICAPP_MAX_CLUSTERS,          //  byte  AppNumInClusters;
+    145            (cId_t *)GenericApp_ClusterList,  //  byte *pAppInClusterList;
+    146            GENERICAPP_MAX_CLUSTERS,          //  byte  AppNumInClusters;
+    147            (cId_t *)GenericApp_ClusterList   //  byte *pAppInClusterList;
+    148          };
+    149          
+    150          // This is the Endpoint/Interface description.  It is defined here, but
+    151          // filled-in in GenericApp_Init().  Another way to go would be to fill
+    152          // in the structure here and make it a "const" (in code space).  The
+    153          // way it's defined in this sample app it is define in RAM.
+    154          endPointDesc_t zclGenericApp_epDesc;
+    155          
+    156          EndDeviceInfo_t EndDeviceInfos[16]; //init space for 16 devices
+    157          // ENDNEW
+    158          
+    159          
+    160          /*********************************************************************
+    161           * GLOBAL FUNCTIONS
+    162           */
+    163          
+    164          //void osal_buffer_uint16(&theMessageData[3], data); 			// NEW
+    165          void osal_buffer_uint16(unsigned char &theMessageData, unsigned int data);	// NEW
+                                                       ^
+Error[Pe018]: expected a ")"
+    166           
+    167          /*********************************************************************
+    168           * LOCAL VARIABLES
+    169           */
+    170          
+    171          uint8 giGenAppScreenMode = GENERIC_MAINMODE;   // display the main screen mode first
+    172          
+    173          uint8 gPermitDuration = 0;    // permit joining default to disabled
+    174          
+    175          devStates_t zclGenericApp_NwkState = DEV_INIT;
+    176          
+    177          // NEW
+    178          byte zclGenericApp_TransID;  // This is the unique message ID (counter)
+    179          afAddrType_t zclGenericApp_DstAddr;
+    180          // ENDNEW
+    181          
+    182          /*********************************************************************
+    183           * LOCAL FUNCTIONS
+    184           */
+    185          static void zclGenericApp_HandleKeys( byte shift, byte keys );
+    186          static void zclGenericApp_BasicResetCB( void );
+    187          static void zclGenericApp_ProcessIdentifyTimeChange( uint8 endpoint );
+    188          static void zclGenericApp_BindNotification( bdbBindNotificationData_t *data );
+    189          #if ( defined ( BDB_TL_TARGET ) && (BDB_TOUCHLINK_CAPABILITY_ENABLED == TRUE) )
+    190          static void zclGenericApp_ProcessTouchlinkTargetEnable( uint8 enable );
+    191          #endif
+    192          
+    193          // NEW
+    194          void zclGenericApp_ProcessZDOMsgs( zdoIncomingMsg_t *inMsg );
+    195          void zclGenericApp_MessageMSGCB( afIncomingMSGPacket_t *pckt );
+    196          void zclGenericApp_SendTheMessage( unsigned char dest_endID, unsigned char cmd, unsigned int temp_set);
+    197          void zclGenericApp_SerialMSGCB(void);
+    198          void str_reverse(char *str, int length);
+    199          // ENDNEW
+    200          
+    201          static void zclGenericApp_ProcessCommissioningStatus(bdbCommissioningModeMsg_t *bdbCommissioningModeMsg);
+    202          
+    203          // app display functions
+    204          static void zclGenericApp_LcdDisplayUpdate( void );
+    205          #ifdef LCD_SUPPORTED
+    206          static void zclGenericApp_LcdDisplayMainMode( void );
+    207          static void zclGenericApp_LcdDisplayHelpMode( void );
+    208          #endif
+    209          
+    210          // Functions to process ZCL Foundation incoming Command/Response messages
+    211          static void zclGenericApp_ProcessIncomingMsg( zclIncomingMsg_t *msg );
+    212          #ifdef ZCL_READ
+    213          static uint8 zclGenericApp_ProcessInReadRspCmd( zclIncomingMsg_t *pInMsg );
+    214          #endif
+    215          #ifdef ZCL_WRITE
+    216          static uint8 zclGenericApp_ProcessInWriteRspCmd( zclIncomingMsg_t *pInMsg );
+    217          #endif
+    218          static uint8 zclGenericApp_ProcessInDefaultRspCmd( zclIncomingMsg_t *pInMsg );
+    219          #ifdef ZCL_DISCOVER
+    220          static uint8 zclGenericApp_ProcessInDiscCmdsRspCmd( zclIncomingMsg_t *pInMsg );
+    221          static uint8 zclGenericApp_ProcessInDiscAttrsRspCmd( zclIncomingMsg_t *pInMsg );
+    222          static uint8 zclGenericApp_ProcessInDiscAttrsExtRspCmd( zclIncomingMsg_t *pInMsg );
+    223          #endif
+    224          
+    225          static void zclSampleApp_BatteryWarningCB( uint8 voltLevel);
+    226          
+    227          /*********************************************************************
+    228           * STATUS STRINGS
+    229           */
+    230          #ifdef LCD_SUPPORTED
+    231          const char sDeviceName[]   = "  Generic App";
+    232          const char sClearLine[]    = " ";
+    233          const char sSwGenericApp[]      = "SW1:GENAPP_TODO";  // GENERICAPP_TODO
+    234          const char sSwBDBMode[]     = "SW2: Start BDB";
+    235          char sSwHelp[]             = "SW4: Help       ";  // last character is * if NWK open
+    236          #endif
+    237          
+    238          /*********************************************************************
+    239           * ZCL General Profile Callback table
+    240           */
+    241          static zclGeneral_AppCallbacks_t zclGenericApp_CmdCallbacks =
+    242          {
+    243            zclGenericApp_BasicResetCB,             // Basic Cluster Reset command
+    244            NULL,                                   // Identify Trigger Effect command
+    245            NULL,                                   // On/Off cluster commands
+    246            NULL,                                   // On/Off cluster enhanced command Off with Effect
+    247            NULL,                                   // On/Off cluster enhanced command On with Recall Global Scene
+    248            NULL,                                   // On/Off cluster enhanced command On with Timed Off
+    249          #ifdef ZCL_LEVEL_CTRL
+    250            NULL,                                   // Level Control Move to Level command
+    251            NULL,                                   // Level Control Move command
+    252            NULL,                                   // Level Control Step command
+    253            NULL,                                   // Level Control Stop command
+    254          #endif
+    255          #ifdef ZCL_GROUPS
+    256            NULL,                                   // Group Response commands
+    257          #endif
+    258          #ifdef ZCL_SCENES
+    259            NULL,                                  // Scene Store Request command
+    260            NULL,                                  // Scene Recall Request command
+    261            NULL,                                  // Scene Response command
+    262          #endif
+    263          #ifdef ZCL_ALARMS
+    264            NULL,                                  // Alarm (Response) commands
+    265          #endif
+    266          #ifdef SE_UK_EXT
+    267            NULL,                                  // Get Event Log command
+    268            NULL,                                  // Publish Event Log command
+    269          #endif
+    270            NULL,                                  // RSSI Location command
+    271            NULL                                   // RSSI Location Response command
+    272          };
+    273          
+    274          /*********************************************************************
+    275           * GENERICAPP_TODO: Add other callback structures for any additional application specific 
+    276           *       Clusters being used, see available callback structures below.
+    277           *
+    278           *       bdbTL_AppCallbacks_t 
+    279           *       zclApplianceControl_AppCallbacks_t 
+    280           *       zclApplianceEventsAlerts_AppCallbacks_t 
+    281           *       zclApplianceStatistics_AppCallbacks_t 
+    282           *       zclElectricalMeasurement_AppCallbacks_t 
+    283           *       zclGeneral_AppCallbacks_t 
+    284           *       zclGp_AppCallbacks_t 
+    285           *       zclHVAC_AppCallbacks_t 
+    286           *       zclLighting_AppCallbacks_t 
+    287           *       zclMS_AppCallbacks_t 
+    288           *       zclPollControl_AppCallbacks_t 
+    289           *       zclPowerProfile_AppCallbacks_t 
+    290           *       zclSS_AppCallbacks_t  
+    291           *
+    292           */
+    293          
+    294          /*********************************************************************
+    295           * @fn          zclGenericApp_Init
+    296           *
+    297           * @brief       Initialization function for the zclGeneral layer.
+    298           *
+    299           * @param       none
+    300           *
+    301           * @return      none
+    302           */
+    303          void zclGenericApp_Init( byte task_id )
+    304          {
+    305          	
+    306            halUARTCfg_t uartConfig;				// NEW
+    307            zclGenericApp_TaskID = task_id;
+    308            zclGenericApp_NwkState = DEV_INIT;	// NEW
+    309            zclGenericApp_TransID = 0;				// NEW
+    310            
+    311            //NEW
+    312            
+    313            // Device hardware initialization can be added here or in main() (Zmain.c).
+    314            uartConfig.configured           = TRUE;              // 2x30 don't care - see uart driver.
+    315            uartConfig.baudRate             = HAL_UART_BR_115200;
+    316            uartConfig.flowControl          = FALSE;
+    317            uartConfig.intEnable              = TRUE;              // 2x30 don't care - see uart driver.
+    318            uartConfig.callBackFunc         = MT_UartProcessZAppData;
+    319            HalUARTOpen (0, &uartConfig);
+    320          
+    321            // If the hardware is application specific - add it here.
+    322            // If the hardware is other parts of the device add it in main().
+    323            
+    324            // Fill out the endpoint description.
+    325            zclGenericApp_epDesc.endPoint = GENERICAPP_ENDPOINT;
+    326            zclGenericApp_epDesc.task_id = &zclGenericApp_TaskID;
+    327            zclGenericApp_epDesc.simpleDesc
+    328                      = (SimpleDescriptionFormat_t *)&GenericApp_SimpleDesc;
+    329            zclGenericApp_epDesc.latencyReq = noLatencyReqs;
+    330          
+    331            // Register the endpoint description with the AF
+    332            afRegister( &zclGenericApp_epDesc );
+    333          
+    334            // Register for all key events - This app will handle all key events
+    335            RegisterForKeys( zclGenericApp_TaskID );
+    336            
+    337            HalUARTWrite(0,"Initializing...\r\n",10);
+    338            
+    339            // ENDNEW
+    340            
+    341            
+    342            // This app is part of the Home Automation Profile
+    343            bdb_RegisterSimpleDescriptor( &zclGenericApp_SimpleDesc );
+    344          
+    345            // Register the ZCL General Cluster Library callback functions
+    346            zclGeneral_RegisterCmdCallbacks( GENERICAPP_ENDPOINT, &zclGenericApp_CmdCallbacks );
+    347            
+    348            // GENERICAPP_TODO: Register other cluster command callbacks here
+    349          
+    350            // Register the application's attribute list
+    351            zcl_registerAttrList( GENERICAPP_ENDPOINT, zclGenericApp_NumAttributes, zclGenericApp_Attrs );
+    352          
+    353            // Register the Application to receive the unprocessed Foundation command/response messages
+    354            zcl_registerForMsg( zclGenericApp_TaskID );
+    355          
+    356          #ifdef ZCL_DISCOVER
+    357            // Register the application's command list
+    358            zcl_registerCmdList( GENERICAPP_ENDPOINT, zclCmdsArraySize, zclGenericApp_Cmds );
+    359          #endif
+    360          
+    361            // Register low voltage NV memory protection application callback
+    362            RegisterVoltageWarningCB( zclSampleApp_BatteryWarningCB );
+    363          
+    364            // Register for all key events - This app will handle all key events
+    365            RegisterForKeys( zclGenericApp_TaskID );
+    366          
+    367            bdb_RegisterCommissioningStatusCB( zclGenericApp_ProcessCommissioningStatus );
+    368            bdb_RegisterIdentifyTimeChangeCB( zclGenericApp_ProcessIdentifyTimeChange );
+    369            bdb_RegisterBindNotificationCB( zclGenericApp_BindNotification );
+    370          
+    371          #if ( defined ( BDB_TL_TARGET ) && (BDB_TOUCHLINK_CAPABILITY_ENABLED == TRUE) )
+    372            bdb_RegisterTouchlinkTargetEnableCB( zclGenericApp_ProcessTouchlinkTargetEnable );
+    373          #endif
+    374          
+    375          #ifdef ZCL_DIAGNOSTIC
+    376            // Register the application's callback function to read/write attribute data.
+    377            // This is only required when the attribute data format is unknown to ZCL.
+    378            zcl_registerReadWriteCB( GENERICAPP_ENDPOINT, zclDiagnostic_ReadWriteAttrCB, NULL );
+    379          
+    380            if ( zclDiagnostic_InitStats() == ZSuccess )
+    381            {
+    382              // Here the user could start the timer to save Diagnostics to NV
+    383            }
+    384          #endif
+    385          
+    386          
+    387          #ifdef LCD_SUPPORTED
+    388            HalLcdWriteString ( (char *)sDeviceName, HAL_LCD_LINE_3 );
+    389          #endif  // LCD_SUPPORTED
+    390          
+    391          
+    392          }
+    393          
+    394          /*********************************************************************
+    395           * @fn          zclSample_event_loop
+    396           *
+    397           * @brief       Event Loop Processor for zclGeneral.
+    398           *
+    399           * @param       none
+    400           *
+    401           * @return      none
+    402           */
+    403          uint16 zclGenericApp_event_loop( uint8 task_id, uint16 events )
+    404          {
+    405            afIncomingMSGPacket_t *MSGpkt;
+    406            afDataConfirm_t *afDataConfirm; // NEW
+    407          
+    408            // NEW
+    409            
+    410            // Data Confirmation message fields
+    411            byte sentEP;
+    412            ZStatus_t sentStatus;
+    413            byte sentTransID;       // This should match the value sent
+    414            
+    415            //ENDNEW
+    416            (void)task_id;  // Intentionally unreferenced parameter
+    417            
+    418            
+    419            bdb_StartCommissioning(BDB_COMMISSIONING_MODE_NWK_STEERING | BDB_COMMISSIONING_MODE_FINDING_BINDING);
+    420            
+    421          
+    422            if ( events & SYS_EVENT_MSG )
+    423            {
+    424              while ( (MSGpkt = (afIncomingMSGPacket_t *)osal_msg_receive( zclGenericApp_TaskID )) )
+    425              {
+    426                switch ( MSGpkt->hdr.event )
+    427                {
+    428          	      // NEW
+    429          	case ZDO_CB_MSG:
+    430                    zclGenericApp_ProcessZDOMsgs( (zdoIncomingMsg_t *)MSGpkt );
+    431                    break;
+    432          	  
+    433          	case AF_DATA_CONFIRM_CMD:
+    434                    // This message is received as a confirmation of a data packet sent.
+    435                    // The status is of ZStatus_t type [defined in ZComDef.h]
+    436                    // The message fields are defined in AF.h
+    437                    afDataConfirm = (afDataConfirm_t *)MSGpkt;
+    438                    sentEP = afDataConfirm->endpoint;
+    439                    sentStatus = afDataConfirm->hdr.status;
+    440                    sentTransID = afDataConfirm->transID;
+    441                    (void)sentEP;
+    442                    (void)sentTransID;
+    443          
+    444                    // Action taken when confirmation is received.
+    445                    if ( sentStatus != ZSuccess )
+    446                    {
+    447                      // The data wasn't delivered -- Do something
+    448                      HalUARTWrite(0, "Data Lost\r\n", 8);
+    449                    }
+    450                    else {
+    451                      HalUARTWrite(0, "Data Sent\r\n", 8);
+    452                    }
+    453                    break;
+    454          
+    455                  case AF_INCOMING_MSG_CMD:
+    456                    zclGenericApp_MessageMSGCB( MSGpkt );
+    457                    break;
+    458          	  // ENDNEW
+    459          
+    460          	  
+    461                  case ZCL_INCOMING_MSG:
+    462                    // Incoming ZCL Foundation command/response messages
+    463                    zclGenericApp_ProcessIncomingMsg( (zclIncomingMsg_t *)MSGpkt );
+    464                    break;
+    465          
+    466                  case KEY_CHANGE:
+    467                    zclGenericApp_HandleKeys( ((keyChange_t *)MSGpkt)->state, ((keyChange_t *)MSGpkt)->keys );
+    468                    break;
+    469          
+    470                  case ZDO_STATE_CHANGE:
+    471                    zclGenericApp_NwkState = (devStates_t)(MSGpkt->hdr.status);
+    472          
+    473                    // now on the network
+    474                    if ( (zclGenericApp_NwkState == DEV_ZB_COORD) ||
+    475                         (zclGenericApp_NwkState == DEV_ROUTER)   ||
+    476                         (zclGenericApp_NwkState == DEV_END_DEVICE) )
+    477                    {
+    478                      giGenAppScreenMode = GENERIC_MAINMODE;
+    479                      zclGenericApp_LcdDisplayUpdate();
+    480                    }
+    481                    break;
+    482          
+    483                  default:
+    484                    break;
+    485                }
+    486          
+    487                // Release the memory
+    488                osal_msg_deallocate( (uint8 *)MSGpkt );
+    489                
+    490                // Next
+    491                MSGpkt = (afIncomingMSGPacket_t *)osal_msg_receive( zclGenericApp_TaskID );		// NEW
+    492              }
+    493          
+    494              // return unprocessed events
+    495              return (events ^ SYS_EVENT_MSG);
+    496            }
+    497            
+    498            // NEW
+    499            
+    500            // Send a message out - This event is generated by a timer
+    501            //  (setup in GenericApp_Init()).
+    502            if ( events & GENERICAPP_SEND_MSG_EVT )
+    503            {
+    504              // Send "the" message
+    505              //GenericApp_SendTheMessage();
+    506              // return unprocessed events
+    507              return (events ^ GENERICAPP_SEND_MSG_EVT);
+    508            }
+    509            
+    510            if (events & GENERICAPP_UART_RX_EVT) {
+    511              HalUARTWrite(0, "RX_EVT", 7);
+    512              zclGenericApp_SerialMSGCB();
+    513            }
+    514            
+    515            // ENDNEW
+    516            
+    517          
+    518          //  if ( events & GENERICAPP_MAIN_SCREEN_EVT )
+    519          //  {
+    520          //    giGenAppScreenMode = GENERIC_MAINMODE;
+    521          //    zclGenericApp_LcdDisplayUpdate();
+    522          //    return ( events ^ GENERICAPP_MAIN_SCREEN_EVT );
+    523          //  }
+    524            
+    525          #if ZG_BUILD_ENDDEVICE_TYPE    
+    526            if ( events & GENERICAPP_END_DEVICE_REJOIN_EVT )
+    527            {
+    528              bdb_ZedAttemptRecoverNwk();
+    529              return ( events ^ GENERICAPP_END_DEVICE_REJOIN_EVT );
+    530            }
+    531          #endif
+    532          
+    533            /* GENERICAPP_TODO: handle app events here */
+    534            
+    535            
+    536            if ( events & GENERICAPP_EVT_1 )
+    537            {
+    538              // toggle LED 2 state, start another timer for 500ms
+    539              HalLedSet ( HAL_LED_2, HAL_LED_MODE_TOGGLE );
+    540              osal_start_timerEx( zclGenericApp_TaskID, GENERICAPP_EVT_1, 500 );
+    541              
+    542              return ( events ^ GENERICAPP_EVT_1 );
+    543            }
+    544            
+    545            /*
+    546            if ( events & GENERICAPP_EVT_2 )
+    547            {
+    548              
+    549              return ( events ^ GENERICAPP_EVT_2 );
+    550            }
+    551            
+    552            if ( events & GENERICAPP_EVT_3 )
+    553            {
+    554              
+    555              return ( events ^ GENERICAPP_EVT_3 );
+    556            }
+    557            */
+    558            
+    559            // Discard unknown events
+    560            return 0;
+    561          }
+    562          
+    563          
+    564          
+    565          
+    566          
+    567          
+    568          // NEW
+    569          
+    570          /*********************************************************************
+    571           * Event Generation Functions
+    572           */
+    573           
+    574          /*********************************************************************
+    575           * @fn      zclGenericApp_ProcessZDOMsgs()
+    576           * @brief   Process response messages
+    577           * @param   none
+    578           * @return  none
+    579           */
+    580          void zclGenericApp_ProcessZDOMsgs( zdoIncomingMsg_t *inMsg )
+    581          {
+    582            switch ( inMsg->clusterID )
+    583            {
+    584              case Match_Desc_rsp:
+    585                {
+    586                  ZDO_ActiveEndpointRsp_t *pRsp = ZDO_ParseEPListRsp( inMsg );
+    587                  if ( pRsp )
+    588                  {
+    589                    if ( pRsp->status == ZSuccess && pRsp->cnt )
+    590                    {
+    591                      zclGenericApp_DstAddr.addrMode = (afAddrMode_t)Addr16Bit;
+    592                      zclGenericApp_DstAddr.addr.shortAddr = pRsp->nwkAddr;
+    593                      // Take the first endpoint, Can be changed to search through endpoints
+    594                      zclGenericApp_DstAddr.endPoint = pRsp->epList[0];
+    595                      // Light LED
+    596                      HalLedSet( HAL_LED_4, HAL_LED_MODE_ON );
+    597                    }
+    598                    osal_mem_free( pRsp );
+    599                  }
+    600                }
+    601                break;
+    602            }
+    603          }
+    604          
+    605          
+    606          
+    607          
+    608          
+    609          /*********************************************************************
+    610           * LOCAL FUNCTIONS
+    611           */
+    612          
+    613          /*********************************************************************
+    614           * @fn      zclGenericApp_MessageMSGCB
+    615           * @brief   Data message processor callback.  This function processes
+    616           *          any incoming data - probably from other devices.  So, based
+    617           *          on cluster ID, perform the intended action.
+    618           * @param   none
+    619           * @return  none
+    620           */
+    621          void zclGenericApp_MessageMSGCB( afIncomingMSGPacket_t *pkt )
+    622          {
+    623            unsigned char temp_extAddr[8];
+    624            unsigned char i = 0;
+    625            unsigned char existed = 0;
+    626            unsigned char buffer[8] = "";
+    627            switch ( pkt->clusterId )
+    628            {
+    629              case GENERICAPP_CLUSTERID:
+    630                {// "the" message
+    631                  (void)APSME_LookupExtAddr(pkt->srcAddr.addr.shortAddr, temp_extAddr);
+    632                  for (i = 0; i < device_count+1; i++) {  // to see whether the device ever connected
+    633                    if (osal_memcmp(EndDeviceInfos[i].extAddr, temp_extAddr, 8)) { //if existed, break;
+    634                      existed = 1;
+    635                      HalUARTWrite(0, "Device Found Form Previous Log -> Existed!\r\n", 36);
+    636                      break;
+    637                    }
+    638                  }
+    639                  if ( !existed ) {  //not connected before, register
+    640                    HalUARTWrite(0, "New Device!\r\n",15);
+    641                    osal_memcpy(EndDeviceInfos[device_count].extAddr, temp_extAddr, 8);
+    642                    EndDeviceInfos[device_count].endPoint = pkt->srcAddr.endPoint;
+    643                    EndDeviceInfos[device_count].compressed_addr = GENERICAPP_ENDPOINT | EndDeviceInfos[device_count].endPoint;
+    644                    device_count++;	// device added
+    645                  }
+    646                  if (device_count == 16) { device_count = 0;}  //in case to overflow
+    647                  //TO DO: process data received, send it to slave machine
+    648                  osal_memcpy(&buffer[0], pkt->cmd.Data, 8);
+    649                  str_reverse((char*)&buffer[3], 1);
+    650                  HalUARTWrite(0, &buffer[0], 8);
+    651                  break;
+    652                }
+    653            }
+    654          }
+    655          
+    656          
+    657          
+    658          
+    659          
+    660          /*********************************************************************
+    661           * @fn     zclGenericApp_SendTheMessage
+    662           * @brief   Send "the" message.
+    663           * @param   none
+    664           * @return  none
+    665           */
+    666          void zclGenericApp_SendTheMessage( unsigned char dest_endID, unsigned char cmd, unsigned int data)
+    667          {
+    668            unsigned char theMessageData[6] = "";
+    669            theMessageData[0] = 0xCC;  //beginning check byte
+    670            theMessageData[1] = EndDeviceInfos[dest_endID].compressed_addr;
+    671            theMessageData[2] = cmd;
+    672            osal_buffer_uint16(&theMessageData[3],  data);
+                                      ^
+Error[Pe167]: argument of type "unsigned char *" is incompatible with parameter
+          of type "unsigned char"
+
+    osal_buffer_uint16(&theMessageData[3],  data);
+                                            ^
+"C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\GenericApp\Source\zcl_genericapp.c",672  Error[Pe140]: 
+          too many arguments in function call
+    673            theMessageData[5] = 0x33;  //end check byte
+    674            //set the destination below
+    675            zclGenericApp_DstAddr.addrMode = (afAddrMode_t)Addr64Bit;
+    676            zclGenericApp_DstAddr.endPoint = EndDeviceInfos[dest_endID].endPoint;
+    677            osal_memcpy(zclGenericApp_DstAddr.addr.extAddr, EndDeviceInfos[dest_endID].extAddr, 8);
+    678            
+    679            if ( AF_DataRequest( &zclGenericApp_DstAddr, &zclGenericApp_epDesc,
+    680                                 GENERICAPP_CLUSTERID,
+    681                                 7,//send one more char or the last char might be missing
+    682                                 theMessageData,
+    683                                 &zclGenericApp_TransID,
+    684                                 AF_DISCV_ROUTE, AF_DEFAULT_RADIUS ) == afStatus_SUCCESS )                     
+    685            {
+    686              // Successfully requested to be sent.
+    687              HalUARTWrite(0, "Successfully Sent\r\n", 21);
+    688            }
+    689            else
+    690            {
+    691              // Error occurred in request to send.
+    692              HalUARTWrite(0, "Couldn't Sent\r\n", 17);
+    693            }
+    694          }
+    695          
+    696          
+    697          
+    698          
+    699          
+    700          //@fn: zclGenericApp_SerialMSGCB
+    701          //@breif: process data received by UART, used to execute cmds from slave machine
+    702          //@param: none
+    703          //@return: none
+    704          void zclGenericApp_SerialMSGCB(void)
+    705          {
+    706            unsigned char dest_endID = 0; //this number is the index of EndDeviceInfos
+    707            unsigned int data = 0;
+    708            unsigned char buf [7] = "";
+    709           // printf("UART received!");
+    710            HalUARTRead(0, buf, 6);
+    711            if ( (buf[1] & GENERICAPP_ENDPOINT) && (buf[0] == 0xCC) && (buf[5] == 0x33)) {  //make sure cmd send to this device
+    712              dest_endID = buf[1] & 0x1F; //get destnation endPoint from uart message
+    713              data = osal_build_uint16(&buf[3]);
+    714              HalUARTWrite(0, buf, 6);
+    715              if (buf[2]&0x80) {  //cmd for coordinator
+    716                switch (buf[2]) {
+    717                  //add cmds here, e.g. case: 0x81...
+    718                  default:
+    719                  break;
+    720                }
+    721              } else { //cmd for end device, send it
+    722                zclGenericApp_SendTheMessage(dest_endID, buf[2], data);
+    723              }
+    724            }
+    725          }
+    726          
+    727          
+    728          
+    729          
+    730          
+    731          //@fn rt_str_reverse
+    732          //@brief message received is reversed, so we need to reverse again using this function
+    733          //@para *str the first byte in a string that needs reversed
+    734          //@para length the total length that needs to be reversed, 0 included
+    735          //e.g a[] = {1,2,3,4}, then rt_str_reverse(&a[0], 3) result in {4, 3, 2, 1}
+    736          void str_reverse(char *str, int length) {
+    737            char temp, *end_ptr;
+    738            end_ptr = str + length;
+    739            while(end_ptr > str) {
+    740              temp = *str;
+    741              *str = *end_ptr;
+    742              *end_ptr = temp;
+    743              str++;
+    744              end_ptr--;
+    745            }
+    746          }
+    747          
+    748          // ENDNEW
+    749          
+    750          
+    751          
+    752          
+    753          
+    754          
+    755          
+    756          
+    757          
+    758          
+    759          
+    760          
+    761          /*********************************************************************
+    762           * @fn      zclGenericApp_HandleKeys
+    763           *
+    764           * @brief   Handles all key events for this device.
+    765           *
+    766           * @param   shift - true if in shift/alt.
+    767           * @param   keys - bit field for key events. Valid entries:
+    768           *                 HAL_KEY_SW_5
+    769           *                 HAL_KEY_SW_4
+    770           *                 HAL_KEY_SW_2
+    771           *                 HAL_KEY_SW_1
+    772           *
+    773           * @return  none
+    774           */
+    775          static void zclGenericApp_HandleKeys( byte shift, byte keys )
+    776          {
+    777            if ( keys & HAL_KEY_SW_1 )
+    778            {
+    779              static bool LED_OnOff = FALSE;
+    780              
+    781              giGenAppScreenMode = GENERIC_MAINMODE;
+    782              
+    783              /* GENERICAPP_TODO: add app functionality to hardware keys here */
+    784              
+    785              // for example, start/stop LED 2 toggling with 500ms period
+    786              if (LED_OnOff)
+    787              { 
+    788                // if the LED is blinking, stop the osal timer and turn the LED off
+    789                osal_stop_timerEx(zclGenericApp_TaskID, GENERICAPP_EVT_1);
+    790                HalLedSet ( HAL_LED_2, HAL_LED_MODE_OFF );
+    791                LED_OnOff = FALSE;
+    792              }
+    793              else
+    794              {
+    795                // turn on LED 2 and start an osal timer to toggle it after 500ms, search
+    796                // for GENERICAPP_EVT_1 to see event handling after expired timer
+    797                osal_start_timerEx( zclGenericApp_TaskID, GENERICAPP_EVT_1, 500 );
+    798                HalLedSet ( HAL_LED_2, HAL_LED_MODE_ON );
+    799                LED_OnOff = TRUE;
+    800              }
+    801            }
+    802            // Start the BDB commissioning method
+    803            if ( keys & HAL_KEY_SW_2 )
+    804            {
+    805              giGenAppScreenMode = GENERIC_MAINMODE;
+    806          
+    807              bdb_StartCommissioning(BDB_COMMISSIONING_MODE_NWK_FORMATION | BDB_COMMISSIONING_MODE_NWK_STEERING | BDB_COMMISSIONING_MODE_FINDING_BINDING | BDB_COMMISSIONING_MODE_INITIATOR_TL);
+    808            }
+    809            if ( keys & HAL_KEY_SW_3 )
+    810            {
+    811              giGenAppScreenMode = GENERIC_MAINMODE;
+    812            
+    813              // touchlink target commissioning, if enabled  
+    814          #if ( defined ( BDB_TL_TARGET ) && (BDB_TOUCHLINK_CAPABILITY_ENABLED == TRUE) )
+    815              bdb_StartCommissioning(BDB_COMMISSIONING_MODE_FINDING_BINDING);
+    816              touchLinkTarget_EnableCommissioning( 30000 );
+    817          #endif
+    818              
+    819            }
+    820            if ( keys & HAL_KEY_SW_4 )
+    821            {
+    822              
+    823             giGenAppScreenMode = giGenAppScreenMode ? GENERIC_MAINMODE : GENERIC_HELPMODE;
+    824          #ifdef LCD_SUPPORTED
+    825              HalLcdWriteString( (char *)sClearLine, HAL_LCD_LINE_2 );
+    826          #endif
+    827              
+    828            }
+    829            if ( keys & HAL_KEY_SW_5 )
+    830            {
+    831              bdb_resetLocalAction();
+    832            }
+    833          
+    834            zclGenericApp_LcdDisplayUpdate();
+    835          }
+    836          
+    837          /*********************************************************************
+    838           * @fn      zclGenericApp_LcdDisplayUpdate
+    839           *
+    840           * @brief   Called to update the LCD display.
+    841           *
+    842           * @param   none
+    843           *
+    844           * @return  none
+    845           */
+    846          void zclGenericApp_LcdDisplayUpdate( void )
+    847          {
+    848          #ifdef LCD_SUPPORTED
+    849            if ( giGenAppScreenMode == GENERIC_HELPMODE )
+    850            {
+    851              zclGenericApp_LcdDisplayHelpMode();
+    852            }
+    853            else
+    854            {
+    855              zclGenericApp_LcdDisplayMainMode();
+    856            }
+    857          #endif
+    858          }
+    859          
+    860          #ifdef LCD_SUPPORTED
+    861          /*********************************************************************
+    862           * @fn      zclGenericApp_LcdDisplayMainMode
+    863           *
+    864           * @brief   Called to display the main screen on the LCD.
+    865           *
+    866           * @param   none
+    867           *
+    868           * @return  none
+    869           */
+    870          static void zclGenericApp_LcdDisplayMainMode( void )
+    871          {
+    872            // display line 1 to indicate NWK status
+    873            if ( zclGenericApp_NwkState == DEV_ZB_COORD )
+    874            {
+    875              zclHA_LcdStatusLine1( ZCL_HA_STATUSLINE_ZC );
+    876            }
+    877            else if ( zclGenericApp_NwkState == DEV_ROUTER )
+    878            {
+    879              zclHA_LcdStatusLine1( ZCL_HA_STATUSLINE_ZR );
+    880            }
+    881            else if ( zclGenericApp_NwkState == DEV_END_DEVICE )
+    882            {
+    883              zclHA_LcdStatusLine1( ZCL_HA_STATUSLINE_ZED );
+    884            }
+    885          
+    886            // end of line 3 displays permit join status (*)
+    887            if ( gPermitDuration )
+    888            {
+    889              sSwHelp[15] = '*';
+    890            }
+    891            else
+    892            {
+    893              sSwHelp[15] = ' ';
+    894            }
+    895            HalLcdWriteString( (char *)sSwHelp, HAL_LCD_LINE_3 );
+    896          }
+    897          
+    898          /*********************************************************************
+    899           * @fn      zclGenericApp_LcdDisplayHelpMode
+    900           *
+    901           * @brief   Called to display the SW options on the LCD.
+    902           *
+    903           * @param   none
+    904           *
+    905           * @return  none
+    906           */
+    907          static void zclGenericApp_LcdDisplayHelpMode( void )
+    908          {
+    909            HalLcdWriteString( (char *)sSwGenericApp, HAL_LCD_LINE_1 );
+    910            HalLcdWriteString( (char *)sSwBDBMode, HAL_LCD_LINE_2 );
+    911            HalLcdWriteString( (char *)sSwHelp, HAL_LCD_LINE_3 );
+    912          }
+    913          #endif  // LCD_SUPPORTED
+    914          
+    915          /*********************************************************************
+    916           * @fn      zclGenericApp_ProcessCommissioningStatus
+    917           *
+    918           * @brief   Callback in which the status of the commissioning process are reported
+    919           *
+    920           * @param   bdbCommissioningModeMsg - Context message of the status of a commissioning process
+    921           *
+    922           * @return  none
+    923           */
+    924          static void zclGenericApp_ProcessCommissioningStatus(bdbCommissioningModeMsg_t *bdbCommissioningModeMsg)
+    925          {
+    926            switch(bdbCommissioningModeMsg->bdbCommissioningMode)
+    927            {
+    928              case BDB_COMMISSIONING_FORMATION:
+    929                if(bdbCommissioningModeMsg->bdbCommissioningStatus == BDB_COMMISSIONING_SUCCESS)
+    930                {
+    931                  //After formation, perform nwk steering again plus the remaining commissioning modes that has not been process yet
+    932                  bdb_StartCommissioning(BDB_COMMISSIONING_MODE_NWK_STEERING | bdbCommissioningModeMsg->bdbRemainingCommissioningModes);
+    933                }
+    934                else
+    935                {
+    936                  //Want to try other channels?
+    937                  //try with bdb_setChannelAttribute
+    938                }
+    939              break;
+    940              case BDB_COMMISSIONING_NWK_STEERING:
+    941                if(bdbCommissioningModeMsg->bdbCommissioningStatus == BDB_COMMISSIONING_SUCCESS)
+    942                {
+    943                  //YOUR JOB:
+    944                  //We are on the nwk, what now?
+    945                }
+    946                else
+    947                {
+    948                  //See the possible errors for nwk steering procedure
+    949                  //No suitable networks found
+    950                  //Want to try other channels?
+    951                  //try with bdb_setChannelAttribute
+    952                }
+    953              break;
+    954              case BDB_COMMISSIONING_FINDING_BINDING:
+    955                if(bdbCommissioningModeMsg->bdbCommissioningStatus == BDB_COMMISSIONING_SUCCESS)
+    956                {
+    957                  //YOUR JOB:
+    958                }
+    959                else
+    960                {
+    961                  //YOUR JOB:
+    962                  //retry?, wait for user interaction?
+    963                }
+    964              break;
+    965              case BDB_COMMISSIONING_INITIALIZATION:
+    966                //Initialization notification can only be successful. Failure on initialization
+    967                //only happens for ZED and is notified as BDB_COMMISSIONING_PARENT_LOST notification
+    968          
+    969                //YOUR JOB:
+    970                //We are on a network, what now?
+    971          
+    972              break;
+    973          #if ZG_BUILD_ENDDEVICE_TYPE    
+    974              case BDB_COMMISSIONING_PARENT_LOST:
+    975                if(bdbCommissioningModeMsg->bdbCommissioningStatus == BDB_COMMISSIONING_NETWORK_RESTORED)
+    976                {
+    977                  //We did recover from losing parent
+    978                }
+    979                else
+    980                {
+    981                  //Parent not found, attempt to rejoin again after a fixed delay
+    982                  osal_start_timerEx(zclGenericApp_TaskID, GENERICAPP_END_DEVICE_REJOIN_EVT, GENERICAPP_END_DEVICE_REJOIN_DELAY);
+    983                }
+    984              break;
+    985          #endif 
+    986            }
+    987          }
+    988          
+    989          /*********************************************************************
+    990           * @fn      zclGenericApp_ProcessIdentifyTimeChange
+    991           *
+    992           * @brief   Called to process any change to the IdentifyTime attribute.
+    993           *
+    994           * @param   endpoint - in which the identify has change
+    995           *
+    996           * @return  none
+    997           */
+    998          static void zclGenericApp_ProcessIdentifyTimeChange( uint8 endpoint )
+    999          {
+   1000            (void) endpoint;
+   1001          
+   1002            if ( zclGenericApp_IdentifyTime > 0 )
+   1003            {
+   1004              HalLedBlink ( HAL_LED_2, 0xFF, HAL_LED_DEFAULT_DUTY_CYCLE, HAL_LED_DEFAULT_FLASH_TIME );
+   1005            }
+   1006            else
+   1007            {
+   1008              HalLedSet ( HAL_LED_2, HAL_LED_MODE_OFF );
+   1009            }
+   1010          }
+   1011          
+   1012          /*********************************************************************
+   1013           * @fn      zclGenericApp_BindNotification
+   1014           *
+   1015           * @brief   Called when a new bind is added.
+   1016           *
+   1017           * @param   data - pointer to new bind data
+   1018           *
+   1019           * @return  none
+   1020           */
+   1021          static void zclGenericApp_BindNotification( bdbBindNotificationData_t *data )
+   1022          {
+   1023            // GENERICAPP_TODO: process the new bind information
+   1024          }
+   1025          
+   1026          
+   1027          /*********************************************************************
+   1028           * @fn      zclGenericApp_ProcessTouchlinkTargetEnable
+   1029           *
+   1030           * @brief   Called to process when the touchlink target functionality
+   1031           *          is enabled or disabled
+   1032           *
+   1033           * @param   none
+   1034           *
+   1035           * @return  none
+   1036           */
+   1037          #if ( defined ( BDB_TL_TARGET ) && (BDB_TOUCHLINK_CAPABILITY_ENABLED == TRUE) )
+   1038          static void zclGenericApp_ProcessTouchlinkTargetEnable( uint8 enable )
+   1039          {
+   1040            if ( enable )
+   1041            {
+   1042              HalLedSet ( HAL_LED_1, HAL_LED_MODE_ON );
+   1043            }
+   1044            else
+   1045            {
+   1046              HalLedSet ( HAL_LED_1, HAL_LED_MODE_OFF );
+   1047            }
+   1048          }
+   1049          #endif
+   1050          
+   1051          /*********************************************************************
+   1052           * @fn      zclGenericApp_BasicResetCB
+   1053           *
+   1054           * @brief   Callback from the ZCL General Cluster Library
+   1055           *          to set all the Basic Cluster attributes to default values.
+   1056           *
+   1057           * @param   none
+   1058           *
+   1059           * @return  none
+   1060           */
+   1061          static void zclGenericApp_BasicResetCB( void )
+   1062          {
+   1063          
+   1064            /* GENERICAPP_TODO: remember to update this function with any
+   1065               application-specific cluster attribute variables */
+   1066            
+   1067            zclGenericApp_ResetAttributesToDefaultValues();
+   1068            
+   1069          }
+   1070          /*********************************************************************
+   1071           * @fn      zclSampleApp_BatteryWarningCB
+   1072           *
+   1073           * @brief   Called to handle battery-low situation.
+   1074           *
+   1075           * @param   voltLevel - level of severity
+   1076           *
+   1077           * @return  none
+   1078           */
+   1079          void zclSampleApp_BatteryWarningCB( uint8 voltLevel )
+   1080          {
+   1081            if ( voltLevel == VOLT_LEVEL_CAUTIOUS )
+   1082            {
+   1083              // Send warning message to the gateway and blink LED
+   1084            }
+   1085            else if ( voltLevel == VOLT_LEVEL_BAD )
+   1086            {
+   1087              // Shut down the system
+   1088            }
+   1089          }
+   1090          
+   1091          /******************************************************************************
+   1092           *
+   1093           *  Functions for processing ZCL Foundation incoming Command/Response messages
+   1094           *
+   1095           *****************************************************************************/
+   1096          
+   1097          /*********************************************************************
+   1098           * @fn      zclGenericApp_ProcessIncomingMsg
+   1099           *
+   1100           * @brief   Process ZCL Foundation incoming message
+   1101           *
+   1102           * @param   pInMsg - pointer to the received message
+   1103           *
+   1104           * @return  none
+   1105           */
+   1106          static void zclGenericApp_ProcessIncomingMsg( zclIncomingMsg_t *pInMsg )
+   1107          {
+   1108            switch ( pInMsg->zclHdr.commandID )
+   1109            {
+   1110          #ifdef ZCL_READ
+   1111              case ZCL_CMD_READ_RSP:
+   1112                zclGenericApp_ProcessInReadRspCmd( pInMsg );
+   1113                break;
+   1114          #endif
+   1115          #ifdef ZCL_WRITE
+   1116              case ZCL_CMD_WRITE_RSP:
+   1117                zclGenericApp_ProcessInWriteRspCmd( pInMsg );
+   1118                break;
+   1119          #endif
+   1120              case ZCL_CMD_CONFIG_REPORT:
+   1121              case ZCL_CMD_CONFIG_REPORT_RSP:
+   1122              case ZCL_CMD_READ_REPORT_CFG:
+   1123              case ZCL_CMD_READ_REPORT_CFG_RSP:
+   1124              case ZCL_CMD_REPORT:
+   1125                //bdb_ProcessIncomingReportingMsg( pInMsg );
+   1126                break;
+   1127                
+   1128              case ZCL_CMD_DEFAULT_RSP:
+   1129                zclGenericApp_ProcessInDefaultRspCmd( pInMsg );
+   1130                break;
+   1131          #ifdef ZCL_DISCOVER
+   1132              case ZCL_CMD_DISCOVER_CMDS_RECEIVED_RSP:
+   1133                zclGenericApp_ProcessInDiscCmdsRspCmd( pInMsg );
+   1134                break;
+   1135          
+   1136              case ZCL_CMD_DISCOVER_CMDS_GEN_RSP:
+   1137                zclGenericApp_ProcessInDiscCmdsRspCmd( pInMsg );
+   1138                break;
+   1139          
+   1140              case ZCL_CMD_DISCOVER_ATTRS_RSP:
+   1141                zclGenericApp_ProcessInDiscAttrsRspCmd( pInMsg );
+   1142                break;
+   1143          
+   1144              case ZCL_CMD_DISCOVER_ATTRS_EXT_RSP:
+   1145                zclGenericApp_ProcessInDiscAttrsExtRspCmd( pInMsg );
+   1146                break;
+   1147          #endif
+   1148              default:
+   1149                break;
+   1150            }
+   1151          
+   1152            if ( pInMsg->attrCmd )
+   1153              osal_mem_free( pInMsg->attrCmd );
+   1154          }
+   1155          
+   1156          #ifdef ZCL_READ
+   1157          /*********************************************************************
+   1158           * @fn      zclGenericApp_ProcessInReadRspCmd
+   1159           *
+   1160           * @brief   Process the "Profile" Read Response Command
+   1161           *
+   1162           * @param   pInMsg - incoming message to process
+   1163           *
+   1164           * @return  none
+   1165           */
+   1166          static uint8 zclGenericApp_ProcessInReadRspCmd( zclIncomingMsg_t *pInMsg )
+   1167          {
+   1168            zclReadRspCmd_t *readRspCmd;
+   1169            uint8 i;
+   1170          
+   1171            readRspCmd = (zclReadRspCmd_t *)pInMsg->attrCmd;
+   1172            for (i = 0; i < readRspCmd->numAttr; i++)
+   1173            {
+   1174              // Notify the originator of the results of the original read attributes
+   1175              // attempt and, for each successfull request, the value of the requested
+   1176              // attribute
+   1177            }
+   1178          
+   1179            return ( TRUE );
+   1180          }
+   1181          #endif // ZCL_READ
+   1182          
+   1183          #ifdef ZCL_WRITE
+   1184          /*********************************************************************
+   1185           * @fn      zclGenericApp_ProcessInWriteRspCmd
+   1186           *
+   1187           * @brief   Process the "Profile" Write Response Command
+   1188           *
+   1189           * @param   pInMsg - incoming message to process
+   1190           *
+   1191           * @return  none
+   1192           */
+   1193          static uint8 zclGenericApp_ProcessInWriteRspCmd( zclIncomingMsg_t *pInMsg )
+   1194          {
+   1195            zclWriteRspCmd_t *writeRspCmd;
+   1196            uint8 i;
+   1197          
+   1198            writeRspCmd = (zclWriteRspCmd_t *)pInMsg->attrCmd;
+   1199            for ( i = 0; i < writeRspCmd->numAttr; i++ )
+   1200            {
+   1201              // Notify the device of the results of the its original write attributes
+   1202              // command.
+   1203            }
+   1204          
+   1205            return ( TRUE );
+   1206          }
+   1207          #endif // ZCL_WRITE
+   1208          
+   1209          /*********************************************************************
+   1210           * @fn      zclGenericApp_ProcessInDefaultRspCmd
+   1211           *
+   1212           * @brief   Process the "Profile" Default Response Command
+   1213           *
+   1214           * @param   pInMsg - incoming message to process
+   1215           *
+   1216           * @return  none
+   1217           */
+   1218          static uint8 zclGenericApp_ProcessInDefaultRspCmd( zclIncomingMsg_t *pInMsg )
+   1219          {
+   1220            // zclDefaultRspCmd_t *defaultRspCmd = (zclDefaultRspCmd_t *)pInMsg->attrCmd;
+   1221          
+   1222            // Device is notified of the Default Response command.
+   1223            (void)pInMsg;
+   1224          
+   1225            return ( TRUE );
+   1226          }
+   1227          
+   1228          #ifdef ZCL_DISCOVER
+   1229          /*********************************************************************
+   1230           * @fn      zclGenericApp_ProcessInDiscCmdsRspCmd
+   1231           *
+   1232           * @brief   Process the Discover Commands Response Command
+   1233           *
+   1234           * @param   pInMsg - incoming message to process
+   1235           *
+   1236           * @return  none
+   1237           */
+   1238          static uint8 zclGenericApp_ProcessInDiscCmdsRspCmd( zclIncomingMsg_t *pInMsg )
+   1239          {
+   1240            zclDiscoverCmdsCmdRsp_t *discoverRspCmd;
+   1241            uint8 i;
+   1242          
+   1243            discoverRspCmd = (zclDiscoverCmdsCmdRsp_t *)pInMsg->attrCmd;
+   1244            for ( i = 0; i < discoverRspCmd->numCmd; i++ )
+   1245            {
+   1246              // Device is notified of the result of its attribute discovery command.
+   1247            }
+   1248          
+   1249            return ( TRUE );
+   1250          }
+   1251          
+   1252          /*********************************************************************
+   1253           * @fn      zclGenericApp_ProcessInDiscAttrsRspCmd
+   1254           *
+   1255           * @brief   Process the "Profile" Discover Attributes Response Command
+   1256           *
+   1257           * @param   pInMsg - incoming message to process
+   1258           *
+   1259           * @return  none
+   1260           */
+   1261          static uint8 zclGenericApp_ProcessInDiscAttrsRspCmd( zclIncomingMsg_t *pInMsg )
+   1262          {
+   1263            zclDiscoverAttrsRspCmd_t *discoverRspCmd;
+   1264            uint8 i;
+   1265          
+   1266            discoverRspCmd = (zclDiscoverAttrsRspCmd_t *)pInMsg->attrCmd;
+   1267            for ( i = 0; i < discoverRspCmd->numAttr; i++ )
+   1268            {
+   1269              // Device is notified of the result of its attribute discovery command.
+   1270            }
+   1271          
+   1272            return ( TRUE );
+   1273          }
+   1274          
+   1275          /*********************************************************************
+   1276           * @fn      zclGenericApp_ProcessInDiscAttrsExtRspCmd
+   1277           *
+   1278           * @brief   Process the "Profile" Discover Attributes Extended Response Command
+   1279           *
+   1280           * @param   pInMsg - incoming message to process
+   1281           *
+   1282           * @return  none
+   1283           */
+   1284          static uint8 zclGenericApp_ProcessInDiscAttrsExtRspCmd( zclIncomingMsg_t *pInMsg )
+   1285          {
+   1286            zclDiscoverAttrsExtRsp_t *discoverRspCmd;
+   1287            uint8 i;
+   1288          
+   1289            discoverRspCmd = (zclDiscoverAttrsExtRsp_t *)pInMsg->attrCmd;
+   1290            for ( i = 0; i < discoverRspCmd->numAttr; i++ )
+   1291            {
+   1292              // Device is notified of the result of its attribute discovery command.
+   1293            }
+   1294          
+   1295            return ( TRUE );
+   1296          }
+   1297          #endif // ZCL_DISCOVER
+   1298          
+   1299          /****************************************************************************
+   1300          ****************************************************************************/
+   1301          
+   1302          
+
+Errors: 3
+Warnings: none

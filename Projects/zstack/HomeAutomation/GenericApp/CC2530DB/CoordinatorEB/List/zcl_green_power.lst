@@ -1,0 +1,3870 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               18/Apr/2021  01:42:04
+# Copyright 2004-2018 IAR Systems AB.
+# Evaluation license - IAR Embedded Workbench for 8051, Evaluation edition 10.30
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data_rom
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Components\stack\zcl\zcl_green_power.c
+#    Command line       =  
+#        -f C:\users\slavko\Temp\EWfec.tmp ("C:\Texas Instruments\Z-Stack
+#        3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Components\stack\zcl\zcl_green_power.c" -D SECURE=1 -D
+#        TC_LINKKEY_JOIN -D NV_INIT -D NV_RESTORE -D xZTOOL_P1 -D xMT_TASK -D
+#        xMT_APP_FUNC -D xMT_SYS_FUNC -D xMT_ZDO_FUNC -D xMT_ZDO_MGMT -D
+#        xMT_APP_CNF_FUNC -D LEGACY_LCD_DEBUG -D LCD_SUPPORTED=DEBUG -D
+#        MULTICAST_ENABLED=FALSE -D ZCL_READ -D ZCL_WRITE -D ZCL_BASIC -D
+#        ZCL_IDENTIFY -D ZCL_SCENES -D ZCL_GROUPS -lC "C:\Texas
+#        Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\CoordinatorEB\List"
+#        -lA "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\CoordinatorEB\List"
+#        --diag_suppress Pe001,Pa010 -o "C:\Texas Instruments\Z-Stack
+#        3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\CoordinatorEB\Obj"
+#        -e --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data_rom --nr_virtual_regs 16 -f "C:\Texas
+#        Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wCoord.cfg"
+#        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRUE
+#        -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8 -DMAC_CFG_RX_MAX=5
+#        -DZDO_COORDINATOR -DRTR_NWK) -f "C:\Texas Instruments\Z-Stack
+#        3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg"
+#        (-DZIGBEEPRO -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
+#        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
+#        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
+#        -DBEACON_REQUEST_DELAY=100 -DBEACON_REQ_DELAY_MASK=0x00FF
+#        -DLINK_STATUS_JITTER_MASK=0x007F -DROUTE_EXPIRY_TIME=30
+#        -DAPSC_ACK_WAIT_DURATION_POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7
+#        -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3
+#        -DNWK_MAX_DATA_RETRIES=2 -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9
+#        -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40 -DNWK_MAX_BINDING_ENTRIES=4
+#        -DMAX_BINDING_CLUSTER_IDS=4 -DDEFAULT_KEY={0} -DMAC_MAX_FRAME_SIZE=116
+#        -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const __code"
+#        -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000
+#        -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440
+#        -DREJOIN_BACKOFF=900000 -DREJOIN_SCAN=900000 -DENABLE_LED4_DISABLE_S1)
+#        -f "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wZCL.cfg"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\" -I
+#        "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\Source\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\Source\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\ZMain\TI2530DB\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\hal\include\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\mac\include\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\mt\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\osal\include\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\services\saddr\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\services\sdata\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\af\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\bdb\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\gp\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\sec\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\sys\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\zcl\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\zmac\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\"
+#        -Ohz --require_prototypes)
+#    Locale             =  English_USA.1252
+#    List file          =  
+#        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\CoordinatorEB\List\zcl_green_power.lst
+#    Object file        =  
+#        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\GenericApp\CC2530DB\CoordinatorEB\Obj\zcl_green_power.r51
+#
+###############################################################################
+
+C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Components\stack\zcl\zcl_green_power.c
+      1          /**************************************************************************************************
+      2            Filename:       zcl_green_power.c
+      3            Revised:        $Date: 2015-09-10 09:36:48 -0700 (Thu, 10 Sep 2015) $
+      4            Revision:       $Revision: 44493 $
+      5          
+      6            Description:    Zigbee Cluster Library - General.  This application receives all
+      7                            ZCL messages and initially parses them before passing to application.
+      8          
+      9          
+     10            Copyright 2006-2015 Texas Instruments Incorporated. All rights reserved.
+     11          
+     12            IMPORTANT: Your use of this Software is limited to those specific rights
+     13            granted under the terms of a software license agreement between the user
+     14            who downloaded the software, his/her employer (which must be your employer)
+     15            and Texas Instruments Incorporated (the "License"). You may not use this
+     16            Software unless you agree to abide by the terms of the License. The License
+     17            limits your use, and you acknowledge, that the Software may not be modified,
+     18            copied or distributed unless embedded on a Texas Instruments microcontroller
+     19            or used solely and exclusively in conjunction with a Texas Instruments radio
+     20            frequency transceiver, which is integrated into your product. Other than for
+     21            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     22            works of, modify, distribute, perform, display or sell this Software and/or
+     23            its documentation for any purpose.
+     24          
+     25            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     26            PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+     27            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE,
+     28            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     29            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     30            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     31            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     32            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     33            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     34            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     35            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     36          
+     37            Should you have any questions regarding your right to use this Software,
+     38            contact Texas Instruments Incorporated at www.TI.com.
+     39          **************************************************************************************************/
+     40          
+     41          
+     42          
+     43          /*********************************************************************
+     44           * INCLUDES
+     45           */
+     46          
+     47          #include "ZGlobals.h"  
+     48          #include "ZComDef.h"
+     49          #include "zcl.h"
+     50          #include "zcl_green_power.h"
+     51          #include "stub_aps.h"
+     52          #include "gp_common.h"
+     53          #include "bdb_interface.h"
+     54             
+     55          #if !defined (DISABLE_GREENPOWER_BASIC_PROXY) && (ZG_BUILD_RTR_TYPE)
+     56          
+     57          /*********************************************************************
+     58           * MACROS
+     59           */
+     60          
+     61          /*********************************************************************
+     62           * CONSTANTS
+     63           */
+     64          
+     65          //const static uint8 PROXY_BASIC_TBL_EMPTY_ENTRY[]  =  {0xFF, 0xFF, /* Options 16-bit bitmap */  \
+     66                                                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, /*GPD ID Unsigned 32-bit integer/ IEEE address */  \
+     67                                                 0x00, /* Endpoint Unsigned 8-bit integer */  \
+     68                                                 0xFF, 0xFF, /* GPD Assigned Alias Unsigned 16-bit integer */  \
+     69                                                 0xFF, /* Security Options 8-bit bitmap */  \
+     70                                                 0xFF, 0xFF, 0xFF, 0xFF, /* GPD security frame counter Unsigned 32-bit Integer */  \
+     71                                                 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, /* GPD key Security key */  \
+     72                                                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, /* Lightweight sink address list sequence of octets */  \
+     73                                                 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, \
+     74                                                 0x00, /* Free group entries flag */  \
+     75                                                 0x00, 0x00, 0x00, 0x00, /* Sink group list sequence of octets */  \
+     76                                                 0x00, 0x00, 0x00, 0x00,  \
+     77                                                 0x00, /* Groupcast radius Unsigned 8-bit integer */  \
+     78                                                 0x00 /* Search Counter Unsigned 8-bit integer */  \
+     79                                                };   
+     80             
+     81          /*********************************************************************
+     82           * TYPEDEFS
+     83           */
+     84          
+     85          typedef struct zclGpCBRec
+     86          {
+     87            struct zclGpCBRec        *next;
+     88            uint8                     endpoint; // Used to link it into the endpoint descriptor
+     89            zclGp_AppCallbacks_t     *CBs;      // Pointer to Callback function
+     90          } zclGpCBRec_t;
+     91          
+     92          
+     93          /*********************************************************************
+     94           * GLOBAL VARIABLES
+     95           */
+     96          
+     97          /*********************************************************************
+     98           * GLOBAL FUNCTIONS
+     99           */
+    100          
+    101          /*********************************************************************
+    102           * LOCAL VARIABLES
+    103           */
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    104          static zclGpCBRec_t *zclGpCBs = (zclGpCBRec_t *)NULL;
+   \                     zclGpCBs:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    105          static uint8 zclGpPluginRegisted = FALSE;
+   \                     zclGpPluginRegisted:
+   \   000000                DS 1
+   \   000001                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    106          static gpNotificationMsg_t *pNotificationMsgHead = NULL;
+   \                     pNotificationMsgHead:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+
+   \                                 In  segment XDATA_Z, align 1, keep-with-next
+    107          static gpCmdPayloadMsg_t *pCmdPayloadMsgHead = NULL;
+   \                     pCmdPayloadMsgHead:
+   \   000000                DS 2
+   \   000002                REQUIRE __INIT_XDATA_Z
+    108          
+    109          //static zclGenSceneItem_t *zclGenSceneTable = (zclGenSceneItem_t *)NULL;
+    110          
+    111          
+    112          /*********************************************************************
+    113           * LOCAL FUNCTIONS
+    114           */
+    115          static ZStatus_t zclGp_HdlIncoming( zclIncoming_t *pInMsg );
+    116          static ZStatus_t zclGp_HdlInSpecificCommands( zclIncoming_t *pInMsg );
+    117          static zclGp_AppCallbacks_t *zclGp_FindCallbacks( uint8 endpoint );
+    118          static uint8 gp_addPairedSinksToMsgQueue( uint8 appId, uint8 *pId, gpCmdPayloadMsg_t* pMsg );
+    119          
+    120          static ZStatus_t zclGp_ProcessInProxyBasic( zclIncoming_t *pInMsg, zclGp_AppCallbacks_t *pCBs );
+    121          
+    122          
+    123          /*********************************************************************
+    124           * @fn      zclGp_RegisterCmdCallbacks
+    125           *
+    126           * @brief   Register an applications command callbacks
+    127           *
+    128           * @param   endpoint - application's endpoint
+    129           * @param   callbacks - pointer to the callback record.
+    130           *
+    131           * @return  ZMemError if not able to allocate
+    132           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    133          ZStatus_t zclGp_RegisterCmdCallbacks( uint8 endpoint, zclGp_AppCallbacks_t *callbacks )
+   \                     zclGp_RegisterCmdCallbacks:
+    134          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000   74F4         MOV       A,#-0xc
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   89..         MOV       ?V0,R1
+   \   000007   EA           MOV       A,R2
+   \   000008   FE           MOV       R6,A
+   \   000009   EB           MOV       A,R3
+   \   00000A   FF           MOV       R7,A
+    135            zclGpCBRec_t *pNewItem;
+    136            zclGpCBRec_t *pLoop;
+    137          
+    138            // Register as a ZCL Plugin
+    139            if ( zclGpPluginRegisted == FALSE )
+   \   00000B   90....       MOV       DPTR,#zclGpPluginRegisted
+   \   00000E   E0           MOVX      A,@DPTR
+   \   00000F   7021         JNZ       ??zclGp_RegisterCmdCallbacks_0
+    140            {
+    141              zcl_registerPlugin( ZCL_CLUSTER_ID_GREEN_POWER,
+    142                                  ZCL_CLUSTER_ID_GREEN_POWER,
+    143                                  zclGp_HdlIncoming );
+   \   000011                ; Setup parameters for call to function zcl_registerPlugin
+   \   000011   75....       MOV       ?V2,#`??zclGp_HdlIncoming::?relay` & 0xff
+   \   000014   75....       MOV       ?V3,#(`??zclGp_HdlIncoming::?relay` >> 8) & 0xff
+   \   000017   78..         MOV       R0,#?V2
+   \   000019   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   00001C   7C21         MOV       R4,#0x21
+   \   00001E   7D00         MOV       R5,#0x0
+   \   000020   7A21         MOV       R2,#0x21
+   \   000022   7B00         MOV       R3,#0x0
+   \   000024   12....       LCALL     `??zcl_registerPlugin::?relay`; Banked call to: zcl_registerPlugin
+   \   000027   7402         MOV       A,#0x2
+   \   000029   12....       LCALL     ?DEALLOC_XSTACK8
+    144          
+    145              zclGpPluginRegisted = TRUE;
+   \   00002C   90....       MOV       DPTR,#zclGpPluginRegisted
+   \   00002F   7401         MOV       A,#0x1
+   \   000031   F0           MOVX      @DPTR,A
+    146            }
+    147          
+    148            // Fill in the new profile list
+    149            pNewItem = zcl_mem_alloc( sizeof( zclGpCBRec_t ) );
+   \                     ??zclGp_RegisterCmdCallbacks_0:
+   \   000032                ; Setup parameters for call to function osal_mem_alloc
+   \   000032   7A05         MOV       R2,#0x5
+   \   000034   7B00         MOV       R3,#0x0
+   \   000036   12....       LCALL     `??osal_mem_alloc::?relay`; Banked call to: osal_mem_alloc
+   \   000039   8A..         MOV       ?V2,R2
+   \   00003B   8B..         MOV       ?V3,R3
+   \   00003D   A8..         MOV       R0,?V2
+   \   00003F   A9..         MOV       R1,?V3
+    150            if ( pNewItem == NULL )
+   \   000041   EA           MOV       A,R2
+   \   000042   49           ORL       A,R1
+   \   000043   7004         JNZ       ??zclGp_RegisterCmdCallbacks_1
+    151              return (ZMemError);
+   \   000045   7910         MOV       R1,#0x10
+   \   000047   803C         SJMP      ??zclGp_RegisterCmdCallbacks_2
+    152          
+    153            pNewItem->next = (zclGpCBRec_t *)NULL;
+   \                     ??zclGp_RegisterCmdCallbacks_1:
+   \   000049   8A82         MOV       DPL,R2
+   \   00004B   8B83         MOV       DPH,R3
+   \   00004D   E4           CLR       A
+   \   00004E   F0           MOVX      @DPTR,A
+   \   00004F   A3           INC       DPTR
+   \   000050   12....       LCALL     ?Subroutine23 & 0xFFFF
+    154            pNewItem->endpoint = endpoint;
+   \                     ??CrossCallReturnLabel_27:
+   \   000053   E5..         MOV       A,?V0
+   \   000055   12....       LCALL     ?Subroutine23 & 0xFFFF
+    155            pNewItem->CBs = callbacks;
+   \                     ??CrossCallReturnLabel_28:
+   \   000058   A3           INC       DPTR
+   \   000059   EE           MOV       A,R6
+   \   00005A   F0           MOVX      @DPTR,A
+   \   00005B   A3           INC       DPTR
+   \   00005C   EF           MOV       A,R7
+   \   00005D   F0           MOVX      @DPTR,A
+    156          
+    157            // Find spot in list
+    158            if (  zclGpCBs == NULL )
+   \   00005E   90....       MOV       DPTR,#zclGpCBs
+   \   000061   12....       LCALL     ??Subroutine46_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_104:
+   \   000064   90....       MOV       DPTR,#zclGpCBs
+   \   000067   6017         JZ        ??zclGp_RegisterCmdCallbacks_3
+    159            {
+    160              zclGpCBs = pNewItem;
+    161            }
+    162            else
+    163            {
+    164              // Look for end of list
+    165              pLoop = zclGpCBs;
+   \   000069   E0           MOVX      A,@DPTR
+   \   00006A   FC           MOV       R4,A
+   \   00006B   A3           INC       DPTR
+   \   00006C   E0           MOVX      A,@DPTR
+   \   00006D   8003         SJMP      ??zclGp_RegisterCmdCallbacks_4
+    166              while ( pLoop->next != NULL )
+    167                pLoop = pLoop->next;
+   \                     ??zclGp_RegisterCmdCallbacks_5:
+   \   00006F   EA           MOV       A,R2
+   \   000070   FC           MOV       R4,A
+   \   000071   EB           MOV       A,R3
+   \                     ??zclGp_RegisterCmdCallbacks_4:
+   \   000072   FD           MOV       R5,A
+   \   000073   8C82         MOV       DPL,R4
+   \   000075   8D83         MOV       DPH,R5
+   \   000077   12....       LCALL     ??Subroutine46_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_105:
+   \   00007A   70F3         JNZ       ??zclGp_RegisterCmdCallbacks_5
+    168          
+    169              // Put new item at end of list
+    170              pLoop->next = pNewItem;
+   \   00007C   8C82         MOV       DPL,R4
+   \   00007E   8D83         MOV       DPH,R5
+    171            }
+   \                     ??zclGp_RegisterCmdCallbacks_3:
+   \   000080   12....       LCALL     ?Subroutine22 & 0xFFFF
+    172          
+    173            return ( ZSuccess );
+   \                     ??CrossCallReturnLabel_18:
+   \   000083   7900         MOV       R1,#0x0
+   \                     ??zclGp_RegisterCmdCallbacks_2:
+   \   000085                REQUIRE ?Subroutine0
+   \   000085                ; // Fall through to label ?Subroutine0
+    174          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   7F04         MOV       R7,#0x4
+   \   000002   02....       LJMP      ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine22:
+   \   000000   E8           MOV       A,R0
+   \   000001   F0           MOVX      @DPTR,A
+   \   000002   A3           INC       DPTR
+   \   000003   E9           MOV       A,R1
+   \   000004   F0           MOVX      @DPTR,A
+   \   000005   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine23:
+   \   000000   F0           MOVX      @DPTR,A
+   \   000001   8A82         MOV       DPL,R2
+   \   000003   8B83         MOV       DPH,R3
+   \   000005   A3           INC       DPTR
+   \   000006   A3           INC       DPTR
+   \   000007   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine46_0:
+   \   000000   E0           MOVX      A,@DPTR
+   \   000001   FA           MOV       R2,A
+   \   000002   A3           INC       DPTR
+   \   000003   E0           MOVX      A,@DPTR
+   \   000004   FB           MOV       R3,A
+   \   000005   EA           MOV       A,R2
+   \   000006   4B           ORL       A,R3
+   \   000007   22           RET
+    175          
+    176          /*********************************************************************
+    177           * @fn      zclGp_FindCallbacks
+    178           *
+    179           * @brief   Find the callbacks for an endpoint
+    180           *
+    181           * @param   endpoint - endpoint to find the application callbacks for
+    182           *
+    183           * @return  pointer to the callbacks
+    184           */
+    185          static zclGp_AppCallbacks_t *zclGp_FindCallbacks( uint8 endpoint )
+    186          {
+    187            zclGpCBRec_t *pCBs;
+    188          
+    189            pCBs = zclGpCBs;
+    190            while ( pCBs )
+    191            {
+    192              if ( pCBs->endpoint == endpoint )
+    193                return ( pCBs->CBs );
+    194              pCBs = pCBs->next;
+    195            }
+    196            return ( (zclGp_AppCallbacks_t *)NULL );
+    197          }
+    198          
+    199          /*********************************************************************
+    200           * @fn      zclGp_HdlIncoming
+    201           *
+    202           * @brief   Callback from ZCL to process incoming Commands specific
+    203           *          to this cluster library or Profile commands for attributes
+    204           *          that aren't in the attribute list
+    205           *
+    206           *
+    207           * @param   pInMsg - pointer to the incoming message
+    208           *
+    209           * @return  ZStatus_t
+    210           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    211          static ZStatus_t zclGp_HdlIncoming( zclIncoming_t *pInMsg )
+   \                     zclGp_HdlIncoming:
+    212          {
+   \   000000   74F7         MOV       A,#-0x9
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    213            ZStatus_t stat = ZSuccess;
+    214          
+    215          #if defined ( INTER_PAN )
+    216            if ( StubAPS_InterPan( pInMsg->msg->srcAddr.panId, pInMsg->msg->srcAddr.endPoint ) )
+    217              return ( stat ); // Cluster not supported thru Inter-PAN
+    218          #endif
+    219            if ( zcl_ClusterCmd( pInMsg->hdr.fc.type ) )
+   \   000005   8A82         MOV       DPL,R2
+   \   000007   8B83         MOV       DPH,R3
+   \   000009   A3           INC       DPTR
+   \   00000A   A3           INC       DPTR
+   \   00000B   E0           MOVX      A,@DPTR
+   \   00000C   F8           MOV       R0,A
+   \   00000D   5403         ANL       A,#0x3
+   \   00000F   6401         XRL       A,#0x1
+   \   000011   7038         JNZ       ??zclGp_HdlIncoming_0
+    220            {
+    221              // Is this a manufacturer specific command?
+    222              if ( pInMsg->hdr.fc.manuSpecific == 0 )
+   \   000013   E8           MOV       A,R0
+   \   000014   5404         ANL       A,#0x4
+   \   000016   7033         JNZ       ??zclGp_HdlIncoming_0
+    223              {
+    224                stat = zclGp_HdlInSpecificCommands( pInMsg );
+   \   000018   8A82         MOV       DPL,R2
+   \   00001A   8B83         MOV       DPH,R3
+   \   00001C   12....       LCALL     ??Subroutine50_0 & 0xFFFF
+    225              }
+    226              else
+    227              {
+    228                // We don't support any manufacturer specific command.
+    229                stat = ZFailure;
+    230              }
+    231            }
+   \                     ??CrossCallReturnLabel_125:
+   \   00001F   E8           MOV       A,R0
+   \   000020   FE           MOV       R6,A
+   \   000021   E9           MOV       A,R1
+   \   000022   FF           MOV       R7,A
+   \   000023   E8           MOV       A,R0
+   \   000024   2414         ADD       A,#0x14
+   \   000026   F582         MOV       DPL,A
+   \   000028   E4           CLR       A
+   \   000029   3F           ADDC      A,R7
+   \   00002A   F583         MOV       DPH,A
+   \   00002C   E0           MOVX      A,@DPTR
+   \   00002D   FC           MOV       R4,A
+   \   00002E   90....       MOV       DPTR,#zclGpCBs
+   \                     ??zclGp_HdlIncoming_1:
+   \   000031   12....       LCALL     ??Subroutine49_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_111:
+   \   000034   6015         JZ        ??zclGp_HdlIncoming_0
+   \   000036   8882         MOV       DPL,R0
+   \   000038   8983         MOV       DPH,R1
+   \   00003A   A3           INC       DPTR
+   \   00003B   A3           INC       DPTR
+   \   00003C   E0           MOVX      A,@DPTR
+   \   00003D   6C           XRL       A,R4
+   \   00003E   8882         MOV       DPL,R0
+   \   000040   8983         MOV       DPH,R1
+   \   000042   70ED         JNZ       ??zclGp_HdlIncoming_1
+   \   000044   12....       LCALL     ?Subroutine18 & 0xFFFF
+   \                     ??CrossCallReturnLabel_57:
+   \   000047   EC           MOV       A,R4
+   \   000048   4D           ORL       A,R5
+   \   000049   7004         JNZ       ??zclGp_HdlIncoming_2
+   \                     ??zclGp_HdlIncoming_0:
+   \   00004B   7901         MOV       R1,#0x1
+   \   00004D   801A         SJMP      ??zclGp_HdlIncoming_3
+   \                     ??zclGp_HdlIncoming_2:
+   \   00004F   8E82         MOV       DPL,R6
+   \   000051   8F83         MOV       DPH,R7
+   \   000053   A3           INC       DPTR
+   \   000054   A3           INC       DPTR
+   \   000055   A3           INC       DPTR
+   \   000056   A3           INC       DPTR
+   \   000057   E0           MOVX      A,@DPTR
+   \   000058   6421         XRL       A,#0x21
+   \   00005A   7002         JNZ       ??zclGp_HdlIncoming_4
+   \   00005C   A3           INC       DPTR
+   \   00005D   E0           MOVX      A,@DPTR
+   \                     ??zclGp_HdlIncoming_4:
+   \   00005E   7006         JNZ       ??zclGp_HdlIncoming_5
+   \   000060                ; Setup parameters for call to function zclGp_ProcessInProxyBasic
+   \   000060   12....       LCALL     `??zclGp_ProcessInProxyBasic::?relay`; Banked call to: zclGp_ProcessInProxyBasic
+   \   000063   E9           MOV       A,R1
+   \   000064   8002         SJMP      ??zclGp_HdlIncoming_6
+   \                     ??zclGp_HdlIncoming_5:
+   \   000066   7401         MOV       A,#0x1
+   \                     ??zclGp_HdlIncoming_6:
+   \   000068   F9           MOV       R1,A
+    232            else
+    233            {
+    234              // Handle all the normal (Read, Write...) commands -- should never get here
+    235              stat = ZFailure;
+    236            }
+    237            return ( stat );
+   \                     ??zclGp_HdlIncoming_3:
+   \   000069                REQUIRE ?Subroutine1
+   \   000069                ; // Fall through to label ?Subroutine1
+    238          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   7F01         MOV       R7,#0x1
+   \   000002   02....       LJMP      ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine18:
+   \   000000   A3           INC       DPTR
+   \   000001   A3           INC       DPTR
+   \   000002   A3           INC       DPTR
+   \   000003                REQUIRE ??Subroutine37_0
+   \   000003                ; // Fall through to label ??Subroutine37_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine37_0:
+   \   000000   E0           MOVX      A,@DPTR
+   \   000001   FC           MOV       R4,A
+   \   000002   A3           INC       DPTR
+   \   000003   E0           MOVX      A,@DPTR
+   \   000004   FD           MOV       R5,A
+   \   000005   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine49_0:
+   \   000000   E0           MOVX      A,@DPTR
+   \   000001   F8           MOV       R0,A
+   \   000002   A3           INC       DPTR
+   \   000003   E0           MOVX      A,@DPTR
+   \   000004   F9           MOV       R1,A
+   \   000005   E8           MOV       A,R0
+   \   000006   49           ORL       A,R1
+   \   000007   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine50_0:
+   \   000000   E0           MOVX      A,@DPTR
+   \   000001   F8           MOV       R0,A
+   \   000002   A3           INC       DPTR
+   \   000003   E0           MOVX      A,@DPTR
+   \   000004   F9           MOV       R1,A
+   \   000005   22           RET
+    239          
+    240          /*********************************************************************
+    241           * @fn      zclGp_HdlInSpecificCommands
+    242           *
+    243           * @brief   Callback from ZCL to process incoming Commands specific
+    244           *          to this cluster library
+    245          
+    246           * @param   pInMsg - pointer to the incoming message
+    247           *
+    248           * @return  ZStatus_t
+    249           */
+    250          static ZStatus_t zclGp_HdlInSpecificCommands( zclIncoming_t *pInMsg )
+    251          {
+    252            ZStatus_t stat;
+    253            zclGp_AppCallbacks_t *pCBs;
+    254          
+    255            // make sure endpoint exists
+    256            pCBs = zclGp_FindCallbacks( pInMsg->msg->endPoint );
+    257            if ( pCBs == NULL )
+    258              return ( ZFailure );
+    259          
+    260            switch ( pInMsg->msg->clusterId )
+    261            {
+    262              case ZCL_CLUSTER_ID_GREEN_POWER:
+    263                // Proxy Basic handler
+    264                stat = zclGp_ProcessInProxyBasic( pInMsg, pCBs );
+    265                break;
+    266          
+    267              default:
+    268                stat = ZFailure;
+    269                break;
+    270            }
+    271          
+    272            return ( stat );
+    273          }
+    274          
+    275          /*********************************************************************
+    276           * @fn      zclGp_ProcessInProxyBasic
+    277           *
+    278           * @brief   Process in the received client commands for the Proxy Basic.
+    279           *
+    280           * @param   pInMsg - pointer to the incoming message
+    281           *
+    282           * @return  ZStatus_t
+    283           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    284          static ZStatus_t zclGp_ProcessInProxyBasic( zclIncoming_t *pInMsg,
+   \                     zclGp_ProcessInProxyBasic:
+    285                                                    zclGp_AppCallbacks_t *pCBs )
+    286          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000                REQUIRE ?V4
+   \   000000                REQUIRE ?V5
+   \   000000                REQUIRE ?V6
+   \   000000                REQUIRE ?V7
+   \   000000                REQUIRE ?V8
+   \   000000                REQUIRE ?V9
+   \   000000                REQUIRE ?V10
+   \   000000                REQUIRE ?V11
+   \   000000   74EC         MOV       A,#-0x14
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 20
+   \   000005                ; Auto size: 22
+   \   000005   74EA         MOV       A,#-0x16
+   \   000007   12....       LCALL     ?ALLOC_XSTACK8
+   \   00000A   EA           MOV       A,R2
+   \   00000B   FE           MOV       R6,A
+   \   00000C   EB           MOV       A,R3
+   \   00000D   FF           MOV       R7,A
+   \   00000E   8C..         MOV       ?V0,R4
+   \   000010   8D..         MOV       ?V1,R5
+    287            // Server side command handler
+    288            if ( zcl_ServerCmd( pInMsg->hdr.fc.direction ) )
+   \   000012   EA           MOV       A,R2
+   \   000013   2406         ADD       A,#0x6
+   \   000015   F5..         MOV       ?V2,A
+   \   000017   E4           CLR       A
+   \   000018   3F           ADDC      A,R7
+   \   000019   F5..         MOV       ?V3,A
+   \   00001B   EA           MOV       A,R2
+   \   00001C   2407         ADD       A,#0x7
+   \   00001E   F5..         MOV       ?V6,A
+   \   000020   E4           CLR       A
+   \   000021   3F           ADDC      A,R7
+   \   000022   F5..         MOV       ?V7,A
+   \   000024   EA           MOV       A,R2
+   \   000025   2402         ADD       A,#0x2
+   \   000027   F5..         MOV       ?V4,A
+   \   000029   E4           CLR       A
+   \   00002A   3F           ADDC      A,R7
+   \   00002B   F5..         MOV       ?V5,A
+   \   00002D   85..82       MOV       DPL,?V4
+   \   000030   F583         MOV       DPH,A
+   \   000032   E0           MOVX      A,@DPTR
+   \   000033   5408         ANL       A,#0x8
+   \   000035   707F         JNZ       ??zclGp_ProcessInProxyBasic_0
+    289            {
+    290              // Server side command handling is not supported
+    291              zclDefaultRspCmd_t defaultRspCmd;
+    292          
+    293              defaultRspCmd.commandID = pInMsg->hdr.commandID;
+   \   000037   85..82       MOV       DPL,?V6
+   \   00003A   85..83       MOV       DPH,?V7
+   \   00003D   E0           MOVX      A,@DPTR
+   \   00003E   C0E0         PUSH      A
+   \   000040   7405         MOV       A,#0x5
+   \   000042   12....       LCALL     ?XSTACK_DISP0_8
+   \   000045   D0E0         POP       A
+   \   000047   F0           MOVX      @DPTR,A
+    294              defaultRspCmd.statusCode = ZCL_STATUS_UNSUP_CLUSTER_COMMAND;
+   \   000048   7406         MOV       A,#0x6
+   \   00004A   12....       LCALL     ?XSTACK_DISP0_8
+   \   00004D   7481         MOV       A,#-0x7f
+   \   00004F   F0           MOVX      @DPTR,A
+    295              zcl_SendDefaultRspCmd( pInMsg->msg->endPoint, &(pInMsg->msg->srcAddr),
+    296                                     pInMsg->msg->clusterId, &defaultRspCmd,
+    297                                     ZCL_FRAME_SERVER_CLIENT_DIR, true, 0, pInMsg->hdr.transSeqNum );
+   \   000050   8A82         MOV       DPL,R2
+   \   000052   8B83         MOV       DPH,R3
+   \   000054   E0           MOVX      A,@DPTR
+   \   000055   F5..         MOV       ?V8,A
+   \   000057   A3           INC       DPTR
+   \   000058   E0           MOVX      A,@DPTR
+   \   000059   F5..         MOV       ?V9,A
+   \   00005B                ; Setup parameters for call to function zcl_SendDefaultRspCmd
+   \   00005B   85..82       MOV       DPL,?V2
+   \   00005E   85..83       MOV       DPH,?V3
+   \   000061   E0           MOVX      A,@DPTR
+   \   000062   F5..         MOV       ?V10,A
+   \   000064   78..         MOV       R0,#?V10
+   \   000066   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   000069   E4           CLR       A
+   \   00006A   F5..         MOV       ?V10,A
+   \   00006C   F5..         MOV       ?V11,A
+   \   00006E   78..         MOV       R0,#?V10
+   \   000070   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000073   75..01       MOV       ?V10,#0x1
+   \   000076   78..         MOV       R0,#?V10
+   \   000078   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   00007B   78..         MOV       R0,#?V10
+   \   00007D   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   000080   740A         MOV       A,#0xa
+   \   000082   12....       LCALL     ?XSTACK_DISP100_8
+   \   000085   88..         MOV       ?V10,R0
+   \   000087   89..         MOV       ?V11,R1
+   \   000089   78..         MOV       R0,#?V10
+   \   00008B   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   00008E   85..82       MOV       DPL,?V8
+   \   000091   85..83       MOV       DPH,?V9
+   \   000094   A3           INC       DPTR
+   \   000095   12....       LCALL     ?Subroutine18 & 0xFFFF
+    298            }
+   \                     ??CrossCallReturnLabel_58:
+   \   000098   E5..         MOV       A,?V8
+   \   00009A   2406         ADD       A,#0x6
+   \   00009C   FA           MOV       R2,A
+   \   00009D   E4           CLR       A
+   \   00009E   35..         ADDC      A,?V9
+   \   0000A0   FB           MOV       R3,A
+   \   0000A1   E5..         MOV       A,?V8
+   \   0000A3   2414         ADD       A,#0x14
+   \   0000A5   F582         MOV       DPL,A
+   \   0000A7   E4           CLR       A
+   \   0000A8   35..         ADDC      A,?V9
+   \   0000AA   F583         MOV       DPH,A
+   \   0000AC   E0           MOVX      A,@DPTR
+   \   0000AD   F9           MOV       R1,A
+   \   0000AE   12....       LCALL     `??zcl_SendDefaultRspCmd::?relay`; Banked call to: zcl_SendDefaultRspCmd
+   \   0000B1   7407         MOV       A,#0x7
+   \   0000B3   12....       LCALL     ?DEALLOC_XSTACK8
+    299            // Client side command handler
+    300            if ( zcl_ClientCmd( pInMsg->hdr.fc.direction ) )
+   \                     ??zclGp_ProcessInProxyBasic_0:
+   \   0000B6   85..82       MOV       DPL,?V4
+   \   0000B9   85..83       MOV       DPH,?V5
+   \   0000BC   E0           MOVX      A,@DPTR
+   \   0000BD   5408         ANL       A,#0x8
+   \   0000BF   7003         JNZ       $+5
+   \   0000C1   02....       LJMP      ??zclGp_ProcessInProxyBasic_1 & 0xFFFF
+    301            {
+    302              switch ( pInMsg->hdr.commandID )
+   \   0000C4   EE           MOV       A,R6
+   \   0000C5   2408         ADD       A,#0x8
+   \   0000C7   F5..         MOV       ?V4,A
+   \   0000C9   E4           CLR       A
+   \   0000CA   3F           ADDC      A,R7
+   \   0000CB   F5..         MOV       ?V5,A
+   \   0000CD   85..82       MOV       DPL,?V6
+   \   0000D0   85..83       MOV       DPH,?V7
+   \   0000D3   E0           MOVX      A,@DPTR
+   \   0000D4   14           DEC       A
+   \   0000D5   6014         JZ        ??zclGp_ProcessInProxyBasic_2
+   \   0000D7   14           DEC       A
+   \   0000D8   7003         JNZ       $+5
+   \   0000DA   02....       LJMP      ??zclGp_ProcessInProxyBasic_3 & 0xFFFF
+   \   0000DD   24FC         ADD       A,#-0x4
+   \   0000DF   7003         JNZ       $+5
+   \   0000E1   02....       LJMP      ??zclGp_ProcessInProxyBasic_4 & 0xFFFF
+   \   0000E4   24FB         ADD       A,#-0x5
+   \   0000E6   6050         JZ        ??zclGp_ProcessInProxyBasic_5
+   \   0000E8   02....       LJMP      ??zclGp_ProcessInProxyBasic_1 & 0xFFFF
+    303              {
+    304                case COMMAND_GP_PAIRING:
+    305                  if ( pCBs->pfnGpPairingCmd )
+   \                     ??zclGp_ProcessInProxyBasic_2:
+   \   0000EB   85..82       MOV       DPL,?V0
+   \   0000EE   85..83       MOV       DPH,?V1
+   \   0000F1   12....       LCALL     ??Subroutine49_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_112:
+   \   0000F4   7003         JNZ       $+5
+   \   0000F6   02....       LJMP      ??zclGp_ProcessInProxyBasic_1 & 0xFFFF
+    306                  {
+    307                    zclGpPairing_t cmd;
+    308                    
+    309                    zcl_InSeqNum = pInMsg->hdr.transSeqNum;
+   \   0000F9   12....       LCALL     ?Subroutine9 & 0xFFFF
+    310                    
+    311                    cmd.srcAddr = &(pInMsg->msg->srcAddr);
+   \                     ??CrossCallReturnLabel_2:
+   \   0000FC   740F         MOV       A,#0xf
+   \   0000FE   12....       LCALL     ?XSTACK_DISP0_8
+   \   000101   12....       LCALL     ?Subroutine8 & 0xFFFF
+    312                    osal_memcpy( cmd.options, (void*)pInMsg->pData, sizeof(cmd.options) );
+   \                     ??CrossCallReturnLabel_59:
+   \   000104   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   000107   7C03         MOV       R4,#0x3
+   \   000109   7D00         MOV       R5,#0x0
+   \   00010B   7414         MOV       A,#0x14
+   \   00010D   12....       LCALL     ?XSTACK_DISP0_8
+   \   000110   AA82         MOV       R2,DPL
+   \   000112   AB83         MOV       R3,DPH
+   \   000114   12....       LCALL     ??Subroutine42_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_79:
+   \   000117   12....       LCALL     ?DEALLOC_XSTACK8
+    313                    pInMsg->pData += sizeof(cmd.options);  // Move data pointer after options field
+   \   00011A   85..82       MOV       DPL,?V4
+   \   00011D   85..83       MOV       DPH,?V5
+   \   000120   E0           MOVX      A,@DPTR
+   \   000121   2403         ADD       A,#0x3
+   \   000123   12....       LCALL     ??Subroutine39_0 & 0xFFFF
+    314                              
+    315                    if ( pInMsg->pData == NULL )
+   \                     ??CrossCallReturnLabel_65:
+   \   000126   7003         JNZ       $+5
+   \   000128   02....       LJMP      ??zclGp_ProcessInProxyBasic_6 & 0xFFFF
+    316                    {
+    317                      return ZFailure;
+    318                    }
+    319                    
+    320                    cmd.pData = pInMsg->pData;
+   \   00012B   7414         MOV       A,#0x14
+   \   00012D   12....       LCALL     ?XSTACK_DISP0_8
+   \   000130   12....       LCALL     ?Subroutine22 & 0xFFFF
+    321                    pCBs->pfnGpPairingCmd( &cmd );
+   \                     ??CrossCallReturnLabel_19:
+   \   000133                ; Setup parameters for indirect call
+   \   000133   740F         MOV       A,#0xf
+   \   000135   02....       LJMP      ??zclGp_ProcessInProxyBasic_7 & 0xFFFF
+    322          
+    323                  }
+    324                  break;
+    325                  
+    326                case COMMAND_GP_PROXY_TABLE_REQUEST:
+    327                  if ( pCBs->pfnGpProxyTableReqCmd )
+   \                     ??zclGp_ProcessInProxyBasic_5:
+   \   000138   E5..         MOV       A,?V0
+   \   00013A   2402         ADD       A,#0x2
+   \   00013C   F5..         MOV       ?V0,A
+   \   00013E   5002         JNC       ??zclGp_ProcessInProxyBasic_8
+   \   000140   05..         INC       ?V1
+   \                     ??zclGp_ProcessInProxyBasic_8:
+   \   000142   F582         MOV       DPL,A
+   \   000144   85..83       MOV       DPH,?V1
+   \   000147   12....       LCALL     ??Subroutine49_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_113:
+   \   00014A   7003         JNZ       $+5
+   \   00014C   02....       LJMP      ??zclGp_ProcessInProxyBasic_1 & 0xFFFF
+    328                  {
+    329                    zclGpProxyTableRequest_t cmd;
+    330                    
+    331                    zcl_InSeqNum = pInMsg->hdr.transSeqNum;
+   \   00014F   12....       LCALL     ?Subroutine9 & 0xFFFF
+    332                    
+    333                    cmd.srcAddr = &(pInMsg->msg->srcAddr);
+   \                     ??CrossCallReturnLabel_3:
+   \   000152   85..82       MOV       DPL,?XSP + 0
+   \   000155   85..83       MOV       DPH,?XSP + 1
+   \   000158   12....       LCALL     ?Subroutine8 & 0xFFFF
+    334                    osal_memcpy( &cmd.options, (void*)pInMsg->pData, sizeof(cmd.options) );
+   \                     ??CrossCallReturnLabel_60:
+   \   00015B   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   00015E   7C01         MOV       R4,#0x1
+   \   000160   7D00         MOV       R5,#0x0
+   \   000162   7405         MOV       A,#0x5
+   \   000164   12....       LCALL     ?XSTACK_DISP0_8
+   \   000167   AA82         MOV       R2,DPL
+   \   000169   AB83         MOV       R3,DPH
+   \   00016B   12....       LCALL     ??Subroutine42_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_80:
+   \   00016E   12....       LCALL     ?DEALLOC_XSTACK8
+    335                    pInMsg->pData += sizeof(cmd.options);  // Move data pointer after options field
+   \   000171   12....       LCALL     ?Subroutine6 & 0xFFFF
+    336                    
+    337                    if ( pInMsg->pData == NULL )
+   \                     ??CrossCallReturnLabel_63:
+   \   000174   7003         JNZ       $+5
+   \   000176   02....       LJMP      ??zclGp_ProcessInProxyBasic_6 & 0xFFFF
+    338                    {
+    339                      return ZFailure;
+    340                    }
+    341                    
+    342                    cmd.pData = (void*)pInMsg->pData;
+   \   000179   7403         MOV       A,#0x3
+   \   00017B   12....       LCALL     ?XSTACK_DISP0_8
+   \   00017E   8062         SJMP      ??CrossCallReturnLabel_12
+    343                    pCBs->pfnGpProxyTableReqCmd( &cmd );
+    344          
+    345                  }
+    346                  break;
+    347                case COMMAND_GP_PROXY_COMMISSIONING_MODE:
+    348                  if(pCBs->pfnGpProxyCommissioningModeCmd)
+   \                     ??zclGp_ProcessInProxyBasic_3:
+   \   000180   E5..         MOV       A,?V0
+   \   000182   2404         ADD       A,#0x4
+   \   000184   F5..         MOV       ?V0,A
+   \   000186   5002         JNC       ??zclGp_ProcessInProxyBasic_9
+   \   000188   05..         INC       ?V1
+   \                     ??zclGp_ProcessInProxyBasic_9:
+   \   00018A   F582         MOV       DPL,A
+   \   00018C   85..83       MOV       DPH,?V1
+   \   00018F   12....       LCALL     ??Subroutine49_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_114:
+   \   000192   7003         JNZ       $+5
+   \   000194   02....       LJMP      ??zclGp_ProcessInProxyBasic_1 & 0xFFFF
+    349                  {
+    350                    zclGpProxyCommissioningMode_t cmd;
+    351          
+    352                    osal_memcpy( &cmd.options, (void*)pInMsg->pData, sizeof(cmd.options) );
+   \   000197                ; Setup parameters for call to function osal_memcpy
+   \   000197   12....       LCALL     ??Subroutine38_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_61:
+   \   00019A   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   00019D   7C01         MOV       R4,#0x1
+   \   00019F   7D00         MOV       R5,#0x0
+   \   0001A1   7405         MOV       A,#0x5
+   \   0001A3   12....       LCALL     ?XSTACK_DISP0_8
+   \   0001A6   AA82         MOV       R2,DPL
+   \   0001A8   AB83         MOV       R3,DPH
+   \   0001AA   12....       LCALL     ??Subroutine42_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_81:
+   \   0001AD   12....       LCALL     ?DEALLOC_XSTACK8
+    353                    pInMsg->pData += sizeof(cmd.options);  // Move data pointer after options field
+   \   0001B0   12....       LCALL     ?Subroutine6 & 0xFFFF
+    354                   
+    355                    if ( pInMsg->pData == NULL )
+   \                     ??CrossCallReturnLabel_64:
+   \   0001B3   7003         JNZ       $+5
+   \   0001B5   02....       LJMP      ??zclGp_ProcessInProxyBasic_6 & 0xFFFF
+    356                    {
+    357                      return ZFailure;
+    358                    }
+    359          
+    360                    cmd.pData = (void*)pInMsg->pData;
+   \   0001B8   7403         MOV       A,#0x3
+   \   0001BA   12....       LCALL     ?XSTACK_DISP0_8
+   \   0001BD   12....       LCALL     ?Subroutine22 & 0xFFFF
+    361          
+    362                    if(pInMsg->msg->srcAddr.addrMode == afAddr16Bit)
+   \                     ??CrossCallReturnLabel_20:
+   \   0001C0   8E82         MOV       DPL,R6
+   \   0001C2   8F83         MOV       DPH,R7
+   \   0001C4   12....       LCALL     ??Subroutine50_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_126:
+   \   0001C7   E8           MOV       A,R0
+   \   0001C8   240E         ADD       A,#0xe
+   \   0001CA   F582         MOV       DPL,A
+   \   0001CC   E4           CLR       A
+   \   0001CD   39           ADDC      A,R1
+   \   0001CE   F583         MOV       DPH,A
+   \   0001D0   E0           MOVX      A,@DPTR
+   \   0001D1   6402         XRL       A,#0x2
+   \   0001D3   7010         JNZ       ??CrossCallReturnLabel_21
+    363                    {
+    364                      cmd.srcAddr = pInMsg->msg->srcAddr.addr.shortAddr;
+   \   0001D5   8882         MOV       DPL,R0
+   \   0001D7   8983         MOV       DPH,R1
+   \   0001D9   A3           INC       DPTR
+   \   0001DA   A3           INC       DPTR
+   \   0001DB   A3           INC       DPTR
+   \   0001DC   A3           INC       DPTR
+   \   0001DD   A3           INC       DPTR
+   \   0001DE   A3           INC       DPTR
+   \   0001DF   12....       LCALL     ?Subroutine16 & 0xFFFF
+    365                    }
+   \                     ??CrossCallReturnLabel_12:
+   \   0001E2   12....       LCALL     ?Subroutine22 & 0xFFFF
+    366                    
+    367                    pCBs->pfnGpProxyCommissioningModeCmd( &cmd );
+   \                     ??CrossCallReturnLabel_21:
+   \   0001E5                ; Setup parameters for indirect call
+   \   0001E5   AA..         MOV       R2,?XSP + 0
+   \   0001E7   AB..         MOV       R3,?XSP + 1
+   \   0001E9   02....       LJMP      ??zclGp_ProcessInProxyBasic_10 & 0xFFFF
+    368                  }
+    369                  break;
+    370                  case COMMAND_GP_RESPONSE:
+    371                    
+    372                    if(pCBs->pfnGpResponseCommand)
+   \                     ??zclGp_ProcessInProxyBasic_4:
+   \   0001EC   E5..         MOV       A,?V0
+   \   0001EE   2406         ADD       A,#0x6
+   \   0001F0   F5..         MOV       ?V0,A
+   \   0001F2   5002         JNC       ??zclGp_ProcessInProxyBasic_11
+   \   0001F4   05..         INC       ?V1
+   \                     ??zclGp_ProcessInProxyBasic_11:
+   \   0001F6   F582         MOV       DPL,A
+   \   0001F8   85..83       MOV       DPH,?V1
+   \   0001FB   12....       LCALL     ??Subroutine49_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_115:
+   \   0001FE   7003         JNZ       $+5
+   \   000200   02....       LJMP      ??zclGp_ProcessInProxyBasic_1 & 0xFFFF
+    373                    {
+    374                      zclGpResponse_t cmd;
+    375          
+    376                      osal_memcpy( &cmd.options, (void*)pInMsg->pData, sizeof(cmd.options) );
+   \   000203                ; Setup parameters for call to function osal_memcpy
+   \   000203   12....       LCALL     ??Subroutine38_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_62:
+   \   000206   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   000209   7C01         MOV       R4,#0x1
+   \   00020B   7D00         MOV       R5,#0x0
+   \   00020D   740C         MOV       A,#0xc
+   \   00020F   12....       LCALL     ?XSTACK_DISP0_8
+   \   000212   AA82         MOV       R2,DPL
+   \   000214   AB83         MOV       R3,DPH
+   \   000216   12....       LCALL     ??Subroutine42_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_82:
+   \   000219   12....       LCALL     ?DEALLOC_XSTACK8
+    377                      pInMsg->pData += sizeof(cmd.options);  // Move data pointer after options field
+   \   00021C   85..82       MOV       DPL,?V4
+   \   00021F   85..83       MOV       DPH,?V5
+   \   000222   E0           MOVX      A,@DPTR
+   \   000223   2401         ADD       A,#0x1
+   \   000225   FA           MOV       R2,A
+   \   000226   A3           INC       DPTR
+   \   000227   E0           MOVX      A,@DPTR
+   \   000228   3400         ADDC      A,#0x0
+   \   00022A   FB           MOV       R3,A
+   \   00022B   85..82       MOV       DPL,?V4
+   \   00022E   85..83       MOV       DPH,?V5
+   \   000231   12....       LCALL     ??Subroutine45_0 & 0xFFFF
+    378                      
+    379                      cmd.tempMasterShortAddr = osal_build_uint16(pInMsg->pData);
+   \                     ??CrossCallReturnLabel_98:
+   \   000234                ; Setup parameters for call to function osal_build_uint16
+   \   000234   12....       LCALL     `??osal_build_uint16::?relay`; Banked call to: osal_build_uint16
+   \   000237   740A         MOV       A,#0xa
+   \   000239   12....       LCALL     ?XSTACK_DISP0_8
+   \   00023C   12....       LCALL     ??Subroutine45_0 & 0xFFFF
+    380                      pInMsg->pData += sizeof(cmd.tempMasterShortAddr);  // Move data pointer after tempMaster field
+   \                     ??CrossCallReturnLabel_99:
+   \   00023F   85..82       MOV       DPL,?V4
+   \   000242   85..83       MOV       DPH,?V5
+   \   000245   E0           MOVX      A,@DPTR
+   \   000246   2402         ADD       A,#0x2
+   \   000248   12....       LCALL     ?Subroutine13 & 0xFFFF
+    381                      
+    382                      osal_memcpy( &cmd.tempMasterTxChannel, (void*)pInMsg->pData, sizeof(cmd.tempMasterTxChannel) );
+   \                     ??CrossCallReturnLabel_8:
+   \   00024B                ; Setup parameters for call to function osal_memcpy
+   \   00024B   88..         MOV       ?V8,R0
+   \   00024D   89..         MOV       ?V9,R1
+   \   00024F   78..         MOV       R0,#?V8
+   \   000251   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   000254   7C01         MOV       R4,#0x1
+   \   000256   7D00         MOV       R5,#0x0
+   \   000258   740F         MOV       A,#0xf
+   \   00025A   12....       LCALL     ?XSTACK_DISP0_8
+   \   00025D   AA82         MOV       R2,DPL
+   \   00025F   AB83         MOV       R3,DPH
+   \   000261   12....       LCALL     ??Subroutine42_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_83:
+   \   000264   12....       LCALL     ?DEALLOC_XSTACK8
+    383                      pInMsg->pData += sizeof(cmd.tempMasterTxChannel);  // Move data pointer after options field
+   \   000267   85..82       MOV       DPL,?V4
+   \   00026A   85..83       MOV       DPH,?V5
+   \   00026D   E0           MOVX      A,@DPTR
+   \   00026E   2401         ADD       A,#0x1
+   \   000270   12....       LCALL     ?Subroutine13 & 0xFFFF
+    384                      
+    385                      cmd.dstAddr = pInMsg->msg->macDestAddr;  
+   \                     ??CrossCallReturnLabel_9:
+   \   000273   8E82         MOV       DPL,R6
+   \   000275   8F83         MOV       DPH,R7
+   \   000277   E0           MOVX      A,@DPTR
+   \   000278   FA           MOV       R2,A
+   \   000279   A3           INC       DPTR
+   \   00027A   E0           MOVX      A,@DPTR
+   \   00027B   CA           XCH       A,R2
+   \   00027C   2412         ADD       A,#0x12
+   \   00027E   F582         MOV       DPL,A
+   \   000280   E4           CLR       A
+   \   000281   3A           ADDC      A,R2
+   \   000282   F583         MOV       DPH,A
+   \   000284   12....       LCALL     ??Subroutine51_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_128:
+   \   000287   7407         MOV       A,#0x7
+   \   000289   12....       LCALL     ?XSTACK_DISP0_8
+   \   00028C   12....       LCALL     ??Subroutine45_0 & 0xFFFF
+    386                      
+    387                      if ( pInMsg->pData == NULL )
+   \                     ??CrossCallReturnLabel_100:
+   \   00028F   E8           MOV       A,R0
+   \   000290   49           ORL       A,R1
+   \   000291   7004         JNZ       ??zclGp_ProcessInProxyBasic_12
+    388                      {
+    389                        return ZFailure;
+   \                     ??zclGp_ProcessInProxyBasic_6:
+   \   000293   7901         MOV       R1,#0x1
+   \   000295   801B         SJMP      ??zclGp_ProcessInProxyBasic_13
+    390                      }
+    391                      cmd.pData = (void*)pInMsg->pData;
+   \                     ??zclGp_ProcessInProxyBasic_12:
+   \   000297   740D         MOV       A,#0xd
+   \   000299   12....       LCALL     ?XSTACK_DISP0_8
+   \   00029C   12....       LCALL     ?Subroutine22 & 0xFFFF
+    392          
+    393                      pCBs->pfnGpResponseCommand( &cmd ); 
+   \                     ??CrossCallReturnLabel_22:
+   \   00029F                ; Setup parameters for indirect call
+   \   00029F   7407         MOV       A,#0x7
+   \                     ??zclGp_ProcessInProxyBasic_7:
+   \   0002A1   12....       LCALL     ?XSTACK_DISP101_8
+   \                     ??zclGp_ProcessInProxyBasic_10:
+   \   0002A4   85..82       MOV       DPL,?V0
+   \   0002A7   85..83       MOV       DPH,?V1
+    394                    }
+    395                  break;
+    396              }
+    397            }
+   \   0002AA   12....       LCALL     ?Subroutine34 & 0xFFFF
+   \                     ??CrossCallReturnLabel_46:
+   \   0002AD   12....       LCALL     ?CALL_IND
+    398          
+    399            return ( ZSuccess );
+   \                     ??zclGp_ProcessInProxyBasic_1:
+   \   0002B0   7900         MOV       R1,#0x0
+   \                     ??zclGp_ProcessInProxyBasic_13:
+   \   0002B2   7416         MOV       A,#0x16
+   \   0002B4                REQUIRE ?Subroutine2
+   \   0002B4                ; // Fall through to label ?Subroutine2
+    400          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine2:
+   \   000000   12....       LCALL     ?DEALLOC_XSTACK8
+   \   000003   7F0C         MOV       R7,#0xc
+   \   000005   02....       LJMP      ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine13:
+   \   000000   12....       LCALL     ?Subroutine32 & 0xFFFF
+   \                     ??CrossCallReturnLabel_66:
+   \   000003   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine32:
+   \   000000   F8           MOV       R0,A
+   \   000001   A3           INC       DPTR
+   \   000002   E0           MOVX      A,@DPTR
+   \   000003   3400         ADDC      A,#0x0
+   \   000005   F9           MOV       R1,A
+   \   000006   85..82       MOV       DPL,?V4
+   \   000009   85..83       MOV       DPH,?V5
+   \   00000C   E8           MOV       A,R0
+   \   00000D   F0           MOVX      @DPTR,A
+   \   00000E   A3           INC       DPTR
+   \   00000F   E9           MOV       A,R1
+   \   000010   F0           MOVX      @DPTR,A
+   \   000011   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine9:
+   \   000000   85..82       MOV       DPL,?V2
+   \   000003   85..83       MOV       DPH,?V3
+   \   000006   E0           MOVX      A,@DPTR
+   \   000007   90....       MOV       DPTR,#zcl_InSeqNum
+   \   00000A   12....       LCALL     ?Subroutine35 & 0xFFFF
+   \                     ??CrossCallReturnLabel_48:
+   \   00000D   E0           MOVX      A,@DPTR
+   \   00000E   2406         ADD       A,#0x6
+   \   000010   F8           MOV       R0,A
+   \   000011   A3           INC       DPTR
+   \   000012   E0           MOVX      A,@DPTR
+   \   000013   3400         ADDC      A,#0x0
+   \   000015   F9           MOV       R1,A
+   \   000016   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine8:
+   \   000000   E8           MOV       A,R0
+   \   000001   F0           MOVX      @DPTR,A
+   \   000002   A3           INC       DPTR
+   \   000003   E9           MOV       A,R1
+   \   000004   F0           MOVX      @DPTR,A
+   \   000005                ; Setup parameters for call to function osal_memcpy
+   \   000005                ; Setup parameters for call to function osal_memcpy
+   \   000005                REQUIRE ??Subroutine38_0
+   \   000005                ; // Fall through to label ??Subroutine38_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine38_0:
+   \   000000   85..82       MOV       DPL,?V4
+   \   000003   85..83       MOV       DPH,?V5
+   \   000006   E0           MOVX      A,@DPTR
+   \   000007   F5..         MOV       ?V8,A
+   \   000009   A3           INC       DPTR
+   \   00000A   E0           MOVX      A,@DPTR
+   \   00000B   F5..         MOV       ?V9,A
+   \   00000D   75..00       MOV       ?V10,#0x0
+   \   000010   78..         MOV       R0,#?V8
+   \   000012   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine6:
+   \   000000   85..82       MOV       DPL,?V4
+   \   000003   85..83       MOV       DPH,?V5
+   \   000006   E0           MOVX      A,@DPTR
+   \   000007   2401         ADD       A,#0x1
+   \   000009                REQUIRE ??Subroutine39_0
+   \   000009                ; // Fall through to label ??Subroutine39_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine39_0:
+   \   000000   12....       LCALL     ?Subroutine32 & 0xFFFF
+   \                     ??CrossCallReturnLabel_67:
+   \   000003   E8           MOV       A,R0
+   \   000004   49           ORL       A,R1
+   \   000005   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine42_0:
+   \   000000   12....       LCALL     `??osal_memcpy::?relay`; Banked call to: osal_memcpy
+   \   000003   7403         MOV       A,#0x3
+   \   000005   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine16:
+   \   000000   E0           MOVX      A,@DPTR
+   \   000001   F8           MOV       R0,A
+   \   000002   A3           INC       DPTR
+   \   000003   E0           MOVX      A,@DPTR
+   \   000004   F9           MOV       R1,A
+   \   000005   85..82       MOV       DPL,?XSP + 0
+   \   000008   85..83       MOV       DPH,?XSP + 1
+   \   00000B   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine35:
+   \   000000   F0           MOVX      @DPTR,A
+   \   000001   8E82         MOV       DPL,R6
+   \   000003   8F83         MOV       DPH,R7
+   \   000005   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine45_0:
+   \   000000   EA           MOV       A,R2
+   \   000001   F0           MOVX      @DPTR,A
+   \   000002   A3           INC       DPTR
+   \   000003   EB           MOV       A,R3
+   \   000004   F0           MOVX      @DPTR,A
+   \   000005   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine34:
+   \   000000   E0           MOVX      A,@DPTR
+   \   000001   F8           MOV       R0,A
+   \   000002   A3           INC       DPTR
+   \   000003   E0           MOVX      A,@DPTR
+   \   000004   F583         MOV       DPH,A
+   \   000006   8882         MOV       DPL,R0
+   \   000008   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine51_0:
+   \   000000   E0           MOVX      A,@DPTR
+   \   000001   FA           MOV       R2,A
+   \   000002   A3           INC       DPTR
+   \   000003   E0           MOVX      A,@DPTR
+   \   000004   FB           MOV       R3,A
+   \   000005   22           RET
+    401          
+    402          /*********************************************************************
+    403           * @fn      zclGp_SendGpNotificationCommand
+    404           *
+    405           * @brief   Send the Green Power Notification Command to a device
+    406           *
+    407           * @param   pCmd - Pointer to GP Notification Struct
+    408           *          secNum - Sequence number given by the GPDF  
+    409           *
+    410           * @return  ZStatus_t
+    411           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    412          ZStatus_t zclGp_SendGpNotificationCommand( gpNotificationCmd_t *pCmd, uint8 secNum )
+   \                     zclGp_SendGpNotificationCommand:
+    413          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000                REQUIRE ?V4
+   \   000000                REQUIRE ?V5
+   \   000000                REQUIRE ?V6
+   \   000000                REQUIRE ?V7
+   \   000000                REQUIRE ?V8
+   \   000000                REQUIRE ?V9
+   \   000000                REQUIRE ?V10
+   \   000000                REQUIRE ?V11
+   \   000000                REQUIRE ?V12
+   \   000000                REQUIRE ?V13
+   \   000000                REQUIRE ?V14
+   \   000000                REQUIRE ?V15
+   \   000000   74E8         MOV       A,#-0x18
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 24
+   \   000005                ; Auto size: 0
+   \   000005   8A..         MOV       ?V0,R2
+   \   000007   8B..         MOV       ?V1,R3
+   \   000009   89..         MOV       ?V14,R1
+    414            uint8 *buf = NULL;
+    415            uint8 *pBuf = NULL;
+    416            uint8 *pGpdId = NULL;
+   \   00000B   75..00       MOV       ?V8,#0x0
+   \   00000E   75..00       MOV       ?V9,#0x0
+    417            uint8 appId;
+    418            ZStatus_t status;
+    419            uint16 len = 11;  // options + GPD Sec Counter + Cmd ID + payloadLen + GPP Short Address + GPP-GPD link
+   \   000011   75..0B       MOV       ?V2,#0xb
+   \   000014   8A82         MOV       DPL,R2
+   \   000016   8B83         MOV       DPH,R3
+   \   000018   E0           MOVX      A,@DPTR
+   \   000019   5407         ANL       A,#0x7
+   \   00001B   F8           MOV       R0,A
+   \   00001C   7005         JNZ       ??zclGp_SendGpNotificationCommand_0
+    420            gpCmdPayloadMsg_t *pCmdPayloadMsgCurr = NULL;
+    421            
+    422            // Check some stuff to calculate the packet len
+    423            // If Application Id bitfield is 0b000
+    424            if( GP_IS_APPLICATION_ID_GPD( pCmd->options ) )
+    425            {
+    426              len += 4;  // GPD ID
+   \   00001E   75..0F       MOV       ?V2,#0xf
+   \   000021   8008         SJMP      ??zclGp_SendGpNotificationCommand_1
+    427            }
+    428            // If Application Id bitfield is 0b010
+    429            else if( GP_IS_APPLICATION_ID_IEEE( pCmd->options ) )
+   \                     ??zclGp_SendGpNotificationCommand_0:
+   \   000023   7402         MOV       A,#0x2
+   \   000025   68           XRL       A,R0
+   \   000026   7003         JNZ       ??zclGp_SendGpNotificationCommand_1
+    430            {
+    431              len += 9;  // IEEE addr + EP
+   \   000028   75..14       MOV       ?V2,#0x14
+    432            }
+    433            
+    434            // Length of the command payload
+    435            len += pCmd->payloadLen;
+   \                     ??zclGp_SendGpNotificationCommand_1:
+   \   00002B   EA           MOV       A,R2
+   \   00002C   2414         ADD       A,#0x14
+   \   00002E   F5..         MOV       ?V10,A
+   \   000030   E4           CLR       A
+   \   000031   35..         ADDC      A,?V1
+   \   000033   F5..         MOV       ?V11,A
+   \   000035   85..82       MOV       DPL,?V10
+   \   000038   F583         MOV       DPH,A
+   \   00003A   E0           MOVX      A,@DPTR
+   \   00003B   F8           MOV       R0,A
+   \   00003C   E5..         MOV       A,?V2
+   \   00003E   28           ADD       A,R0
+   \   00003F   F5..         MOV       ?V2,A
+   \   000041   E4           CLR       A
+   \   000042   3400         ADDC      A,#0x0
+    436          
+    437            buf = zcl_mem_alloc( len );
+   \   000044                ; Setup parameters for call to function osal_mem_alloc
+   \   000044   AA..         MOV       R2,?V2
+   \   000046   FB           MOV       R3,A
+   \   000047   12....       LCALL     `??osal_mem_alloc::?relay`; Banked call to: osal_mem_alloc
+   \   00004A   8A..         MOV       ?V12,R2
+   \   00004C   8B..         MOV       ?V13,R3
+    438            if ( buf )
+   \   00004E   EA           MOV       A,R2
+   \   00004F   4B           ORL       A,R3
+   \   000050   7003         JNZ       $+5
+   \   000052   02....       LJMP      ??zclGp_SendGpNotificationCommand_2 & 0xFFFF
+    439            {
+    440              pBuf = buf;
+    441              
+    442              zcl_memcpy( pBuf, &pCmd->options, sizeof ( uint16 ) );
+   \   000055                ; Setup parameters for call to function osal_memcpy
+   \   000055   85....       MOV       ?V4,?V0
+   \   000058   85....       MOV       ?V5,?V1
+   \   00005B   75..00       MOV       ?V6,#0x0
+   \   00005E   78..         MOV       R0,#?V4
+   \   000060   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   000063   7C02         MOV       R4,#0x2
+   \   000065   7D00         MOV       R5,#0x0
+   \   000067   12....       LCALL     ??Subroutine42_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_84:
+   \   00006A   12....       LCALL     ?DEALLOC_XSTACK8
+    443              pBuf += sizeof ( uint16 );
+   \   00006D   E5..         MOV       A,?V12
+   \   00006F   2402         ADD       A,#0x2
+   \   000071   FE           MOV       R6,A
+   \   000072   E4           CLR       A
+   \   000073   35..         ADDC      A,?V13
+   \   000075   FF           MOV       R7,A
+   \   000076   85..82       MOV       DPL,?V0
+   \   000079   85..83       MOV       DPH,?V1
+   \   00007C   E0           MOVX      A,@DPTR
+   \   00007D   5407         ANL       A,#0x7
+   \   00007F   F8           MOV       R0,A
+   \   000080   7018         JNZ       ??zclGp_SendGpNotificationCommand_3
+    444              
+    445              // If Application Id bitfield is 0b000
+    446              if( GP_IS_APPLICATION_ID_GPD( pCmd->options ) )
+    447              {
+    448                zcl_memcpy( pBuf, &pCmd->gpdId, sizeof ( uint32 ) );
+   \   000082   E5..         MOV       A,?V0
+   \   000084   2402         ADD       A,#0x2
+   \   000086   12....       LCALL     ?Subroutine27 & 0xFFFF
+   \                     ??CrossCallReturnLabel_34:
+   \   000089   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   00008C   12....       LCALL     ?Subroutine25 & 0xFFFF
+   \                     ??CrossCallReturnLabel_68:
+   \   00008F   12....       LCALL     ?DEALLOC_XSTACK8
+    449                pGpdId = ( uint8* )&pCmd->gpdId;
+    450                appId = GP_OPT_APP_ID_GPD;
+   \   000092   75..00       MOV       ?V7,#0x0
+    451                pBuf += sizeof ( uint32 );
+   \   000095   EE           MOV       A,R6
+   \   000096   2404         ADD       A,#0x4
+   \   000098   8026         SJMP      ??CrossCallReturnLabel_6
+    452              }
+    453              // If Application Id bitfield is 0b010
+    454              else if( GP_IS_APPLICATION_ID_IEEE( pCmd->options ) )
+   \                     ??zclGp_SendGpNotificationCommand_3:
+   \   00009A   7402         MOV       A,#0x2
+   \   00009C   68           XRL       A,R0
+   \   00009D   7025         JNZ       ??zclGp_SendGpNotificationCommand_4
+    455              {
+    456                zcl_memcpy( pBuf, &pCmd->gpdIEEE, Z_EXTADDR_LEN );
+   \   00009F   E5..         MOV       A,?V0
+   \   0000A1   2406         ADD       A,#0x6
+   \   0000A3   12....       LCALL     ?Subroutine27 & 0xFFFF
+   \                     ??CrossCallReturnLabel_35:
+   \   0000A6   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   0000A9   7C08         MOV       R4,#0x8
+   \   0000AB   12....       LCALL     ??Subroutine40_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_72:
+   \   0000AE   12....       LCALL     ?DEALLOC_XSTACK8
+    457                pGpdId = pCmd->gpdIEEE;
+    458                appId = GP_OPT_APP_ID_IEEE;
+   \   0000B1   75..02       MOV       ?V7,#0x2
+    459                pBuf += Z_EXTADDR_LEN;
+    460                *pBuf++ = pCmd->ep;
+   \   0000B4   E5..         MOV       A,?V0
+   \   0000B6   240E         ADD       A,#0xe
+   \   0000B8   F582         MOV       DPL,A
+   \   0000BA   E4           CLR       A
+   \   0000BB   35..         ADDC      A,?V1
+   \   0000BD   12....       LCALL     ?Subroutine11 & 0xFFFF
+    461              }
+   \                     ??CrossCallReturnLabel_6:
+   \   0000C0   FE           MOV       R6,A
+   \   0000C1   5001         JNC       ??zclGp_SendGpNotificationCommand_4
+   \   0000C3   0F           INC       R7
+    462              
+    463              zcl_memcpy( pBuf, &pCmd->gpdSecCounter, sizeof ( uint32 ) );
+   \                     ??zclGp_SendGpNotificationCommand_4:
+   \   0000C4                ; Setup parameters for call to function osal_memcpy
+   \   0000C4   E5..         MOV       A,?V0
+   \   0000C6   240F         ADD       A,#0xf
+   \   0000C8   12....       LCALL     ?Subroutine28 & 0xFFFF
+   \                     ??CrossCallReturnLabel_36:
+   \   0000CB   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   0000CE   12....       LCALL     ?Subroutine25 & 0xFFFF
+   \                     ??CrossCallReturnLabel_69:
+   \   0000D1   12....       LCALL     ?DEALLOC_XSTACK8
+    464              pBuf += sizeof ( uint32 );
+    465          
+    466              *pBuf++ = pCmd->cmdId;
+   \   0000D4   E5..         MOV       A,?V0
+   \   0000D6   2413         ADD       A,#0x13
+   \   0000D8   F582         MOV       DPL,A
+   \   0000DA   E4           CLR       A
+   \   0000DB   35..         ADDC      A,?V1
+   \   0000DD   12....       LCALL     ?Subroutine7 & 0xFFFF
+    467              
+    468              *pBuf++ = pCmd->payloadLen;
+   \                     ??CrossCallReturnLabel_0:
+   \   0000E0   5001         JNC       ??zclGp_SendGpNotificationCommand_5
+   \   0000E2   0F           INC       R7
+    469              if ( pCmd->payloadLen > 0 )
+   \                     ??zclGp_SendGpNotificationCommand_5:
+   \   0000E3   85..82       MOV       DPL,?V10
+   \   0000E6   85..83       MOV       DPH,?V11
+   \   0000E9   E0           MOVX      A,@DPTR
+   \   0000EA   F9           MOV       R1,A
+   \   0000EB   6015         JZ        ??CrossCallReturnLabel_14
+    470              {
+    471                zcl_memcpy( pBuf, &pCmd->cmdPayload, pCmd->payloadLen );
+   \   0000ED                ; Setup parameters for call to function osal_memcpy
+   \   0000ED   E5..         MOV       A,?V0
+   \   0000EF   2415         ADD       A,#0x15
+   \   0000F1   12....       LCALL     ?Subroutine28 & 0xFFFF
+   \                     ??CrossCallReturnLabel_37:
+   \   0000F4   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   0000F7   E9           MOV       A,R1
+   \   0000F8   FC           MOV       R4,A
+   \   0000F9   12....       LCALL     ??Subroutine40_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_73:
+   \   0000FC   12....       LCALL     ?DEALLOC_XSTACK8
+    472                pBuf += pCmd->payloadLen;
+   \   0000FF   12....       LCALL     ?Subroutine20 & 0xFFFF
+    473              }
+    474              
+    475              zcl_memcpy( pBuf, &pCmd->gppShortAddr, sizeof ( uint16 ) );
+   \                     ??CrossCallReturnLabel_14:
+   \   000102                ; Setup parameters for call to function osal_memcpy
+   \   000102   E5..         MOV       A,?V0
+   \   000104   2417         ADD       A,#0x17
+   \   000106   12....       LCALL     ?Subroutine28 & 0xFFFF
+   \                     ??CrossCallReturnLabel_38:
+   \   000109   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   00010C   7C02         MOV       R4,#0x2
+   \   00010E   12....       LCALL     ??Subroutine40_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_74:
+   \   000111   12....       LCALL     ?DEALLOC_XSTACK8
+    476              pBuf += sizeof ( uint16 );
+    477              
+    478              *pBuf++ = pCmd->gppGpdLink;
+   \   000114   E5..         MOV       A,?V0
+   \   000116   2419         ADD       A,#0x19
+   \   000118   F582         MOV       DPL,A
+   \   00011A   E4           CLR       A
+   \   00011B   35..         ADDC      A,?V1
+   \   00011D   12....       LCALL     ?Subroutine21 & 0xFFFF
+    479              
+    480              pCmdPayloadMsgCurr = gp_AddCmdPayloadMsgNode ( &pCmdPayloadMsgHead, buf, len );
+   \                     ??CrossCallReturnLabel_16:
+   \   000120                ; Setup parameters for call to function gp_AddCmdPayloadMsgNode
+   \   000120   A9..         MOV       R1,?V2
+   \   000122   AC..         MOV       R4,?V12
+   \   000124   AD..         MOV       R5,?V13
+   \   000126   7A..         MOV       R2,#pCmdPayloadMsgHead & 0xff
+   \   000128   7B..         MOV       R3,#(pCmdPayloadMsgHead >> 8) & 0xff
+   \   00012A   12....       LCALL     `??gp_AddCmdPayloadMsgNode::?relay`; Banked call to: gp_AddCmdPayloadMsgNode
+   \   00012D   8A82         MOV       DPL,R2
+   \   00012F   8B83         MOV       DPH,R3
+    481              
+    482              pCmdPayloadMsgCurr->secNum = secNum;
+   \   000131   E5..         MOV       A,?V14
+   \   000133   F0           MOVX      @DPTR,A
+    483                    
+    484              if ( pCmdPayloadMsgCurr != NULL )
+   \   000134   E582         MOV       A,DPL
+   \   000136   4583         ORL       A,DPH
+   \   000138   6029         JZ        ??zclGp_SendGpNotificationCommand_6
+    485              {
+    486                gp_addPairedSinksToMsgQueue( appId, pGpdId, pCmdPayloadMsgCurr );
+   \   00013A                ; Setup parameters for call to function gp_addPairedSinksToMsgQueue
+   \   00013A   AC82         MOV       R4,DPL
+   \   00013C   AD83         MOV       R5,DPH
+   \   00013E   AA..         MOV       R2,?V8
+   \   000140   AB..         MOV       R3,?V9
+   \   000142   A9..         MOV       R1,?V7
+   \   000144   12....       LCALL     `??gp_addPairedSinksToMsgQueue::?relay`; Banked call to: gp_addPairedSinksToMsgQueue
+    487                osal_start_timerEx( zcl_TaskID, ZCL_DATABUF_SEND, 50 );
+   \   000147                ; Setup parameters for call to function osal_start_timerEx
+   \   000147   90....       MOV       DPTR,#__Constant_32
+   \   00014A   12....       LCALL     ?PUSH_XSTACK8_X_FOUR
+   \   00014D   7A20         MOV       R2,#0x20
+   \   00014F   7B00         MOV       R3,#0x0
+   \   000151   90....       MOV       DPTR,#zcl_TaskID
+   \   000154   E0           MOVX      A,@DPTR
+   \   000155   F9           MOV       R1,A
+   \   000156   12....       LCALL     `??osal_start_timerEx::?relay`; Banked call to: osal_start_timerEx
+   \   000159   7404         MOV       A,#0x4
+   \   00015B   12....       LCALL     ?DEALLOC_XSTACK8
+   \   00015E   8003         SJMP      ??zclGp_SendGpNotificationCommand_6
+    488              }
+    489          
+    490            }
+    491            else
+    492              status = ZMemError;
+   \                     ??zclGp_SendGpNotificationCommand_2:
+   \   000160   75..10       MOV       ?V15,#0x10
+    493          
+    494            return ( status );
+   \                     ??zclGp_SendGpNotificationCommand_6:
+   \   000163   A9..         MOV       R1,?V15
+   \   000165   7F10         MOV       R7,#0x10
+   \   000167   02....       LJMP      ?BANKED_LEAVE_XDATA
+    495          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine28:
+   \   000000   F5..         MOV       ?V4,A
+   \   000002   E4           CLR       A
+   \   000003   35..         ADDC      A,?V1
+   \   000005   F5..         MOV       ?V5,A
+   \   000007   78..         MOV       R0,#?V4
+   \   000009   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine27:
+   \   000000   F5..         MOV       ?V8,A
+   \   000002   E4           CLR       A
+   \   000003   35..         ADDC      A,?V1
+   \   000005   F5..         MOV       ?V9,A
+   \   000007                ; Setup parameters for call to function osal_memcpy
+   \   000007                ; Setup parameters for call to function osal_memcpy
+   \   000007   85....       MOV       ?V4,?V8
+   \   00000A   F5..         MOV       ?V5,A
+   \   00000C   78..         MOV       R0,#?V4
+   \   00000E   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine25:
+   \   000000   7C04         MOV       R4,#0x4
+   \   000002                REQUIRE ??Subroutine40_0
+   \   000002                ; // Fall through to label ??Subroutine40_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine40_0:
+   \   000000   7D00         MOV       R5,#0x0
+   \   000002   EE           MOV       A,R6
+   \   000003   FA           MOV       R2,A
+   \   000004   EF           MOV       A,R7
+   \   000005                REQUIRE ??Subroutine41_0
+   \   000005                ; // Fall through to label ??Subroutine41_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine41_0:
+   \   000000   FB           MOV       R3,A
+   \   000001                REQUIRE ??Subroutine42_0
+   \   000001                ; // Fall through to label ??Subroutine42_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine21:
+   \   000000   F583         MOV       DPH,A
+   \   000002   E0           MOVX      A,@DPTR
+   \   000003   8E82         MOV       DPL,R6
+   \   000005   8F83         MOV       DPH,R7
+   \   000007   A3           INC       DPTR
+   \   000008   A3           INC       DPTR
+   \   000009   F0           MOVX      @DPTR,A
+   \   00000A   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine20:
+   \   000000   85..82       MOV       DPL,?V10
+   \   000003   85..83       MOV       DPH,?V11
+   \   000006   E0           MOVX      A,@DPTR
+   \   000007   F8           MOV       R0,A
+   \   000008   EE           MOV       A,R6
+   \   000009   28           ADD       A,R0
+   \   00000A   FE           MOV       R6,A
+   \   00000B   E4           CLR       A
+   \   00000C   3F           ADDC      A,R7
+   \   00000D   FF           MOV       R7,A
+   \   00000E   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine11:
+   \   000000   F583         MOV       DPH,A
+   \   000002   12....       LCALL     ?Subroutine33 & 0xFFFF
+   \                     ??CrossCallReturnLabel_45:
+   \   000005   A3           INC       DPTR
+   \   000006   A3           INC       DPTR
+   \   000007   A3           INC       DPTR
+   \   000008   F0           MOVX      @DPTR,A
+   \   000009   EE           MOV       A,R6
+   \   00000A   2409         ADD       A,#0x9
+   \   00000C   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine7:
+   \   000000   F583         MOV       DPH,A
+   \   000002   12....       LCALL     ?Subroutine36 & 0xFFFF
+   \                     ??CrossCallReturnLabel_53:
+   \   000005   F0           MOVX      @DPTR,A
+   \   000006   85..82       MOV       DPL,?V10
+   \   000009   85..83       MOV       DPH,?V11
+   \   00000C   12....       LCALL     ?Subroutine33 & 0xFFFF
+   \                     ??CrossCallReturnLabel_44:
+   \   00000F   F0           MOVX      @DPTR,A
+   \   000010   EE           MOV       A,R6
+   \   000011   2406         ADD       A,#0x6
+   \   000013   FE           MOV       R6,A
+   \   000014   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine33:
+   \   000000   12....       LCALL     ?Subroutine36 & 0xFFFF
+   \                     ??CrossCallReturnLabel_54:
+   \   000003   A3           INC       DPTR
+   \   000004   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine36:
+   \   000000   E0           MOVX      A,@DPTR
+   \   000001   8E82         MOV       DPL,R6
+   \   000003   8F83         MOV       DPH,R7
+   \   000005   A3           INC       DPTR
+   \   000006   A3           INC       DPTR
+   \   000007   A3           INC       DPTR
+   \   000008   A3           INC       DPTR
+   \   000009   22           RET
+    496            
+    497          /*********************************************************************
+    498           * @fn      zclGp_SendGpCommissioningNotificationCommand
+    499           *
+    500           * @brief   Send the Green Power Commissioning Notification Command to a device
+    501           *
+    502           * @param   pCmd - Pointer to GP Commissioning Notification Struct
+    503           *
+    504           * @return  ZStatus_t
+    505           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    506          ZStatus_t zclGp_SendGpCommissioningNotificationCommand( gpCommissioningNotificationCmd_t *pCmd )
+   \                     zclGp_SendGpCommissioningNotificationCommand:
+    507          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000                REQUIRE ?V4
+   \   000000                REQUIRE ?V5
+   \   000000                REQUIRE ?V6
+   \   000000                REQUIRE ?V7
+   \   000000                REQUIRE ?V8
+   \   000000                REQUIRE ?V9
+   \   000000                REQUIRE ?V10
+   \   000000                REQUIRE ?V11
+   \   000000   74EC         MOV       A,#-0x14
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 20
+   \   000005                ; Auto size: 12
+   \   000005   74F4         MOV       A,#-0xc
+   \   000007   12....       LCALL     ?ALLOC_XSTACK8
+   \   00000A   8A..         MOV       ?V2,R2
+   \   00000C   8B..         MOV       ?V3,R3
+    508            uint8 *buf = NULL;
+    509            uint8 *pBuf = NULL;
+    510            ZStatus_t status;
+    511            uint16 len = 11;  // options + GPD Sec Counter + Cmd ID + payloadLen + GPP Short Address + GPP-GPD link
+   \   00000E   75..0B       MOV       ?V0,#0xb
+   \   000011   8A82         MOV       DPL,R2
+   \   000013   8B83         MOV       DPH,R3
+   \   000015   E0           MOVX      A,@DPTR
+   \   000016   5407         ANL       A,#0x7
+   \   000018   F8           MOV       R0,A
+   \   000019   7005         JNZ       ??zclGp_SendGpCommissioningNotificationCommand_0
+    512            
+    513            // Check some stuff to calculate the packet len
+    514            // If Application Id bitfield is 0b000
+    515            if( GP_IS_APPLICATION_ID_GPD( pCmd->options ) )
+    516            {
+    517              len += 4;  // GPD ID
+   \   00001B   75..0F       MOV       ?V0,#0xf
+   \   00001E   8008         SJMP      ??zclGp_SendGpCommissioningNotificationCommand_1
+    518            }
+    519            // If Application Id bitfield is 0b010
+    520            else if( GP_IS_APPLICATION_ID_IEEE( pCmd->options ) )
+   \                     ??zclGp_SendGpCommissioningNotificationCommand_0:
+   \   000020   7402         MOV       A,#0x2
+   \   000022   68           XRL       A,R0
+   \   000023   7003         JNZ       ??zclGp_SendGpCommissioningNotificationCommand_1
+    521            {
+    522              len += 9;  // IEEE addr + EP
+   \   000025   75..14       MOV       ?V0,#0x14
+    523            }
+    524            
+    525            // Length of the command payload
+    526            len += pCmd->payloadLen;
+   \                     ??zclGp_SendGpCommissioningNotificationCommand_1:
+   \   000028   EA           MOV       A,R2
+   \   000029   2414         ADD       A,#0x14
+   \   00002B   F5..         MOV       ?V10,A
+   \   00002D   E4           CLR       A
+   \   00002E   35..         ADDC      A,?V3
+   \   000030   F5..         MOV       ?V11,A
+   \   000032   85..82       MOV       DPL,?V10
+   \   000035   F583         MOV       DPH,A
+   \   000037   E0           MOVX      A,@DPTR
+   \   000038   F8           MOV       R0,A
+   \   000039   E5..         MOV       A,?V0
+   \   00003B   28           ADD       A,R0
+   \   00003C   F5..         MOV       ?V0,A
+   \   00003E   E4           CLR       A
+   \   00003F   3400         ADDC      A,#0x0
+   \   000041   F5..         MOV       ?V1,A
+    527          
+    528            buf = zcl_mem_alloc( len );
+   \   000043                ; Setup parameters for call to function osal_mem_alloc
+   \   000043   AA..         MOV       R2,?V0
+   \   000045   FB           MOV       R3,A
+   \   000046   12....       LCALL     `??osal_mem_alloc::?relay`; Banked call to: osal_mem_alloc
+   \   000049   8A..         MOV       ?V8,R2
+   \   00004B   8B..         MOV       ?V9,R3
+    529            if ( buf )
+   \   00004D   EA           MOV       A,R2
+   \   00004E   4B           ORL       A,R3
+   \   00004F   7003         JNZ       $+5
+   \   000051   02....       LJMP      ??zclGp_SendGpCommissioningNotificationCommand_2 & 0xFFFF
+    530            {
+    531              pBuf = buf;
+    532              
+    533              zcl_memcpy( pBuf, &pCmd->options, sizeof ( uint16 ) );
+   \   000054                ; Setup parameters for call to function osal_memcpy
+   \   000054   85....       MOV       ?V4,?V2
+   \   000057   85....       MOV       ?V5,?V3
+   \   00005A   75..00       MOV       ?V6,#0x0
+   \   00005D   78..         MOV       R0,#?V4
+   \   00005F   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   000062   7C02         MOV       R4,#0x2
+   \   000064   7D00         MOV       R5,#0x0
+   \   000066   12....       LCALL     ??Subroutine42_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_85:
+   \   000069   12....       LCALL     ?DEALLOC_XSTACK8
+    534              pBuf += sizeof ( uint16 );
+   \   00006C   E5..         MOV       A,?V8
+   \   00006E   2402         ADD       A,#0x2
+   \   000070   FE           MOV       R6,A
+   \   000071   E4           CLR       A
+   \   000072   35..         ADDC      A,?V9
+   \   000074   FF           MOV       R7,A
+   \   000075   85..82       MOV       DPL,?V2
+   \   000078   85..83       MOV       DPH,?V3
+   \   00007B   E0           MOVX      A,@DPTR
+   \   00007C   5407         ANL       A,#0x7
+   \   00007E   F8           MOV       R0,A
+   \   00007F   701A         JNZ       ??zclGp_SendGpCommissioningNotificationCommand_3
+    535              
+    536              // If Application Id bitfield is 0b000
+    537              if( GP_IS_APPLICATION_ID_GPD( pCmd->options ) )
+    538              {
+    539                zcl_memcpy( pBuf, &pCmd->gpdId, sizeof ( uint32 ) );
+   \   000081                ; Setup parameters for call to function osal_memcpy
+   \   000081   A3           INC       DPTR
+   \   000082   A3           INC       DPTR
+   \   000083   A982         MOV       R1,DPL
+   \   000085   AA83         MOV       R2,DPH
+   \   000087   89..         MOV       ?V4,R1
+   \   000089   8A..         MOV       ?V5,R2
+   \   00008B   78..         MOV       R0,#?V4
+   \   00008D   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   000090   12....       LCALL     ?Subroutine25 & 0xFFFF
+   \                     ??CrossCallReturnLabel_70:
+   \   000093   12....       LCALL     ?DEALLOC_XSTACK8
+    540                pBuf += sizeof ( uint32 );
+   \   000096   EE           MOV       A,R6
+   \   000097   2404         ADD       A,#0x4
+   \   000099   8023         SJMP      ??CrossCallReturnLabel_7
+    541              }
+    542              // If Application Id bitfield is 0b010
+    543              else if( GP_IS_APPLICATION_ID_IEEE( pCmd->options ) )
+   \                     ??zclGp_SendGpCommissioningNotificationCommand_3:
+   \   00009B   7402         MOV       A,#0x2
+   \   00009D   68           XRL       A,R0
+   \   00009E   7022         JNZ       ??zclGp_SendGpCommissioningNotificationCommand_4
+    544              {
+    545                zcl_memcpy( pBuf, &pCmd->gpdIEEE, Z_EXTADDR_LEN );
+   \   0000A0                ; Setup parameters for call to function osal_memcpy
+   \   0000A0   E5..         MOV       A,?V2
+   \   0000A2   2406         ADD       A,#0x6
+   \   0000A4   12....       LCALL     ?Subroutine26 & 0xFFFF
+   \                     ??CrossCallReturnLabel_30:
+   \   0000A7   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   0000AA   7C08         MOV       R4,#0x8
+   \   0000AC   12....       LCALL     ??Subroutine40_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_75:
+   \   0000AF   12....       LCALL     ?DEALLOC_XSTACK8
+    546                pBuf += Z_EXTADDR_LEN;
+    547                *pBuf++ = pCmd->ep;
+   \   0000B2   E5..         MOV       A,?V2
+   \   0000B4   240E         ADD       A,#0xe
+   \   0000B6   F582         MOV       DPL,A
+   \   0000B8   E4           CLR       A
+   \   0000B9   35..         ADDC      A,?V3
+   \   0000BB   12....       LCALL     ?Subroutine11 & 0xFFFF
+    548              }
+   \                     ??CrossCallReturnLabel_7:
+   \   0000BE   FE           MOV       R6,A
+   \   0000BF   5001         JNC       ??zclGp_SendGpCommissioningNotificationCommand_4
+   \   0000C1   0F           INC       R7
+    549              
+    550              zcl_memcpy( pBuf, &pCmd->gpdSecCounter, sizeof ( uint32 ) );
+   \                     ??zclGp_SendGpCommissioningNotificationCommand_4:
+   \   0000C2                ; Setup parameters for call to function osal_memcpy
+   \   0000C2   E5..         MOV       A,?V2
+   \   0000C4   240F         ADD       A,#0xf
+   \   0000C6   12....       LCALL     ?Subroutine26 & 0xFFFF
+   \                     ??CrossCallReturnLabel_31:
+   \   0000C9   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   0000CC   12....       LCALL     ?Subroutine25 & 0xFFFF
+   \                     ??CrossCallReturnLabel_71:
+   \   0000CF   12....       LCALL     ?DEALLOC_XSTACK8
+    551              pBuf += sizeof ( uint32 );
+    552          
+    553              *pBuf++ = pCmd->cmdId;
+   \   0000D2   E5..         MOV       A,?V2
+   \   0000D4   2413         ADD       A,#0x13
+   \   0000D6   F582         MOV       DPL,A
+   \   0000D8   E4           CLR       A
+   \   0000D9   35..         ADDC      A,?V3
+   \   0000DB   12....       LCALL     ?Subroutine7 & 0xFFFF
+    554              
+    555              *pBuf++ = pCmd->payloadLen;
+   \                     ??CrossCallReturnLabel_1:
+   \   0000DE   5001         JNC       ??zclGp_SendGpCommissioningNotificationCommand_5
+   \   0000E0   0F           INC       R7
+    556              if ( pCmd->payloadLen > 0 )
+   \                     ??zclGp_SendGpCommissioningNotificationCommand_5:
+   \   0000E1   85..82       MOV       DPL,?V10
+   \   0000E4   85..83       MOV       DPH,?V11
+   \   0000E7   E0           MOVX      A,@DPTR
+   \   0000E8   F9           MOV       R1,A
+   \   0000E9   6015         JZ        ??CrossCallReturnLabel_15
+    557              {
+    558                zcl_memcpy( pBuf, &pCmd->cmdPayload, pCmd->payloadLen );
+   \   0000EB                ; Setup parameters for call to function osal_memcpy
+   \   0000EB   E5..         MOV       A,?V2
+   \   0000ED   2415         ADD       A,#0x15
+   \   0000EF   12....       LCALL     ?Subroutine26 & 0xFFFF
+   \                     ??CrossCallReturnLabel_32:
+   \   0000F2   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   0000F5   E9           MOV       A,R1
+   \   0000F6   FC           MOV       R4,A
+   \   0000F7   12....       LCALL     ??Subroutine40_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_76:
+   \   0000FA   12....       LCALL     ?DEALLOC_XSTACK8
+    559                pBuf += pCmd->payloadLen;
+   \   0000FD   12....       LCALL     ?Subroutine20 & 0xFFFF
+    560              }
+    561              
+    562              zcl_memcpy( pBuf, &pCmd->gppShortAddr, sizeof ( uint16 ) );
+   \                     ??CrossCallReturnLabel_15:
+   \   000100                ; Setup parameters for call to function osal_memcpy
+   \   000100   E5..         MOV       A,?V2
+   \   000102   2417         ADD       A,#0x17
+   \   000104   12....       LCALL     ?Subroutine26 & 0xFFFF
+   \                     ??CrossCallReturnLabel_33:
+   \   000107   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   00010A   7C02         MOV       R4,#0x2
+   \   00010C   12....       LCALL     ??Subroutine40_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_77:
+   \   00010F   12....       LCALL     ?DEALLOC_XSTACK8
+    563              pBuf += sizeof ( uint16 );
+    564              
+    565              *pBuf++ = pCmd->gppGpdLink;
+   \   000112   E5..         MOV       A,?V2
+   \   000114   2419         ADD       A,#0x19
+   \   000116   F582         MOV       DPL,A
+   \   000118   E4           CLR       A
+   \   000119   35..         ADDC      A,?V3
+   \   00011B   12....       LCALL     ?Subroutine21 & 0xFFFF
+    566              
+    567              afAddrType_t addr;
+    568              addr.endPoint = GREEN_POWER_INTERNAL_ENDPOINT;
+   \                     ??CrossCallReturnLabel_17:
+   \   00011E   7409         MOV       A,#0x9
+   \   000120   12....       LCALL     ?XSTACK_DISP0_8
+   \   000123   12....       LCALL     ?Subroutine17 & 0xFFFF
+    569              addr.panId = _NIB.nwkPanId;
+   \                     ??CrossCallReturnLabel_123:
+   \   000126   740A         MOV       A,#0xa
+   \   000128   12....       LCALL     ?XSTACK_DISP0_8
+   \   00012B   12....       LCALL     ?Subroutine22 & 0xFFFF
+    570              addr.addr.shortAddr = gp_commissionerAddress; 
+   \                     ??CrossCallReturnLabel_23:
+   \   00012E   90....       MOV       DPTR,#gp_commissionerAddress
+   \   000131   12....       LCALL     ?Subroutine16 & 0xFFFF
+   \                     ??CrossCallReturnLabel_13:
+   \   000134   12....       LCALL     ?Subroutine22 & 0xFFFF
+    571                  
+    572              if ( gp_commissionerAddress == 0xFFFF )
+   \                     ??CrossCallReturnLabel_24:
+   \   000137   90....       MOV       DPTR,#gp_commissionerAddress
+   \   00013A   E0           MOVX      A,@DPTR
+   \   00013B   F4           CPL       A
+   \   00013C   7003         JNZ       ??zclGp_SendGpCommissioningNotificationCommand_6
+   \   00013E   A3           INC       DPTR
+   \   00013F   E0           MOVX      A,@DPTR
+   \   000140   F4           CPL       A
+   \                     ??zclGp_SendGpCommissioningNotificationCommand_6:
+   \   000141   7009         JNZ       ??zclGp_SendGpCommissioningNotificationCommand_7
+    573              {
+    574                addr.addrMode = afAddrBroadcast;
+   \   000143   7408         MOV       A,#0x8
+   \   000145   12....       LCALL     ?XSTACK_DISP0_8
+   \   000148   740F         MOV       A,#0xf
+   \   00014A   8007         SJMP      ??zclGp_SendGpCommissioningNotificationCommand_8
+    575              }
+    576              else
+    577              {
+    578                addr.addrMode = afAddr16Bit;
+   \                     ??zclGp_SendGpCommissioningNotificationCommand_7:
+   \   00014C   7408         MOV       A,#0x8
+   \   00014E   12....       LCALL     ?XSTACK_DISP0_8
+   \   000151   7402         MOV       A,#0x2
+   \                     ??zclGp_SendGpCommissioningNotificationCommand_8:
+   \   000153   F0           MOVX      @DPTR,A
+    579              }
+    580                  
+    581              zcl_SendCommand( GREEN_POWER_INTERNAL_ENDPOINT, &addr, ZCL_CLUSTER_ID_GREEN_POWER,
+    582                                COMMAND_GP_COMMISSIONING_NOTIFICATION, TRUE, ZCL_FRAME_CLIENT_SERVER_DIR,
+    583                                TRUE, 0,  bdb_getZCLFrameCounter(), len, buf ); 
+   \   000154                ; Setup parameters for call to function bdb_getZCLFrameCounter
+   \   000154   12....       LCALL     `??bdb_getZCLFrameCounter::?relay`; Banked call to: bdb_getZCLFrameCounter
+   \   000157   E9           MOV       A,R1
+   \   000158   F9           MOV       R1,A
+   \   000159                ; Setup parameters for call to function zcl_SendCommand
+   \   000159   78..         MOV       R0,#?V8
+   \   00015B   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   00015E   78..         MOV       R0,#?V0
+   \   000160   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000163   E9           MOV       A,R1
+   \   000164   F5..         MOV       ?V0,A
+   \   000166   78..         MOV       R0,#?V0
+   \   000168   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   00016B   E4           CLR       A
+   \   00016C   F5..         MOV       ?V0,A
+   \   00016E   F5..         MOV       ?V1,A
+   \   000170   78..         MOV       R0,#?V0
+   \   000172   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   000175   75..01       MOV       ?V0,#0x1
+   \   000178   78..         MOV       R0,#?V0
+   \   00017A   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   00017D   75..00       MOV       ?V0,#0x0
+   \   000180   78..         MOV       R0,#?V0
+   \   000182   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   000185   75..01       MOV       ?V0,#0x1
+   \   000188   78..         MOV       R0,#?V0
+   \   00018A   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   00018D   75..04       MOV       ?V0,#0x4
+   \   000190   78..         MOV       R0,#?V0
+   \   000192   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   000195   7C21         MOV       R4,#0x21
+   \   000197   7D00         MOV       R5,#0x0
+   \   000199   740B         MOV       A,#0xb
+   \   00019B   12....       LCALL     ?XSTACK_DISP101_8
+   \   00019E   79F2         MOV       R1,#-0xe
+   \   0001A0   12....       LCALL     `??zcl_SendCommand::?relay`; Banked call to: zcl_SendCommand
+   \   0001A3   740B         MOV       A,#0xb
+   \   0001A5   12....       LCALL     ?DEALLOC_XSTACK8
+    584                
+    585              zcl_mem_free( buf );
+   \   0001A8                ; Setup parameters for call to function osal_mem_free
+   \   0001A8   AA..         MOV       R2,?V8
+   \   0001AA   AB..         MOV       R3,?V9
+   \   0001AC   12....       LCALL     `??osal_mem_free::?relay`; Banked call to: osal_mem_free
+   \   0001AF   8003         SJMP      ??zclGp_SendGpCommissioningNotificationCommand_9
+    586            }
+    587            else
+    588              status = ZMemError;
+   \                     ??zclGp_SendGpCommissioningNotificationCommand_2:
+   \   0001B1   75..10       MOV       ?V7,#0x10
+    589          
+    590            return ( status );
+   \                     ??zclGp_SendGpCommissioningNotificationCommand_9:
+   \   0001B4   A9..         MOV       R1,?V7
+   \   0001B6   740C         MOV       A,#0xc
+   \   0001B8   02....       LJMP      ?Subroutine2 & 0xFFFF
+    591          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine26:
+   \   000000   F5..         MOV       ?V4,A
+   \   000002   E4           CLR       A
+   \   000003   35..         ADDC      A,?V3
+   \   000005   F5..         MOV       ?V5,A
+   \   000007   78..         MOV       R0,#?V4
+   \   000009   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine17:
+   \   000000   74F2         MOV       A,#-0xe
+   \   000002   F0           MOVX      @DPTR,A
+   \   000003   90....       MOV       DPTR,#_NIB + 33
+   \   000006                REQUIRE ??Subroutine50_0
+   \   000006                ; // Fall through to label ??Subroutine50_0
+    592          /*********************************************************************
+    593           * @fn      zclGp_SendGpProxyTableResponse
+    594           *
+    595           * @brief   Send the Green Power Proxy Table Response to a device
+    596           *
+    597           * @param   dstAddr - where to send the request
+    598           * @param   groupID - pointer to the group structure
+    599           * @param   groupName - pointer to Group Name.  This is a Zigbee
+    600           *          string data type, so the first byte is the length of the
+    601           *          name (in bytes), then the name.
+    602           *
+    603           * @return  ZStatus_t
+    604           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    605          ZStatus_t zclGp_SendGpProxyTableResponse( afAddrType_t *dstAddr, zclGpProxyTableResponse_t *rsp, 
+   \                     zclGp_SendGpProxyTableResponse:
+    606                                                    uint8 seqNum )
+    607          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000                REQUIRE ?V4
+   \   000000                REQUIRE ?V5
+   \   000000                REQUIRE ?V6
+   \   000000                REQUIRE ?V7
+   \   000000                REQUIRE ?V8
+   \   000000                REQUIRE ?V9
+   \   000000                REQUIRE ?V10
+   \   000000                REQUIRE ?V11
+   \   000000                REQUIRE ?V12
+   \   000000                REQUIRE ?V13
+   \   000000   74EA         MOV       A,#-0x16
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 22
+   \   000005                ; Auto size: 2
+   \   000005   74FE         MOV       A,#-0x2
+   \   000007   12....       LCALL     ?ALLOC_XSTACK8
+   \   00000A   8A..         MOV       ?V12,R2
+   \   00000C   8B..         MOV       ?V13,R3
+   \   00000E   EC           MOV       A,R4
+   \   00000F   FE           MOV       R6,A
+   \   000010   ED           MOV       A,R5
+   \   000011   FF           MOV       R7,A
+   \   000012   89..         MOV       ?V11,R1
+    608            uint8 *buf = NULL;
+    609            uint8 *pBuf = NULL;
+    610            uint8 *pEntry = NULL;
+   \   000014   75..00       MOV       ?V2,#0x0
+   \   000017   75..00       MOV       ?V3,#0x0
+    611            
+    612            ZStatus_t status;
+    613            uint16 entryLen = 0;
+   \   00001A   85..82       MOV       DPL,?XSP + 0
+   \   00001D   85..83       MOV       DPH,?XSP + 1
+   \   000020   E4           CLR       A
+   \   000021   F0           MOVX      @DPTR,A
+   \   000022   A3           INC       DPTR
+   \   000023   F0           MOVX      @DPTR,A
+    614            uint16 len;
+    615            
+    616            if ( rsp->proxyTableEntry != NULL )
+   \   000024   EC           MOV       A,R4
+   \   000025   2404         ADD       A,#0x4
+   \   000027   F5..         MOV       ?V6,A
+   \   000029   E4           CLR       A
+   \   00002A   3F           ADDC      A,R7
+   \   00002B   F5..         MOV       ?V7,A
+   \   00002D   85..82       MOV       DPL,?V6
+   \   000030   12....       LCALL     ??Subroutine48_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_120:
+   \   000033   6029         JZ        ??zclGp_SendGpProxyTableResponse_0
+    617            {
+    618              pEntry = rsp->proxyTableEntry;
+   \   000035   88..         MOV       ?V2,R0
+   \   000037   89..         MOV       ?V3,R1
+    619              zcl_memcpy( &entryLen, pEntry, sizeof ( uint16 ) );
+   \   000039                ; Setup parameters for call to function osal_memcpy
+   \   000039   88..         MOV       ?V8,R0
+   \   00003B   89..         MOV       ?V9,R1
+   \   00003D   75..00       MOV       ?V10,#0x0
+   \   000040   78..         MOV       R0,#?V8
+   \   000042   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   000045   7C02         MOV       R4,#0x2
+   \   000047   7D00         MOV       R5,#0x0
+   \   000049   7403         MOV       A,#0x3
+   \   00004B   12....       LCALL     ?XSTACK_DISP101_8
+   \   00004E   12....       LCALL     ??Subroutine42_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_86:
+   \   000051   12....       LCALL     ?DEALLOC_XSTACK8
+    620              pEntry += sizeof ( uint16 );
+   \   000054   E5..         MOV       A,?V2
+   \   000056   2402         ADD       A,#0x2
+   \   000058   F5..         MOV       ?V2,A
+   \   00005A   5002         JNC       ??zclGp_SendGpProxyTableResponse_0
+   \   00005C   05..         INC       ?V3
+    621            }
+    622            
+    623            len = entryLen + 4;
+   \                     ??zclGp_SendGpProxyTableResponse_0:
+   \   00005E   85..82       MOV       DPL,?XSP + 0
+   \   000061   85..83       MOV       DPH,?XSP + 1
+   \   000064   E0           MOVX      A,@DPTR
+   \   000065   2404         ADD       A,#0x4
+   \   000067   F5..         MOV       ?V4,A
+   \   000069   A3           INC       DPTR
+   \   00006A   E0           MOVX      A,@DPTR
+   \   00006B   3400         ADDC      A,#0x0
+   \   00006D   F5..         MOV       ?V5,A
+    624          
+    625            buf = zcl_mem_alloc( len );
+   \   00006F                ; Setup parameters for call to function osal_mem_alloc
+   \   00006F   AA..         MOV       R2,?V4
+   \   000071   FB           MOV       R3,A
+   \   000072   12....       LCALL     `??osal_mem_alloc::?relay`; Banked call to: osal_mem_alloc
+   \   000075   8A..         MOV       ?V0,R2
+   \   000077   8B..         MOV       ?V1,R3
+    626            if ( buf )
+   \   000079   EA           MOV       A,R2
+   \   00007A   4B           ORL       A,R3
+   \   00007B   7003         JNZ       $+5
+   \   00007D   02....       LJMP      ??zclGp_SendGpProxyTableResponse_1 & 0xFFFF
+    627            {
+    628              pBuf = buf;
+    629              *pBuf++ = rsp->status;
+   \   000080   8E82         MOV       DPL,R6
+   \   000082   8F83         MOV       DPH,R7
+   \   000084   E0           MOVX      A,@DPTR
+   \   000085   8A82         MOV       DPL,R2
+   \   000087   8B83         MOV       DPH,R3
+   \   000089   12....       LCALL     ?Subroutine35 & 0xFFFF
+    630              *pBuf++ = rsp->tableEntriesTotal;
+   \                     ??CrossCallReturnLabel_49:
+   \   00008C   12....       LCALL     ??Subroutine43_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_91:
+   \   00008F   12....       LCALL     ?Subroutine35 & 0xFFFF
+    631              *pBuf++ = rsp->startIndex;
+   \                     ??CrossCallReturnLabel_50:
+   \   000092   12....       LCALL     ?Subroutine19 & 0xFFFF
+   \                     ??CrossCallReturnLabel_92:
+   \   000095   A3           INC       DPTR
+   \   000096   12....       LCALL     ?Subroutine35 & 0xFFFF
+    632              *pBuf++ = rsp->entriesCount;
+   \                     ??CrossCallReturnLabel_51:
+   \   000099   A3           INC       DPTR
+   \   00009A   12....       LCALL     ?Subroutine19 & 0xFFFF
+   \                     ??CrossCallReturnLabel_93:
+   \   00009D   A3           INC       DPTR
+   \   00009E   A3           INC       DPTR
+   \   00009F   F0           MOVX      @DPTR,A
+    633              if ( rsp->proxyTableEntry != NULL )
+   \   0000A0   85..82       MOV       DPL,?V6
+   \   0000A3   85..83       MOV       DPH,?V7
+   \   0000A6   12....       LCALL     ??Subroutine49_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_116:
+   \   0000A9   6023         JZ        ??zclGp_SendGpProxyTableResponse_2
+    634              {
+    635                zcl_memcpy( pBuf, pEntry, entryLen );
+   \   0000AB                ; Setup parameters for call to function osal_memcpy
+   \   0000AB   85....       MOV       ?V8,?V2
+   \   0000AE   85....       MOV       ?V9,?V3
+   \   0000B1   75..00       MOV       ?V10,#0x0
+   \   0000B4   78..         MOV       R0,#?V8
+   \   0000B6   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   0000B9   7403         MOV       A,#0x3
+   \   0000BB   12....       LCALL     ?XSTACK_DISP0_8
+   \   0000BE   12....       LCALL     ??Subroutine37_0 & 0xFFFF
+    636              }
+   \                     ??CrossCallReturnLabel_55:
+   \   0000C1   EA           MOV       A,R2
+   \   0000C2   2404         ADD       A,#0x4
+   \   0000C4   FA           MOV       R2,A
+   \   0000C5   E4           CLR       A
+   \   0000C6   35..         ADDC      A,?V1
+   \   0000C8   12....       LCALL     ??Subroutine41_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_78:
+   \   0000CB   12....       LCALL     ?DEALLOC_XSTACK8
+    637          
+    638              status = zcl_SendCommand( GREEN_POWER_INTERNAL_ENDPOINT, dstAddr, ZCL_CLUSTER_ID_GREEN_POWER,
+    639                                        COMMAND_GP_PROXY_TABLE_RESPONSE, TRUE, ZCL_FRAME_CLIENT_SERVER_DIR,
+    640                                        TRUE, 0, seqNum, len, buf );
+   \                     ??zclGp_SendGpProxyTableResponse_2:
+   \   0000CE                ; Setup parameters for call to function zcl_SendCommand
+   \   0000CE   78..         MOV       R0,#?V0
+   \   0000D0   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   0000D3   78..         MOV       R0,#?V4
+   \   0000D5   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   0000D8   E5..         MOV       A,?V11
+   \   0000DA   F5..         MOV       ?V2,A
+   \   0000DC   78..         MOV       R0,#?V2
+   \   0000DE   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   0000E1   E4           CLR       A
+   \   0000E2   F5..         MOV       ?V2,A
+   \   0000E4   F5..         MOV       ?V3,A
+   \   0000E6   78..         MOV       R0,#?V2
+   \   0000E8   12....       LCALL     ?PUSH_XSTACK_I_TWO
+   \   0000EB   75..01       MOV       ?V2,#0x1
+   \   0000EE   78..         MOV       R0,#?V2
+   \   0000F0   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   0000F3   75..00       MOV       ?V2,#0x0
+   \   0000F6   78..         MOV       R0,#?V2
+   \   0000F8   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   0000FB   75..01       MOV       ?V2,#0x1
+   \   0000FE   78..         MOV       R0,#?V2
+   \   000100   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   000103   75..0B       MOV       ?V2,#0xb
+   \   000106   78..         MOV       R0,#?V2
+   \   000108   12....       LCALL     ?PUSH_XSTACK_I_ONE
+   \   00010B   7C21         MOV       R4,#0x21
+   \   00010D   7D00         MOV       R5,#0x0
+   \   00010F   AA..         MOV       R2,?V12
+   \   000111   AB..         MOV       R3,?V13
+   \   000113   79F2         MOV       R1,#-0xe
+   \   000115   12....       LCALL     `??zcl_SendCommand::?relay`; Banked call to: zcl_SendCommand
+   \   000118   740B         MOV       A,#0xb
+   \   00011A   12....       LCALL     ?DEALLOC_XSTACK8
+   \   00011D   E9           MOV       A,R1
+   \   00011E   FE           MOV       R6,A
+    641              zcl_mem_free( buf );
+   \   00011F                ; Setup parameters for call to function osal_mem_free
+   \   00011F   AA..         MOV       R2,?V0
+   \   000121   AB..         MOV       R3,?V1
+   \   000123   12....       LCALL     `??osal_mem_free::?relay`; Banked call to: osal_mem_free
+   \   000126   8002         SJMP      ??zclGp_SendGpProxyTableResponse_3
+    642            }
+    643            else
+    644              status = ZMemError;
+   \                     ??zclGp_SendGpProxyTableResponse_1:
+   \   000128   7E10         MOV       R6,#0x10
+    645          
+    646            return ( status );
+   \                     ??zclGp_SendGpProxyTableResponse_3:
+   \   00012A   EE           MOV       A,R6
+   \   00012B   F9           MOV       R1,A
+   \   00012C   7402         MOV       A,#0x2
+   \   00012E   12....       LCALL     ?DEALLOC_XSTACK8
+   \   000131   7F0E         MOV       R7,#0xe
+   \   000133   02....       LJMP      ?BANKED_LEAVE_XDATA
+    647          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine19:
+   \   000000   A3           INC       DPTR
+   \   000001                REQUIRE ??Subroutine43_0
+   \   000001                ; // Fall through to label ??Subroutine43_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine43_0:
+   \   000000   A3           INC       DPTR
+   \   000001   E0           MOVX      A,@DPTR
+   \   000002   8A82         MOV       DPL,R2
+   \   000004   8B83         MOV       DPH,R3
+   \   000006   A3           INC       DPTR
+   \   000007   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine48_0:
+   \   000000   F583         MOV       DPH,A
+   \   000002                REQUIRE ??Subroutine49_0
+   \   000002                ; // Fall through to label ??Subroutine49_0
+    648          
+    649           /*********************************************************************
+    650           * @fn          gp_addPairedSinksToMsgQueue
+    651           *
+    652           * @brief       General function to add Notification Msg to Queue for all 
+    653           *              Sinks paired to the given GPD
+    654           *
+    655           * @param       nvIndex - NV Id of proxy table
+    656           *              pEntry  - pointer to PROXY_TBL_ENTRY_LEN array
+    657           *
+    658           * @return      
+    659           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    660          static uint8 gp_addPairedSinksToMsgQueue( uint8 appId, uint8 *pId, gpCmdPayloadMsg_t* pMsg )
+   \                     gp_addPairedSinksToMsgQueue:
+    661          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000                REQUIRE ?V4
+   \   000000                REQUIRE ?V5
+   \   000000                REQUIRE ?V6
+   \   000000                REQUIRE ?V8
+   \   000000                REQUIRE ?V9
+   \   000000   74EE         MOV       A,#-0x12
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 18
+   \   000005                ; Auto size: 87
+   \   000005   74A9         MOV       A,#-0x57
+   \   000007   12....       LCALL     ?ALLOC_XSTACK8
+   \   00000A   89..         MOV       ?V3,R1
+   \   00000C   8C..         MOV       ?V8,R4
+   \   00000E   8D..         MOV       ?V9,R5
+    662            uint8 freeSinkEntry[LSINK_ADDR_LEN] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+   \   000010   90....       MOV       DPTR,#`?<Constant {255, 255, 255, 255, 255, 255, 255,`
+   \   000013   744D         MOV       A,#0x4d
+   \   000015   12....       LCALL     ?XSTACK_DISP102_8
+   \   000018   740A         MOV       A,#0xa
+   \   00001A   12....       LCALL     ?MOVE_LONG8_XDATA_XDATA
+    663            uint8 status;
+    664            uint8 i;
+    665            uint8 currEntry[PROXY_TBL_ENTRY_LEN];
+    666            afAddrType_t dstAddr = {0};
+   \   00001D   90....       MOV       DPTR,#`?<Constant {{0}}>`
+   \   000020   AC..         MOV       R4,?XSP + 0
+   \   000022   AD..         MOV       R5,?XSP + 1
+   \   000024   740C         MOV       A,#0xc
+   \   000026   12....       LCALL     ?MOVE_LONG8_XDATA_XDATA
+    667            gpNotificationMsg_t *pNotificationMsgCurr = NULL;
+    668          
+    669              
+    670            for ( i = 0; i <= GPP_MAX_PROXY_TABLE_ENTRIES ; i++ )
+   \   000029   7E00         MOV       R6,#0x0
+   \   00002B   8A..         MOV       ?V0,R2
+   \   00002D   8B..         MOV       ?V1,R3
+   \   00002F   F5..         MOV       ?V2,A
+    671            {
+    672              status = gp_getProxyTableByIndex( ( ZCD_NV_PROXY_TABLE_START + i ), currEntry );
+   \                     ??gp_addPairedSinksToMsgQueue_0:
+   \   000031                ; Setup parameters for call to function gp_getProxyTableByIndex
+   \   000031   740C         MOV       A,#0xc
+   \   000033   12....       LCALL     ?XSTACK_DISP102_8
+   \   000036   EE           MOV       A,R6
+   \   000037   2410         ADD       A,#0x10
+   \   000039   FA           MOV       R2,A
+   \   00003A   E4           CLR       A
+   \   00003B   3403         ADDC      A,#0x3
+   \   00003D   FB           MOV       R3,A
+   \   00003E   12....       LCALL     `??gp_getProxyTableByIndex::?relay`; Banked call to: gp_getProxyTableByIndex
+   \   000041   E9           MOV       A,R1
+   \   000042   FF           MOV       R7,A
+    673          
+    674              if ( status == NV_OPER_FAILED )
+   \   000043   740A         MOV       A,#0xa
+   \   000045   6F           XRL       A,R7
+   \   000046   6074         JZ        ??gp_addPairedSinksToMsgQueue_1
+    675              {
+    676                break;
+    677              }
+    678              
+    679              // if the entry is empty
+    680              if ( status == NV_INVALID_DATA )
+   \   000048   740D         MOV       A,#0xd
+   \   00004A   6F           XRL       A,R7
+   \   00004B   7009         JNZ       ??gp_addPairedSinksToMsgQueue_2
+    681              {
+    682                if ( i >= GPP_MAX_PROXY_TABLE_ENTRIES )
+   \   00004D   EE           MOV       A,R6
+   \   00004E   C3           CLR       C
+   \   00004F   9405         SUBB      A,#0x5
+   \   000051   405F         JC        ??gp_addPairedSinksToMsgQueue_3
+   \   000053   02....       LJMP      ??gp_addPairedSinksToMsgQueue_4 & 0xFFFF
+    683                {
+    684                  return status;
+    685                }
+    686                continue;
+    687              }
+    688              
+    689              if ( PROXY_TBL_COMP_APPLICTION_ID( appId, currEntry[PROXY_TBL_ENTRY_OPT] ) )
+   \                     ??gp_addPairedSinksToMsgQueue_2:
+   \   000056   7407         MOV       A,#0x7
+   \   000058   55..         ANL       A,?V3
+   \   00005A   F8           MOV       R0,A
+   \   00005B   740C         MOV       A,#0xc
+   \   00005D   12....       LCALL     ?XSTACK_DISP0_8
+   \   000060   E0           MOVX      A,@DPTR
+   \   000061   5407         ANL       A,#0x7
+   \   000063   68           XRL       A,R0
+   \   000064   704C         JNZ       ??gp_addPairedSinksToMsgQueue_3
+    690              {
+    691                if ( appId == GP_OPT_APP_ID_GPD )
+   \   000066   E5..         MOV       A,?V3
+   \   000068   7022         JNZ       ??gp_addPairedSinksToMsgQueue_5
+    692                {
+    693                  if ( osal_memcmp( pId, &currEntry[PROXY_TBL_ENTRY_GPD_ID + 4], sizeof ( uint32 ) ) )
+   \   00006A                ; Setup parameters for call to function osal_memcmp
+   \   00006A   7412         MOV       A,#0x12
+   \   00006C   12....       LCALL     ?XSTACK_DISP0_8
+   \   00006F   A982         MOV       R1,DPL
+   \   000071   AA83         MOV       R2,DPH
+   \   000073   89..         MOV       ?V4,R1
+   \   000075   8A..         MOV       ?V5,R2
+   \   000077   75..00       MOV       ?V6,#0x0
+   \   00007A   78..         MOV       R0,#?V4
+   \   00007C   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   00007F   7C04         MOV       R4,#0x4
+   \   000081   12....       LCALL     ??Subroutine44_0 & 0xFFFF
+    694                  {
+    695                    // Entry found
+    696                    break;
+    697                  }
+    698                }
+   \                     ??CrossCallReturnLabel_96:
+   \   000084   12....       LCALL     ?DEALLOC_XSTACK8
+   \   000087   E9           MOV       A,R1
+   \   000088   7032         JNZ       ??gp_addPairedSinksToMsgQueue_1
+   \   00008A   8026         SJMP      ??gp_addPairedSinksToMsgQueue_3
+    699                else if ( appId == GP_OPT_APP_ID_IEEE )
+   \                     ??gp_addPairedSinksToMsgQueue_5:
+   \   00008C   7402         MOV       A,#0x2
+   \   00008E   65..         XRL       A,?V3
+   \   000090   7020         JNZ       ??gp_addPairedSinksToMsgQueue_3
+    700                {
+    701                  if ( osal_memcmp( pId, &currEntry[PROXY_TBL_ENTRY_GPD_ID], Z_EXTADDR_LEN ) )
+   \   000092                ; Setup parameters for call to function osal_memcmp
+   \   000092   740E         MOV       A,#0xe
+   \   000094   12....       LCALL     ?XSTACK_DISP0_8
+   \   000097   A982         MOV       R1,DPL
+   \   000099   AA83         MOV       R2,DPH
+   \   00009B   89..         MOV       ?V4,R1
+   \   00009D   8A..         MOV       ?V5,R2
+   \   00009F   75..00       MOV       ?V6,#0x0
+   \   0000A2   78..         MOV       R0,#?V4
+   \   0000A4   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   0000A7   7C08         MOV       R4,#0x8
+   \   0000A9   12....       LCALL     ??Subroutine44_0 & 0xFFFF
+    702                  {
+    703                    // Entry found
+    704                    break;
+    705                  }
+    706                }
+    707              }
+    708            }
+   \                     ??CrossCallReturnLabel_97:
+   \   0000AC   12....       LCALL     ?DEALLOC_XSTACK8
+   \   0000AF   E9           MOV       A,R1
+   \   0000B0   700A         JNZ       ??gp_addPairedSinksToMsgQueue_1
+   \                     ??gp_addPairedSinksToMsgQueue_3:
+   \   0000B2   0E           INC       R6
+   \   0000B3   EE           MOV       A,R6
+   \   0000B4   C3           CLR       C
+   \   0000B5   9406         SUBB      A,#0x6
+   \   0000B7   5003         JNC       $+5
+   \   0000B9   02....       LJMP      ??gp_addPairedSinksToMsgQueue_0 & 0xFFFF
+    709            
+    710            dstAddr.endPoint = GREEN_POWER_INTERNAL_ENDPOINT;
+   \                     ??gp_addPairedSinksToMsgQueue_1:
+   \   0000BC   7409         MOV       A,#0x9
+   \   0000BE   12....       LCALL     ?XSTACK_DISP0_8
+   \   0000C1   12....       LCALL     ?Subroutine17 & 0xFFFF
+    711            dstAddr.panId = _NIB.nwkPanId;
+   \                     ??CrossCallReturnLabel_124:
+   \   0000C4   740A         MOV       A,#0xa
+   \   0000C6   12....       LCALL     ?XSTACK_DISP0_8
+   \   0000C9   12....       LCALL     ?Subroutine22 & 0xFFFF
+    712            
+    713            if ( PROXY_TBL_GET_LIGHTWIGHT_UNICAST( currEntry[PROXY_TBL_ENTRY_OPT] ) )
+   \                     ??CrossCallReturnLabel_25:
+   \   0000CC   740C         MOV       A,#0xc
+   \   0000CE   12....       LCALL     ?XSTACK_DISP0_8
+   \   0000D1   E0           MOVX      A,@DPTR
+   \   0000D2   A2E6         MOV       C,0xE0 /* A   */.6
+   \   0000D4   4003         JC        $+5
+   \   0000D6   02....       LJMP      ??gp_addPairedSinksToMsgQueue_6 & 0xFFFF
+    714            {
+    715              dstAddr.addrMode = afAddr16Bit;
+   \   0000D9   7408         MOV       A,#0x8
+   \   0000DB   12....       LCALL     ?XSTACK_DISP0_8
+   \   0000DE   7402         MOV       A,#0x2
+   \   0000E0   F0           MOVX      @DPTR,A
+    716              if ( !osal_memcmp( freeSinkEntry, &currEntry[PROXY_TBL_ENTRY_1ST_LSINK_ADDR], LSINK_ADDR_LEN ) )
+   \   0000E1   744D         MOV       A,#0x4d
+   \   0000E3   12....       LCALL     ?XSTACK_DISP100_8
+   \   0000E6   88..         MOV       ?V0,R0
+   \   0000E8   89..         MOV       ?V1,R1
+   \   0000EA                ; Setup parameters for call to function osal_memcmp
+   \   0000EA   742E         MOV       A,#0x2e
+   \   0000EC   12....       LCALL     ?XSTACK_DISP0_8
+   \   0000EF   A982         MOV       R1,DPL
+   \   0000F1   AA83         MOV       R2,DPH
+   \   0000F3   89..         MOV       ?V4,R1
+   \   0000F5   8A..         MOV       ?V5,R2
+   \   0000F7   75..00       MOV       ?V6,#0x0
+   \   0000FA   78..         MOV       R0,#?V4
+   \   0000FC   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   0000FF   12....       LCALL     ?Subroutine30 & 0xFFFF
+   \                     ??CrossCallReturnLabel_94:
+   \   000102   12....       LCALL     ?DEALLOC_XSTACK8
+   \   000105   E9           MOV       A,R1
+   \   000106   7043         JNZ       ??gp_addPairedSinksToMsgQueue_7
+    717              {
+    718                osal_memcpy( &dstAddr.addr.shortAddr, &currEntry[PROXY_TBL_ENTRY_1ST_LSINK_ADDR + Z_EXTADDR_LEN], sizeof ( uint16 ) );
+   \   000108                ; Setup parameters for call to function osal_memcpy
+   \   000108   7436         MOV       A,#0x36
+   \   00010A   12....       LCALL     ?XSTACK_DISP0_8
+   \   00010D   A982         MOV       R1,DPL
+   \   00010F   AA83         MOV       R2,DPH
+   \   000111   89..         MOV       ?V4,R1
+   \   000113   8A..         MOV       ?V5,R2
+   \   000115   78..         MOV       R0,#?V4
+   \   000117   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   00011A   7C02         MOV       R4,#0x2
+   \   00011C   7D00         MOV       R5,#0x0
+   \   00011E   7403         MOV       A,#0x3
+   \   000120   12....       LCALL     ?XSTACK_DISP101_8
+   \   000123   12....       LCALL     ??Subroutine42_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_87:
+   \   000126   12....       LCALL     ?DEALLOC_XSTACK8
+    719                
+    720                pNotificationMsgCurr = gp_AddNotificationMsgNode( &pNotificationMsgHead, pMsg );
+   \   000129                ; Setup parameters for call to function gp_AddNotificationMsgNode
+   \   000129   AC..         MOV       R4,?V8
+   \   00012B   AD..         MOV       R5,?V9
+   \   00012D   7A..         MOV       R2,#pNotificationMsgHead & 0xff
+   \   00012F   7B..         MOV       R3,#(pNotificationMsgHead >> 8) & 0xff
+   \   000131   12....       LCALL     `??gp_AddNotificationMsgNode::?relay`; Banked call to: gp_AddNotificationMsgNode
+   \   000134   8A..         MOV       ?V4,R2
+   \   000136   8B..         MOV       ?V5,R3
+   \   000138   AC..         MOV       R4,?V4
+   \   00013A   AD..         MOV       R5,?V5
+    721                if ( pNotificationMsgCurr != NULL )
+   \   00013C   EA           MOV       A,R2
+   \   00013D   4D           ORL       A,R5
+   \   00013E   600B         JZ        ??gp_addPairedSinksToMsgQueue_7
+    722                {
+    723                  pNotificationMsgCurr->addr = dstAddr;
+   \   000140   85..82       MOV       DPL,?XSP + 0
+   \   000143   85..83       MOV       DPH,?XSP + 1
+   \   000146   740C         MOV       A,#0xc
+   \   000148   12....       LCALL     ?MOVE_LONG8_XDATA_XDATA
+    724                }
+    725              }
+    726              if ( !osal_memcmp( freeSinkEntry, &currEntry[PROXY_TBL_ENTRY_2ND_LSINK_ADDR], LSINK_ADDR_LEN ) )
+   \                     ??gp_addPairedSinksToMsgQueue_7:
+   \   00014B                ; Setup parameters for call to function osal_memcmp
+   \   00014B   7438         MOV       A,#0x38
+   \   00014D   12....       LCALL     ?XSTACK_DISP0_8
+   \   000150   A982         MOV       R1,DPL
+   \   000152   AA83         MOV       R2,DPH
+   \   000154   89..         MOV       ?V4,R1
+   \   000156   8A..         MOV       ?V5,R2
+   \   000158   78..         MOV       R0,#?V4
+   \   00015A   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   00015D   12....       LCALL     ?Subroutine30 & 0xFFFF
+   \                     ??CrossCallReturnLabel_95:
+   \   000160   12....       LCALL     ?DEALLOC_XSTACK8
+   \   000163   E9           MOV       A,R1
+   \   000164   7031         JNZ       ??gp_addPairedSinksToMsgQueue_6
+    727              {
+    728                osal_memcpy( &dstAddr.addr.shortAddr, &currEntry[PROXY_TBL_ENTRY_2ND_LSINK_ADDR + Z_EXTADDR_LEN], sizeof ( uint16 ) );   
+   \   000166                ; Setup parameters for call to function osal_memcpy
+   \   000166   7440         MOV       A,#0x40
+   \   000168   12....       LCALL     ?XSTACK_DISP0_8
+   \   00016B   A982         MOV       R1,DPL
+   \   00016D   AA83         MOV       R2,DPH
+   \   00016F   89..         MOV       ?V0,R1
+   \   000171   8A..         MOV       ?V1,R2
+   \   000173   78..         MOV       R0,#?V0
+   \   000175   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   000178   7C02         MOV       R4,#0x2
+   \   00017A   7D00         MOV       R5,#0x0
+   \   00017C   7403         MOV       A,#0x3
+   \   00017E   12....       LCALL     ?XSTACK_DISP101_8
+   \   000181   12....       LCALL     ??Subroutine42_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_88:
+   \   000184   12....       LCALL     ?DEALLOC_XSTACK8
+    729                
+    730                pNotificationMsgCurr = gp_AddNotificationMsgNode( &pNotificationMsgHead, pMsg );
+   \   000187                ; Setup parameters for call to function gp_AddNotificationMsgNode
+   \   000187   12....       LCALL     ?Subroutine29 & 0xFFFF
+    731                if ( pNotificationMsgCurr != NULL )
+   \                     ??CrossCallReturnLabel_39:
+   \   00018A   600B         JZ        ??gp_addPairedSinksToMsgQueue_6
+    732                {
+    733                  pNotificationMsgCurr->addr = dstAddr;
+   \   00018C   85..82       MOV       DPL,?XSP + 0
+   \   00018F   85..83       MOV       DPH,?XSP + 1
+   \   000192   740C         MOV       A,#0xc
+   \   000194   12....       LCALL     ?MOVE_LONG8_XDATA_XDATA
+    734                }
+    735              }
+    736            }
+    737               
+    738            if ( PROXY_TBL_GET_DGROUP( currEntry[PROXY_TBL_ENTRY_OPT] ) || PROXY_TBL_GET_CGROUP( currEntry[PROXY_TBL_ENTRY_OPT + 1] ) )
+   \                     ??gp_addPairedSinksToMsgQueue_6:
+   \   000197   740C         MOV       A,#0xc
+   \   000199   12....       LCALL     ?XSTACK_DISP0_8
+   \   00019C   E0           MOVX      A,@DPTR
+   \   00019D   A2E7         MOV       C,0xE0 /* A   */.7
+   \   00019F   400A         JC        ??gp_addPairedSinksToMsgQueue_8
+   \   0001A1   740D         MOV       A,#0xd
+   \   0001A3   12....       LCALL     ?XSTACK_DISP0_8
+   \   0001A6   E0           MOVX      A,@DPTR
+   \   0001A7   A2E0         MOV       C,0xE0 /* A   */.0
+   \   0001A9   507E         JNC       ??gp_addPairedSinksToMsgQueue_4
+    739            {
+    740              dstAddr.addrMode = afAddrGroup;
+   \                     ??gp_addPairedSinksToMsgQueue_8:
+   \   0001AB   7408         MOV       A,#0x8
+   \   0001AD   12....       LCALL     ?XSTACK_DISP0_8
+   \   0001B0   7401         MOV       A,#0x1
+   \   0001B2   F0           MOVX      @DPTR,A
+    741              if ( GET_BIT( &currEntry[PROXY_TBL_ENTRY_GRP_TBL_ENTRIES], PROXY_TBL_ENTRY_1ST_GRP_BIT ) )
+   \   0001B3   7442         MOV       A,#0x42
+   \   0001B5   12....       LCALL     ?XSTACK_DISP0_8
+   \   0001B8   E0           MOVX      A,@DPTR
+   \   0001B9   A2E0         MOV       C,0xE0 /* A   */.0
+   \   0001BB   5031         JNC       ??gp_addPairedSinksToMsgQueue_9
+    742              {
+    743                osal_memcpy( &dstAddr.addr.shortAddr, &currEntry[PROXY_TBL_ENTRY_1ST_GRP_ADDR], sizeof ( uint16 ) );   
+   \   0001BD                ; Setup parameters for call to function osal_memcpy
+   \   0001BD   7443         MOV       A,#0x43
+   \   0001BF   12....       LCALL     ?XSTACK_DISP0_8
+   \   0001C2   A982         MOV       R1,DPL
+   \   0001C4   AA83         MOV       R2,DPH
+   \   0001C6   89..         MOV       ?V0,R1
+   \   0001C8   8A..         MOV       ?V1,R2
+   \   0001CA   78..         MOV       R0,#?V0
+   \   0001CC   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   0001CF   7C02         MOV       R4,#0x2
+   \   0001D1   7D00         MOV       R5,#0x0
+   \   0001D3   7403         MOV       A,#0x3
+   \   0001D5   12....       LCALL     ?XSTACK_DISP101_8
+   \   0001D8   12....       LCALL     ??Subroutine42_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_89:
+   \   0001DB   12....       LCALL     ?DEALLOC_XSTACK8
+    744                
+    745                pNotificationMsgCurr = gp_AddNotificationMsgNode( &pNotificationMsgHead, pMsg );
+   \   0001DE                ; Setup parameters for call to function gp_AddNotificationMsgNode
+   \   0001DE   12....       LCALL     ?Subroutine29 & 0xFFFF
+    746                if ( pNotificationMsgCurr != NULL )
+   \                     ??CrossCallReturnLabel_40:
+   \   0001E1   600B         JZ        ??gp_addPairedSinksToMsgQueue_9
+    747                {
+    748                  pNotificationMsgCurr->addr = dstAddr;
+   \   0001E3   85..82       MOV       DPL,?XSP + 0
+   \   0001E6   85..83       MOV       DPH,?XSP + 1
+   \   0001E9   740C         MOV       A,#0xc
+   \   0001EB   12....       LCALL     ?MOVE_LONG8_XDATA_XDATA
+    749                }
+    750              }
+    751              if ( GET_BIT( &currEntry[PROXY_TBL_ENTRY_GRP_TBL_ENTRIES], PROXY_TBL_ENTRY_2ND_GRP_BIT ) )
+   \                     ??gp_addPairedSinksToMsgQueue_9:
+   \   0001EE   7442         MOV       A,#0x42
+   \   0001F0   12....       LCALL     ?XSTACK_DISP0_8
+   \   0001F3   E0           MOVX      A,@DPTR
+   \   0001F4   A2E1         MOV       C,0xE0 /* A   */.1
+   \   0001F6   5031         JNC       ??gp_addPairedSinksToMsgQueue_4
+    752              {
+    753                osal_memcpy( &dstAddr.addr.shortAddr, &currEntry[PROXY_TBL_ENTRY_2ND_GRP_ADDR], sizeof ( uint16 ) );   
+   \   0001F8                ; Setup parameters for call to function osal_memcpy
+   \   0001F8   7447         MOV       A,#0x47
+   \   0001FA   12....       LCALL     ?XSTACK_DISP0_8
+   \   0001FD   A982         MOV       R1,DPL
+   \   0001FF   AA83         MOV       R2,DPH
+   \   000201   89..         MOV       ?V0,R1
+   \   000203   8A..         MOV       ?V1,R2
+   \   000205   78..         MOV       R0,#?V0
+   \   000207   12....       LCALL     ?PUSH_XSTACK_I_THREE
+   \   00020A   7C02         MOV       R4,#0x2
+   \   00020C   7D00         MOV       R5,#0x0
+   \   00020E   7403         MOV       A,#0x3
+   \   000210   12....       LCALL     ?XSTACK_DISP101_8
+   \   000213   12....       LCALL     ??Subroutine42_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_90:
+   \   000216   12....       LCALL     ?DEALLOC_XSTACK8
+    754                
+    755                pNotificationMsgCurr = gp_AddNotificationMsgNode( &pNotificationMsgHead, pMsg );
+   \   000219                ; Setup parameters for call to function gp_AddNotificationMsgNode
+   \   000219   12....       LCALL     ?Subroutine29 & 0xFFFF
+    756                if ( pNotificationMsgCurr != NULL )
+   \                     ??CrossCallReturnLabel_41:
+   \   00021C   600B         JZ        ??gp_addPairedSinksToMsgQueue_4
+    757                {
+    758                  pNotificationMsgCurr->addr = dstAddr;
+   \   00021E   85..82       MOV       DPL,?XSP + 0
+   \   000221   85..83       MOV       DPH,?XSP + 1
+   \   000224   740C         MOV       A,#0xc
+   \   000226   12....       LCALL     ?MOVE_LONG8_XDATA_XDATA
+    759                }
+    760              }
+    761            }
+    762          
+    763            return status;
+   \                     ??gp_addPairedSinksToMsgQueue_4:
+   \   000229   EF           MOV       A,R7
+   \   00022A   F9           MOV       R1,A
+   \   00022B   7457         MOV       A,#0x57
+   \   00022D   12....       LCALL     ?DEALLOC_XSTACK8
+   \   000230   7F0A         MOV       R7,#0xa
+   \   000232   02....       LJMP      ?BANKED_LEAVE_XDATA
+    764          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine30:
+   \   000000   7C0A         MOV       R4,#0xa
+   \   000002                REQUIRE ??Subroutine44_0
+   \   000002                ; // Fall through to label ??Subroutine44_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine44_0:
+   \   000000   7D00         MOV       R5,#0x0
+   \   000002   A9..         MOV       R1,?V0
+   \   000004   AA..         MOV       R2,?V1
+   \   000006   AB..         MOV       R3,?V2
+   \   000008   12....       LCALL     `??osal_memcmp::?relay`; Banked call to: osal_memcmp
+   \   00000B   7403         MOV       A,#0x3
+   \   00000D   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine29:
+   \   000000   AC..         MOV       R4,?V8
+   \   000002   AD..         MOV       R5,?V9
+   \   000004   7A..         MOV       R2,#pNotificationMsgHead & 0xff
+   \   000006   7B..         MOV       R3,#(pNotificationMsgHead >> 8) & 0xff
+   \   000008   12....       LCALL     `??gp_AddNotificationMsgNode::?relay`; Banked call to: gp_AddNotificationMsgNode
+   \   00000B   8A..         MOV       ?V0,R2
+   \   00000D   8B..         MOV       ?V1,R3
+   \   00000F   AC..         MOV       R4,?V0
+   \   000011   AD..         MOV       R5,?V1
+   \   000013   EA           MOV       A,R2
+   \   000014   4D           ORL       A,R5
+   \   000015   22           RET
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant {{0}}>`:
+   \   000000   0000         DW 0
+   \   000002   00000000     DB 0, 0, 0, 0, 0, 0
+   \            0000    
+   \   000008   00000000     DB 0, 0, 0, 0
+    765          
+    766          /*********************************************************************
+    767           * @fn      gp_CreateNotificationMsgList
+    768           *
+    769           * @brief   Create Notification Msg List for paired sinks if empty
+    770           *
+    771           * @param   pHead - pointer to a pointer of the list head
+    772           *
+    773           * @return  none
+    774           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    775          void gp_CreateNotificationMsgList( gpNotificationMsg_t **pHead )
+   \                     gp_CreateNotificationMsgList:
+    776          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   74F6         MOV       A,#-0xa
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   12....       LCALL     ?Subroutine5 & 0xFFFF
+    777          
+    778            // Create the list if empty
+    779            if ( *pHead == NULL )
+   \                     ??CrossCallReturnLabel_108:
+   \   000008   701F         JNZ       ??gp_CreateNotificationMsgList_0
+    780            {
+    781              *pHead = ( gpNotificationMsg_t* )osal_mem_alloc( sizeof( gpNotificationMsg_t ) );
+   \   00000A                ; Setup parameters for call to function osal_mem_alloc
+   \   00000A   7A11         MOV       R2,#0x11
+   \   00000C   7B00         MOV       R3,#0x0
+   \   00000E   12....       LCALL     `??osal_mem_alloc::?relay`; Banked call to: osal_mem_alloc
+   \   000011   8B..         MOV       ?V1,R3
+   \   000013   A9..         MOV       R1,?V1
+   \   000015   12....       LCALL     ?Subroutine24 & 0xFFFF
+    782              
+    783              if ( *pHead != NULL )
+   \                     ??CrossCallReturnLabel_101:
+   \   000018   EA           MOV       A,R2
+   \   000019   49           ORL       A,R1
+   \   00001A   600D         JZ        ??gp_CreateNotificationMsgList_0
+    784              {
+    785                (*pHead)->pNext = NULL;
+   \   00001C   EA           MOV       A,R2
+   \   00001D   240F         ADD       A,#0xf
+   \   00001F   F582         MOV       DPL,A
+   \   000021   E4           CLR       A
+   \   000022   39           ADDC      A,R1
+   \   000023   F583         MOV       DPH,A
+   \   000025   E4           CLR       A
+   \   000026   F0           MOVX      @DPTR,A
+   \   000027   A3           INC       DPTR
+   \   000028   F0           MOVX      @DPTR,A
+    786              }
+    787            }
+    788            return;
+   \                     ??gp_CreateNotificationMsgList_0:
+   \   000029                REQUIRE ?Subroutine3
+   \   000029                ; // Fall through to label ?Subroutine3
+    789          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine3:
+   \   000000   7F02         MOV       R7,#0x2
+   \   000002   02....       LJMP      ?BANKED_LEAVE_XDATA
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine24:
+   \   000000   8E82         MOV       DPL,R6
+   \   000002   8F83         MOV       DPH,R7
+   \   000004                REQUIRE ??Subroutine45_0
+   \   000004                ; // Fall through to label ??Subroutine45_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine5:
+   \   000000   EA           MOV       A,R2
+   \   000001   FE           MOV       R6,A
+   \   000002   EB           MOV       A,R3
+   \   000003   FF           MOV       R7,A
+   \   000004                REQUIRE ??Subroutine47_0
+   \   000004                ; // Fall through to label ??Subroutine47_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine47_0:
+   \   000000   8A82         MOV       DPL,R2
+   \   000002                REQUIRE ??Subroutine48_0
+   \   000002                ; // Fall through to label ??Subroutine48_0
+    790          
+    791          /*********************************************************************
+    792           * @fn      gp_CreateCmdPayloadMsgList
+    793           *
+    794           * @brief   Create Notification Msg List for paired sinks if empty
+    795           *
+    796           * @param   pHead - pointer to a pointer of the list head
+    797           *
+    798           * @return  none
+    799           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    800          void gp_CreateCmdPayloadMsgList( gpCmdPayloadMsg_t **pHead )
+   \                     gp_CreateCmdPayloadMsgList:
+    801          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   74F6         MOV       A,#-0xa
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   12....       LCALL     ?Subroutine5 & 0xFFFF
+    802          
+    803            // Create the list if empty
+    804            if ( *pHead == NULL )
+   \                     ??CrossCallReturnLabel_109:
+   \   000008   702A         JNZ       ??gp_CreateCmdPayloadMsgList_0
+    805            {
+    806              *pHead = ( gpCmdPayloadMsg_t* )osal_mem_alloc( sizeof( gpCmdPayloadMsg_t ) );
+   \   00000A                ; Setup parameters for call to function osal_mem_alloc
+   \   00000A   7A06         MOV       R2,#0x6
+   \   00000C   7B00         MOV       R3,#0x0
+   \   00000E   12....       LCALL     `??osal_mem_alloc::?relay`; Banked call to: osal_mem_alloc
+   \   000011   8B..         MOV       ?V1,R3
+   \   000013   A9..         MOV       R1,?V1
+   \   000015   8E82         MOV       DPL,R6
+   \   000017   8F83         MOV       DPH,R7
+   \   000019   EA           MOV       A,R2
+   \   00001A   F0           MOVX      @DPTR,A
+   \   00001B   A3           INC       DPTR
+   \   00001C   EB           MOV       A,R3
+   \   00001D   12....       LCALL     ?Subroutine23 & 0xFFFF
+    807              ( ( gpCmdPayloadMsg_t* )*pHead )->pMsg = NULL;
+   \                     ??CrossCallReturnLabel_29:
+   \   000020   E4           CLR       A
+   \   000021   F0           MOVX      @DPTR,A
+   \   000022   A3           INC       DPTR
+   \   000023   F0           MOVX      @DPTR,A
+    808              
+    809              if ( *pHead != NULL )
+   \   000024   EA           MOV       A,R2
+   \   000025   49           ORL       A,R1
+   \   000026   600C         JZ        ??gp_CreateCmdPayloadMsgList_0
+    810              {
+    811                (*pHead)->pNext = NULL;
+   \   000028   8A82         MOV       DPL,R2
+   \   00002A   8B83         MOV       DPH,R3
+   \   00002C   A3           INC       DPTR
+   \   00002D   A3           INC       DPTR
+   \   00002E   A3           INC       DPTR
+   \   00002F   A3           INC       DPTR
+   \   000030   E4           CLR       A
+   \   000031   F0           MOVX      @DPTR,A
+   \   000032   A3           INC       DPTR
+   \   000033   F0           MOVX      @DPTR,A
+    812              }
+    813            }
+    814            return;
+   \                     ??gp_CreateCmdPayloadMsgList_0:
+   \   000034   80..         SJMP      ?Subroutine3
+    815          }
+    816          
+    817          /*********************************************************************
+    818           * @fn      gp_AddNotificationMsgNode
+    819           *
+    820           * @brief   Add node to Notification Msg list
+    821           *
+    822           * @param   pHead - pointer to a pointer of the list head
+    823           *
+    824           * @return  pointer to new node
+    825           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    826          gpNotificationMsg_t* gp_AddNotificationMsgNode( gpNotificationMsg_t **pHead, gpCmdPayloadMsg_t *pMsg )
+   \                     gp_AddNotificationMsgNode:
+    827          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000   74F4         MOV       A,#-0xc
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV       A,R2
+   \   000006   FE           MOV       R6,A
+   \   000007   EB           MOV       A,R3
+   \   000008   FF           MOV       R7,A
+   \   000009   8C..         MOV       ?V0,R4
+   \   00000B   8D..         MOV       ?V1,R5
+    828            gpNotificationMsg_t **pCurr;
+    829            
+    830              // Create respondent list if empty
+    831            if ( *pHead == NULL )
+   \   00000D   12....       LCALL     ??Subroutine47_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_121:
+   \   000010   7005         JNZ       ??gp_AddNotificationMsgNode_0
+    832            {
+    833              gp_CreateNotificationMsgList( pHead );
+   \   000012                ; Setup parameters for call to function gp_CreateNotificationMsgList
+   \   000012   12....       LCALL     `??gp_CreateNotificationMsgList::?relay`; Banked call to: gp_CreateNotificationMsgList
+    834              ( ( gpNotificationMsg_t* ) *pHead )->pMsg = ( uint8* )pMsg;
+   \   000015   803C         SJMP      ??gp_AddNotificationMsgNode_1
+    835              return *pHead;
+    836            }
+    837            
+    838            pCurr = &((*pHead)->pNext);
+   \                     ??gp_AddNotificationMsgNode_0:
+   \   000017   E8           MOV       A,R0
+   \   000018   240F         ADD       A,#0xf
+   \   00001A   FE           MOV       R6,A
+   \   00001B   E4           CLR       A
+   \   00001C   39           ADDC      A,R1
+   \   00001D   8008         SJMP      ??gp_AddNotificationMsgNode_2
+    839            
+    840            while ( *pCurr != NULL )
+    841            {
+    842              pCurr = &((*pCurr)->pNext);
+   \                     ??gp_AddNotificationMsgNode_3:
+   \   00001F   E8           MOV       A,R0
+   \   000020   240F         ADD       A,#0xf
+   \   000022   5001         JNC       ??gp_AddNotificationMsgNode_4
+   \   000024   09           INC       R1
+   \                     ??gp_AddNotificationMsgNode_4:
+   \   000025   FE           MOV       R6,A
+   \   000026   E9           MOV       A,R1
+   \                     ??gp_AddNotificationMsgNode_2:
+   \   000027   FF           MOV       R7,A
+    843            }
+   \   000028   8E82         MOV       DPL,R6
+   \   00002A   8F83         MOV       DPH,R7
+   \   00002C   12....       LCALL     ??Subroutine49_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_117:
+   \   00002F   70EE         JNZ       ??gp_AddNotificationMsgNode_3
+    844          
+    845            *pCurr = ( gpNotificationMsg_t* )osal_mem_alloc( sizeof( gpNotificationMsg_t ) );
+   \   000031                ; Setup parameters for call to function osal_mem_alloc
+   \   000031   7A11         MOV       R2,#0x11
+   \   000033   7B00         MOV       R3,#0x0
+   \   000035   12....       LCALL     `??osal_mem_alloc::?relay`; Banked call to: osal_mem_alloc
+   \   000038   8B..         MOV       ?V3,R3
+   \   00003A   A9..         MOV       R1,?V3
+   \   00003C   12....       LCALL     ?Subroutine24 & 0xFFFF
+    846              
+    847            if ( (*pCurr)->pNext != NULL )
+   \                     ??CrossCallReturnLabel_102:
+   \   00003F   EA           MOV       A,R2
+   \   000040   240F         ADD       A,#0xf
+   \   000042   F8           MOV       R0,A
+   \   000043   5001         JNC       ??gp_AddNotificationMsgNode_5
+   \   000045   09           INC       R1
+   \                     ??gp_AddNotificationMsgNode_5:
+   \   000046   12....       LCALL     ?Subroutine12 & 0xFFFF
+   \                     ??CrossCallReturnLabel_106:
+   \   000049   6008         JZ        ??gp_AddNotificationMsgNode_1
+    848            {
+    849              (*pCurr)->pNext = NULL;
+   \   00004B   8882         MOV       DPL,R0
+   \   00004D   8983         MOV       DPH,R1
+   \   00004F   E4           CLR       A
+   \   000050   F0           MOVX      @DPTR,A
+   \   000051   A3           INC       DPTR
+   \   000052   F0           MOVX      @DPTR,A
+    850            }
+    851            ( ( gpNotificationMsg_t* ) *pCurr )->pMsg = ( uint8* )pMsg;
+   \                     ??gp_AddNotificationMsgNode_1:
+   \   000053   12....       LCALL     ?Subroutine15 & 0xFFFF
+   \                     ??CrossCallReturnLabel_132:
+   \   000056   12....       LCALL     ?Subroutine31 & 0xFFFF
+   \                     ??CrossCallReturnLabel_42:
+   \   000059   E5..         MOV       A,?V0
+   \   00005B   F0           MOVX      @DPTR,A
+   \   00005C   A3           INC       DPTR
+   \   00005D   E5..         MOV       A,?V1
+   \   00005F   F0           MOVX      @DPTR,A
+    852            return *pCurr;
+   \   000060   02....       LJMP      ?Subroutine0 & 0xFFFF
+    853          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine12:
+   \   000000   F582         MOV       DPL,A
+   \   000002   8983         MOV       DPH,R1
+   \   000004                REQUIRE ??Subroutine46_0
+   \   000004                ; // Fall through to label ??Subroutine46_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine31:
+   \   000000   EA           MOV       A,R2
+   \   000001   240D         ADD       A,#0xd
+   \   000003   F582         MOV       DPL,A
+   \   000005   E4           CLR       A
+   \   000006   3B           ADDC      A,R3
+   \   000007   F583         MOV       DPH,A
+   \   000009   22           RET
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine15:
+   \   000000   8E82         MOV       DPL,R6
+   \   000002   8F83         MOV       DPH,R7
+   \   000004                REQUIRE ??Subroutine51_0
+   \   000004                ; // Fall through to label ??Subroutine51_0
+    854          
+    855          /*********************************************************************
+    856           * @fn      gp_AddCmdPayloadMsgNode
+    857           *
+    858           * @brief   Add node to Notification Msg list
+    859           *
+    860           * @param   pHead - pointer to a pointer of the list head
+    861           *
+    862           * @return  pointer to new node
+    863           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    864          gpCmdPayloadMsg_t* gp_AddCmdPayloadMsgNode( gpCmdPayloadMsg_t **pHead, uint8* pBuf, uint8 len )
+   \                     gp_AddCmdPayloadMsgNode:
+    865          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V4
+   \   000000                REQUIRE ?V5
+   \   000000   74F2         MOV       A,#-0xe
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 14
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV       A,R2
+   \   000006   FE           MOV       R6,A
+   \   000007   EB           MOV       A,R3
+   \   000008   FF           MOV       R7,A
+   \   000009   8C..         MOV       ?V0,R4
+   \   00000B   8D..         MOV       ?V1,R5
+   \   00000D   89..         MOV       ?V2,R1
+    866            gpCmdPayloadMsg_t **pCurr;
+    867            
+    868              // Create respondent list if empty
+    869            if ( *pHead == NULL )
+   \   00000F   12....       LCALL     ??Subroutine47_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_122:
+   \   000012   701F         JNZ       ??gp_AddCmdPayloadMsgNode_0
+    870            {
+    871              gp_CreateCmdPayloadMsgList( pHead );
+   \   000014                ; Setup parameters for call to function gp_CreateCmdPayloadMsgList
+   \   000014   12....       LCALL     `??gp_CreateCmdPayloadMsgList::?relay`; Banked call to: gp_CreateCmdPayloadMsgList
+    872              
+    873              if ( pHead != NULL )
+   \   000017   EE           MOV       A,R6
+   \   000018   4F           ORL       A,R7
+   \   000019   6013         JZ        ??gp_AddCmdPayloadMsgNode_1
+    874              {
+    875                ( ( ( gpCmdPayloadMsg_t* ) *pHead )->lenght ) = len;
+   \   00001B   12....       LCALL     ?Subroutine10 & 0xFFFF
+    876                ( ( ( gpCmdPayloadMsg_t* ) *pHead )->pMsg ) = ( uint8* )pBuf;
+    877              }
+   \                     ??CrossCallReturnLabel_4:
+   \   00001E   F8           MOV       R0,A
+   \   00001F   A3           INC       DPTR
+   \   000020   E0           MOVX      A,@DPTR
+   \   000021   F583         MOV       DPH,A
+   \   000023   8882         MOV       DPL,R0
+   \   000025   A3           INC       DPTR
+   \   000026   A3           INC       DPTR
+   \   000027   E5..         MOV       A,?V0
+   \   000029   F0           MOVX      @DPTR,A
+   \   00002A   A3           INC       DPTR
+   \   00002B   E5..         MOV       A,?V1
+   \   00002D   F0           MOVX      @DPTR,A
+    878              return *pHead;
+   \                     ??gp_AddCmdPayloadMsgNode_1:
+   \   00002E   12....       LCALL     ?Subroutine15 & 0xFFFF
+    879            }
+   \                     ??CrossCallReturnLabel_133:
+   \   000031   8046         SJMP      ??gp_AddCmdPayloadMsgNode_2
+    880            
+    881            pCurr = &((*pHead)->pNext);
+    882            
+    883            while ( *pCurr != NULL )
+    884            {
+    885              pCurr = &((*pCurr)->pNext);
+   \                     ??gp_AddCmdPayloadMsgNode_0:
+   \   000033   E8           MOV       A,R0
+   \   000034   2404         ADD       A,#0x4
+   \   000036   FE           MOV       R6,A
+   \   000037   E4           CLR       A
+   \   000038   39           ADDC      A,R1
+   \   000039   FF           MOV       R7,A
+    886            }
+   \   00003A   8E82         MOV       DPL,R6
+   \   00003C   8F83         MOV       DPH,R7
+   \   00003E   12....       LCALL     ??Subroutine49_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_118:
+   \   000041   70F0         JNZ       ??gp_AddCmdPayloadMsgNode_0
+    887          
+    888            *pCurr = ( gpCmdPayloadMsg_t* )osal_mem_alloc( sizeof( gpCmdPayloadMsg_t ) );
+   \   000043                ; Setup parameters for call to function osal_mem_alloc
+   \   000043   7A06         MOV       R2,#0x6
+   \   000045   7B00         MOV       R3,#0x0
+   \   000047   12....       LCALL     `??osal_mem_alloc::?relay`; Banked call to: osal_mem_alloc
+   \   00004A   8B..         MOV       ?V5,R3
+   \   00004C   A9..         MOV       R1,?V5
+   \   00004E   12....       LCALL     ?Subroutine24 & 0xFFFF
+    889              
+    890            if ( (*pCurr)->pNext != NULL )
+   \                     ??CrossCallReturnLabel_103:
+   \   000051   EA           MOV       A,R2
+   \   000052   2404         ADD       A,#0x4
+   \   000054   F8           MOV       R0,A
+   \   000055   5001         JNC       ??gp_AddCmdPayloadMsgNode_3
+   \   000057   09           INC       R1
+   \                     ??gp_AddCmdPayloadMsgNode_3:
+   \   000058   12....       LCALL     ?Subroutine12 & 0xFFFF
+   \                     ??CrossCallReturnLabel_107:
+   \   00005B   6008         JZ        ??gp_AddCmdPayloadMsgNode_4
+    891            {
+    892              (*pCurr)->pNext = NULL;
+   \   00005D   8882         MOV       DPL,R0
+   \   00005F   8983         MOV       DPH,R1
+   \   000061   E4           CLR       A
+   \   000062   F0           MOVX      @DPTR,A
+   \   000063   A3           INC       DPTR
+   \   000064   F0           MOVX      @DPTR,A
+    893            }
+    894            ( ( ( gpCmdPayloadMsg_t* ) *pCurr )->lenght ) = len;
+   \                     ??gp_AddCmdPayloadMsgNode_4:
+   \   000065   12....       LCALL     ?Subroutine10 & 0xFFFF
+    895            ( ( ( gpCmdPayloadMsg_t* ) *pCurr )->pMsg ) = ( uint8* )pBuf;
+   \                     ??CrossCallReturnLabel_5:
+   \   000068   FA           MOV       R2,A
+   \   000069   A3           INC       DPTR
+   \   00006A   E0           MOVX      A,@DPTR
+   \   00006B   FB           MOV       R3,A
+   \   00006C   8A82         MOV       DPL,R2
+   \   00006E   F583         MOV       DPH,A
+   \   000070   A3           INC       DPTR
+   \   000071   A3           INC       DPTR
+   \   000072   E5..         MOV       A,?V0
+   \   000074   F0           MOVX      @DPTR,A
+   \   000075   A3           INC       DPTR
+   \   000076   E5..         MOV       A,?V1
+   \   000078   F0           MOVX      @DPTR,A
+    896            
+    897            return *pCurr;
+   \                     ??gp_AddCmdPayloadMsgNode_2:
+   \   000079   7F06         MOV       R7,#0x6
+   \   00007B   02....       LJMP      ?BANKED_LEAVE_XDATA
+    898          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine10:
+   \   000000   8E82         MOV       DPL,R6
+   \   000002   8F83         MOV       DPH,R7
+   \   000004   12....       LCALL     ?Subroutine34 & 0xFFFF
+   \                     ??CrossCallReturnLabel_47:
+   \   000007   A3           INC       DPTR
+   \   000008   E5..         MOV       A,?V2
+   \   00000A   12....       LCALL     ?Subroutine35 & 0xFFFF
+   \                     ??CrossCallReturnLabel_52:
+   \   00000D   E0           MOVX      A,@DPTR
+   \   00000E   22           RET
+    899          
+    900          /*********************************************************************
+    901           * @fn      gp_GetHeadNotificationMsg
+    902           *
+    903           * @brief   Returns head pointer for  finding and binding respondent list
+    904           *
+    905           * @param   none
+    906           *
+    907           * @return  pointer to head
+    908           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    909          gpNotificationMsg_t* gp_GetHeadNotificationMsg(void)
+   \                     gp_GetHeadNotificationMsg:
+    910          {
+   \   000000   C082         PUSH      DPL
+   \   000002   C083         PUSH      DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    911            return ( pNotificationMsgHead );
+   \   000004   90....       MOV       DPTR,#pNotificationMsgHead
+   \   000007                REQUIRE ?Subroutine4
+   \   000007                ; // Fall through to label ?Subroutine4
+    912          }
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine4:
+   \   000000   12....       LCALL     ??Subroutine51_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_131:
+   \   000003   D083         POP       DPH
+   \   000005   D082         POP       DPL
+   \   000007   02....       LJMP      ?BRET
+    913          
+    914          /*********************************************************************
+    915           * @fn      gp_GetPHeadNotification
+    916           *
+    917           * @brief   Returns head pointer for  finding and binding respondent list
+    918           *
+    919           * @param   none
+    920           *
+    921           * @return  pointer to head
+    922           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    923          gpNotificationMsg_t** gp_GetPHeadNotification(void)
+   \                     gp_GetPHeadNotification:
+    924          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    925            return ( &pNotificationMsgHead );
+   \   000000   7A..         MOV       R2,#pNotificationMsgHead & 0xff
+   \   000002   7B..         MOV       R3,#(pNotificationMsgHead >> 8) & 0xff
+   \   000004   02....       LJMP      ?BRET
+    926          }
+    927          
+    928          /*********************************************************************
+    929           * @fn      gp_GetHeadCmdPayloadMsg
+    930           *
+    931           * @brief   Returns head pointer for  finding and binding respondent list
+    932           *
+    933           * @param   none
+    934           *
+    935           * @return  pointer to head
+    936           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    937          gpCmdPayloadMsg_t* gp_GetHeadCmdPayloadMsg(void)
+   \                     gp_GetHeadCmdPayloadMsg:
+    938          {
+   \   000000   C082         PUSH      DPL
+   \   000002   C083         PUSH      DPH
+   \   000004                ; Saved register size: 2
+   \   000004                ; Auto size: 0
+    939            return ( pCmdPayloadMsgHead );
+   \   000004   90....       MOV       DPTR,#pCmdPayloadMsgHead
+   \   000007   80..         SJMP      ?Subroutine4
+    940          }
+    941          
+    942          /*********************************************************************
+    943           * @fn      gp_GetHeadCmdPayloadMsg
+    944           *
+    945           * @brief   Returns head pointer for  finding and binding respondent list
+    946           *
+    947           * @param   none
+    948           *
+    949           * @return  pointer to head
+    950           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    951          gpCmdPayloadMsg_t** gp_GetPHeadCmdPayload(void)
+   \                     gp_GetPHeadCmdPayload:
+    952          {
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+    953            return ( &pCmdPayloadMsgHead );
+   \   000000   7A..         MOV       R2,#pCmdPayloadMsgHead & 0xff
+   \   000002   7B..         MOV       R3,#(pCmdPayloadMsgHead >> 8) & 0xff
+   \   000004   02....       LJMP      ?BRET
+    954          }
+    955          
+    956          /*********************************************************************
+    957           * @fn      gp_NotificationMsgClean
+    958           *
+    959           * @brief   This function free reserved memory for respondent list
+    960           *
+    961           * @param   pHead - begin of the Notification Msg list
+    962           *
+    963           * @return  status
+    964           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    965          void gp_NotificationMsgClean( gpNotificationMsg_t **pHead )
+   \                     gp_NotificationMsgClean:
+    966          {
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000   74F4         MOV       A,#-0xc
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 12
+   \   000005                ; Auto size: 0
+   \   000005   12....       LCALL     ?Subroutine5 & 0xFFFF
+    967            gpNotificationMsg_t **pCurr;
+    968            gpNotificationMsg_t **pNext;
+    969            
+    970            if ( *pHead == NULL )
+   \                     ??CrossCallReturnLabel_110:
+   \   000008   6070         JZ        ??CrossCallReturnLabel_26
+    971            {
+    972              return;
+    973            }
+    974            
+    975            pCurr = pHead;
+   \   00000A   8A..         MOV       ?V0,R2
+   \   00000C   8B..         MOV       ?V1,R3
+    976            
+    977            if( *pCurr != NULL )
+   \   00000E   8A82         MOV       DPL,R2
+   \   000010   8B83         MOV       DPH,R3
+   \   000012   12....       LCALL     ??Subroutine51_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_129:
+   \   000015   E8           MOV       A,R0
+   \   000016   4B           ORL       A,R3
+   \   000017   6051         JZ        ??gp_NotificationMsgClean_0
+    978            {
+    979              pNext = &((*pCurr)->pNext);
+   \   000019   E8           MOV       A,R0
+   \   00001A   240F         ADD       A,#0xf
+   \   00001C   F5..         MOV       ?V2,A
+   \   00001E   E4           CLR       A
+   \   00001F   3B           ADDC      A,R3
+   \   000020   8007         SJMP      ??gp_NotificationMsgClean_1
+    980              while( *pNext != NULL )
+    981              {
+    982                if ( ( ( gpNotificationMsg_t* ) *pCurr )->pMsg == ( ( gpNotificationMsg_t* ) *pNext )->pMsg )
+    983                {
+    984                  break;
+    985                }
+    986                pNext = &((*pNext)->pNext);
+   \                     ??gp_NotificationMsgClean_2:
+   \   000022   E8           MOV       A,R0
+   \   000023   240F         ADD       A,#0xf
+   \   000025   F5..         MOV       ?V2,A
+   \   000027   E4           CLR       A
+   \   000028   39           ADDC      A,R1
+   \                     ??gp_NotificationMsgClean_1:
+   \   000029   F5..         MOV       ?V3,A
+   \   00002B   85..82       MOV       DPL,?V2
+   \   00002E   85..83       MOV       DPH,?V3
+   \   000031   12....       LCALL     ??Subroutine49_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_119:
+   \   000034   6018         JZ        ??gp_NotificationMsgClean_3
+   \   000036   12....       LCALL     ?Subroutine31 & 0xFFFF
+    987              }
+   \                     ??CrossCallReturnLabel_43:
+   \   000039   12....       LCALL     ??Subroutine37_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_56:
+   \   00003C   E8           MOV       A,R0
+   \   00003D   240D         ADD       A,#0xd
+   \   00003F   F582         MOV       DPL,A
+   \   000041   E4           CLR       A
+   \   000042   39           ADDC      A,R1
+   \   000043   F583         MOV       DPH,A
+   \   000045   E0           MOVX      A,@DPTR
+   \   000046   6C           XRL       A,R4
+   \   000047   7003         JNZ       ??gp_NotificationMsgClean_4
+   \   000049   A3           INC       DPTR
+   \   00004A   E0           MOVX      A,@DPTR
+   \   00004B   6D           XRL       A,R5
+   \                     ??gp_NotificationMsgClean_4:
+   \   00004C   70D4         JNZ       ??gp_NotificationMsgClean_2
+    988          
+    989              if( *pNext == NULL )
+   \                     ??gp_NotificationMsgClean_3:
+   \   00004E   E8           MOV       A,R0
+   \   00004F   49           ORL       A,R1
+   \   000050   7007         JNZ       ??gp_NotificationMsgClean_5
+    990              {
+    991                gp_CmdPayloadMsgClean( gp_GetPHeadCmdPayload( ) );
+   \   000052                ; Setup parameters for call to function gp_CmdPayloadMsgClean
+   \   000052   7A..         MOV       R2,#pCmdPayloadMsgHead & 0xff
+   \   000054   7B..         MOV       R3,#(pCmdPayloadMsgHead >> 8) & 0xff
+   \   000056   12....       LCALL     `??gp_CmdPayloadMsgClean::?relay`; Banked call to: gp_CmdPayloadMsgClean
+    992              }
+    993              osal_mem_free( *pCurr );
+   \                     ??gp_NotificationMsgClean_5:
+   \   000059                ; Setup parameters for call to function osal_mem_free
+   \   000059   8E82         MOV       DPL,R6
+   \   00005B   8F83         MOV       DPH,R7
+   \   00005D   12....       LCALL     ?Subroutine14 & 0xFFFF
+    994              *pCurr = ( gpNotificationMsg_t* )NULL;
+   \                     ??CrossCallReturnLabel_10:
+   \   000060   E4           CLR       A
+   \   000061   F0           MOVX      @DPTR,A
+   \   000062   A3           INC       DPTR
+   \   000063   F0           MOVX      @DPTR,A
+    995              pCurr = pNext;
+   \   000064   85....       MOV       ?V0,?V2
+   \   000067   85....       MOV       ?V1,?V3
+    996            }
+    997            *pHead = *pCurr;
+   \                     ??gp_NotificationMsgClean_0:
+   \   00006A   85..82       MOV       DPL,?V0
+   \   00006D   85..83       MOV       DPH,?V1
+   \   000070   12....       LCALL     ??Subroutine50_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_127:
+   \   000073   8E82         MOV       DPL,R6
+   \   000075   8F83         MOV       DPH,R7
+   \   000077   12....       LCALL     ?Subroutine22 & 0xFFFF
+    998          }
+   \                     ??CrossCallReturnLabel_26:
+   \   00007A   02....       LJMP      ?Subroutine0 & 0xFFFF
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine14:
+   \   000000   E0           MOVX      A,@DPTR
+   \   000001   FA           MOV       R2,A
+   \   000002   A3           INC       DPTR
+   \   000003   E0           MOVX      A,@DPTR
+   \   000004   FB           MOV       R3,A
+   \   000005   12....       LCALL     `??osal_mem_free::?relay`; Banked call to: osal_mem_free
+   \   000008   8E82         MOV       DPL,R6
+   \   00000A   8F83         MOV       DPH,R7
+   \   00000C   22           RET
+    999          
+   1000          /*********************************************************************
+   1001           * @fn      gp_NotificationMsgClean
+   1002           *
+   1003           * @brief   This function free reserved memory for respondent list
+   1004           *
+   1005           * @param   pHead - begin of the Notification Msg list
+   1006           *
+   1007           * @return
+   1008           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   1009          void gp_CmdPayloadMsgClean( gpCmdPayloadMsg_t **pHead )
+   \                     gp_CmdPayloadMsgClean:
+   1010          {
+   \   000000   74F7         MOV       A,#-0x9
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV       A,R2
+   \   000006   FE           MOV       R6,A
+   \   000007   EB           MOV       A,R3
+   \   000008   FF           MOV       R7,A
+   1011            gpCmdPayloadMsg_t **pCurr;
+   1012            gpCmdPayloadMsg_t **pNext;
+   1013            
+   1014            if ( *pHead == NULL )
+   \   000009   8A82         MOV       DPL,R2
+   \   00000B   F583         MOV       DPH,A
+   \   00000D   E0           MOVX      A,@DPTR
+   \   00000E   F8           MOV       R0,A
+   \   00000F   A3           INC       DPTR
+   \   000010   E0           MOVX      A,@DPTR
+   \   000011   8882         MOV       DPL,R0
+   \   000013   F583         MOV       DPH,A
+   \   000015   E582         MOV       A,DPL
+   \   000017   4583         ORL       A,DPH
+   \   000019   601D         JZ        ??gp_CmdPayloadMsgClean_0
+   1015            {
+   1016              return;
+   1017            }
+   1018            
+   1019            pCurr = pHead;
+   1020            
+   1021            if( *pCurr != NULL )
+   1022            {
+   1023              pNext = &((*pCurr)->pNext);
+   1024              osal_mem_free ( ( ( gpCmdPayloadMsg_t* ) *pCurr )->pMsg );
+   \   00001B                ; Setup parameters for call to function osal_mem_free
+   \   00001B   A3           INC       DPTR
+   \   00001C   A3           INC       DPTR
+   \   00001D   12....       LCALL     ?Subroutine14 & 0xFFFF
+   1025              ( ( gpCmdPayloadMsg_t* ) *pCurr )->pMsg = NULL;
+   \                     ??CrossCallReturnLabel_11:
+   \   000020   12....       LCALL     ??Subroutine51_0 & 0xFFFF
+   \                     ??CrossCallReturnLabel_130:
+   \   000023   8A82         MOV       DPL,R2
+   \   000025   F583         MOV       DPH,A
+   \   000027   A3           INC       DPTR
+   \   000028   A3           INC       DPTR
+   \   000029   E4           CLR       A
+   \   00002A   F0           MOVX      @DPTR,A
+   \   00002B   A3           INC       DPTR
+   \   00002C   F0           MOVX      @DPTR,A
+   1026              osal_mem_free( *pCurr );
+   \   00002D                ; Setup parameters for call to function osal_mem_free
+   \   00002D   12....       LCALL     `??osal_mem_free::?relay`; Banked call to: osal_mem_free
+   1027              *pCurr = ( gpCmdPayloadMsg_t* )NULL;
+   \   000030   8E82         MOV       DPL,R6
+   \   000032   8F83         MOV       DPH,R7
+   \   000034   E4           CLR       A
+   \   000035   F0           MOVX      @DPTR,A
+   \   000036   A3           INC       DPTR
+   \   000037   F0           MOVX      @DPTR,A
+   1028              pCurr = pNext;
+   1029            }
+   1030            pHead = pCurr;
+   1031          }
+   \                     ??gp_CmdPayloadMsgClean_0:
+   \   000038   02....       LJMP      ?Subroutine1 & 0xFFFF
+   1032          
+   1033          /*********************************************************************
+   1034           * @fn      gp_ResetProxyBasicTblEntry
+   1035           *
+   1036           * @brief   This function removes data of the given entry
+   1037           *
+   1038           * @param   pHead - begin of the Notification Msg list
+   1039           *
+   1040           * @return
+   1041           */
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   1042          void gp_ResetProxyBasicTblEntry( uint8* entry )
+   \                     gp_ResetProxyBasicTblEntry:
+   1043          {
+   \   000000   74F7         MOV       A,#-0x9
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV       A,R2
+   \   000006   FE           MOV       R6,A
+   \   000007   EB           MOV       A,R3
+   \   000008   FF           MOV       R7,A
+   1044            osal_memset(entry, 0xFF, PROXY_TBL_ENTRY_1ST_LSINK_ADDR);
+   \   000009                ; Setup parameters for call to function osal_memset
+   \   000009   7C22         MOV       R4,#0x22
+   \   00000B   7D00         MOV       R5,#0x0
+   \   00000D   79FF         MOV       R1,#-0x1
+   \   00000F   12....       LCALL     `??osal_memset::?relay`; Banked call to: osal_memset
+   1045            osal_memset(&entry[PROXY_TBL_ENTRY_1ST_LSINK_ADDR],0x00,PROXY_TBL_ENTRY_LEN - PROXY_TBL_ENTRY_1ST_LSINK_ADDR);
+   \   000012                ; Setup parameters for call to function osal_memset
+   \   000012   7C1F         MOV       R4,#0x1f
+   \   000014   7D00         MOV       R5,#0x0
+   \   000016   7900         MOV       R1,#0x0
+   \   000018   EE           MOV       A,R6
+   \   000019   2422         ADD       A,#0x22
+   \   00001B   FA           MOV       R2,A
+   \   00001C   E4           CLR       A
+   \   00001D   3F           ADDC      A,R7
+   \   00001E   FB           MOV       R3,A
+   \   00001F   12....       LCALL     `??osal_memset::?relay`; Banked call to: osal_memset
+   1046            entry[PROXY_TBL_ENTRY_GPD_EP] = 0;
+   \   000022   8E82         MOV       DPL,R6
+   \   000024   8F83         MOV       DPH,R7
+   \   000026   A3           INC       DPTR
+   \   000027   A3           INC       DPTR
+   \   000028   A3           INC       DPTR
+   \   000029   A3           INC       DPTR
+   \   00002A   A3           INC       DPTR
+   \   00002B   A3           INC       DPTR
+   \   00002C   A3           INC       DPTR
+   \   00002D   A3           INC       DPTR
+   \   00002E   A3           INC       DPTR
+   \   00002F   A3           INC       DPTR
+   \   000030   E4           CLR       A
+   \   000031   F0           MOVX      @DPTR,A
+   1047          }
+   \   000032   02....       LJMP      ?Subroutine1 & 0xFFFF
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     `?<Constant {255, 255, 255, 255, 255, 255, 255,`:
+   \   000000   FF           DB 255
+   \   000001   FF           DB 255
+   \   000002   FF           DB 255
+   \   000003   FF           DB 255
+   \   000004   FF           DB 255
+   \   000005   FF           DB 255
+   \   000006   FF           DB 255
+   \   000007   FF           DB 255
+   \   000008   FF           DB 255
+   \   000009   FF           DB 255
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_32:
+   \   000000   32000000     DD 50
+   1048          
+   1049          #endif
+   1050          /***************************************************************************
+   1051          ****************************************************************************/
+
+   Maximum stack usage in bytes:
+
+   ISTACK XSTACK Function
+   ------ ------ --------
+      1     38   gp_AddCmdPayloadMsgNode
+        0     14   -> gp_CreateCmdPayloadMsgList
+        0     14   -> osal_mem_alloc
+      0    117   gp_AddNotificationMsgNode
+        0     12   -> gp_CreateNotificationMsgList
+        0     12   -> osal_mem_alloc
+      0     21   gp_CmdPayloadMsgClean
+        0      9   -> osal_mem_free
+      0     24   gp_CreateCmdPayloadMsgList
+        0     10   -> osal_mem_alloc
+      0     22   gp_CreateNotificationMsgList
+        0     10   -> osal_mem_alloc
+      2      0   gp_GetHeadCmdPayloadMsg
+      2      0   gp_GetHeadNotificationMsg
+      0      0   gp_GetPHeadCmdPayload
+      0      0   gp_GetPHeadNotification
+      0     12   gp_NotificationMsgClean
+        0     12   -> gp_CmdPayloadMsgClean
+        0     12   -> osal_mem_free
+      0      9   gp_ResetProxyBasicTblEntry
+        0      9   -> osal_memset
+      0    132   gp_addPairedSinksToMsgQueue
+        0    105   -> gp_AddNotificationMsgNode
+        0    105   -> gp_getProxyTableByIndex
+        0    108   -> osal_memcmp
+        0    108   -> osal_memcpy
+      0      9   zclGp_HdlIncoming
+        0      9   -> zclGp_ProcessInProxyBasic
+      1     58   zclGp_ProcessInProxyBasic
+        0     42   -> osal_build_uint16
+        0     45   -> osal_memcpy
+        0     49   -> zcl_SendDefaultRspCmd
+      1     14   zclGp_RegisterCmdCallbacks
+        0     12   -> osal_mem_alloc
+        0     14   -> zcl_registerPlugin
+      1     43   zclGp_SendGpCommissioningNotificationCommand
+        0     32   -> bdb_getZCLFrameCounter
+        0     32   -> osal_mem_alloc
+        0     32   -> osal_mem_free
+        0     35   -> osal_memcpy
+        0     43   -> zcl_SendCommand
+      1     28   zclGp_SendGpNotificationCommand
+        0     24   -> gp_AddCmdPayloadMsgNode
+        0     24   -> gp_addPairedSinksToMsgQueue
+        0     24   -> osal_mem_alloc
+        0     27   -> osal_memcpy
+        0     28   -> osal_start_timerEx
+      1     35   zclGp_SendGpProxyTableResponse
+        0     24   -> osal_mem_alloc
+        0     24   -> osal_mem_free
+        0     27   -> osal_memcpy
+        0     35   -> zcl_SendCommand
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      10  ?<Constant {255, 255, 255, 255, 255, 255, 255,
+      12  ?<Constant {{0}}>
+       6  ??Subroutine37_0
+      19  ??Subroutine38_0
+       6  ??Subroutine39_0
+       5  ??Subroutine40_0
+       1  ??Subroutine41_0
+       6  ??Subroutine42_0
+       8  ??Subroutine43_0
+      14  ??Subroutine44_0
+       6  ??Subroutine45_0
+       8  ??Subroutine46_0
+       2  ??Subroutine47_0
+       2  ??Subroutine48_0
+       8  ??Subroutine49_0
+       6  ??Subroutine50_0
+       6  ??Subroutine51_0
+       5  ?Subroutine0
+       5  ?Subroutine1
+      15  ?Subroutine10
+      13  ?Subroutine11
+       4  ?Subroutine12
+       4  ?Subroutine13
+      13  ?Subroutine14
+       4  ?Subroutine15
+      12  ?Subroutine16
+       6  ?Subroutine17
+       3  ?Subroutine18
+       1  ?Subroutine19
+       8  ?Subroutine2
+      15  ?Subroutine20
+      11  ?Subroutine21
+       6  ?Subroutine22
+       8  ?Subroutine23
+       4  ?Subroutine24
+       2  ?Subroutine25
+      10  ?Subroutine26
+      15  ?Subroutine27
+      10  ?Subroutine28
+      22  ?Subroutine29
+       5  ?Subroutine3
+       2  ?Subroutine30
+      10  ?Subroutine31
+      18  ?Subroutine32
+       5  ?Subroutine33
+       9  ?Subroutine34
+       6  ?Subroutine35
+      10  ?Subroutine36
+      10  ?Subroutine4
+       4  ?Subroutine5
+       9  ?Subroutine6
+      21  ?Subroutine7
+       5  ?Subroutine8
+      23  ?Subroutine9
+       4  __Constant_32
+     126  gp_AddCmdPayloadMsgNode
+      99  gp_AddNotificationMsgNode
+      59  gp_CmdPayloadMsgClean
+      54  gp_CreateCmdPayloadMsgList
+      41  gp_CreateNotificationMsgList
+       9  gp_GetHeadCmdPayloadMsg
+       7  gp_GetHeadNotificationMsg
+       7  gp_GetPHeadCmdPayload
+       7  gp_GetPHeadNotification
+     125  gp_NotificationMsgClean
+      53  gp_ResetProxyBasicTblEntry
+     565  gp_addPairedSinksToMsgQueue
+       2  pCmdPayloadMsgHead
+       2  pNotificationMsgHead
+       2  zclGpCBs
+       1  zclGpPluginRegisted
+     105  zclGp_HdlIncoming
+     692  zclGp_ProcessInProxyBasic
+     133  zclGp_RegisterCmdCallbacks
+     443  zclGp_SendGpCommissioningNotificationCommand
+     362  zclGp_SendGpNotificationCommand
+     310  zclGp_SendGpProxyTableResponse
+     108  -- Other
+
+ 
+ 3 633 bytes in segment BANKED_CODE
+   108 bytes in segment BANK_RELAYS
+    26 bytes in segment XDATA_ROM_C
+     7 bytes in segment XDATA_Z
+ 
+   108 bytes of CODE     memory
+    22 bytes of CONST    memory (+ 4 bytes shared)
+ 3 633 bytes of HUGECODE memory
+     7 bytes of XDATA    memory
+
+Errors: none
+Warnings: none
