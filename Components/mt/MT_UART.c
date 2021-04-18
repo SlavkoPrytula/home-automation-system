@@ -327,6 +327,11 @@ void MT_UartProcessZAppData ( uint8 port, uint8 event )
   uint16 length = 0;
   uint16 rxBufLen  = Hal_UART_RxBufLen(MT_UART_DEFAULT_PORT);
 
+  // NEW
+  osal_set_event(8, 0x0002);
+  return;
+  // ENDNEW
+  
   /*
      If maxZAppBufferLength is 0 or larger than current length
      the entire length of the current buffer is returned.

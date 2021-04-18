@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR C/C++ Compiler V10.30.1.6000 for 8051               18/Apr/2021  01:42:00
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               18/Apr/2021  13:21:59
 # Copyright 2004-2018 IAR Systems AB.
 # Evaluation license - IAR Embedded Workbench for 8051, Evaluation edition 10.30
 #
@@ -15,7 +15,7 @@
 #        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
 #        3.0.2\Components\mt\MT_UART.c
 #    Command line       =  
-#        -f C:\users\slavko\Temp\EW2b9.tmp ("C:\Texas Instruments\Z-Stack
+#        -f C:\users\slavko\Temp\EWe4f5.tmp ("C:\Texas Instruments\Z-Stack
 #        3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Components\mt\MT_UART.c" -D
 #        SECURE=1 -D TC_LINKKEY_JOIN -D NV_INIT -D NV_RESTORE -D xZTOOL_P1 -D
 #        xMT_TASK -D xMT_APP_FUNC -D xMT_SYS_FUNC -D xMT_ZDO_FUNC -D
@@ -878,107 +878,112 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Components
     327            uint16 length = 0;
     328            uint16 rxBufLen  = Hal_UART_RxBufLen(MT_UART_DEFAULT_PORT);
     329          
-    330            /*
-    331               If maxZAppBufferLength is 0 or larger than current length
-    332               the entire length of the current buffer is returned.
-    333            */
-    334            if ((MT_UartMaxZAppBufLen != 0) && (MT_UartMaxZAppBufLen <= rxBufLen))
-    335            {
-    336              length = MT_UartMaxZAppBufLen;
-    337            }
-    338            else
-    339            {
-    340              length = rxBufLen;
-    341            }
-    342          
-    343            /* Verify events */
-    344            if (event == HAL_UART_TX_FULL)
-    345            {
-    346              // Do something when TX if full
-    347              return;
-    348            }
-    349          
-    350            if (event & ( HAL_UART_RX_FULL | HAL_UART_RX_ABOUT_FULL | HAL_UART_RX_TIMEOUT))
-    351            {
-    352              if ( App_TaskID )
-    353              {
-    354                /*
-    355                   If Application is ready to receive and there is something
-    356                   in the Rx buffer then send it up
-    357                */
-    358                if ((MT_UartZAppRxStatus == MT_UART_ZAPP_RX_READY ) && (length != 0))
-    359                {
-    360                  /* Disable App flow control until it processes the current data */
-    361                   MT_UartAppFlowControl (MT_UART_ZAPP_RX_NOT_READY);
-    362          
-    363                  /* 2 more bytes are added, 1 for CMD type, other for length */
-    364                  msg_ptr = (osal_event_hdr_t *)osal_msg_allocate( length + sizeof(osal_event_hdr_t) );
-    365                  if ( msg_ptr )
-    366                  {
-    367                    msg_ptr->event = SPI_INCOMING_ZAPP_DATA;
-    368                    msg_ptr->status = length;
-    369          
-    370                    /* Read the data of Rx buffer */
-    371                    HalUARTRead( MT_UART_DEFAULT_PORT, (uint8 *)(msg_ptr + 1), length );
-    372          
-    373                    /* Send the raw data to application...or where ever */
-    374                    osal_msg_send( App_TaskID, (uint8 *)msg_ptr );
-    375                  }
-    376                }
-    377              }
-    378            }
-    379          }
-    380          
-    381          /***************************************************************************************************
-    382           * @fn      SPIMgr_ZAppBufferLengthRegister
-    383           *
-    384           * @brief
-    385           *
-    386           * @param   maxLen - Max Length that the application wants at a time
-    387           *
-    388           * @return  None
-    389           *
-    390           ***************************************************************************************************/
-    391          void MT_UartZAppBufferLengthRegister ( uint16 maxLen )
-    392          {
-    393            /* If the maxLen is larger than the RX buff, something is not right */
-    394            if (maxLen <= MT_UART_DEFAULT_MAX_RX_BUFF)
-    395              MT_UartMaxZAppBufLen = maxLen;
-    396            else
-    397              MT_UartMaxZAppBufLen = 1; /* default is 1 byte */
-    398          }
-    399          
-    400          /***************************************************************************************************
-    401           * @fn      SPIMgr_AppFlowControl
-    402           *
-    403           * @brief
-    404           *
-    405           * @param   status - ready to send or not
-    406           *
-    407           * @return  None
-    408           *
-    409           ***************************************************************************************************/
-    410          void MT_UartAppFlowControl ( bool status )
-    411          {
-    412          
-    413            /* Make sure only update if needed */
-    414            if (status != MT_UartZAppRxStatus )
-    415            {
-    416              MT_UartZAppRxStatus = status;
-    417            }
-    418          
-    419            /* App is ready to read again, ProcessZAppData have to be triggered too */
-    420            if (status == MT_UART_ZAPP_RX_READY)
-    421            {
-    422              MT_UartProcessZAppData (MT_UART_DEFAULT_PORT, HAL_UART_RX_TIMEOUT );
-    423            }
-    424          
-    425          }
-    426          
-    427          #endif //ZAPP
-    428          
-    429          /***************************************************************************************************
-    430          ***************************************************************************************************/
+    330            // NEW
+    331            osal_set_event(8, 0x0002);
+    332            return;
+    333            // ENDNEW
+    334            
+    335            /*
+    336               If maxZAppBufferLength is 0 or larger than current length
+    337               the entire length of the current buffer is returned.
+    338            */
+    339            if ((MT_UartMaxZAppBufLen != 0) && (MT_UartMaxZAppBufLen <= rxBufLen))
+    340            {
+    341              length = MT_UartMaxZAppBufLen;
+    342            }
+    343            else
+    344            {
+    345              length = rxBufLen;
+    346            }
+    347          
+    348            /* Verify events */
+    349            if (event == HAL_UART_TX_FULL)
+    350            {
+    351              // Do something when TX if full
+    352              return;
+    353            }
+    354          
+    355            if (event & ( HAL_UART_RX_FULL | HAL_UART_RX_ABOUT_FULL | HAL_UART_RX_TIMEOUT))
+    356            {
+    357              if ( App_TaskID )
+    358              {
+    359                /*
+    360                   If Application is ready to receive and there is something
+    361                   in the Rx buffer then send it up
+    362                */
+    363                if ((MT_UartZAppRxStatus == MT_UART_ZAPP_RX_READY ) && (length != 0))
+    364                {
+    365                  /* Disable App flow control until it processes the current data */
+    366                   MT_UartAppFlowControl (MT_UART_ZAPP_RX_NOT_READY);
+    367          
+    368                  /* 2 more bytes are added, 1 for CMD type, other for length */
+    369                  msg_ptr = (osal_event_hdr_t *)osal_msg_allocate( length + sizeof(osal_event_hdr_t) );
+    370                  if ( msg_ptr )
+    371                  {
+    372                    msg_ptr->event = SPI_INCOMING_ZAPP_DATA;
+    373                    msg_ptr->status = length;
+    374          
+    375                    /* Read the data of Rx buffer */
+    376                    HalUARTRead( MT_UART_DEFAULT_PORT, (uint8 *)(msg_ptr + 1), length );
+    377          
+    378                    /* Send the raw data to application...or where ever */
+    379                    osal_msg_send( App_TaskID, (uint8 *)msg_ptr );
+    380                  }
+    381                }
+    382              }
+    383            }
+    384          }
+    385          
+    386          /***************************************************************************************************
+    387           * @fn      SPIMgr_ZAppBufferLengthRegister
+    388           *
+    389           * @brief
+    390           *
+    391           * @param   maxLen - Max Length that the application wants at a time
+    392           *
+    393           * @return  None
+    394           *
+    395           ***************************************************************************************************/
+    396          void MT_UartZAppBufferLengthRegister ( uint16 maxLen )
+    397          {
+    398            /* If the maxLen is larger than the RX buff, something is not right */
+    399            if (maxLen <= MT_UART_DEFAULT_MAX_RX_BUFF)
+    400              MT_UartMaxZAppBufLen = maxLen;
+    401            else
+    402              MT_UartMaxZAppBufLen = 1; /* default is 1 byte */
+    403          }
+    404          
+    405          /***************************************************************************************************
+    406           * @fn      SPIMgr_AppFlowControl
+    407           *
+    408           * @brief
+    409           *
+    410           * @param   status - ready to send or not
+    411           *
+    412           * @return  None
+    413           *
+    414           ***************************************************************************************************/
+    415          void MT_UartAppFlowControl ( bool status )
+    416          {
+    417          
+    418            /* Make sure only update if needed */
+    419            if (status != MT_UartZAppRxStatus )
+    420            {
+    421              MT_UartZAppRxStatus = status;
+    422            }
+    423          
+    424            /* App is ready to read again, ProcessZAppData have to be triggered too */
+    425            if (status == MT_UART_ZAPP_RX_READY)
+    426            {
+    427              MT_UartProcessZAppData (MT_UART_DEFAULT_PORT, HAL_UART_RX_TIMEOUT );
+    428            }
+    429          
+    430          }
+    431          
+    432          #endif //ZAPP
+    433          
+    434          /***************************************************************************************************
+    435          ***************************************************************************************************/
 
    Maximum stack usage in bytes:
 

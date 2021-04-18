@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V10.30.1.6000 for 8051              18/Apr/2021  01:41:53
+// IAR C/C++ Compiler V10.30.1.6000 for 8051              18/Apr/2021  13:21:52
 // Copyright 2004-2018 IAR Systems AB.
 // Evaluation license - IAR Embedded Workbench for 8051, Evaluation edition 10.30
 //
@@ -15,7 +15,7 @@
 //        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
 //        3.0.2\Components\stack\bdb\bdb_touchlink_initiator.c
 //    Command line       =  
-//        -f C:\users\slavko\Temp\EWe867.tmp ("C:\Texas Instruments\Z-Stack
+//        -f C:\users\slavko\Temp\EWc9bd.tmp ("C:\Texas Instruments\Z-Stack
 //        3.0.2-20210417T211827Z-001\Z-Stack
 //        3.0.2\Components\stack\bdb\bdb_touchlink_initiator.c" -D SECURE=1 -D
 //        TC_LINKKEY_JOIN -D NV_INIT -D NV_RESTORE -D xZTOOL_P1 -D xMT_TASK -D

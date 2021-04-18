@@ -51,6 +51,7 @@ extern "C"
  */
 #include "zcl.h"
 #include "ZComDef.h" 	// NEW
+#include "MT_UART.h" 		// NEW	 
 
 
 // Added to include ZLL Target functionality

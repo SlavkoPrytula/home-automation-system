@@ -345,6 +345,13 @@ extern void (*osal_eventloop_hook)(void);
    * Buffer an uint24 value - LSB first
    */
   extern uint8* osal_buffer_uint24( uint8 *buf, uint24 val );
+  
+  // NEW
+    /*
+   * Buffer an uint16 value - LSB first
+   */
+  extern uint8* osal_buffer_uint16( uint8 *buf, uint16 val );
+  // ENDNEW
 
   /*
    * Is all of the array elements set to a value?

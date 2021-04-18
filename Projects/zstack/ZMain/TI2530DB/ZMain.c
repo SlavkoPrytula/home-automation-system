@@ -56,6 +56,7 @@
 #include "ZComDef.h"
 #include "ZMAC.h"
 #include "stdio.h" 		// NEW
+#include "MT_UART.h" 		// NEW	 
 
 /*********************************************************************
  * LOCAL FUNCTIONS

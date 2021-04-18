@@ -62,7 +62,7 @@
 	 
 	 
 #include "DebugTrace.h" 	// NEW
-#include "mt_uart.h" 		// NEW	 
+#include "MT_UART.h" 		// NEW	 
 
 #include "nwk_util.h"
 
@@ -162,7 +162,7 @@ EndDeviceInfo_t EndDeviceInfos[16]; //init space for 16 devices
  */
 
 //void osal_buffer_uint16(&theMessageData[3], data); 			// NEW
-void osal_buffer_uint16(unsigned char &theMessageData, unsigned int data);	// NEW
+// void osal_buffer_uint16(unsigned char &theMessageData, unsigned int data);	// NEW
  
 /*********************************************************************
  * LOCAL VARIABLES
@@ -315,8 +315,11 @@ void zclGenericApp_Init( byte task_id )
   uartConfig.baudRate             = HAL_UART_BR_115200;
   uartConfig.flowControl          = FALSE;
   uartConfig.intEnable              = TRUE;              // 2x30 don't care - see uart driver.
-  uartConfig.callBackFunc         = MT_UartProcessZAppData;
-  HalUARTOpen (0, &uartConfig);
+  // uartConfig.callBackFunc         = MT_UartProcessZAppData;
+  
+  MT_UartInit();
+  MT_UartRegisterTaskID(0);
+  HalUARTOpen (HAL_UART_PORT_0, &uartConfig);
 
   // If the hardware is application specific - add it here.
   // If the hardware is other parts of the device add it in main().
@@ -334,7 +337,8 @@ void zclGenericApp_Init( byte task_id )
   // Register for all key events - This app will handle all key events
   RegisterForKeys( zclGenericApp_TaskID );
   
-  HalUARTWrite(0,"Initializing...\r\n",10);
+  HalUARTWrite(HAL_UART_PORT_0,"Initializing...", sizeof("Initializing..."));
+  HalUARTPoll();
   
   // ENDNEW
   
@@ -402,6 +406,16 @@ void zclGenericApp_Init( byte task_id )
  */
 uint16 zclGenericApp_event_loop( uint8 task_id, uint16 events )
 {
+  if (HAL_KEY_SW_6) {
+	  HalUARTWrite(HAL_UART_PORT_0, "ok", sizeof("not ok"));
+	  HalUARTPoll();
+	  HalLedSet(HAL_LED_3, HAL_LED_MODE_TOGGLE);
+  }
+  
+  HalUARTWrite(HAL_UART_PORT_0, "ok", (byte)osal_strlen("ok"));
+  HalUARTPoll();
+  HalLedSet(HAL_LED_3, HAL_LED_MODE_OFF);
+	
   afIncomingMSGPacket_t *MSGpkt;
   afDataConfirm_t *afDataConfirm; // NEW
 
@@ -536,6 +550,8 @@ uint16 zclGenericApp_event_loop( uint8 task_id, uint16 events )
   if ( events & GENERICAPP_EVT_1 )
   {
     // toggle LED 2 state, start another timer for 500ms
+	HalUARTWrite(HAL_UART_PORT_0, "toggle", (byte)osal_strlen("toggle"));
+	HalUARTPoll();
     HalLedSet ( HAL_LED_2, HAL_LED_MODE_TOGGLE );
     osal_start_timerEx( zclGenericApp_TaskID, GENERICAPP_EVT_1, 500 );
     

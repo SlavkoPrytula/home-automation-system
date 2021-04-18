@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR C/C++ Compiler V10.30.1.6000 for 8051               18/Apr/2021  01:42:08
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               18/Apr/2021  13:22:07
 # Copyright 2004-2018 IAR Systems AB.
 # Evaluation license - IAR Embedded Workbench for 8051, Evaluation edition 10.30
 #
@@ -15,7 +15,7 @@
 #        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
 #        3.0.2\Projects\zstack\ZMain\TI2530DB\ZMain.c
 #    Command line       =  
-#        -f C:\users\slavko\Temp\EW210f.tmp ("C:\Texas Instruments\Z-Stack
+#        -f C:\users\slavko\Temp\EW556.tmp ("C:\Texas Instruments\Z-Stack
 #        3.0.2-20210417T211827Z-001\Z-Stack
 #        3.0.2\Projects\zstack\ZMain\TI2530DB\ZMain.c" -D SECURE=1 -D
 #        TC_LINKKEY_JOIN -D NV_INIT -D NV_RESTORE -D xZTOOL_P1 -D xMT_TASK -D
@@ -221,43 +221,44 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
      56          #include "ZComDef.h"
      57          #include "ZMAC.h"
      58          #include "stdio.h" 		// NEW
-     59          
-     60          /*********************************************************************
-     61           * LOCAL FUNCTIONS
-     62           */
-     63          
-     64          static void zmain_ext_addr( void );
-     65          #if defined ZCL_KEY_ESTABLISH
-     66          static void zmain_cert_init( void );
-     67          #endif
-     68          static void zmain_dev_info( void );
-     69          static void zmain_vdd_check( void );
-     70          
-     71          #ifdef LCD_SUPPORTED
-     72          static void zmain_lcd_init( void );
-     73          #endif
-     74          
-     75          /*********************************************************************
-     76           * @fn      main
-     77           * @brief   First function called after startup.
-     78           * @return  don't care
-     79           */
+     59          #include "MT_UART.h" 		// NEW	 
+     60          
+     61          /*********************************************************************
+     62           * LOCAL FUNCTIONS
+     63           */
+     64          
+     65          static void zmain_ext_addr( void );
+     66          #if defined ZCL_KEY_ESTABLISH
+     67          static void zmain_cert_init( void );
+     68          #endif
+     69          static void zmain_dev_info( void );
+     70          static void zmain_vdd_check( void );
+     71          
+     72          #ifdef LCD_SUPPORTED
+     73          static void zmain_lcd_init( void );
+     74          #endif
+     75          
+     76          /*********************************************************************
+     77           * @fn      main
+     78           * @brief   First function called after startup.
+     79           * @return  don't care
+     80           */
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-     80          int main( void )
+     81          int main( void )
    \                     main:
-     81          {
+     82          {
    \   000000                ; Auto size: 17
    \   000000   74EF         MOV       A,#-0x11
    \   000002   12....       LCALL     ?ALLOC_XSTACK8
-     82            // Turn off interrupts
-     83            osal_int_disable( INTS_ALL );
+     83            // Turn off interrupts
+     84            osal_int_disable( INTS_ALL );
    \   000005                ; Setup parameters for call to function osal_int_disable
    \   000005   79FF         MOV       R1,#-0x1
    \   000007   12....       LCALL     `??osal_int_disable::?relay`; Banked call to: osal_int_disable
-     84          
-     85            // Initialization for board related stuff such as LEDs
-     86            HAL_BOARD_INIT();
+     85          
+     86            // Initialization for board related stuff such as LEDs
+     87            HAL_BOARD_INIT();
    \   00000A   53BEFB       ANL       0xbe,#0xfb
    \                     ??main_0:
    \   00000D   E59D         MOV       A,0x9d
@@ -294,9 +295,9 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   000044   C281         CLR       0x80.1
    \   000046   43FD02       ORL       0xfd,#0x2
    \   000049   438F01       ORL       0x8f,#0x1
-     87           
-     88            // Make sure supply voltage is high enough to run
-     89            zmain_vdd_check();
+     88           
+     89            // Make sure supply voltage is high enough to run
+     90            zmain_vdd_check();
    \   00004C   7E10         MOV       R6,#0x10
    \                     ??main_3:
    \   00004E                ; Setup parameters for call to function HalAdcCheckVdd
@@ -307,69 +308,69 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   000056   1E           DEC       R6
    \   000057   EE           MOV       A,R6
    \   000058   70F4         JNZ       ??main_3
-     90          
-     91            // Initialize board I/O
-     92            InitBoard( OB_COLD );
+     91          
+     92            // Initialize board I/O
+     93            InitBoard( OB_COLD );
    \   00005A                ; Setup parameters for call to function InitBoard
    \   00005A   7900         MOV       R1,#0x0
    \   00005C   12....       LCALL     `??InitBoard::?relay`; Banked call to: InitBoard
-     93          
-     94            // Initialze HAL drivers
-     95            HalDriverInit();
+     94          
+     95            // Initialze HAL drivers
+     96            HalDriverInit();
    \   00005F                ; Setup parameters for call to function HalDriverInit
    \   00005F   12....       LCALL     `??HalDriverInit::?relay`; Banked call to: HalDriverInit
-     96          
-     97            // Initialize NV System
-     98            osal_nv_init( NULL );
+     97          
+     98            // Initialize NV System
+     99            osal_nv_init( NULL );
    \   000062                ; Setup parameters for call to function osal_nv_init
    \   000062   7A00         MOV       R2,#0x0
    \   000064   7B00         MOV       R3,#0x0
    \   000066   12....       LCALL     `??osal_nv_init::?relay`; Banked call to: osal_nv_init
-     99          
-    100            // Initialize the MAC
-    101            ZMacInit();
+    100          
+    101            // Initialize the MAC
+    102            ZMacInit();
    \   000069                ; Setup parameters for call to function ZMacInit
    \   000069   12....       LCALL     `??ZMacInit::?relay`; Banked call to: ZMacInit
-    102          
-    103            // Determine the extended address
-    104            zmain_ext_addr();
+    103          
+    104            // Determine the extended address
+    105            zmain_ext_addr();
    \   00006C                ; Setup parameters for call to function zmain_ext_addr
    \   00006C   12....       LCALL     `??zmain_ext_addr::?relay`; Banked call to: zmain_ext_addr
-    105          
-    106          #if defined ZCL_KEY_ESTABLISH
-    107            // Initialize the Certicom certificate information.
-    108            zmain_cert_init();
-    109          #endif
-    110          
-    111            // Initialize basic NV items
-    112            zgInit();
+    106          
+    107          #if defined ZCL_KEY_ESTABLISH
+    108            // Initialize the Certicom certificate information.
+    109            zmain_cert_init();
+    110          #endif
+    111          
+    112            // Initialize basic NV items
+    113            zgInit();
    \   00006F                ; Setup parameters for call to function zgInit
    \   00006F   12....       LCALL     `??zgInit::?relay`; Banked call to: zgInit
-    113          
-    114          #ifndef NONWK
-    115            // Since the AF isn't a task, call it's initialization routine
-    116            afInit();
-    117          #endif
-    118          
-    119            // Initialize the operating system
-    120            osal_init_system();
+    114          
+    115          #ifndef NONWK
+    116            // Since the AF isn't a task, call it's initialization routine
+    117            afInit();
+    118          #endif
+    119          
+    120            // Initialize the operating system
+    121            osal_init_system();
    \   000072                ; Setup parameters for call to function osal_init_system
    \   000072   12....       LCALL     `??osal_init_system::?relay`; Banked call to: osal_init_system
-    121          
-    122            // Allow interrupts
-    123            osal_int_enable( INTS_ALL );
+    122          
+    123            // Allow interrupts
+    124            osal_int_enable( INTS_ALL );
    \   000075                ; Setup parameters for call to function osal_int_enable
    \   000075   79FF         MOV       R1,#-0x1
    \   000077   12....       LCALL     `??osal_int_enable::?relay`; Banked call to: osal_int_enable
-    124          
-    125            // Final board initialization
-    126            InitBoard( OB_READY );
+    125          
+    126            // Final board initialization
+    127            InitBoard( OB_READY );
    \   00007A                ; Setup parameters for call to function InitBoard
    \   00007A   7902         MOV       R1,#0x2
    \   00007C   12....       LCALL     `??InitBoard::?relay`; Banked call to: InitBoard
-    127          
-    128            // Display information about this device
-    129            zmain_dev_info();
+    128          
+    129            // Display information about this device
+    130            zmain_dev_info();
    \   00007F   78..         MOV       R0,#(aExtendedAddress + 7) & 0xff
    \   000081   79..         MOV       R1,#((aExtendedAddress + 7) >> 8) & 0xff
    \   000083   7A00         MOV       R2,#0x0
@@ -463,27 +464,27 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   000108   AA..         MOV       R2,?XSP + 0
    \   00010A   AB..         MOV       R3,?XSP + 1
    \   00010C   12....       LCALL     `??HalLcdWriteString::?relay`; Banked call to: HalLcdWriteString
-    130          
-    131            /* Display the device info on the LCD */
-    132          #ifdef LCD_SUPPORTED
-    133            zmain_lcd_init();
+    131          
+    132            /* Display the device info on the LCD */
+    133          #ifdef LCD_SUPPORTED
+    134            zmain_lcd_init();
    \   00010F                ; Setup parameters for call to function HalLcdWriteString
    \   00010F   7901         MOV       R1,#0x1
    \   000111   7A..         MOV       R2,#`?<Constant "TexasInstruments">` & 0xff
    \   000113   7B..         MOV       R3,#(`?<Constant "TexasInstruments">` >> 8) & 0xff
    \   000115   12....       LCALL     `??HalLcdWriteString::?relay`; Banked call to: HalLcdWriteString
-    134          #endif
-    135          
-    136          #ifdef WDT_IN_PM1
-    137            /* If WDT is used, this is a good place to enable it. */
-    138            WatchDogEnable( WDTIMX );
-    139          #endif
-    140          
-    141            osal_start_system(); // No Return from here
+    135          #endif
+    136          
+    137          #ifdef WDT_IN_PM1
+    138            /* If WDT is used, this is a good place to enable it. */
+    139            WatchDogEnable( WDTIMX );
+    140          #endif
+    141          
+    142            osal_start_system(); // No Return from here
    \   000118                ; Setup parameters for call to function osal_start_system
    \   000118   12....       LCALL     `??osal_start_system::?relay`; Banked call to: osal_start_system
-    142          
-    143            return 0;  // Shouldn't get here.
+    143          
+    144            return 0;  // Shouldn't get here.
    \   00011B   7A00         MOV       R2,#0x0
    \   00011D   7B00         MOV       R3,#0x0
    \   00011F   7411         MOV       A,#0x11
@@ -498,44 +499,44 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   000127                REQUIRE _A_P0
    \   000127                REQUIRE P0DIR
    \   000127                REQUIRE P0INP
-    144          } // main()
-    145          
-    146          /*********************************************************************
-    147           * @fn      zmain_vdd_check
-    148           * @brief   Check if the Vdd is OK to run the processor.
-    149           * @return  Return if Vdd is ok; otherwise, flash LED, then reset
-    150           *********************************************************************/
-    151          static void zmain_vdd_check( void )
-    152          {
-    153            uint8 cnt = 16;
-    154            
-    155            do {
-    156              while (!HalAdcCheckVdd(VDD_MIN_RUN));
-    157            } while (--cnt);
-    158          }
-    159          
-    160          /**************************************************************************************************
-    161           * @fn          zmain_ext_addr
-    162           *
-    163           * @brief       Execute a prioritized search for a valid extended address and write the results
-    164           *              into the OSAL NV system for use by the system. Temporary address not saved to NV.
-    165           *
-    166           * input parameters
-    167           *
-    168           * None.
-    169           *
-    170           * output parameters
-    171           *
-    172           * None.
-    173           *
-    174           * @return      None.
-    175           **************************************************************************************************
-    176           */
+    145          } // main()
+    146          
+    147          /*********************************************************************
+    148           * @fn      zmain_vdd_check
+    149           * @brief   Check if the Vdd is OK to run the processor.
+    150           * @return  Return if Vdd is ok; otherwise, flash LED, then reset
+    151           *********************************************************************/
+    152          static void zmain_vdd_check( void )
+    153          {
+    154            uint8 cnt = 16;
+    155            
+    156            do {
+    157              while (!HalAdcCheckVdd(VDD_MIN_RUN));
+    158            } while (--cnt);
+    159          }
+    160          
+    161          /**************************************************************************************************
+    162           * @fn          zmain_ext_addr
+    163           *
+    164           * @brief       Execute a prioritized search for a valid extended address and write the results
+    165           *              into the OSAL NV system for use by the system. Temporary address not saved to NV.
+    166           *
+    167           * input parameters
+    168           *
+    169           * None.
+    170           *
+    171           * output parameters
+    172           *
+    173           * None.
+    174           *
+    175           * @return      None.
+    176           **************************************************************************************************
+    177           */
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-    177          static void zmain_ext_addr(void)
+    178          static void zmain_ext_addr(void)
    \                     zmain_ext_addr:
-    178          {
+    179          {
    \   000000                REQUIRE ?V0
    \   000000                REQUIRE ?V1
    \   000000                REQUIRE ?V2
@@ -550,18 +551,18 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   000005                ; Auto size: 8
    \   000005   74F8         MOV       A,#-0x8
    \   000007   12....       LCALL     ?ALLOC_XSTACK8
-    179            uint8 nullAddr[Z_EXTADDR_LEN] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
+    180            uint8 nullAddr[Z_EXTADDR_LEN] = {0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF};
    \   00000A   90....       MOV       DPTR,#`?<Constant {255, 255, 255, 255, 255, 255, 255,`
    \   00000D   AC..         MOV       R4,?XSP + 0
    \   00000F   AD..         MOV       R5,?XSP + 1
    \   000011   7408         MOV       A,#0x8
    \   000013   12....       LCALL     ?MOVE_LONG8_XDATA_XDATA
-    180            uint8 writeNV = TRUE;
-    181          
-    182            // First check whether a non-erased extended address exists in the OSAL NV.
-    183            if ((SUCCESS != osal_nv_item_init(ZCD_NV_EXTADDR, Z_EXTADDR_LEN, NULL))  ||
-    184                (SUCCESS != osal_nv_read(ZCD_NV_EXTADDR, 0, Z_EXTADDR_LEN, aExtendedAddress)) ||
-    185                (osal_memcmp(aExtendedAddress, nullAddr, Z_EXTADDR_LEN)))
+    181            uint8 writeNV = TRUE;
+    182          
+    183            // First check whether a non-erased extended address exists in the OSAL NV.
+    184            if ((SUCCESS != osal_nv_item_init(ZCD_NV_EXTADDR, Z_EXTADDR_LEN, NULL))  ||
+    185                (SUCCESS != osal_nv_read(ZCD_NV_EXTADDR, 0, Z_EXTADDR_LEN, aExtendedAddress)) ||
+    186                (osal_memcmp(aExtendedAddress, nullAddr, Z_EXTADDR_LEN)))
    \   000016   75....       MOV       ?V0,#aExtendedAddress & 0xff
    \   000019   75....       MOV       ?V1,#(aExtendedAddress >> 8) & 0xff
    \   00001C   F5..         MOV       ?V2,A
@@ -616,10 +617,10 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   000084   E9           MOV       A,R1
    \   000085   7003         JNZ       $+5
    \   000087   02....       LJMP      ??zmain_ext_addr_1 & 0xFFFF
-    186            {
-    187              // Attempt to read the extended address from the location on the lock bits page
-    188              // where the programming tools know to reserve it.
-    189              HalFlashRead(HAL_FLASH_IEEE_PAGE, HAL_FLASH_IEEE_OSET, aExtendedAddress, Z_EXTADDR_LEN);
+    187            {
+    188              // Attempt to read the extended address from the location on the lock bits page
+    189              // where the programming tools know to reserve it.
+    190              HalFlashRead(HAL_FLASH_IEEE_PAGE, HAL_FLASH_IEEE_OSET, aExtendedAddress, Z_EXTADDR_LEN);
    \                     ??zmain_ext_addr_0:
    \   00008A                ; Setup parameters for call to function HalFlashRead
    \   00008A   75..08       MOV       ?V8,#0x8
@@ -633,8 +634,8 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   00009C   12....       LCALL     `??HalFlashRead::?relay`; Banked call to: HalFlashRead
    \   00009F   7402         MOV       A,#0x2
    \   0000A1   12....       LCALL     ?DEALLOC_XSTACK8
-    190          
-    191              if (osal_memcmp(aExtendedAddress, nullAddr, Z_EXTADDR_LEN))
+    191          
+    192              if (osal_memcmp(aExtendedAddress, nullAddr, Z_EXTADDR_LEN))
    \   0000A4                ; Setup parameters for call to function osal_memcmp
    \   0000A4   78..         MOV       R0,#?V4
    \   0000A6   12....       LCALL     ?PUSH_XSTACK_I_THREE
@@ -648,9 +649,9 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   0000B8   12....       LCALL     ?DEALLOC_XSTACK8
    \   0000BB   E9           MOV       A,R1
    \   0000BC   6071         JZ        ??zmain_ext_addr_2
-    192              {
-    193                // Attempt to read the extended address from the designated location in the Info Page.
-    194                if (!osal_memcmp((uint8 *)(P_INFOPAGE+HAL_INFOP_IEEE_OSET), nullAddr, Z_EXTADDR_LEN))
+    193              {
+    194                // Attempt to read the extended address from the designated location in the Info Page.
+    195                if (!osal_memcmp((uint8 *)(P_INFOPAGE+HAL_INFOP_IEEE_OSET), nullAddr, Z_EXTADDR_LEN))
    \   0000BE                ; Setup parameters for call to function osal_memcmp
    \   0000BE   78..         MOV       R0,#?V4
    \   0000C0   12....       LCALL     ?PUSH_XSTACK_I_THREE
@@ -664,8 +665,8 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   0000D2   12....       LCALL     ?DEALLOC_XSTACK8
    \   0000D5   E9           MOV       A,R1
    \   0000D6   701D         JNZ       ??zmain_ext_addr_3
-    195                {
-    196                  osal_memcpy(aExtendedAddress, (uint8 *)(P_INFOPAGE+HAL_INFOP_IEEE_OSET), Z_EXTADDR_LEN);
+    196                {
+    197                  osal_memcpy(aExtendedAddress, (uint8 *)(P_INFOPAGE+HAL_INFOP_IEEE_OSET), Z_EXTADDR_LEN);
    \   0000D8                ; Setup parameters for call to function osal_memcpy
    \   0000D8   75..0C       MOV       ?V0,#0xc
    \   0000DB   75..78       MOV       ?V1,#0x78
@@ -679,29 +680,29 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   0000EE   7403         MOV       A,#0x3
    \   0000F0   12....       LCALL     ?DEALLOC_XSTACK8
    \   0000F3   803A         SJMP      ??zmain_ext_addr_2
-    197                }
-    198                else  // No valid extended address was found.
-    199                {
-    200                  uint8 idx;
-    201                  
-    202          #if !defined ( NV_RESTORE )
-    203                  writeNV = FALSE;  // Make this a temporary IEEE address
-    204          #endif
-    205          
-    206                  /* Attempt to create a sufficiently random extended address for expediency.
-    207                   * Note: this is only valid/legal in a test environment and
-    208                   *       must never be used for a commercial product.
-    209                   */
-    210                  for (idx = 0; idx < (Z_EXTADDR_LEN - 2);)
+    198                }
+    199                else  // No valid extended address was found.
+    200                {
+    201                  uint8 idx;
+    202                  
+    203          #if !defined ( NV_RESTORE )
+    204                  writeNV = FALSE;  // Make this a temporary IEEE address
+    205          #endif
+    206          
+    207                  /* Attempt to create a sufficiently random extended address for expediency.
+    208                   * Note: this is only valid/legal in a test environment and
+    209                   *       must never be used for a commercial product.
+    210                   */
+    211                  for (idx = 0; idx < (Z_EXTADDR_LEN - 2);)
    \                     ??zmain_ext_addr_3:
    \   0000F5   7E00         MOV       R6,#0x0
-    211                  {
-    212                    uint16 randy = osal_rand();
+    212                  {
+    213                    uint16 randy = osal_rand();
    \                     ??zmain_ext_addr_4:
    \   0000F7                ; Setup parameters for call to function osal_rand
    \   0000F7   12....       LCALL     `??osal_rand::?relay`; Banked call to: osal_rand
    \   0000FA   8A..         MOV       ?V0,R2
-    213                    aExtendedAddress[idx++] = LO_UINT16(randy);
+    214                    aExtendedAddress[idx++] = LO_UINT16(randy);
    \   0000FC   EE           MOV       A,R6
    \   0000FD   FA           MOV       R2,A
    \   0000FE   74..         MOV       A,#aExtendedAddress & 0xff
@@ -713,11 +714,11 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   000108   E5..         MOV       A,?V0
    \   00010A   F0           MOVX      @DPTR,A
    \   00010B   0E           INC       R6
-    214                    aExtendedAddress[idx++] = HI_UINT16(randy);
+    215                    aExtendedAddress[idx++] = HI_UINT16(randy);
    \   00010C   EE           MOV       A,R6
    \   00010D   F8           MOV       R0,A
    \   00010E   12....       LCALL     ?Subroutine0 & 0xFFFF
-    215                  }
+    216                  }
    \                     ??CrossCallReturnLabel_0:
    \   000111   EB           MOV       A,R3
    \   000112   F0           MOVX      @DPTR,A
@@ -726,21 +727,21 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   000115   C3           CLR       C
    \   000116   9406         SUBB      A,#0x6
    \   000118   40DD         JC        ??zmain_ext_addr_4
-    216                  // Next-to-MSB identifies ZigBee devicetype.
-    217          #if ZG_BUILD_COORDINATOR_TYPE && !ZG_BUILD_JOINING_TYPE
-    218                  aExtendedAddress[idx++] = 0x10;
+    217                  // Next-to-MSB identifies ZigBee devicetype.
+    218          #if ZG_BUILD_COORDINATOR_TYPE && !ZG_BUILD_JOINING_TYPE
+    219                  aExtendedAddress[idx++] = 0x10;
    \   00011A   08           INC       R0
    \   00011B   12....       LCALL     ?Subroutine0 & 0xFFFF
    \                     ??CrossCallReturnLabel_1:
    \   00011E   7410         MOV       A,#0x10
    \   000120   F0           MOVX      @DPTR,A
-    219          #elif ZG_BUILD_RTRONLY_TYPE
-    220                  aExtendedAddress[idx++] = 0x20;
-    221          #else
-    222                  aExtendedAddress[idx++] = 0x30;
-    223          #endif
-    224                  // MSB has historical signficance.
-    225                  aExtendedAddress[idx] = 0xF8;
+    220          #elif ZG_BUILD_RTRONLY_TYPE
+    221                  aExtendedAddress[idx++] = 0x20;
+    222          #else
+    223                  aExtendedAddress[idx++] = 0x30;
+    224          #endif
+    225                  // MSB has historical signficance.
+    226                  aExtendedAddress[idx] = 0xF8;
    \   000121   08           INC       R0
    \   000122   74..         MOV       A,#aExtendedAddress & 0xff
    \   000124   28           ADD       A,R0
@@ -750,12 +751,12 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   00012A   F583         MOV       DPH,A
    \   00012C   74F8         MOV       A,#-0x8
    \   00012E   F0           MOVX      @DPTR,A
-    226                }
-    227              }
-    228          
-    229              if (writeNV)
-    230              {
-    231                (void)osal_nv_write(ZCD_NV_EXTADDR, 0, Z_EXTADDR_LEN, aExtendedAddress);
+    227                }
+    228              }
+    229          
+    230              if (writeNV)
+    231              {
+    232                (void)osal_nv_write(ZCD_NV_EXTADDR, 0, Z_EXTADDR_LEN, aExtendedAddress);
    \                     ??zmain_ext_addr_2:
    \   00012F                ; Setup parameters for call to function osal_nv_write
    \   00012F   75....       MOV       ?V0,#aExtendedAddress & 0xff
@@ -773,18 +774,18 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   00014D   12....       LCALL     `??osal_nv_write::?relay`; Banked call to: osal_nv_write
    \   000150   7404         MOV       A,#0x4
    \   000152   12....       LCALL     ?DEALLOC_XSTACK8
-    232              }
-    233            }
-    234          
-    235            // Set the MAC PIB extended address according to results from above.
-    236            (void)ZMacSetReq(MAC_EXTENDED_ADDRESS, aExtendedAddress);
+    233              }
+    234            }
+    235          
+    236            // Set the MAC PIB extended address according to results from above.
+    237            (void)ZMacSetReq(MAC_EXTENDED_ADDRESS, aExtendedAddress);
    \                     ??zmain_ext_addr_1:
    \   000155                ; Setup parameters for call to function ZMacSetReq
    \   000155   7A..         MOV       R2,#aExtendedAddress & 0xff
    \   000157   7B..         MOV       R3,#(aExtendedAddress >> 8) & 0xff
    \   000159   79E2         MOV       R1,#-0x1e
    \   00015B   12....       LCALL     `??ZMacSetReq::?relay`; Banked call to: ZMacSetReq
-    237          }
+    238          }
    \   00015E   7408         MOV       A,#0x8
    \   000160   12....       LCALL     ?DEALLOC_XSTACK8
    \   000163   7F0A         MOV       R7,#0xa
@@ -823,136 +824,136 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \            7472756D
    \            656E7473
    \            00      
-    238          
-    239          #if defined ZCL_KEY_ESTABLISH
-    240          /**************************************************************************************************
-    241           * @fn          zmain_cert_init
-    242           *
-    243           * @brief       Initialize the Certicom certificate information.
-    244           *
-    245           * input parameters
-    246           *
-    247           * None.
-    248           *
-    249           * output parameters
-    250           *
-    251           * None.
-    252           *
-    253           * @return      None.
-    254           **************************************************************************************************
-    255           */
-    256          static void zmain_cert_init(void)
-    257          {
-    258            uint8 certData[ZCL_KE_IMPLICIT_CERTIFICATE_LEN];
-    259            uint8 nullData[ZCL_KE_IMPLICIT_CERTIFICATE_LEN] = {
-    260              0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+    239          
+    240          #if defined ZCL_KEY_ESTABLISH
+    241          /**************************************************************************************************
+    242           * @fn          zmain_cert_init
+    243           *
+    244           * @brief       Initialize the Certicom certificate information.
+    245           *
+    246           * input parameters
+    247           *
+    248           * None.
+    249           *
+    250           * output parameters
+    251           *
+    252           * None.
+    253           *
+    254           * @return      None.
+    255           **************************************************************************************************
+    256           */
+    257          static void zmain_cert_init(void)
+    258          {
+    259            uint8 certData[ZCL_KE_IMPLICIT_CERTIFICATE_LEN];
+    260            uint8 nullData[ZCL_KE_IMPLICIT_CERTIFICATE_LEN] = {
     261              0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
     262              0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
     263              0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
     264              0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
-    265              0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
-    266            };
-    267          
-    268            (void)osal_nv_item_init(ZCD_NV_IMPLICIT_CERTIFICATE, ZCL_KE_IMPLICIT_CERTIFICATE_LEN, NULL);
-    269            (void)osal_nv_item_init(ZCD_NV_DEVICE_PRIVATE_KEY, ZCL_KE_DEVICE_PRIVATE_KEY_LEN, NULL);
-    270          
-    271            // First check whether non-null certificate data exists in the OSAL NV. To save on code space,
-    272            // just use the ZCD_NV_CA_PUBLIC_KEY as the bellwether for all three.
-    273            if ((SUCCESS != osal_nv_item_init(ZCD_NV_CA_PUBLIC_KEY, ZCL_KE_CA_PUBLIC_KEY_LEN, NULL))    ||
-    274                (SUCCESS != osal_nv_read(ZCD_NV_CA_PUBLIC_KEY, 0, ZCL_KE_CA_PUBLIC_KEY_LEN, certData))  ||
-    275                (osal_memcmp(certData, nullData, ZCL_KE_CA_PUBLIC_KEY_LEN)))
-    276            {
-    277              // Attempt to read the certificate data from its corresponding location on the lock bits page.
-    278              HalFlashRead(HAL_FLASH_IEEE_PAGE, HAL_FLASH_CA_PUBLIC_KEY_OSET, certData,
-    279                                                   ZCL_KE_CA_PUBLIC_KEY_LEN);
-    280              // If the certificate data is not NULL, use it to update the corresponding NV items.
-    281              if (!osal_memcmp(certData, nullData, ZCL_KE_CA_PUBLIC_KEY_LEN))
-    282              {
-    283                (void)osal_nv_write(ZCD_NV_CA_PUBLIC_KEY, 0, ZCL_KE_CA_PUBLIC_KEY_LEN, certData);
-    284                HalFlashRead(HAL_FLASH_IEEE_PAGE, HAL_FLASH_IMPLICIT_CERT_OSET, certData,
-    285                                                     ZCL_KE_IMPLICIT_CERTIFICATE_LEN);
-    286                (void)osal_nv_write(ZCD_NV_IMPLICIT_CERTIFICATE, 0,
-    287                                    ZCL_KE_IMPLICIT_CERTIFICATE_LEN, certData);
-    288                HalFlashRead(HAL_FLASH_IEEE_PAGE, HAL_FLASH_DEV_PRIVATE_KEY_OSET, certData,
-    289                                                  ZCL_KE_DEVICE_PRIVATE_KEY_LEN);
-    290                (void)osal_nv_write(ZCD_NV_DEVICE_PRIVATE_KEY, 0, ZCL_KE_DEVICE_PRIVATE_KEY_LEN, certData);
-    291              }
-    292            }
-    293          }
-    294          #endif
-    295          
-    296          /**************************************************************************************************
-    297           * @fn          zmain_dev_info
-    298           *
-    299           * @brief       This displays the IEEE (MSB to LSB) on the LCD.
-    300           *
-    301           * input parameters
-    302           *
-    303           * None.
-    304           *
-    305           * output parameters
-    306           *
-    307           * None.
-    308           *
-    309           * @return      None.
-    310           **************************************************************************************************
-    311           */
-    312          static void zmain_dev_info(void)
-    313          {
-    314          #if defined ( SERIAL_DEBUG_SUPPORTED ) || (defined ( LEGACY_LCD_DEBUG ) && defined (LCD_SUPPORTED))
-    315            uint8 i;
-    316            uint8 *xad;
-    317            uint8 lcd_buf[Z_EXTADDR_LEN*2+1];
-    318          
-    319            // Display the extended address.
-    320            xad = aExtendedAddress + Z_EXTADDR_LEN - 1;
-    321          
-    322            for (i = 0; i < Z_EXTADDR_LEN*2; xad--)
-    323            {
-    324              uint8 ch;
-    325              ch = (*xad >> 4) & 0x0F;
-    326              lcd_buf[i++] = ch + (( ch < 10 ) ? '0' : '7');
-    327              ch = *xad & 0x0F;
-    328              lcd_buf[i++] = ch + (( ch < 10 ) ? '0' : '7');
-    329            }
-    330            lcd_buf[Z_EXTADDR_LEN*2] = '\0';
-    331            HalLcdWriteString( "IEEE: ", HAL_LCD_DEBUG_LINE_1 );
-    332            HalLcdWriteString( (char*)lcd_buf, HAL_LCD_DEBUG_LINE_2 );
-    333          #endif
-    334          }
-    335          
-    336          #ifdef LCD_SUPPORTED
-    337          /*********************************************************************
-    338           * @fn      zmain_lcd_init
-    339           * @brief   Initialize LCD at start up.
-    340           * @return  none
-    341           *********************************************************************/
-    342          static void zmain_lcd_init ( void )
-    343          {
-    344          #ifdef SERIAL_DEBUG_SUPPORTED
-    345            {
-    346              HalLcdWriteString( "TexasInstruments", HAL_LCD_DEBUG_LINE_1 );
-    347          
-    348          #if defined( MT_MAC_FUNC )
-    349          #if defined( ZDO_COORDINATOR )
-    350                HalLcdWriteString( "MAC-MT Coord", HAL_LCD_DEBUG_LINE_2 );
-    351          #else
-    352                HalLcdWriteString( "MAC-MT Device", HAL_LCD_DEBUG_LINE_2 );
-    353          #endif // ZDO
-    354          #elif defined( MT_NWK_FUNC )
-    355          #if defined( ZDO_COORDINATOR )
-    356                HalLcdWriteString( "NWK Coordinator", HAL_LCD_DEBUG_LINE_2 );
-    357          #else
-    358                HalLcdWriteString( "NWK Device", HAL_LCD_DEBUG_LINE_2 );
-    359          #endif // ZDO
-    360          #endif // MT_FUNC
-    361            }
-    362          #endif // SERIAL_DEBUG_SUPPORTED
-    363          }
-    364          #endif
-    365          
-    366          /*********************************************************************
-    367          *********************************************************************/
+    265              0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF,
+    266              0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+    267            };
+    268          
+    269            (void)osal_nv_item_init(ZCD_NV_IMPLICIT_CERTIFICATE, ZCL_KE_IMPLICIT_CERTIFICATE_LEN, NULL);
+    270            (void)osal_nv_item_init(ZCD_NV_DEVICE_PRIVATE_KEY, ZCL_KE_DEVICE_PRIVATE_KEY_LEN, NULL);
+    271          
+    272            // First check whether non-null certificate data exists in the OSAL NV. To save on code space,
+    273            // just use the ZCD_NV_CA_PUBLIC_KEY as the bellwether for all three.
+    274            if ((SUCCESS != osal_nv_item_init(ZCD_NV_CA_PUBLIC_KEY, ZCL_KE_CA_PUBLIC_KEY_LEN, NULL))    ||
+    275                (SUCCESS != osal_nv_read(ZCD_NV_CA_PUBLIC_KEY, 0, ZCL_KE_CA_PUBLIC_KEY_LEN, certData))  ||
+    276                (osal_memcmp(certData, nullData, ZCL_KE_CA_PUBLIC_KEY_LEN)))
+    277            {
+    278              // Attempt to read the certificate data from its corresponding location on the lock bits page.
+    279              HalFlashRead(HAL_FLASH_IEEE_PAGE, HAL_FLASH_CA_PUBLIC_KEY_OSET, certData,
+    280                                                   ZCL_KE_CA_PUBLIC_KEY_LEN);
+    281              // If the certificate data is not NULL, use it to update the corresponding NV items.
+    282              if (!osal_memcmp(certData, nullData, ZCL_KE_CA_PUBLIC_KEY_LEN))
+    283              {
+    284                (void)osal_nv_write(ZCD_NV_CA_PUBLIC_KEY, 0, ZCL_KE_CA_PUBLIC_KEY_LEN, certData);
+    285                HalFlashRead(HAL_FLASH_IEEE_PAGE, HAL_FLASH_IMPLICIT_CERT_OSET, certData,
+    286                                                     ZCL_KE_IMPLICIT_CERTIFICATE_LEN);
+    287                (void)osal_nv_write(ZCD_NV_IMPLICIT_CERTIFICATE, 0,
+    288                                    ZCL_KE_IMPLICIT_CERTIFICATE_LEN, certData);
+    289                HalFlashRead(HAL_FLASH_IEEE_PAGE, HAL_FLASH_DEV_PRIVATE_KEY_OSET, certData,
+    290                                                  ZCL_KE_DEVICE_PRIVATE_KEY_LEN);
+    291                (void)osal_nv_write(ZCD_NV_DEVICE_PRIVATE_KEY, 0, ZCL_KE_DEVICE_PRIVATE_KEY_LEN, certData);
+    292              }
+    293            }
+    294          }
+    295          #endif
+    296          
+    297          /**************************************************************************************************
+    298           * @fn          zmain_dev_info
+    299           *
+    300           * @brief       This displays the IEEE (MSB to LSB) on the LCD.
+    301           *
+    302           * input parameters
+    303           *
+    304           * None.
+    305           *
+    306           * output parameters
+    307           *
+    308           * None.
+    309           *
+    310           * @return      None.
+    311           **************************************************************************************************
+    312           */
+    313          static void zmain_dev_info(void)
+    314          {
+    315          #if defined ( SERIAL_DEBUG_SUPPORTED ) || (defined ( LEGACY_LCD_DEBUG ) && defined (LCD_SUPPORTED))
+    316            uint8 i;
+    317            uint8 *xad;
+    318            uint8 lcd_buf[Z_EXTADDR_LEN*2+1];
+    319          
+    320            // Display the extended address.
+    321            xad = aExtendedAddress + Z_EXTADDR_LEN - 1;
+    322          
+    323            for (i = 0; i < Z_EXTADDR_LEN*2; xad--)
+    324            {
+    325              uint8 ch;
+    326              ch = (*xad >> 4) & 0x0F;
+    327              lcd_buf[i++] = ch + (( ch < 10 ) ? '0' : '7');
+    328              ch = *xad & 0x0F;
+    329              lcd_buf[i++] = ch + (( ch < 10 ) ? '0' : '7');
+    330            }
+    331            lcd_buf[Z_EXTADDR_LEN*2] = '\0';
+    332            HalLcdWriteString( "IEEE: ", HAL_LCD_DEBUG_LINE_1 );
+    333            HalLcdWriteString( (char*)lcd_buf, HAL_LCD_DEBUG_LINE_2 );
+    334          #endif
+    335          }
+    336          
+    337          #ifdef LCD_SUPPORTED
+    338          /*********************************************************************
+    339           * @fn      zmain_lcd_init
+    340           * @brief   Initialize LCD at start up.
+    341           * @return  none
+    342           *********************************************************************/
+    343          static void zmain_lcd_init ( void )
+    344          {
+    345          #ifdef SERIAL_DEBUG_SUPPORTED
+    346            {
+    347              HalLcdWriteString( "TexasInstruments", HAL_LCD_DEBUG_LINE_1 );
+    348          
+    349          #if defined( MT_MAC_FUNC )
+    350          #if defined( ZDO_COORDINATOR )
+    351                HalLcdWriteString( "MAC-MT Coord", HAL_LCD_DEBUG_LINE_2 );
+    352          #else
+    353                HalLcdWriteString( "MAC-MT Device", HAL_LCD_DEBUG_LINE_2 );
+    354          #endif // ZDO
+    355          #elif defined( MT_NWK_FUNC )
+    356          #if defined( ZDO_COORDINATOR )
+    357                HalLcdWriteString( "NWK Coordinator", HAL_LCD_DEBUG_LINE_2 );
+    358          #else
+    359                HalLcdWriteString( "NWK Device", HAL_LCD_DEBUG_LINE_2 );
+    360          #endif // ZDO
+    361          #endif // MT_FUNC
+    362            }
+    363          #endif // SERIAL_DEBUG_SUPPORTED
+    364          }
+    365          #endif
+    366          
+    367          /*********************************************************************
+    368          *********************************************************************/
 
    Maximum stack usage in bytes:
 
