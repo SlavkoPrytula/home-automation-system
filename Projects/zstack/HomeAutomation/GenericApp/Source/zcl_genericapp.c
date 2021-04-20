@@ -58,6 +58,7 @@
 #include "AF.h"
 #include "ZDApp.h"
 #include "ZDObject.h"
+#include "MT_APP.h"
 #include "MT_SYS.h"
 	 
 	 
@@ -71,6 +72,8 @@
 #include "zcl_ha.h"
 #include "zcl_diagnostic.h"
 #include "zcl_genericapp.h"
+#include "zcl_hvac.h"
+#include "zcl_ms.h"
 
 #include "bdb.h"
 #include "bdb_interface.h"
@@ -100,7 +103,7 @@
 /*********************************************************************
  * MACROS
  */
-
+#define REMOTE_TEMP    1
 
 /*********************************************************************
  * CONSTANTS
@@ -124,6 +127,8 @@ typedef struct
  * GLOBAL VARIABLES
  */
 byte zclGenericApp_TaskID;
+
+extern int16 zdpExternalStateTaskID;
 
 unsigned char device_count = 0;
  
@@ -179,11 +184,30 @@ byte zclGenericApp_TransID;  // This is the unique message ID (counter)
 afAddrType_t zclGenericApp_DstAddr;
 // ENDNEW
 
+
+#ifdef BDB_REPORTING
+#if BDBREPORTING_MAX_ANALOG_ATTR_SIZE == 8
+  uint8 reportableChange[] = {0x2C, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00}; // 0x2C01 is 300 in int16
+#endif
+#if BDBREPORTING_MAX_ANALOG_ATTR_SIZE == 4
+  uint8 reportableChange[] = {0x2C, 0x01, 0x00, 0x00}; // 0x2C01 is 300 in int16
+#endif 
+#if BDBREPORTING_MAX_ANALOG_ATTR_SIZE == 2
+  uint8 reportableChange[] = {0x2C, 0x01}; // 0x2C01 is 300 in int16
+#endif 
+#endif
+
 /*********************************************************************
  * LOCAL FUNCTIONS
  */
 static void zclGenericApp_HandleKeys( byte shift, byte keys );
 static void zclGenericApp_BasicResetCB( void );
+
+#ifdef MT_APP_FUNC
+static void zclGenericApp_ProcessAppMsg( uint8 srcEP, uint8 len, uint8 *msg );
+static void zclGenericApp_ProcessFoundationMsg( afAddrType_t *dstAddr, uint16 clusterID, zclFrameHdr_t *hdr, zclParseCmd_t *pParseCmd );
+#endif
+
 static void zclGenericApp_ProcessIdentifyTimeChange( uint8 endpoint );
 static void zclGenericApp_BindNotification( bdbBindNotificationData_t *data );
 #if ( defined ( BDB_TL_TARGET ) && (BDB_TOUCHLINK_CAPABILITY_ENABLED == TRUE) )
@@ -215,6 +239,11 @@ static uint8 zclGenericApp_ProcessInReadRspCmd( zclIncomingMsg_t *pInMsg );
 #ifdef ZCL_WRITE
 static uint8 zclGenericApp_ProcessInWriteRspCmd( zclIncomingMsg_t *pInMsg );
 #endif
+
+#ifdef ZCL_REPORT_DESTINATION_DEVICE
+static void zclSampleThermostat_ProcessInReportCmd( zclIncomingMsg_t *pInMsg );
+#endif  // ZCL_REPORT_DESTINATION_DEVICE
+
 static uint8 zclGenericApp_ProcessInDefaultRspCmd( zclIncomingMsg_t *pInMsg );
 #ifdef ZCL_DISCOVER
 static uint8 zclGenericApp_ProcessInDiscCmdsRspCmd( zclIncomingMsg_t *pInMsg );
@@ -222,7 +251,7 @@ static uint8 zclGenericApp_ProcessInDiscAttrsRspCmd( zclIncomingMsg_t *pInMsg );
 static uint8 zclGenericApp_ProcessInDiscAttrsExtRspCmd( zclIncomingMsg_t *pInMsg );
 #endif
 
-static void zclSampleApp_BatteryWarningCB( uint8 voltLevel);
+//static void zclSampleApp_BatteryWarningCB( uint8 voltLevel);
 
 /*********************************************************************
  * STATUS STRINGS
@@ -343,7 +372,7 @@ void zclGenericApp_Init( byte task_id )
   // ENDNEW
   
   
-  // This app is part of the Home Automation Profile
+  // This app is part of the Home Automation Profile || Register the Simple Descriptor for this application
   bdb_RegisterSimpleDescriptor( &zclGenericApp_SimpleDesc );
 
   // Register the ZCL General Cluster Library callback functions
@@ -363,14 +392,27 @@ void zclGenericApp_Init( byte task_id )
 #endif
 
   // Register low voltage NV memory protection application callback
-  RegisterVoltageWarningCB( zclSampleApp_BatteryWarningCB );
+//  RegisterVoltageWarningCB( zclGenericApp_BatteryWarningCB );
 
   // Register for all key events - This app will handle all key events
   RegisterForKeys( zclGenericApp_TaskID );
 
+    
   bdb_RegisterCommissioningStatusCB( zclGenericApp_ProcessCommissioningStatus );
   bdb_RegisterIdentifyTimeChangeCB( zclGenericApp_ProcessIdentifyTimeChange );
   bdb_RegisterBindNotificationCB( zclGenericApp_BindNotification );
+
+#ifdef BDB_REPORTING
+  //Adds the default configuration values for the reportable attributes of the ZCL_CLUSTER_ID_HVAC_THERMOSTAT cluster, for endpoint SAMPLETHERMOSTAT_ENDPOINT
+  //Default maxReportingInterval value is 10 seconds
+  //Default minReportingInterval value is 3 seconds
+  //Default reportChange value is 300 (3 degrees)
+  bdb_RepAddAttrCfgRecordDefaultToList(SAMPLETHERMOSTAT_ENDPOINT, ZCL_CLUSTER_ID_HVAC_THERMOSTAT, ATTRID_HVAC_THERMOSTAT_LOCAL_TEMPERATURE, 0, 10, reportableChange);
+  bdb_RepAddAttrCfgRecordDefaultToList(SAMPLETHERMOSTAT_ENDPOINT, ZCL_CLUSTER_ID_HVAC_THERMOSTAT, ATTRID_HVAC_THERMOSTAT_PI_COOLING_DEMAND, 0, 10, reportableChange);
+  bdb_RepAddAttrCfgRecordDefaultToList(SAMPLETHERMOSTAT_ENDPOINT, ZCL_CLUSTER_ID_HVAC_THERMOSTAT, ATTRID_HVAC_THERMOSTAT_PI_HEATING_DEMAND, 0, 10, reportableChange);
+#endif  
+  
+  zdpExternalStateTaskID = zclGenericApp_TaskID;
 
 #if ( defined ( BDB_TL_TARGET ) && (BDB_TOUCHLINK_CAPABILITY_ENABLED == TRUE) )
   bdb_RegisterTouchlinkTargetEnableCB( zclGenericApp_ProcessTouchlinkTargetEnable );
@@ -406,15 +448,14 @@ void zclGenericApp_Init( byte task_id )
  */
 uint16 zclGenericApp_event_loop( uint8 task_id, uint16 events )
 {
-  if (HAL_KEY_SW_6) {
-	  HalUARTWrite(HAL_UART_PORT_0, "ok", sizeof("not ok"));
-	  HalUARTPoll();
-	  HalLedSet(HAL_LED_3, HAL_LED_MODE_TOGGLE);
-  }
+//  if (HAL_KEY_SW_6) {
+//	  HalUARTWrite(HAL_UART_PORT_0, "ok", sizeof("not ok"));
+//	  HalUARTPoll();
+//	  HalLedSet(HAL_LED_3, HAL_LED_MODE_TOGGLE);
+//  }
   
   HalUARTWrite(HAL_UART_PORT_0, "ok", (byte)osal_strlen("ok"));
   HalUARTPoll();
-  HalLedSet(HAL_LED_3, HAL_LED_MODE_OFF);
 	
   afIncomingMSGPacket_t *MSGpkt;
   afDataConfirm_t *afDataConfirm; // NEW
@@ -439,6 +480,14 @@ uint16 zclGenericApp_event_loop( uint8 task_id, uint16 events )
     {
       switch ( MSGpkt->hdr.event )
       {
+#ifdef MT_APP_FUNC
+        case MT_SYS_APP_MSG:
+          // Message received from MT
+          zclGenericApp_ProcessAppMsg( ((mtSysAppMsg_t *)MSGpkt)->endpoint,
+                                          ((mtSysAppMsg_t *)MSGpkt)->appDataLen,
+                                          ((mtSysAppMsg_t *)MSGpkt)->appData );
+#endif
+          break;
 	      // NEW
 	case ZDO_CB_MSG:
           zclGenericApp_ProcessZDOMsgs( (zdoIncomingMsg_t *)MSGpkt );
@@ -511,6 +560,15 @@ uint16 zclGenericApp_event_loop( uint8 task_id, uint16 events )
   
   // NEW
   
+#if ZG_BUILD_ENDDEVICE_TYPE    
+  if ( events & GENERICAPP_END_DEVICE_REJOIN_EVT )
+  {
+    bdb_ZedAttemptRecoverNwk();
+    return ( events ^ GENERICAPP_END_DEVICE_REJOIN_EVT );
+  }
+#endif
+  
+  
   // Send a message out - This event is generated by a timer
   //  (setup in GenericApp_Init()).
   if ( events & GENERICAPP_SEND_MSG_EVT )
@@ -521,10 +579,11 @@ uint16 zclGenericApp_event_loop( uint8 task_id, uint16 events )
     return (events ^ GENERICAPP_SEND_MSG_EVT);
   }
   
-  if (events & GENERICAPP_UART_RX_EVT) {
-    HalUARTWrite(0, "RX_EVT", 7);
-    zclGenericApp_SerialMSGCB();
-  }
+//  if (events & GENERICAPP_UART_RX_EVT) {
+//    HalUARTWrite(0, "RX_EVT", 7);
+//    zclGenericApp_SerialMSGCB();
+//  }
+      zclGenericApp_SerialMSGCB();
   
   // ENDNEW
   
@@ -609,7 +668,7 @@ void zclGenericApp_ProcessZDOMsgs( zdoIncomingMsg_t *inMsg )
             // Take the first endpoint, Can be changed to search through endpoints
             zclGenericApp_DstAddr.endPoint = pRsp->epList[0];
             // Light LED
-            HalLedSet( HAL_LED_4, HAL_LED_MODE_ON );
+            //HalLedSet( HAL_LED_4, HAL_LED_MODE_ON );
           }
           osal_mem_free( pRsp );
         }
@@ -707,6 +766,8 @@ void zclGenericApp_SendTheMessage( unsigned char dest_endID, unsigned char cmd, 
     // Error occurred in request to send.
     HalUARTWrite(0, "Couldn't Sent\r\n", 17);
   }
+  
+  HalLedSet(HAL_LED_2, HAL_LED_MODE_OFF);
 }
 
 
@@ -765,10 +826,252 @@ void str_reverse(char *str, int length) {
 
 
 
+// NEW
+
+
+/*********************************************************************
+ * @fn      zclGenericApp_ProcessFoundationMsg
+ *
+ * @brief   Process Foundation message
+ *
+ * @param   srcEP - Sending Apps endpoint
+ * @param   dstAddr - where to send the request
+ * @param   clusterID - real cluster ID
+ * @param   hdr - pointer to the message header
+ * @param   len - length of the received message
+ * @param   data - received message
+ *
+ * @return  none
+ */
+static void zclGenericApp_ProcessFoundationMsg( afAddrType_t *dstAddr, uint16 clusterID,
+                                                zclFrameHdr_t *hdr, zclParseCmd_t *pParseCmd )
+{
+#if defined(ZCL_READ) || defined(ZCL_WRITE) || defined(ZCL_REPORT) || defined(ZCL_DISCOVER)
+  void *cmd;
+#endif
+
+  switch ( hdr->commandID )
+  {
+#ifdef ZCL_READ
+    case ZCL_CMD_READ:
+      cmd = zclParseInReadCmd( pParseCmd );
+      if ( cmd )
+      {
+        zcl_SendRead( GENERICAPP_ENDPOINT, dstAddr, clusterID, (zclReadCmd_t *)cmd,
+                      ZCL_FRAME_CLIENT_SERVER_DIR, hdr->fc.disableDefaultRsp, hdr->transSeqNum );
+        osal_mem_free( cmd );
+      }
+      break;
+#endif // ZCL_READ
+
+#ifdef ZCL_WRITE
+    case ZCL_CMD_WRITE:
+      cmd = zclParseInWriteCmd( pParseCmd );
+      if ( cmd )
+      {
+        zcl_SendWrite( GENERICAPP_ENDPOINT, dstAddr, clusterID, (zclWriteCmd_t *)cmd,
+                       ZCL_FRAME_CLIENT_SERVER_DIR, hdr->fc.disableDefaultRsp, hdr->transSeqNum );
+        osal_mem_free( cmd );
+      }
+      break;
+
+    case ZCL_CMD_WRITE_UNDIVIDED:
+      cmd = zclParseInWriteCmd( pParseCmd );
+      if ( cmd )
+      {
+        zcl_SendWriteUndivided( GENERICAPP_ENDPOINT, dstAddr, clusterID, (zclWriteCmd_t *)cmd,
+                                ZCL_FRAME_CLIENT_SERVER_DIR, hdr->fc.disableDefaultRsp, hdr->transSeqNum );
+        osal_mem_free( cmd );
+      }
+      break;
+
+    case ZCL_CMD_WRITE_NO_RSP:
+      cmd = zclParseInWriteCmd( pParseCmd );
+      if ( cmd )
+      {
+        zcl_SendWriteNoRsp( GENERICAPP_ENDPOINT, dstAddr, clusterID, (zclWriteCmd_t *)cmd,
+                            ZCL_FRAME_CLIENT_SERVER_DIR, hdr->fc.disableDefaultRsp, hdr->transSeqNum );
+        osal_mem_free( cmd );
+      }
+      break;
+#endif // ZCL_WRITE
+
+#ifdef ZCL_REPORT
+    case ZCL_CMD_CONFIG_REPORT:
+      cmd = zclParseInConfigReportCmd( pParseCmd );
+      if ( cmd )
+      {
+        zcl_SendConfigReportCmd( GENERICAPP_ENDPOINT, dstAddr,  clusterID, (zclCfgReportCmd_t *)cmd,
+                                 ZCL_FRAME_CLIENT_SERVER_DIR, hdr->fc.disableDefaultRsp, hdr->transSeqNum );
+        osal_mem_free( cmd );
+      }
+      break;
+
+    case ZCL_CMD_READ_REPORT_CFG:
+      cmd = zclParseInReadReportCfgCmd( pParseCmd );
+      if ( cmd )
+      {
+        zcl_SendReadReportCfgCmd( GENERICAPP_ENDPOINT, dstAddr, clusterID, (zclReadReportCfgCmd_t *)cmd,
+                                  ZCL_FRAME_CLIENT_SERVER_DIR, hdr->fc.disableDefaultRsp, hdr->transSeqNum );
+        osal_mem_free( cmd );
+      }
+      break;
+
+    case ZCL_CMD_REPORT:
+      cmd = zclParseInReportCmd( pParseCmd );
+      if ( cmd )
+      {
+        zcl_SendReportCmd( GENERICAPP_ENDPOINT, dstAddr, clusterID, (zclReportCmd_t *)cmd,
+                           ZCL_FRAME_CLIENT_SERVER_DIR, hdr->fc.disableDefaultRsp, hdr->transSeqNum );
+        osal_mem_free( cmd );
+      }
+      break;
+#endif // ZCL_REPORT
+#ifdef ZCL_DISCOVER
+    case ZCL_CMD_DISCOVER_ATTRS:
+      cmd = zclParseInDiscAttrsCmd( pParseCmd );
+      if ( cmd )
+      {
+        zcl_SendDiscoverAttrsCmd( GENERICAPP_ENDPOINT, dstAddr, clusterID, (zclDiscoverAttrsCmd_t *)cmd,
+                                  ZCL_FRAME_CLIENT_SERVER_DIR, hdr->fc.disableDefaultRsp, hdr->transSeqNum );
+        osal_mem_free( cmd );
+      }
+      break;
+#endif // ZCL_DISCOVER
+
+    default:
+      // Unsupported command -- just forward it.
+      zcl_SendCommand( pParseCmd->endpoint, dstAddr, clusterID, hdr->commandID, FALSE, ZCL_FRAME_CLIENT_SERVER_DIR,
+                       hdr->fc.disableDefaultRsp, 0, hdr->transSeqNum, pParseCmd->dataLen, pParseCmd->pData );
+      break;
+  }
+}
 
 
 
 
+
+
+
+/*********************************************************************
+ * @fn      zclGenericApp_ProcessAppMsg
+ *
+ * @brief   Process DoorLock messages
+ *
+ * @param   srcEP - Sending Apps endpoint
+ * @param   len - number of bytes
+ * @param   msg - pointer to message
+ *          0 - lo byte destination address
+ *          1 - hi byte destination address
+ *          2 - destination endpoint
+ *          3 - lo byte cluster ID
+ *          4 - hi byte cluster ID
+ *          5 - message length
+ *          6 - destination address mode (first byte of data)
+ *          7 - zcl command frame
+ *
+ * @return  none
+ */
+static void zclGenericApp_ProcessAppMsg( uint8 srcEP, uint8 len, uint8 *msg )
+{
+  afAddrType_t dstAddr;
+  uint16 clusterID;
+  zclFrameHdr_t hdr;
+  uint8 *pData;
+  uint8 dataLen;
+
+  dstAddr.addr.shortAddr = BUILD_UINT16( msg[0], msg[1] );
+  msg += 2;
+  dstAddr.endPoint = *msg++;
+  clusterID = BUILD_UINT16( msg[0], msg[1] );
+  msg += 2;
+  dataLen = *msg++; // Length of message (Z-Tool can support up to 255 octets)
+  dstAddr.addrMode = (afAddrMode_t)(*msg++);
+  dataLen--; // Length of ZCL frame
+
+  // Begining of ZCL frame
+  pData = zclParseHdr( &hdr, msg );
+  dataLen -= (uint8)( pData - msg );
+
+  // Is this a foundation type message?
+  if ( zcl_ProfileCmd( hdr.fc.type ) )
+  {
+    if ( hdr.fc.manuSpecific )
+    {
+      // We don't support any manufacturer specific command -- just forward it.
+      zcl_SendCommand( srcEP, &dstAddr, clusterID, hdr.commandID, FALSE, ZCL_FRAME_CLIENT_SERVER_DIR,
+                       hdr.fc.disableDefaultRsp, hdr.manuCode, hdr.transSeqNum, dataLen, pData );
+    }
+    else
+    {
+      zclParseCmd_t cmd;
+
+      cmd.endpoint = srcEP;
+      cmd.dataLen = dataLen;
+      cmd.pData = pData;
+
+      zclGenericApp_ProcessFoundationMsg( &dstAddr, clusterID, &hdr, &cmd );
+    }
+  }
+  else
+  {
+    // Nope, must be specific to the cluster ID
+    if ( hdr.fc.manuSpecific )
+    {
+      // We don't support any manufacturer specific command -- just forward it.
+      zcl_SendCommand( srcEP, &dstAddr, clusterID, hdr.commandID, TRUE, ZCL_FRAME_CLIENT_SERVER_DIR,
+                       hdr.fc.disableDefaultRsp, hdr.manuCode, hdr.transSeqNum, dataLen, pData );
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+///*********************************************************************
+// * @fn      zclGenericApp_BasicResetCB
+// *
+// * @brief   Callback from the ZCL General Cluster Library
+// *          to set all the Basic Cluster attributes to default values.
+// *
+// * @param   none
+// *
+// * @return  none
+// */
+//static void zclGenericApp_BasicResetCB( void )
+//{
+//  zclGenericApp_ResetAttributesToDefaultValues(); 
+//}
+
+
+
+///*********************************************************************
+// * @fn      zclGenericApp_BatteryWarningCB
+// *
+// * @brief   Called to handle battery-low situation.
+// *
+// * @param   voltLevel - level of severity
+// *
+// * @return  none
+// */
+//void zclGenericApp_BatteryWarningCB( uint8 voltLevel )
+//{
+//  if ( voltLevel == VOLT_LEVEL_CAUTIOUS )
+//  {
+//    // Send warning message to the gateway and blink LED
+//  }
+//  else if ( voltLevel == VOLT_LEVEL_BAD )
+//  {
+//    // Shut down the system
+//  }
+//}
+
+// ENDNEW
 
 
 
@@ -1083,26 +1386,27 @@ static void zclGenericApp_BasicResetCB( void )
   zclGenericApp_ResetAttributesToDefaultValues();
   
 }
-/*********************************************************************
- * @fn      zclSampleApp_BatteryWarningCB
- *
- * @brief   Called to handle battery-low situation.
- *
- * @param   voltLevel - level of severity
- *
- * @return  none
- */
-void zclSampleApp_BatteryWarningCB( uint8 voltLevel )
-{
-  if ( voltLevel == VOLT_LEVEL_CAUTIOUS )
-  {
-    // Send warning message to the gateway and blink LED
-  }
-  else if ( voltLevel == VOLT_LEVEL_BAD )
-  {
-    // Shut down the system
-  }
-}
+
+///*********************************************************************
+// * @fn      zclSampleApp_BatteryWarningCB
+// *
+// * @brief   Called to handle battery-low situation.
+// *
+// * @param   voltLevel - level of severity
+// *
+// * @return  none
+// */
+//void zclSampleApp_BatteryWarningCB( uint8 voltLevel )
+//{
+//  if ( voltLevel == VOLT_LEVEL_CAUTIOUS )
+//  {
+//    // Send warning message to the gateway and blink LED
+//  }
+//  else if ( voltLevel == VOLT_LEVEL_BAD )
+//  {
+//    // Shut down the system
+//  }
+//}
 
 /******************************************************************************
  *
@@ -1221,6 +1525,40 @@ static uint8 zclGenericApp_ProcessInWriteRspCmd( zclIncomingMsg_t *pInMsg )
   return ( TRUE );
 }
 #endif // ZCL_WRITE
+
+
+
+// NEW
+
+#ifdef ZCL_REPORT_DESTINATION_DEVICE
+/*********************************************************************
+ * @fn      zclGenericApp_ProcessInReportCmd
+ *
+ * @brief   Process the "Profile" Report Command
+ *
+ * @param   pInMsg - incoming message to process
+ *
+ * @return  none
+ */
+static void zclGenericApp_ProcessInReportCmd( zclIncomingMsg_t *pInMsg )
+{
+  zclReportCmd_t *pInTempSensorReport;
+  
+  pInTempSensorReport = (zclReportCmd_t *)pInMsg->attrCmd;
+
+  if ( pInTempSensorReport->attrList[0].attrID != ATTRID_MS_TEMPERATURE_MEASURED_VALUE )
+  {
+    return;
+  }
+  
+  // store the current temperature value sent over the air from temperature sensor
+  zclGenericApp_LocalTemperature = BUILD_UINT16(pInTempSensorReport->attrList[0].attrData[0], pInTempSensorReport->attrList[0].attrData[1]);
+}
+#endif  // ZCL_REPORT_DESTINATION_DEVICE
+
+// ENDNEW
+
+
 
 /*********************************************************************
  * @fn      zclGenericApp_ProcessInDefaultRspCmd

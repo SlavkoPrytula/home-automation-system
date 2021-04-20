@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# IAR C/C++ Compiler V10.30.1.6000 for 8051               18/Apr/2021  13:22:02
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               18/Apr/2021  17:01:57
 # Copyright 2004-2018 IAR Systems AB.
 # Evaluation license - IAR Embedded Workbench for 8051, Evaluation edition 10.30
 #
@@ -15,7 +15,7 @@
 #        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\GenericApp\Source\zcl_genericapp_data.c
 #    Command line       =  
-#        -f C:\users\slavko\Temp\EWf09c.tmp ("C:\Texas Instruments\Z-Stack
+#        -f C:\users\slavko\Temp\EW48a1.tmp ("C:\Texas Instruments\Z-Stack
 #        3.0.2-20210417T211827Z-001\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\GenericApp\Source\zcl_genericapp_data.c"
 #        -D SECURE=1 -D TC_LINKKEY_JOIN -D NV_INIT -D NV_RESTORE -D xZTOOL_P1
@@ -169,65 +169,75 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
      49          #include "zcl.h"
      50          #include "zcl_general.h"
      51          #include "zcl_ha.h"
-     52          
-     53          /* GENERICAPP_TODO: Include any of the header files below to access specific cluster data
-     54          #include "zcl_poll_control.h"
-     55          #include "zcl_electrical_measurement.h"
-     56          #include "zcl_diagnostic.h"
-     57          #include "zcl_meter_identification.h"
-     58          #include "zcl_appliance_identification.h"
-     59          #include "zcl_appliance_events_alerts.h"
-     60          #include "zcl_power_profile.h"
-     61          #include "zcl_appliance_control.h"
-     62          #include "zcl_appliance_statistics.h"
-     63          #include "zcl_hvac.h"
-     64          */
-     65          
-     66          #include "zcl_genericapp.h"
-     67          
-     68          /*********************************************************************
-     69           * CONSTANTS
-     70           */
-     71          
-     72          #define GENERICAPP_DEVICE_VERSION     0
-     73          #define GENERICAPP_FLAGS              0
-     74          
-     75          #define GENERICAPP_HWVERSION          1
-     76          #define GENERICAPP_ZCLVERSION         1
+     52          #include "zcl_poll_control.h"
+     53          #include "zcl_electrical_measurement.h"
+     54          #include "zcl_diagnostic.h"
+     55          #include "zcl_meter_identification.h"
+     56          #include "zcl_appliance_identification.h"
+     57          #include "zcl_appliance_events_alerts.h"
+     58          #include "zcl_power_profile.h"
+     59          #include "zcl_appliance_control.h"
+     60          #include "zcl_appliance_statistics.h"
+     61          #include "zcl_hvac.h"
+     62          
+     63          /* GENERICAPP_TODO: Include any of the header files below to access specific cluster data
+     64          #include "zcl_poll_control.h"
+     65          #include "zcl_electrical_measurement.h"
+     66          #include "zcl_diagnostic.h"
+     67          #include "zcl_meter_identification.h"
+     68          #include "zcl_appliance_identification.h"
+     69          #include "zcl_appliance_events_alerts.h"
+     70          #include "zcl_power_profile.h"
+     71          #include "zcl_appliance_control.h"
+     72          #include "zcl_appliance_statistics.h"
+     73          #include "zcl_hvac.h"
+     74          */
+     75          
+     76          #include "zcl_genericapp.h"
      77          
      78          /*********************************************************************
-     79           * TYPEDEFS
+     79           * CONSTANTS
      80           */
      81          
-     82          /*********************************************************************
-     83           * MACROS
-     84           */
-     85          
-     86          /*********************************************************************
-     87           * GLOBAL VARIABLES
-     88           */
-     89          
-     90          // Global attributes
+     82          #define GENERICAPP_DEVICE_VERSION     0
+     83          #define GENERICAPP_FLAGS              0
+     84          
+     85          #define GENERICAPP_HWVERSION          1
+     86          #define GENERICAPP_ZCLVERSION         1
+     87          
+     88          /*********************************************************************
+     89           * TYPEDEFS
+     90           */
+     91          
+     92          /*********************************************************************
+     93           * MACROS
+     94           */
+     95          
+     96          /*********************************************************************
+     97           * GLOBAL VARIABLES
+     98           */
+     99          
+    100          // Global attributes
 
    \                                 In  segment XDATA_ROM_C, align 1
-     91          const uint16 zclGenericApp_clusterRevision_all = 0x0001; 
+    101          const uint16 zclGenericApp_clusterRevision_all = 0x0001; 
    \                     zclGenericApp_clusterRevision_all:
    \   000000   0100         DW 1
-     92          
-     93          // Basic Cluster
+    102          
+    103          // Basic Cluster
 
    \                                 In  segment XDATA_ROM_C, align 1
-     94          const uint8 zclGenericApp_HWRevision = GENERICAPP_HWVERSION;
+    104          const uint8 zclGenericApp_HWRevision = GENERICAPP_HWVERSION;
    \                     zclGenericApp_HWRevision:
    \   000000   01           DB 1
 
    \                                 In  segment XDATA_ROM_C, align 1
-     95          const uint8 zclGenericApp_ZCLVersion = GENERICAPP_ZCLVERSION;
+    105          const uint8 zclGenericApp_ZCLVersion = GENERICAPP_ZCLVERSION;
    \                     zclGenericApp_ZCLVersion:
    \   000000   01           DB 1
 
    \                                 In  segment XDATA_ROM_C, align 1
-     96          const uint8 zclGenericApp_ManufacturerName[] = { 16, 'T','e','x','a','s','I','n','s','t','r','u','m','e','n','t','s' };
+    106          const uint8 zclGenericApp_ManufacturerName[] = { 16, 'T','e','x','a','s','I','n','s','t','r','u','m','e','n','t','s' };
    \                     zclGenericApp_ManufacturerName:
    \   000000   10           DB 16
    \   000001   54           DB 84
@@ -248,7 +258,7 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   000010   73           DB 115
 
    \                                 In  segment XDATA_ROM_C, align 1
-     97          const uint8 zclGenericApp_ModelId[] = { 16, 'T','I','0','0','0','1',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ' };
+    107          const uint8 zclGenericApp_ModelId[] = { 16, 'T','I','0','0','0','1',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ' };
    \                     zclGenericApp_ModelId:
    \   000000   10           DB 16
    \   000001   54           DB 84
@@ -269,7 +279,7 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   000010   20           DB 32
 
    \                                 In  segment XDATA_ROM_C, align 1
-     98          const uint8 zclGenericApp_DateCode[] = { 16, '2','0','0','6','0','8','3','1',' ',' ',' ',' ',' ',' ',' ',' ' };
+    108          const uint8 zclGenericApp_DateCode[] = { 16, '2','0','0','6','0','8','3','1',' ',' ',' ',' ',' ',' ',' ',' ' };
    \                     zclGenericApp_DateCode:
    \   000000   10           DB 16
    \   000001   32           DB 50
@@ -290,64 +300,64 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   000010   20           DB 32
 
    \                                 In  segment XDATA_ROM_C, align 1
-     99          const uint8 zclGenericApp_PowerSource = POWER_SOURCE_MAINS_1_PHASE;
+    109          const uint8 zclGenericApp_PowerSource = POWER_SOURCE_MAINS_1_PHASE;
    \                     zclGenericApp_PowerSource:
    \   000000   01           DB 1
-    100          
+    110          
 
    \                                 In  segment XDATA_I, align 1, keep-with-next
-    101          uint8 zclGenericApp_LocationDescription[17] = { 16, ' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ' };
+    111          uint8 zclGenericApp_LocationDescription[17] = { 16, ' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ' };
    \                     zclGenericApp_LocationDescription:
    \   000000                DS 17
    \   000011                REQUIRE `?<Initializer for zclGenericApp_LocationDescri`
    \   000011                REQUIRE __INIT_XDATA_I
 
    \                                 In  segment XDATA_Z, align 1, keep-with-next
-    102          uint8 zclGenericApp_PhysicalEnvironment = 0;
+    112          uint8 zclGenericApp_PhysicalEnvironment = 0;
    \                     zclGenericApp_PhysicalEnvironment:
    \   000000                DS 1
    \   000001                REQUIRE __INIT_XDATA_Z
 
    \                                 In  segment XDATA_I, align 1, keep-with-next
-    103          uint8 zclGenericApp_DeviceEnable = DEVICE_ENABLED;
+    113          uint8 zclGenericApp_DeviceEnable = DEVICE_ENABLED;
    \                     zclGenericApp_DeviceEnable:
    \   000000                DS 1
    \   000001                REQUIRE `?<Initializer for zclGenericApp_DeviceEnable>`
    \   000001                REQUIRE __INIT_XDATA_I
-    104          
-    105          // Identify Cluster
+    114          
+    115          // Identify Cluster
 
    \                                 In  segment XDATA_Z, align 1, keep-with-next
-    106          uint16 zclGenericApp_IdentifyTime;
+    116          uint16 zclGenericApp_IdentifyTime;
    \                     zclGenericApp_IdentifyTime:
    \   000000                DS 2
    \   000002                REQUIRE __INIT_XDATA_Z
-    107          
-    108          /* GENERICAPP_TODO: declare attribute variables here. If its value can change,
-    109           * initialize it in zclGenericApp_ResetAttributesToDefaultValues. If its
-    110           * value will not change, initialize it here.
-    111           */
-    112          
-    113          #if ZCL_DISCOVER
-    114          CONST zclCommandRec_t zclGenericApp_Cmds[] =
-    115          {
-    116            {
-    117              ZCL_CLUSTER_ID_GEN_BASIC,
-    118              COMMAND_BASIC_RESET_FACT_DEFAULT,
-    119              CMD_DIR_SERVER_RECEIVED
-    120            },
-    121          
-    122          };
-    123          
-    124          CONST uint8 zclCmdsArraySize = ( sizeof(zclGenericApp_Cmds) / sizeof(zclGenericApp_Cmds[0]) );
-    125          #endif // ZCL_DISCOVER
-    126          
-    127          /*********************************************************************
-    128           * ATTRIBUTE DEFINITIONS - Uses REAL cluster IDs
-    129           */
+    117          
+    118          /* GENERICAPP_TODO: declare attribute variables here. If its value can change,
+    119           * initialize it in zclGenericApp_ResetAttributesToDefaultValues. If its
+    120           * value will not change, initialize it here.
+    121           */
+    122          
+    123          #if ZCL_DISCOVER
+    124          CONST zclCommandRec_t zclGenericApp_Cmds[] =
+    125          {
+    126            {
+    127              ZCL_CLUSTER_ID_GEN_BASIC,
+    128              COMMAND_BASIC_RESET_FACT_DEFAULT,
+    129              CMD_DIR_SERVER_RECEIVED
+    130            },
+    131          
+    132          };
+    133          
+    134          CONST uint8 zclCmdsArraySize = ( sizeof(zclGenericApp_Cmds) / sizeof(zclGenericApp_Cmds[0]) );
+    135          #endif // ZCL_DISCOVER
+    136          
+    137          /*********************************************************************
+    138           * ATTRIBUTE DEFINITIONS - Uses REAL cluster IDs
+    139           */
 
    \                                 In  segment CODE_C, align 1
-    130          CONST zclAttrRec_t zclGenericApp_Attrs[] =
+    140          CONST zclAttrRec_t zclGenericApp_Attrs[] =
    \                     zclGenericApp_Attrs:
    \   000000   0000         DW 0
    \   000002   0300         DW 3
@@ -409,223 +419,223 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   00005C   21           DB 33
    \   00005D   01           DB 1
    \   00005E   ....         DW zclGenericApp_clusterRevision_all
-    131          {
-    132            // *** General Basic Cluster Attributes ***
-    133            {
-    134              ZCL_CLUSTER_ID_GEN_BASIC,             // Cluster IDs - defined in the foundation (ie. zcl.h)
-    135              {  // Attribute record
-    136                ATTRID_BASIC_HW_VERSION,            // Attribute ID - Found in Cluster Library header (ie. zcl_general.h)
-    137                ZCL_DATATYPE_UINT8,                 // Data Type - found in zcl.h
-    138                ACCESS_CONTROL_READ,                // Variable access control - found in zcl.h
-    139                (void *)&zclGenericApp_HWRevision  // Pointer to attribute variable
-    140              }
-    141            },
-    142            {
-    143              ZCL_CLUSTER_ID_GEN_BASIC,
-    144              { // Attribute record
-    145                ATTRID_BASIC_ZCL_VERSION,
-    146                ZCL_DATATYPE_UINT8,
-    147                ACCESS_CONTROL_READ,
-    148                (void *)&zclGenericApp_ZCLVersion
-    149              }
-    150            },
-    151            {
-    152              ZCL_CLUSTER_ID_GEN_BASIC,
-    153              { // Attribute record
-    154                ATTRID_BASIC_MANUFACTURER_NAME,
-    155                ZCL_DATATYPE_CHAR_STR,
-    156                ACCESS_CONTROL_READ,
-    157                (void *)zclGenericApp_ManufacturerName
-    158              }
-    159            },
-    160            {
-    161              ZCL_CLUSTER_ID_GEN_BASIC,
-    162              { // Attribute record
-    163                ATTRID_BASIC_MODEL_ID,
-    164                ZCL_DATATYPE_CHAR_STR,
-    165                ACCESS_CONTROL_READ,
-    166                (void *)zclGenericApp_ModelId
-    167              }
-    168            },
-    169            {
-    170              ZCL_CLUSTER_ID_GEN_BASIC,
-    171              { // Attribute record
-    172                ATTRID_BASIC_DATE_CODE,
-    173                ZCL_DATATYPE_CHAR_STR,
-    174                ACCESS_CONTROL_READ,
-    175                (void *)zclGenericApp_DateCode
-    176              }
-    177            },
-    178            {
-    179              ZCL_CLUSTER_ID_GEN_BASIC,
-    180              { // Attribute record
-    181                ATTRID_BASIC_POWER_SOURCE,
-    182                ZCL_DATATYPE_ENUM8,
-    183                ACCESS_CONTROL_READ,
-    184                (void *)&zclGenericApp_PowerSource
-    185              }
-    186            },
-    187            {
-    188              ZCL_CLUSTER_ID_GEN_BASIC,
-    189              { // Attribute record
-    190                ATTRID_BASIC_LOCATION_DESC,
-    191                ZCL_DATATYPE_CHAR_STR,
-    192                (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
-    193                (void *)zclGenericApp_LocationDescription
-    194              }
-    195            },
-    196            {
-    197              ZCL_CLUSTER_ID_GEN_BASIC,
-    198              { // Attribute record
-    199                ATTRID_BASIC_PHYSICAL_ENV,
-    200                ZCL_DATATYPE_ENUM8,
-    201                (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
-    202                (void *)&zclGenericApp_PhysicalEnvironment
-    203              }
-    204            },
-    205            {
-    206              ZCL_CLUSTER_ID_GEN_BASIC,
-    207              { // Attribute record
-    208                ATTRID_BASIC_DEVICE_ENABLED,
-    209                ZCL_DATATYPE_BOOLEAN,
-    210                (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
-    211                (void *)&zclGenericApp_DeviceEnable
-    212              }
-    213            },
-    214          
-    215          #ifdef ZCL_IDENTIFY
-    216            // *** Identify Cluster Attribute ***
-    217            {
-    218              ZCL_CLUSTER_ID_GEN_IDENTIFY,
-    219              { // Attribute record
-    220                ATTRID_IDENTIFY_TIME,
-    221                ZCL_DATATYPE_UINT16,
-    222                (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
-    223                (void *)&zclGenericApp_IdentifyTime
-    224              }
-    225            },
-    226          #endif
+    141          {
+    142            // *** General Basic Cluster Attributes ***
+    143            {
+    144              ZCL_CLUSTER_ID_GEN_BASIC,             // Cluster IDs - defined in the foundation (ie. zcl.h)
+    145              {  // Attribute record
+    146                ATTRID_BASIC_HW_VERSION,            // Attribute ID - Found in Cluster Library header (ie. zcl_general.h)
+    147                ZCL_DATATYPE_UINT8,                 // Data Type - found in zcl.h
+    148                ACCESS_CONTROL_READ,                // Variable access control - found in zcl.h
+    149                (void *)&zclGenericApp_HWRevision  // Pointer to attribute variable
+    150              }
+    151            },
+    152            {
+    153              ZCL_CLUSTER_ID_GEN_BASIC,
+    154              { // Attribute record
+    155                ATTRID_BASIC_ZCL_VERSION,
+    156                ZCL_DATATYPE_UINT8,
+    157                ACCESS_CONTROL_READ,
+    158                (void *)&zclGenericApp_ZCLVersion
+    159              }
+    160            },
+    161            {
+    162              ZCL_CLUSTER_ID_GEN_BASIC,
+    163              { // Attribute record
+    164                ATTRID_BASIC_MANUFACTURER_NAME,
+    165                ZCL_DATATYPE_CHAR_STR,
+    166                ACCESS_CONTROL_READ,
+    167                (void *)zclGenericApp_ManufacturerName
+    168              }
+    169            },
+    170            {
+    171              ZCL_CLUSTER_ID_GEN_BASIC,
+    172              { // Attribute record
+    173                ATTRID_BASIC_MODEL_ID,
+    174                ZCL_DATATYPE_CHAR_STR,
+    175                ACCESS_CONTROL_READ,
+    176                (void *)zclGenericApp_ModelId
+    177              }
+    178            },
+    179            {
+    180              ZCL_CLUSTER_ID_GEN_BASIC,
+    181              { // Attribute record
+    182                ATTRID_BASIC_DATE_CODE,
+    183                ZCL_DATATYPE_CHAR_STR,
+    184                ACCESS_CONTROL_READ,
+    185                (void *)zclGenericApp_DateCode
+    186              }
+    187            },
+    188            {
+    189              ZCL_CLUSTER_ID_GEN_BASIC,
+    190              { // Attribute record
+    191                ATTRID_BASIC_POWER_SOURCE,
+    192                ZCL_DATATYPE_ENUM8,
+    193                ACCESS_CONTROL_READ,
+    194                (void *)&zclGenericApp_PowerSource
+    195              }
+    196            },
+    197            {
+    198              ZCL_CLUSTER_ID_GEN_BASIC,
+    199              { // Attribute record
+    200                ATTRID_BASIC_LOCATION_DESC,
+    201                ZCL_DATATYPE_CHAR_STR,
+    202                (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+    203                (void *)zclGenericApp_LocationDescription
+    204              }
+    205            },
+    206            {
+    207              ZCL_CLUSTER_ID_GEN_BASIC,
+    208              { // Attribute record
+    209                ATTRID_BASIC_PHYSICAL_ENV,
+    210                ZCL_DATATYPE_ENUM8,
+    211                (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+    212                (void *)&zclGenericApp_PhysicalEnvironment
+    213              }
+    214            },
+    215            {
+    216              ZCL_CLUSTER_ID_GEN_BASIC,
+    217              { // Attribute record
+    218                ATTRID_BASIC_DEVICE_ENABLED,
+    219                ZCL_DATATYPE_BOOLEAN,
+    220                (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+    221                (void *)&zclGenericApp_DeviceEnable
+    222              }
+    223            },
+    224          
+    225          #ifdef ZCL_IDENTIFY
+    226            // *** Identify Cluster Attribute ***
     227            {
-    228              ZCL_CLUSTER_ID_GEN_BASIC,
-    229              {  // Attribute record
-    230                ATTRID_CLUSTER_REVISION,
+    228              ZCL_CLUSTER_ID_GEN_IDENTIFY,
+    229              { // Attribute record
+    230                ATTRID_IDENTIFY_TIME,
     231                ZCL_DATATYPE_UINT16,
-    232                ACCESS_CONTROL_READ,
-    233                (void *)&zclGenericApp_clusterRevision_all
+    232                (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
+    233                (void *)&zclGenericApp_IdentifyTime
     234              }
     235            },
-    236            {
-    237              ZCL_CLUSTER_ID_GEN_IDENTIFY,
-    238              {  // Attribute record
-    239                ATTRID_CLUSTER_REVISION,
-    240                ZCL_DATATYPE_UINT16,
-    241                ACCESS_CONTROL_READ,
-    242                (void *)&zclGenericApp_clusterRevision_all
-    243              }
-    244            },
-    245          };
-    246          
+    236          #endif
+    237            {
+    238              ZCL_CLUSTER_ID_GEN_BASIC,
+    239              {  // Attribute record
+    240                ATTRID_CLUSTER_REVISION,
+    241                ZCL_DATATYPE_UINT16,
+    242                ACCESS_CONTROL_READ,
+    243                (void *)&zclGenericApp_clusterRevision_all
+    244              }
+    245            },
+    246            {
+    247              ZCL_CLUSTER_ID_GEN_IDENTIFY,
+    248              {  // Attribute record
+    249                ATTRID_CLUSTER_REVISION,
+    250                ZCL_DATATYPE_UINT16,
+    251                ACCESS_CONTROL_READ,
+    252                (void *)&zclGenericApp_clusterRevision_all
+    253              }
+    254            },
+    255          };
+    256          
 
    \                                 In  segment CODE_C, align 1
-    247          uint8 CONST zclGenericApp_NumAttributes = ( sizeof(zclGenericApp_Attrs) / sizeof(zclGenericApp_Attrs[0]) );
+    257          uint8 CONST zclGenericApp_NumAttributes = ( sizeof(zclGenericApp_Attrs) / sizeof(zclGenericApp_Attrs[0]) );
    \                     zclGenericApp_NumAttributes:
    \   000000   0C           DB 12
-    248          
-    249          /*********************************************************************
-    250           * SIMPLE DESCRIPTOR
-    251           */
-    252          // This is the Cluster ID List and should be filled with Application
-    253          // specific cluster IDs.
+    258          
+    259          /*********************************************************************
+    260           * SIMPLE DESCRIPTOR
+    261           */
+    262          // This is the Cluster ID List and should be filled with Application
+    263          // specific cluster IDs.
 
    \                                 In  segment XDATA_ROM_C, align 1
-    254          const cId_t zclGenericApp_InClusterList[] =
+    264          const cId_t zclGenericApp_InClusterList[] =
    \                     zclGenericApp_InClusterList:
    \   000000   0000         DW 0
    \   000002   0300         DW 3
-    255          {
-    256            ZCL_CLUSTER_ID_GEN_BASIC,
-    257            ZCL_CLUSTER_ID_GEN_IDENTIFY,
-    258            
-    259            // GENERICAPP_TODO: Add application specific Input Clusters Here. 
-    260            //       See zcl.h for Cluster ID definitions
-    261            
-    262          };
-    263          #define ZCLGENERICAPP_MAX_INCLUSTERS   (sizeof(zclGenericApp_InClusterList) / sizeof(zclGenericApp_InClusterList[0]))
-    264          
-    265          
-
-   \                                 In  segment XDATA_ROM_C, align 1
-    266          const cId_t zclGenericApp_OutClusterList[] =
-   \                     zclGenericApp_OutClusterList:
-   \   000000   0000         DW 0
-    267          {
-    268            ZCL_CLUSTER_ID_GEN_BASIC,
-    269            
-    270            // GENERICAPP_TODO: Add application specific Output Clusters Here. 
-    271            //       See zcl.h for Cluster ID definitions
+    265          {
+    266            ZCL_CLUSTER_ID_GEN_BASIC,
+    267            ZCL_CLUSTER_ID_GEN_IDENTIFY,
+    268            
+    269            // GENERICAPP_TODO: Add application specific Input Clusters Here. 
+    270            //       See zcl.h for Cluster ID definitions
+    271            
     272          };
-    273          #define ZCLGENERICAPP_MAX_OUTCLUSTERS  (sizeof(zclGenericApp_OutClusterList) / sizeof(zclGenericApp_OutClusterList[0]))
+    273          #define ZCLGENERICAPP_MAX_INCLUSTERS   (sizeof(zclGenericApp_InClusterList) / sizeof(zclGenericApp_InClusterList[0]))
     274          
     275          
 
+   \                                 In  segment XDATA_ROM_C, align 1
+    276          const cId_t zclGenericApp_OutClusterList[] =
+   \                     zclGenericApp_OutClusterList:
+   \   000000   0000         DW 0
+    277          {
+    278            ZCL_CLUSTER_ID_GEN_BASIC,
+    279            
+    280            // GENERICAPP_TODO: Add application specific Output Clusters Here. 
+    281            //       See zcl.h for Cluster ID definitions
+    282          };
+    283          #define ZCLGENERICAPP_MAX_OUTCLUSTERS  (sizeof(zclGenericApp_OutClusterList) / sizeof(zclGenericApp_OutClusterList[0]))
+    284          
+    285          
+
    \                                 In  segment XDATA_I, align 1, keep-with-next
-    276          SimpleDescriptionFormat_t zclGenericApp_SimpleDesc =
+    286          SimpleDescriptionFormat_t zclGenericApp_SimpleDesc =
    \                     zclGenericApp_SimpleDesc:
    \   000000                DS 12
    \   00000C                REQUIRE `?<Initializer for zclGenericApp_SimpleDesc>`
    \   00000C                REQUIRE __INIT_XDATA_I
-    277          {
-    278            GENERICAPP_ENDPOINT,                  //  int Endpoint;
-    279            ZCL_HA_PROFILE_ID,                     //  uint16 AppProfId;
-    280            // GENERICAPP_TODO: Replace ZCL_HA_DEVICEID_ON_OFF_LIGHT with application specific device ID
-    281            ZCL_HA_DEVICEID_ON_OFF_LIGHT,          //  uint16 AppDeviceId; 
-    282            GENERICAPP_DEVICE_VERSION,            //  int   AppDevVer:4;
-    283            GENERICAPP_FLAGS,                     //  int   AppFlags:4;
-    284            ZCLGENERICAPP_MAX_INCLUSTERS,         //  byte  AppNumInClusters;
-    285            (cId_t *)zclGenericApp_InClusterList, //  byte *pAppInClusterList;
-    286            ZCLGENERICAPP_MAX_OUTCLUSTERS,        //  byte  AppNumInClusters;
-    287            (cId_t *)zclGenericApp_OutClusterList //  byte *pAppInClusterList;
-    288          };
-    289          
-    290          // Added to include ZLL Target functionality
-    291          #if defined ( BDB_TL_INITIATOR ) || defined ( BDB_TL_TARGET )
-    292          bdbTLDeviceInfo_t tlGenericApp_DeviceInfo =
-    293          {
-    294            GENERICAPP_ENDPOINT,                  //uint8 endpoint;
-    295            ZCL_HA_PROFILE_ID,                        //uint16 profileID;
-    296            // GENERICAPP_TODO: Replace ZCL_HA_DEVICEID_ON_OFF_LIGHT with application specific device ID
-    297            ZCL_HA_DEVICEID_ON_OFF_LIGHT,          //uint16 deviceID;
-    298            GENERICAPP_DEVICE_VERSION,                    //uint8 version;
-    299            GENERICAPP_NUM_GRPS                   //uint8 grpIdCnt;
-    300          };
-    301          #endif
-    302          
-    303          /*********************************************************************
-    304           * GLOBAL FUNCTIONS
-    305           */
-    306          
-    307          /*********************************************************************
-    308           * LOCAL FUNCTIONS
-    309           */
-    310            
+    287          {
+    288            GENERICAPP_ENDPOINT,                  //  int Endpoint;
+    289            ZCL_HA_PROFILE_ID,                     //  uint16 AppProfId;
+    290            // GENERICAPP_TODO: Replace ZCL_HA_DEVICEID_ON_OFF_LIGHT with application specific device ID
+    291            ZCL_HA_DEVICEID_ON_OFF_LIGHT,          //  uint16 AppDeviceId; 
+    292            GENERICAPP_DEVICE_VERSION,            //  int   AppDevVer:4;
+    293            GENERICAPP_FLAGS,                     //  int   AppFlags:4;
+    294            ZCLGENERICAPP_MAX_INCLUSTERS,         //  byte  AppNumInClusters;
+    295            (cId_t *)zclGenericApp_InClusterList, //  byte *pAppInClusterList;
+    296            ZCLGENERICAPP_MAX_OUTCLUSTERS,        //  byte  AppNumInClusters;
+    297            (cId_t *)zclGenericApp_OutClusterList //  byte *pAppInClusterList;
+    298          };
+    299          
+    300          // Added to include ZLL Target functionality
+    301          #if defined ( BDB_TL_INITIATOR ) || defined ( BDB_TL_TARGET )
+    302          bdbTLDeviceInfo_t tlGenericApp_DeviceInfo =
+    303          {
+    304            GENERICAPP_ENDPOINT,                  //uint8 endpoint;
+    305            ZCL_HA_PROFILE_ID,                        //uint16 profileID;
+    306            // GENERICAPP_TODO: Replace ZCL_HA_DEVICEID_ON_OFF_LIGHT with application specific device ID
+    307            ZCL_HA_DEVICEID_ON_OFF_LIGHT,          //uint16 deviceID;
+    308            GENERICAPP_DEVICE_VERSION,                    //uint8 version;
+    309            GENERICAPP_NUM_GRPS                   //uint8 grpIdCnt;
+    310          };
+    311          #endif
+    312          
+    313          /*********************************************************************
+    314           * GLOBAL FUNCTIONS
+    315           */
+    316          
+    317          /*********************************************************************
+    318           * LOCAL FUNCTIONS
+    319           */
+    320            
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-    311          void zclGenericApp_ResetAttributesToDefaultValues(void)
+    321          void zclGenericApp_ResetAttributesToDefaultValues(void)
    \                     zclGenericApp_ResetAttributesToDefaultValues:
-    312          {
+    322          {
    \   000000   C082         PUSH      DPL
    \   000002   C083         PUSH      DPH
    \   000004                ; Saved register size: 2
    \   000004                ; Auto size: 0
-    313            int i;
-    314            
-    315            zclGenericApp_LocationDescription[0] = 16;
+    323            int i;
+    324            
+    325            zclGenericApp_LocationDescription[0] = 16;
    \   000004   90....       MOV       DPTR,#zclGenericApp_LocationDescription
    \   000007   7410         MOV       A,#0x10
    \   000009   F0           MOVX      @DPTR,A
-    316            for (i = 1; i <= 16; i++)
-    317            {
-    318              zclGenericApp_LocationDescription[i] = ' ';
+    326            for (i = 1; i <= 16; i++)
+    327            {
+    328              zclGenericApp_LocationDescription[i] = ' ';
    \   00000A   7420         MOV       A,#0x20
    \   00000C   A3           INC       DPTR
    \   00000D   7810         MOV       R0,#0x10
@@ -633,28 +643,28 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   00000F   F0           MOVX      @DPTR,A
    \   000010   A3           INC       DPTR
    \   000011   D8FC         DJNZ      R0,??zclGenericApp_ResetAttributesToDefaultValues_0
-    319            }
-    320            
-    321            zclGenericApp_PhysicalEnvironment = PHY_UNSPECIFIED_ENV;
+    329            }
+    330            
+    331            zclGenericApp_PhysicalEnvironment = PHY_UNSPECIFIED_ENV;
    \   000013   90....       MOV       DPTR,#zclGenericApp_PhysicalEnvironment
    \   000016   E4           CLR       A
    \   000017   F0           MOVX      @DPTR,A
-    322            zclGenericApp_DeviceEnable = DEVICE_ENABLED;
+    332            zclGenericApp_DeviceEnable = DEVICE_ENABLED;
    \   000018   90....       MOV       DPTR,#zclGenericApp_DeviceEnable
    \   00001B   04           INC       A
    \   00001C   F0           MOVX      @DPTR,A
-    323            
-    324          #ifdef ZCL_IDENTIFY
-    325            zclGenericApp_IdentifyTime = 0;
+    333            
+    334          #ifdef ZCL_IDENTIFY
+    335            zclGenericApp_IdentifyTime = 0;
    \   00001D   90....       MOV       DPTR,#zclGenericApp_IdentifyTime
    \   000020   E4           CLR       A
    \   000021   F0           MOVX      @DPTR,A
    \   000022   A3           INC       DPTR
    \   000023   F0           MOVX      @DPTR,A
-    326          #endif
-    327            
-    328            /* GENERICAPP_TODO: initialize cluster attribute variables. */
-    329          }
+    336          #endif
+    337            
+    338            /* GENERICAPP_TODO: initialize cluster attribute variables. */
+    339          }
    \   000024   D083         POP       DPH
    \   000026   D082         POP       DPL
    \   000028   02....       LJMP      ?BRET
@@ -685,7 +695,7 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
 
    \                                 In  segment XDATA_ID, align 1, keep-with-next
    \                     `?<Initializer for zclGenericApp_SimpleDesc>`:
-   \   000000   20           DB 32
+   \   000000   00           DB 0
    \   000001   0401         DW 260
    \   000003   0001         DW 256
    \   000005   00           DB 0
@@ -693,11 +703,11 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\z
    \   000007   ....         DW zclGenericApp_InClusterList
    \   000009   01           DB 1
    \   00000A   ....         DW zclGenericApp_OutClusterList
-    330          
-    331          /****************************************************************************
-    332          ****************************************************************************/
-    333          
-    334          
+    340          
+    341          /****************************************************************************
+    342          ****************************************************************************/
+    343          
+    344          
 
    Maximum stack usage in bytes:
 

@@ -254,5 +254,38 @@ void zclHA_LcdStatusLine1( uint8 kind )
 #endif
 }
 
+
+
+/*********************************************************************
+ * @fn      zclHA_Init
+ *
+ * @brief   Register the Simple descriptor with the HA profile.
+ *          This function also registers the profile's cluster
+ *          conversion table.
+ *
+ * @param   simpleDesc - a pointer to a valid SimpleDescriptionFormat_t, must not be NULL.
+ *
+ * @return  none
+ */
+void zclHA_Init( SimpleDescriptionFormat_t *simpleDesc )
+{
+  endPointDesc_t *epDesc;
+
+  // Register the application's endpoint descriptor
+  //  - This memory is allocated and never freed.
+  epDesc = osal_mem_alloc( sizeof ( endPointDesc_t ) );
+  if ( epDesc )
+  {
+    // Fill out the endpoint description.
+    epDesc->endPoint = simpleDesc->EndPoint;
+    epDesc->task_id = &zcl_TaskID;   // all messages get sent to ZCL first
+    epDesc->simpleDesc = simpleDesc;
+    epDesc->latencyReq = noLatencyReqs;
+
+    // Register the endpoint description with the AF
+    afRegister( epDesc );
+  }
+}
+
 /*********************************************************************
 *********************************************************************/

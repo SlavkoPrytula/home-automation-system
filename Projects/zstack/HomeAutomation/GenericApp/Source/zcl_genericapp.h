@@ -70,7 +70,7 @@ extern "C"
 // These constants are only for example and should be changed to the
 // device's needs
 //#define NV_RESTORE
-#define GENERICAPP_ENDPOINT           0x20 //coordinator: 0x20, 0x40, 0x80
+#define GENERICAPP_ENDPOINT           0 //0x20 //coordinator: 0x20, 0x40, 0x80
 
 	
 #define GENERICAPP_PROFID             0x0F04
@@ -80,6 +80,10 @@ extern "C"
 
 #define GENERICAPP_MAX_CLUSTERS       1
 #define GENERICAPP_CLUSTERID          1
+	 
+#define LIGHT_OFF                       0x00
+#define LIGHT_ON                        0x01
+
 
 // Send Message Timeout
 #define GENERICAPP_SEND_MSG_TIMEOUT   5000     // Every 5 seconds

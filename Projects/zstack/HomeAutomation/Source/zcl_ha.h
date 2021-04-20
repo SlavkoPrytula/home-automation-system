@@ -144,6 +144,11 @@ extern bool zclHA_isbit(uint8 *pArray, uint8 bitIndex);
 extern void zclHA_setbit(uint8 *pArray, uint8 bitIndex);
 extern void zclHA_clearbit(uint8 *pArray, uint8 bitIndex);
 
+ /*
+  *  ZCL Home Automation Profile initialization function
+  */
+extern void zclHA_Init( SimpleDescriptionFormat_t *simpleDesc );
+
 /*********************************************************************
 *********************************************************************/
 

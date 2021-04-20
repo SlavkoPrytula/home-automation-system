@@ -1,0 +1,726 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               19/Apr/2021  17:31:12
+# Copyright 2004-2018 IAR Systems AB.
+# Evaluation license - IAR Embedded Workbench for 8051, Evaluation edition 10.30
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data_rom
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\Source\zcl_samplelight.c
+#    Command line       =  
+#        -f C:\users\slavko\Temp\EW279c.tmp ("C:\Texas Instruments\Z-Stack
+#        3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\Source\zcl_samplelight.c"
+#        -D BDB_REPORTING -D SECURE=1 -D TC_LINKKEY_JOIN -D NV_INIT -D
+#        NV_RESTORE -D xPOWER_SAVING -D NWK_AUTO_POLL -D xZTOOL_P1 -D xMT_TASK
+#        -D xMT_APP_FUNC -D xMT_SYS_FUNC -D xMT_ZDO_FUNC -D xMT_ZDO_MGMT -D
+#        xMT_APP_CNF_FUNC -D LCD_SUPPORTED=DEBUG -D MULTICAST_ENABLED=FALSE -D
+#        ZCL_READ -D ZCL_DISCOVER -D ZCL_WRITE -D ZCL_BASIC -D ZCL_IDENTIFY -D
+#        ZCL_ON_OFF -D ZCL_SCENES -D ZCL_GROUPS -D ZCL_LEVEL_CTRL -lC "C:\Texas
+#        Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\EndDeviceEB\List"
+#        -lA "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\EndDeviceEB\List"
+#        --diag_suppress Pe001,Pa010 -o "C:\Texas Instruments\Z-Stack
+#        3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\EndDeviceEB\Obj"
+#        -e --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data_rom --nr_virtual_regs 16 -f "C:\Texas
+#        Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg"
+#        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_TX_DATA_MAX=3
+#        -DMAC_CFG_TX_MAX=6 -DMAC_CFG_RX_MAX=3) -f "C:\Texas
+#        Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg"
+#        (-DZIGBEEPRO -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
+#        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
+#        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
+#        -DBEACON_REQUEST_DELAY=100 -DBEACON_REQ_DELAY_MASK=0x00FF
+#        -DLINK_STATUS_JITTER_MASK=0x007F -DROUTE_EXPIRY_TIME=30
+#        -DAPSC_ACK_WAIT_DURATION_POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7
+#        -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3
+#        -DNWK_MAX_DATA_RETRIES=2 -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9
+#        -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40 -DNWK_MAX_BINDING_ENTRIES=4
+#        -DMAX_BINDING_CLUSTER_IDS=4 -DDEFAULT_KEY={0} -DMAC_MAX_FRAME_SIZE=116
+#        -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const __code"
+#        -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000
+#        -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440
+#        -DREJOIN_BACKOFF=900000 -DREJOIN_SCAN=900000 -DENABLE_LED4_DISABLE_S1)
+#        -f "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\Tools\CC2530DB\f8wZCL.cfg"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\" -I
+#        "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\Source\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\Source\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\ZMain\TI2530DB\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\hal\include\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\include\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\high_level\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mt\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\osal\include\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\services\saddr\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\services\sdata\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\af\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\bdb\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\gp\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\nwk\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\sapi\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\sec\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\sys\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\zcl\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\zdo\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\zmac\"
+#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\zmac\f8w\"
+#        -Ohz --require_prototypes)
+#    Locale             =  English_USA.1252
+#    List file          =  
+#        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\EndDeviceEB\List\zcl_samplelight.lst
+#    Object file        =  
+#        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\EndDeviceEB\Obj\zcl_samplelight.r51
+#
+###############################################################################
+
+C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\SampleLight\Source\zcl_samplelight.c
+      1          /**************************************************************************************************
+      2            Filename:       zcl_sampleLight.c
+      3            Revised:        $Date: 2009-03-18 15:56:27 -0700 (Wed, 18 Mar 2009) $
+      4            Revision:       $Revision: 19453 $
+      5          
+      6          
+      7            Description:    Zigbee Cluster Library - sample device application.
+      8          
+      9          
+     10            Copyright 2006-2009 Texas Instruments Incorporated. All rights reserved.
+     11          
+     12            IMPORTANT: Your use of this Software is limited to those specific rights
+     13            granted under the terms of a software license agreement between the user
+     14            who downloaded the software, his/her employer (which must be your employer)
+     15            and Texas Instruments Incorporated (the "License").  You may not use this
+     16            Software unless you agree to abide by the terms of the License. The License
+     17            limits your use, and you acknowledge, that the Software may not be modified,
+     18            copied or distributed unless embedded on a Texas Instruments microcontroller
+     19            or used solely and exclusively in conjunction with a Texas Instruments radio
+     20            frequency transceiver, which is integrated into your product.  Other than for
+     21            the foregoing purpose, you may not use, reproduce, copy, prepare derivative
+     22            works of, modify, distribute, perform, display or sell this Software and/or
+     23            its documentation for any purpose.
+     24          
+     25            YOU FURTHER ACKNOWLEDGE AND AGREE THAT THE SOFTWARE AND DOCUMENTATION ARE
+     26            PROVIDED ?AS IS? WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, 
+     27            INCLUDING WITHOUT LIMITATION, ANY WARRANTY OF MERCHANTABILITY, TITLE, 
+     28            NON-INFRINGEMENT AND FITNESS FOR A PARTICULAR PURPOSE. IN NO EVENT SHALL
+     29            TEXAS INSTRUMENTS OR ITS LICENSORS BE LIABLE OR OBLIGATED UNDER CONTRACT,
+     30            NEGLIGENCE, STRICT LIABILITY, CONTRIBUTION, BREACH OF WARRANTY, OR OTHER
+     31            LEGAL EQUITABLE THEORY ANY DIRECT OR INDIRECT DAMAGES OR EXPENSES
+     32            INCLUDING BUT NOT LIMITED TO ANY INCIDENTAL, SPECIAL, INDIRECT, PUNITIVE
+     33            OR CONSEQUENTIAL DAMAGES, LOST PROFITS OR LOST DATA, COST OF PROCUREMENT
+     34            OF SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
+     35            (INCLUDING BUT NOT LIMITED TO ANY DEFENSE THEREOF), OR OTHER SIMILAR COSTS.
+     36          
+     37            Should you have any questions regarding your right to use this Software,
+     38            contact Texas Instruments Incorporated at www.TI.com. 
+     39          **************************************************************************************************/
+     40          
+     41          /*********************************************************************
+     42            This device will be like a Light device.  This application is not
+     43            intended to be a Light device, but will use the device description
+     44            to implement this sample code.
+     45          *********************************************************************/
+     46          
+     47          
+     48          
+     49          
+     50          
+     51          /*********************************************************************
+     52           * INCLUDES
+     53           */
+     54          #include "ZComDef.h"
+     55          #include "OSAL.h"
+     56          #include "AF.h"
+     57          #include "ZDApp.h"
+     58          
+     59          #include "zcl.h"
+     60          #include "zcl_general.h"
+     61          #include "zcl_ha.h"
+     62          
+     63          #include "zcl_samplelight.h"
+     64          
+     65          #include "onboard.h"
+     66          
+     67          /* HAL */
+     68          #include "hal_lcd.h"
+     69          #include "hal_led.h"
+     70          #include "hal_key.h"
+     71          
+     72          
+     73          /*********************************************************************
+     74           * MACROS
+     75           */
+     76          
+     77          /*********************************************************************
+     78           * CONSTANTS
+     79           */
+     80          /*********************************************************************
+     81           * TYPEDEFS
+     82           */
+     83          
+     84          /*********************************************************************
+     85           * GLOBAL VARIABLES
+     86           */
+     87          byte zclSampleLight_TaskID;
+     88          
+     89          /*********************************************************************
+     90           * GLOBAL FUNCTIONS
+     91           */
+     92          
+     93          /*********************************************************************
+     94           * LOCAL VARIABLES
+     95           */
+     96          //static afAddrType_t zclSampleLight_DstAddr;
+     97          
+     98          #define ZCLSAMPLELIGHT_BINDINGLIST       2
+     99          static cId_t bindingInClusters[ZCLSAMPLELIGHT_BINDINGLIST] =
+    100          {
+    101            ZCL_CLUSTER_ID_GEN_ON_OFF,
+    102            ZCL_CLUSTER_ID_GEN_LEVEL_CONTROL
+    103          };
+    104          
+    105          // Test Endpoint to allow SYS_APP_MSGs
+    106          static endPointDesc_t sampleLight_TestEp =
+    107          {
+    108            20,                                 // Test endpoint
+    109            &zclSampleLight_TaskID,
+                   ^
+Error[Pe144]: a value of type "byte *" cannot be used to initialize an entity
+          of type "uint8"
+    110            (SimpleDescriptionFormat_t *)NULL,  // No Simple description for this test endpoint
+                   ^
+Error[Pe144]: a value of type "struct <unnamed> *" cannot be used to initialize
+          an entity of type "uint8 *"
+    111            (afNetworkLatencyReq_t)0            // No Network Latency req
+    112          };
+    113          
+    114          /*********************************************************************
+    115           * LOCAL FUNCTIONS
+    116           */
+    117          static void zclSampleLight_HandleKeys( byte shift, byte keys );
+    118          static void zclSampleLight_BasicResetCB( void );
+    119          static void zclSampleLight_IdentifyCB( zclIdentify_t *pCmd );
+    120          static void zclSampleLight_IdentifyQueryRspCB( zclIdentifyQueryRsp_t *pRsp );
+    121          static void zclSampleLight_OnOffCB( uint8 cmd );
+    122          static void zclSampleLight_ProcessIdentifyTimeChange( void );
+    123          
+    124          // Functions to process ZCL Foundation incoming Command/Response messages 
+    125          static void zclSampleLight_ProcessIncomingMsg( zclIncomingMsg_t *msg );
+    126          #ifdef ZCL_READ
+    127          static uint8 zclSampleLight_ProcessInReadRspCmd( zclIncomingMsg_t *pInMsg );
+    128          #endif
+    129          #ifdef ZCL_WRITE
+    130          static uint8 zclSampleLight_ProcessInWriteRspCmd( zclIncomingMsg_t *pInMsg );
+    131          #endif
+    132          static uint8 zclSampleLight_ProcessInDefaultRspCmd( zclIncomingMsg_t *pInMsg );
+    133          #ifdef ZCL_DISCOVER
+    134          static uint8 zclSampleLight_ProcessInDiscRspCmd( zclIncomingMsg_t *pInMsg );
+    135          #endif
+    136          
+    137          /*********************************************************************
+    138           * ZCL General Profile Callback table
+    139           */
+    140          static zclGeneral_AppCallbacks_t zclSampleLight_CmdCallbacks =
+    141          {
+    142            zclSampleLight_BasicResetCB,              // Basic Cluster Reset command
+    143            zclSampleLight_IdentifyCB,                // Identify command  
+                   ^
+Error[Pe144]: a value of type "void (*)(zclIdentify_t *)" cannot be used to
+          initialize an entity of type "void (*)(struct <unnamed> *)"
+    144            zclSampleLight_IdentifyQueryRspCB,        // Identify Query Response command
+                   ^
+Error[Pe144]: a value of type "void (*)(struct <unnamed> *)" cannot be used to
+          initialize an entity of type "zclGCB_OnOff_t"
+    145            zclSampleLight_OnOffCB,                   // On/Off cluster command
+                   ^
+Error[Pe144]: a value of type "void (*)(uint8)" cannot be used to initialize an
+          entity of type "zclGCB_OnOff_OffWithEffect_t"
+    146            NULL,                                     // Level Control Move to Level command
+    147            NULL,                                     // Level Control Move command
+    148            NULL,                                     // Level Control Step command
+    149            NULL,                                     // Group Response commands
+    150            NULL,                                     // Scene Store Request command
+    151            NULL,                                     // Scene Recall Request command
+    152            NULL,                                     // Scene Response command
+    153            NULL,                                     // Alarm (Response) command
+    154            NULL,                                     // RSSI Location commands
+    155            NULL,                                     // RSSI Location Response commands
+    156          };
+    157          
+    158          /*********************************************************************
+    159           * @fn          zclSampleLight_Init
+    160           *
+    161           * @brief       Initialization function for the zclGeneral layer.
+    162           *
+    163           * @param       none
+    164           *
+    165           * @return      none
+    166           */
+    167          void zclSampleLight_Init( byte task_id )
+    168          {
+    169            zclSampleLight_TaskID = task_id;
+    170          
+    171            // Set destination address to indirect
+    172            //zclSampleLight_DstAddr.addrMode = (afAddrMode_t)AddrNotPresent;
+    173            //zclSampleLight_DstAddr.endPoint = 0;
+    174            //zclSampleLight_DstAddr.addr.shortAddr = 0;
+    175          
+    176            // This app is part of the Home Automation Profile
+    177            zclHA_Init( &zclSampleLight_SimpleDesc );
+    178          
+    179            // Register the ZCL General Cluster Library callback functions
+    180            zclGeneral_RegisterCmdCallbacks( SAMPLELIGHT_ENDPOINT, &zclSampleLight_CmdCallbacks );
+    181          
+    182            // Register the application's attribute list
+    183            zcl_registerAttrList( SAMPLELIGHT_ENDPOINT, SAMPLELIGHT_MAX_ATTRIBUTES, zclSampleLight_Attrs );
+    184          
+    185            // Register the Application to receive the unprocessed Foundation command/response messages
+    186            zcl_registerForMsg( zclSampleLight_TaskID );
+    187            
+    188            // Register for all key events - This app will handle all key events
+    189            RegisterForKeys( zclSampleLight_TaskID );
+    190          
+    191            // Register for a test endpoint
+    192            afRegister( &sampleLight_TestEp );
+    193          }
+    194          
+    195          /*********************************************************************
+    196           * @fn          zclSample_event_loop
+    197           *
+    198           * @brief       Event Loop Processor for zclGeneral.
+    199           *
+    200           * @param       none
+    201           *
+    202           * @return      none
+    203           */
+    204          uint16 zclSampleLight_event_loop( uint8 task_id, uint16 events )
+    205          {
+    206            afIncomingMSGPacket_t *MSGpkt;
+    207            
+    208            (void)task_id;  // Intentionally unreferenced parameter
+    209          
+    210            if ( events & SYS_EVENT_MSG )
+    211            {
+    212              while ( (MSGpkt = (afIncomingMSGPacket_t *)osal_msg_receive( zclSampleLight_TaskID )) )
+    213              {
+    214                switch ( MSGpkt->hdr.event )
+    215                {
+    216                  case ZCL_INCOMING_MSG:
+    217                    // Incoming ZCL Foundation command/response messages
+    218                    zclSampleLight_ProcessIncomingMsg( (zclIncomingMsg_t *)MSGpkt );
+    219                    break;
+    220                    
+    221                  case KEY_CHANGE:
+    222                    zclSampleLight_HandleKeys( ((keyChange_t *)MSGpkt)->state, ((keyChange_t *)MSGpkt)->keys );
+    223                    break;
+    224          
+    225                  default:
+    226                    break;
+    227                }
+    228          
+    229                // Release the memory
+    230                osal_msg_deallocate( (uint8 *)MSGpkt );
+    231              }
+    232          
+    233              // return unprocessed events
+    234              return (events ^ SYS_EVENT_MSG);
+    235            }
+    236          
+    237            if ( events & SAMPLELIGHT_IDENTIFY_TIMEOUT_EVT )
+    238            {
+    239              if ( zclSampleLight_IdentifyTime > 0 )
+    240                zclSampleLight_IdentifyTime--;
+    241              zclSampleLight_ProcessIdentifyTimeChange();
+    242          
+    243              return ( events ^ SAMPLELIGHT_IDENTIFY_TIMEOUT_EVT );
+    244            }
+    245          
+    246            // Discard unknown events
+    247            return 0;
+    248          }
+    249          
+    250          /*********************************************************************
+    251           * @fn      zclSampleLight_HandleKeys
+    252           *
+    253           * @brief   Handles all key events for this device.
+    254           *
+    255           * @param   shift - true if in shift/alt.
+    256           * @param   keys - bit field for key events. Valid entries:
+    257           *                 HAL_KEY_SW_4
+    258           *                 HAL_KEY_SW_3
+    259           *                 HAL_KEY_SW_2
+    260           *                 HAL_KEY_SW_1
+    261           *
+    262           * @return  none
+    263           */
+    264          static void zclSampleLight_HandleKeys( byte shift, byte keys )
+    265          {
+    266            zAddrType_t dstAddr;
+    267            
+    268            (void)shift;  // Intentionally unreferenced parameter
+    269          
+    270            if ( keys & HAL_KEY_SW_2 )
+    271            {
+    272              // Initiate an End Device Bind Request, this bind request will
+    273              // only use a cluster list that is important to binding.
+    274              dstAddr.addrMode = afAddr16Bit;
+    275              dstAddr.addr.shortAddr = 0;   // Coordinator makes the match
+    276              ZDP_EndDeviceBindReq( &dstAddr, NLME_GetShortAddr(),
+    277                                     SAMPLELIGHT_ENDPOINT,
+    278                                     ZCL_HA_PROFILE_ID,
+    279                                     ZCLSAMPLELIGHT_BINDINGLIST, bindingInClusters,
+    280                                     0, NULL,   // No Outgoing clusters to bind
+    281                                     TRUE );
+    282            }
+    283          
+    284            if ( keys & HAL_KEY_SW_3 )
+    285            {
+    286            }
+    287          
+    288            if ( keys & HAL_KEY_SW_4 )
+    289            {
+    290            }
+    291          }
+    292          
+    293          /*********************************************************************
+    294           * @fn      zclSampleLight_ProcessIdentifyTimeChange
+    295           *
+    296           * @brief   Called to process any change to the IdentifyTime attribute.
+    297           *
+    298           * @param   none
+    299           *
+    300           * @return  none
+    301           */
+    302          static void zclSampleLight_ProcessIdentifyTimeChange( void )
+    303          {
+    304            if ( zclSampleLight_IdentifyTime > 0 )
+    305            {
+    306              osal_start_timerEx( zclSampleLight_TaskID, SAMPLELIGHT_IDENTIFY_TIMEOUT_EVT, 1000 );
+    307              HalLedBlink ( HAL_LED_4, 0xFF, HAL_LED_DEFAULT_DUTY_CYCLE, HAL_LED_DEFAULT_FLASH_TIME );
+    308            }
+    309            else
+    310            {
+    311              if ( zclSampleLight_OnOff )
+    312                HalLedSet ( HAL_LED_4, HAL_LED_MODE_ON );
+    313              else
+    314                HalLedSet ( HAL_LED_4, HAL_LED_MODE_OFF );
+    315              osal_stop_timerEx( zclSampleLight_TaskID, SAMPLELIGHT_IDENTIFY_TIMEOUT_EVT );
+    316            }
+    317          }
+    318          
+    319          /*********************************************************************
+    320           * @fn      zclSampleLight_BasicResetCB
+    321           *
+    322           * @brief   Callback from the ZCL General Cluster Library
+    323           *          to set all the Basic Cluster attributes to default values.
+    324           *
+    325           * @param   none
+    326           *
+    327           * @return  none
+    328           */
+    329          static void zclSampleLight_BasicResetCB( void )
+    330          {
+    331            // Reset all attributes to default values
+    332          }
+    333          
+    334          /*********************************************************************
+    335           * @fn      zclSampleLight_IdentifyCB
+    336           *
+    337           * @brief   Callback from the ZCL General Cluster Library when
+    338           *          it received an Identity Command for this application.
+    339           *
+    340           * @param   srcAddr - source address and endpoint of the response message
+    341           * @param   identifyTime - the number of seconds to identify yourself
+    342           *
+    343           * @return  none
+    344           */
+    345          static void zclSampleLight_IdentifyCB( zclIdentify_t *pCmd )
+    346          {
+    347            zclSampleLight_IdentifyTime = pCmd->identifyTime;
+    348            zclSampleLight_ProcessIdentifyTimeChange();
+    349          }
+    350          
+    351          /*********************************************************************
+    352           * @fn      zclSampleLight_IdentifyQueryRspCB
+    353           *
+    354           * @brief   Callback from the ZCL General Cluster Library when
+    355           *          it received an Identity Query Response Command for this application.
+    356           *
+    357           * @param   srcAddr - requestor's address
+    358           * @param   timeout - number of seconds to identify yourself (valid for query response)
+    359           *
+    360           * @return  none
+    361           */
+    362          static void zclSampleLight_IdentifyQueryRspCB(  zclIdentifyQueryRsp_t *pRsp )
+    363          {
+    364            // Query Response (with timeout value)
+    365            (void)pRsp;
+    366          }
+    367          
+    368          /*********************************************************************
+    369           * @fn      zclSampleLight_OnOffCB
+    370           *
+    371           * @brief   Callback from the ZCL General Cluster Library when
+    372           *          it received an On/Off Command for this application.
+    373           *
+    374           * @param   cmd - COMMAND_ON, COMMAND_OFF or COMMAND_TOGGLE
+    375           *
+    376           * @return  none
+    377           */
+    378          static void zclSampleLight_OnOffCB( uint8 cmd )
+    379          {
+    380            // Turn on the light
+    381            if ( cmd == COMMAND_ON )
+    382              zclSampleLight_OnOff = LIGHT_ON;
+    383          
+    384            // Turn off the light
+    385            else if ( cmd == COMMAND_OFF )
+    386              zclSampleLight_OnOff = LIGHT_OFF;
+    387          
+    388            // Toggle the light
+    389            else
+    390            {
+    391              if ( zclSampleLight_OnOff == LIGHT_OFF )
+    392                zclSampleLight_OnOff = LIGHT_ON;
+    393              else
+    394                zclSampleLight_OnOff = LIGHT_OFF;
+    395            }
+    396          
+    397            // In this sample app, we use LED4 to simulate the Light
+    398            if ( zclSampleLight_OnOff == LIGHT_ON )
+    399              HalLedSet( HAL_LED_4, HAL_LED_MODE_ON );
+    400            else
+    401              HalLedSet( HAL_LED_4, HAL_LED_MODE_OFF );
+    402          }
+    403          
+    404          
+    405          /****************************************************************************** 
+    406           * 
+    407           *  Functions for processing ZCL Foundation incoming Command/Response messages
+    408           *
+    409           *****************************************************************************/
+    410          
+    411          /*********************************************************************
+    412           * @fn      zclSampleLight_ProcessIncomingMsg
+    413           *
+    414           * @brief   Process ZCL Foundation incoming message
+    415           *
+    416           * @param   pInMsg - pointer to the received message
+    417           *
+    418           * @return  none
+    419           */
+    420          static void zclSampleLight_ProcessIncomingMsg( zclIncomingMsg_t *pInMsg)
+    421          {
+    422            switch ( pInMsg->zclHdr.commandID )
+    423            {
+    424          #ifdef ZCL_READ
+    425              case ZCL_CMD_READ_RSP:
+    426                zclSampleLight_ProcessInReadRspCmd( pInMsg );
+    427                break;
+    428          #endif
+    429          #ifdef ZCL_WRITE    
+    430              case ZCL_CMD_WRITE_RSP:
+    431                zclSampleLight_ProcessInWriteRspCmd( pInMsg );
+    432                break;
+    433          #endif
+    434          #ifdef ZCL_REPORT
+    435              // See ZCL Test Applicaiton (zcl_testapp.c) for sample code on Attribute Reporting
+    436              case ZCL_CMD_CONFIG_REPORT:
+    437                //zclSampleLight_ProcessInConfigReportCmd( pInMsg );
+    438                break;
+    439              
+    440              case ZCL_CMD_CONFIG_REPORT_RSP:
+    441                //zclSampleLight_ProcessInConfigReportRspCmd( pInMsg );
+    442                break;
+    443              
+    444              case ZCL_CMD_READ_REPORT_CFG:
+    445                //zclSampleLight_ProcessInReadReportCfgCmd( pInMsg );
+    446                break;
+    447              
+    448              case ZCL_CMD_READ_REPORT_CFG_RSP:
+    449                //zclSampleLight_ProcessInReadReportCfgRspCmd( pInMsg );
+    450                break;
+    451              
+    452              case ZCL_CMD_REPORT:
+    453                //zclSampleLight_ProcessInReportCmd( pInMsg );
+    454                break;
+    455          #endif   
+    456              case ZCL_CMD_DEFAULT_RSP:
+    457                zclSampleLight_ProcessInDefaultRspCmd( pInMsg );
+    458                break;
+    459          #ifdef ZCL_DISCOVER     
+    460              case ZCL_CMD_DISCOVER_RSP:
+                          ^
+Error[Pe020]: identifier "ZCL_CMD_DISCOVER_RSP" is undefined
+    461                zclSampleLight_ProcessInDiscRspCmd( pInMsg );
+    462                break;
+    463          #endif  
+    464              default:
+    465                break;
+    466            }
+    467            
+    468            if ( pInMsg->attrCmd )
+    469              osal_mem_free( pInMsg->attrCmd );
+    470          }
+    471          
+    472          #ifdef ZCL_READ
+    473          /*********************************************************************
+    474           * @fn      zclSampleLight_ProcessInReadRspCmd
+    475           *
+    476           * @brief   Process the "Profile" Read Response Command
+    477           *
+    478           * @param   pInMsg - incoming message to process
+    479           *
+    480           * @return  none
+    481           */
+    482          static uint8 zclSampleLight_ProcessInReadRspCmd( zclIncomingMsg_t *pInMsg )
+    483          {
+    484            zclReadRspCmd_t *readRspCmd;
+    485            uint8 i;
+    486          
+    487            readRspCmd = (zclReadRspCmd_t *)pInMsg->attrCmd;
+    488            for (i = 0; i < readRspCmd->numAttr; i++)
+    489            {
+    490              // Notify the originator of the results of the original read attributes 
+    491              // attempt and, for each successfull request, the value of the requested 
+    492              // attribute
+    493            }
+    494          
+    495            return TRUE; 
+    496          }
+    497          #endif // ZCL_READ
+    498          
+    499          #ifdef ZCL_WRITE
+    500          /*********************************************************************
+    501           * @fn      zclSampleLight_ProcessInWriteRspCmd
+    502           *
+    503           * @brief   Process the "Profile" Write Response Command
+    504           *
+    505           * @param   pInMsg - incoming message to process
+    506           *
+    507           * @return  none
+    508           */
+    509          static uint8 zclSampleLight_ProcessInWriteRspCmd( zclIncomingMsg_t *pInMsg )
+    510          {
+    511            zclWriteRspCmd_t *writeRspCmd;
+    512            uint8 i;
+    513          
+    514            writeRspCmd = (zclWriteRspCmd_t *)pInMsg->attrCmd;
+    515            for (i = 0; i < writeRspCmd->numAttr; i++)
+    516            {
+    517              // Notify the device of the results of the its original write attributes
+    518              // command.
+    519            }
+    520          
+    521            return TRUE; 
+    522          }
+    523          #endif // ZCL_WRITE
+    524          
+    525          /*********************************************************************
+    526           * @fn      zclSampleLight_ProcessInDefaultRspCmd
+    527           *
+    528           * @brief   Process the "Profile" Default Response Command
+    529           *
+    530           * @param   pInMsg - incoming message to process
+    531           *
+    532           * @return  none
+    533           */
+    534          static uint8 zclSampleLight_ProcessInDefaultRspCmd( zclIncomingMsg_t *pInMsg )
+    535          {
+    536            // zclDefaultRspCmd_t *defaultRspCmd = (zclDefaultRspCmd_t *)pInMsg->attrCmd;
+    537             
+    538            // Device is notified of the Default Response command.
+    539            (void)pInMsg;
+    540            
+    541            return TRUE; 
+    542          }
+    543          
+    544          #ifdef ZCL_DISCOVER
+    545          /*********************************************************************
+    546           * @fn      zclSampleLight_ProcessInDiscRspCmd
+    547           *
+    548           * @brief   Process the "Profile" Discover Response Command
+    549           *
+    550           * @param   pInMsg - incoming message to process
+    551           *
+    552           * @return  none
+    553           */
+    554          static uint8 zclSampleLight_ProcessInDiscRspCmd( zclIncomingMsg_t *pInMsg )
+    555          {
+    556            zclDiscoverRspCmd_t *discoverRspCmd;
+                   ^
+Error[Pe020]: identifier "zclDiscoverRspCmd_t" is undefined
+
+    zclDiscoverRspCmd_t *discoverRspCmd;
+                         ^
+"C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\SampleLight\Source\zcl_samplelight.c",556  Error[Pe020]: 
+          identifier "discoverRspCmd" is undefined
+    557            uint8 i;
+    558            
+    559            discoverRspCmd = (zclDiscoverRspCmd_t *)pInMsg->attrCmd;
+                                                          ^
+Error[Pe029]: expected an expression
+
+    discoverRspCmd = (zclDiscoverRspCmd_t *)pInMsg->attrCmd;
+                                            ^
+"C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\SampleLight\Source\zcl_samplelight.c",559  Error[Pe065]: 
+          expected a ";"
+    560            for ( i = 0; i < discoverRspCmd->numAttr; i++ )
+    561            {
+    562              // Device is notified of the result of its attribute discovery command.
+    563            }
+    564            
+    565            return TRUE;
+    566          }
+    567          #endif // ZCL_DISCOVER
+    568          
+    569          
+    570          /****************************************************************************
+    571          ****************************************************************************/
+    572          
+
+Errors: 10
+Warnings: none

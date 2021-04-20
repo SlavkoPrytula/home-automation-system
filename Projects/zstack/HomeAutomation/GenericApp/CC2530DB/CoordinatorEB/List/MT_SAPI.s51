@@ -1,6 +1,6 @@
 ///////////////////////////////////////////////////////////////////////////////
 //
-// IAR C/C++ Compiler V10.30.1.6000 for 8051              18/Apr/2021  13:21:58
+// IAR C/C++ Compiler V10.30.1.6000 for 8051              18/Apr/2021  17:01:54
 // Copyright 2004-2018 IAR Systems AB.
 // Evaluation license - IAR Embedded Workbench for 8051, Evaluation edition 10.30
 //
@@ -15,7 +15,7 @@
 //        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
 //        3.0.2\Components\mt\MT_SAPI.c
 //    Command line       =  
-//        -f C:\users\slavko\Temp\EWe33a.tmp ("C:\Texas Instruments\Z-Stack
+//        -f C:\users\slavko\Temp\EW3be6.tmp ("C:\Texas Instruments\Z-Stack
 //        3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Components\mt\MT_SAPI.c" -D
 //        SECURE=1 -D TC_LINKKEY_JOIN -D NV_INIT -D NV_RESTORE -D xZTOOL_P1 -D
 //        xMT_TASK -D xMT_APP_FUNC -D xMT_SYS_FUNC -D xMT_ZDO_FUNC -D

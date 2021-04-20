@@ -49,6 +49,16 @@
 #include "zcl.h"
 #include "zcl_general.h"
 #include "zcl_ha.h"
+#include "zcl_poll_control.h"
+#include "zcl_electrical_measurement.h"
+#include "zcl_diagnostic.h"
+#include "zcl_meter_identification.h"
+#include "zcl_appliance_identification.h"
+#include "zcl_appliance_events_alerts.h"
+#include "zcl_power_profile.h"
+#include "zcl_appliance_control.h"
+#include "zcl_appliance_statistics.h"
+#include "zcl_hvac.h"
 
 /* GENERICAPP_TODO: Include any of the header files below to access specific cluster data
 #include "zcl_poll_control.h"
