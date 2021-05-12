@@ -176,6 +176,15 @@
 //#define PUSH2_SBIT        P2_0
 //#define PUSH2_POLARITY    ACTIVE_HIGH
 
+	      
+	      
+	      
+#define TSENS_SBIT P2_1
+#define TSENS_BV BV(1)
+#define TSENS_DIR P2DIR 
+	      
+	      
+	      
 /* ------------------------------------------------------------------------------------------------
  *                                    LCD Configuration
  * ------------------------------------------------------------------------------------------------

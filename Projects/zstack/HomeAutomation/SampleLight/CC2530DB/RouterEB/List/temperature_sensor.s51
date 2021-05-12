@@ -1,0 +1,1367 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// IAR C/C++ Compiler V10.30.1.6000 for 8051              05/May/2021  18:21:34
+// Copyright 2004-2018 IAR Systems AB.
+// Evaluation license - IAR Embedded Workbench for 8051, Evaluation edition 10.40
+//
+//    Core               =  plain
+//    Code model         =  banked
+//    Data model         =  large
+//    Calling convention =  xdata reentrant
+//    Constant location  =  data_rom
+//    Dptr setup         =  1,16
+//                          
+//    Source file        =  
+//        C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\Source\temperature_sensor.c
+//    Command line       =  
+//        -f C:\users\slavko\Temp\EW3c35.tmp ("C:\Texas Instruments\2. main
+//        recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\Source\temperature_sensor.c"
+//        -D BDB_REPORTING -D SECURE=1 -D TC_LINKKEY_JOIN -D NV_INIT -D
+//        NV_RESTORE -D xZTOOL_P1 -D xMT_TASK -D xMT_APP_FUNC -D xMT_SYS_FUNC
+//        -D xMT_ZDO_FUNC -D xMT_ZDO_MGMT -D xMT_APP_CNF_FUNC -D
+//        LCD_SUPPORTED=DEBUG -D MULTICAST_ENABLED=FALSE -D ZCL_READ -D
+//        ZCL_DISCOVER -D ZCL_WRITE -D ZCL_BASIC -D ZCL_IDENTIFY -D ZCL_ON_OFF
+//        -D ZCL_SCENES -D ZCL_GROUPS -D ZCL_LEVEL_CTRL -D HAL_LED=TRUE -D
+//        HAL_KEY=TRUE -D BLINK_LEDS -lC "C:\Texas Instruments\2. main
+//        recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\RouterEB\List"
+//        -lA "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\RouterEB\List"
+//        --diag_suppress Pe001,Pa010 -o "C:\Texas Instruments\2. main
+//        recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\RouterEB\Obj"
+//        -e --debug --core=plain --dptr=16,1 --data_model=large
+//        --code_model=banked --calling_convention=xdata_reentrant
+//        --place_constants=data_rom --nr_virtual_regs 16 -f "C:\Texas
+//        Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\Tools\CC2530DB\f8wRouter.cfg"
+//        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRUE
+//        -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8 -DMAC_CFG_RX_MAX=5
+//        -DRTR_NWK) -f "C:\Texas Instruments\2. main recover\Z-Stack
+//        3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg"
+//        (-DZIGBEEPRO -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
+//        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
+//        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
+//        -DBEACON_REQUEST_DELAY=100 -DBEACON_REQ_DELAY_MASK=0x00FF
+//        -DLINK_STATUS_JITTER_MASK=0x007F -DROUTE_EXPIRY_TIME=30
+//        -DAPSC_ACK_WAIT_DURATION_POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7
+//        -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3
+//        -DNWK_MAX_DATA_RETRIES=2 -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9
+//        -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40 -DNWK_MAX_BINDING_ENTRIES=4
+//        -DMAX_BINDING_CLUSTER_IDS=4 -DDEFAULT_KEY={0}
+//        -DMAC_MAX_FRAME_SIZE=116 -DZDNWKMGR_MIN_TRANSMISSIONS=20
+//        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
+//        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100
+//        -DREJOIN_POLL_RATE=440 -DREJOIN_BACKOFF=900000 -DREJOIN_SCAN=900000
+//        -DENABLE_LED4_DISABLE_S1) -f "C:\Texas Instruments\2. main
+//        recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\Tools\CC2530DB\f8wZCL.cfg"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\" -I
+//        "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\Source\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\Source\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\ZMain\TI2530DB\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\hal\include\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\include\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\high_level\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mt\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\osal\include\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\services\saddr\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\services\sdata\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\af\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\bdb\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\nwk\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\bdb\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\gp\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\sapi\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\sec\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\sys\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\zcl\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\zdo\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\zmac\"
+//        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\zmac\f8w\"
+//        -Ohz --require_prototypes)
+//    Locale             =  English_USA.1252
+//    List file          =  
+//        C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+//        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\RouterEB\List\temperature_sensor.s51
+//
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME temperature_sensor
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__register_banks", "*"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?V0
+        EXTERN ?V1
+        EXTERN ?V2
+        EXTERN ?V3
+        EXTERN ?V4
+        EXTERN ?V5
+        EXTERN ?V6
+        EXTERN ?V7
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN ?FLT_ADD
+        EXTERN ?FLT_MUL
+        EXTERN ?FLT_TO_L
+        EXTERN ?L_MOV_X
+        EXTERN ?SS_SHR
+        EXTERN ?S_SHL
+        EXTERN ?UL_TO_FLT
+
+        PUBLIC `??delay_ms::?relay`
+        FUNCTION `??delay_ms::?relay`,0203H
+        PUBLIC `??delay_us::?relay`
+        FUNCTION `??delay_us::?relay`,0203H
+        PUBLIC `??readTemperature::?relay`
+        FUNCTION `??readTemperature::?relay`,0203H
+        PUBLIC `??temperature_sensor_RST_PULSE::?relay`
+        FUNCTION `??temperature_sensor_RST_PULSE::?relay`,0203H
+        PUBLIC `??temperature_sensor_read::?relay`
+        FUNCTION `??temperature_sensor_read::?relay`,0203H
+        PUBLIC `??temperature_sensor_read_byte::?relay`
+        FUNCTION `??temperature_sensor_read_byte::?relay`,0203H
+        PUBLIC `??temperature_sensor_send::?relay`
+        FUNCTION `??temperature_sensor_send::?relay`,0203H
+        PUBLIC `??temperature_sensor_send_byte::?relay`
+        FUNCTION `??temperature_sensor_send_byte::?relay`,0203H
+        PUBWEAK P2DIR
+        PUBWEAK _A_P2
+        PUBWEAK __Constant_3d800000
+        PUBWEAK __Constant_42c80000
+        PUBWEAK __Constant_c3000000
+        PUBLIC delay_ms
+        FUNCTION delay_ms,021203H
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC delay_us
+        FUNCTION delay_us,080203H
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUBLIC readTemperature
+        FUNCTION readTemperature,0a1203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        PUBLIC temperature_sensor_RST_PULSE
+        FUNCTION temperature_sensor_RST_PULSE,021203H
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC temperature_sensor_read
+        FUNCTION temperature_sensor_read,021203H
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC temperature_sensor_read_byte
+        FUNCTION temperature_sensor_read_byte,0a1203H
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 10, STACK
+        PUBLIC temperature_sensor_send
+        FUNCTION temperature_sensor_send,021203H
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC temperature_sensor_send_byte
+        FUNCTION temperature_sensor_send_byte,0a1203H
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 10, STACK
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource V8:8, V9:8, V10:8, V11:8, V12:8, V13:8, V14:8, V15:8, SP:8
+          CFI Resource PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI V8 SameValue
+          CFI V9 SameValue
+          CFI V10 SameValue
+          CFI V11 SameValue
+          CFI V12 SameValue
+          CFI V13 SameValue
+          CFI V14 SameValue
+          CFI V15 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+delay_ms            SYMBOL "delay_ms"
+`??delay_ms::?relay` SYMBOL "?relay", delay_ms
+delay_us            SYMBOL "delay_us"
+`??delay_us::?relay` SYMBOL "?relay", delay_us
+readTemperature     SYMBOL "readTemperature"
+`??readTemperature::?relay` SYMBOL "?relay", readTemperature
+temperature_sensor_RST_PULSE SYMBOL "temperature_sensor_RST_PULSE"
+`??temperature_sensor_RST_PULSE::?relay` SYMBOL "?relay", temperature_sensor_RST_PULSE
+temperature_sensor_read SYMBOL "temperature_sensor_read"
+`??temperature_sensor_read::?relay` SYMBOL "?relay", temperature_sensor_read
+temperature_sensor_read_byte SYMBOL "temperature_sensor_read_byte"
+`??temperature_sensor_read_byte::?relay` SYMBOL "?relay", temperature_sensor_read_byte
+temperature_sensor_send SYMBOL "temperature_sensor_send"
+`??temperature_sensor_send::?relay` SYMBOL "?relay", temperature_sensor_send
+temperature_sensor_send_byte SYMBOL "temperature_sensor_send_byte"
+`??temperature_sensor_send_byte::?relay` SYMBOL "?relay", temperature_sensor_send_byte
+
+// C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\SampleLight\Source\temperature_sensor.c
+//    1 #include "ZComDef.h"
+//    2 #include "OSAL.h"
+//    3 #include "AF.h"
+//    4 #include "ZDApp.h"
+//    5 #include "ZDObject.h"
+//    6 #include "MT_SYS.h"
+//    7 
+//    8 #include "nwk_util.h"
+//    9 
+//   10 #include "zcl.h"
+//   11 #include "zcl_general.h"
+//   12 #include "zcl_ha.h"
+//   13 #include "zcl_diagnostic.h"
+//   14 
+//   15 #include "zcl_samplelight.h"
+//   16    
+//   17 #include "bdb.h"
+//   18 #include "bdb_interface.h"
+//   19 
+//   20  //GP_UPDATE
+//   21 #include "gp_interface.h"
+//   22    
+//   23 #include "onboard.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,0a0H
+// union <unnamed> volatile __sfr _A_P2
+_A_P2:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0ffH
+// unsigned char volatile __sfr P2DIR
+P2DIR:
+        DATA8
+        DS 1
+//   24 
+//   25 /* HAL */
+//   26 #include "hal_lcd.h"
+//   27 #include "hal_led.h"
+//   28 #include "hal_key.h"
+//   29 
+//   30 #include "NLMEDE.h"
+//   31 
+//   32 
+//   33 #include "hal_board_cfg.h"
+//   34 #include "temperature_sensor.h"
+//   35 
+//   36 #define MSK      (BV(0) | BV(1) | BV(2))
+//   37 #define TEMPSENSOR_SKIP_ROM 		0xCC
+//   38 #define TEMPSENSOR_CONVERT_T 		0x44
+//   39 #define TEMPSENSOR_READ_SCRATCHPAD         0xBE
+//   40 
+//   41 
+//   42 void delay_us(uint16);
+//   43 void delay_ms(uint16);
+//   44 void temperature_sensor_send(uint8);
+//   45 uint8 temperature_sensor_read(void);
+//   46 void temperature_sensor_send_byte(int8);
+//   47 uint8 temperature_sensor_read_byte(void);
+//   48 uint8 temperature_sensor_RST_PULSE(void);
+//   49 
+//   50 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   51 void delay_us(uint16 microSecs) {
+delay_us:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function delay_us
+        CODE
+        ; Saved register size: 0
+        ; Auto size: 0
+        SJMP      ??delay_us_0
+//   52   while (microSecs--) {
+//   53     asm("nop");
+??delay_us_1:
+        nop
+//   54     asm("nop");
+        nop
+//   55     asm("nop");
+        nop
+//   56     asm("nop");
+        nop
+//   57     asm("nop");
+        nop
+//   58     asm("nop");
+        nop
+//   59   }
+??delay_us_0:
+        MOV       A,R2
+        MOV       R0,A
+        MOV       A,R3
+        MOV       R1,A
+        MOV       A,R0
+        ADD       A,#-0x1
+        DEC       R2
+        MOV       A,R1
+        ADDC      A,#-0x1
+        MOV       R3,A
+        MOV       A,R0
+        ORL       A,R1
+        JNZ       ??delay_us_1
+//   60 }
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock0
+//   61 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   62 void delay_ms(uint16 milliSecs) {
+delay_ms:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI Function delay_ms
+        CODE
+        FUNCALL delay_ms, delay_us
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV       A,#-0x9
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+        MOV       A,R2
+        MOV       R6,A
+        MOV       A,R3
+        MOV       R7,A
+        SJMP      ??delay_ms_0
+//   63   while (milliSecs--) {
+//   64     delay_us(1000);
+??delay_ms_1:
+        ; Setup parameters for call to function delay_us
+        MOV       R2,#-0x18
+        MOV       R3,#0x3
+        LCALL     `??delay_us::?relay`; Banked call to: delay_us
+//   65   }
+??delay_ms_0:
+        MOV       A,R6
+        MOV       R0,A
+        MOV       A,R7
+        MOV       R1,A
+        MOV       A,R0
+        ADD       A,#-0x1
+        DEC       R6
+        MOV       A,R1
+        ADDC      A,#-0x1
+        MOV       R7,A
+        MOV       A,R0
+        ORL       A,R1
+        JNZ       ??delay_ms_1
+//   66 }
+        SJMP      ??Subroutine2_0
+          CFI EndBlock cfiBlock1
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+?Subroutine0:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        LCALL     `??delay_us::?relay`; Banked call to: delay_us
+        MOV       A,R6
+        MOV       C,0xE0 /* A   */.1
+        CLR       A
+        RLC       A
+        MOV       R1,A
+          CFI EndBlock cfiBlock2
+        REQUIRE ??Subroutine2_0
+        ; // Fall through to label ??Subroutine2_0
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+??Subroutine2_0:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        MOV       R7,#0x1
+        LJMP      ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock3
+//   67 
+//   68 // Sends one bit to bus
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   69 void temperature_sensor_send(uint8 bit) {
+temperature_sensor_send:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function temperature_sensor_send
+        CODE
+        FUNCALL temperature_sensor_send, delay_us
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL temperature_sensor_send, delay_us
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL temperature_sensor_send, delay_us
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL temperature_sensor_send, delay_us
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV       A,#-0x9
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R6,A
+//   70   TSENS_SBIT = 1;
+        SETB      0xa0.1
+//   71   TSENS_DIR |= TSENS_BV;  // output
+        ORL       0xff,#0x2
+//   72   TSENS_SBIT = 0;
+        CLR       0xa0.1
+//   73   if (bit != 0)
+        JZ        ??temperature_sensor_send_0
+//   74     delay_us(8);
+        ; Setup parameters for call to function delay_us
+        MOV       R2,#0x8
+        SJMP      ??temperature_sensor_send_1
+//   75   else
+//   76     delay_us(80);
+??temperature_sensor_send_0:
+        ; Setup parameters for call to function delay_us
+        MOV       R2,#0x50
+??temperature_sensor_send_1:
+        MOV       R3,#0x0
+        LCALL     `??delay_us::?relay`; Banked call to: delay_us
+//   77   TSENS_SBIT = 1;
+        SETB      0xa0.1
+//   78   if (bit != 0)
+        MOV       A,R6
+        JZ        ??temperature_sensor_send_2
+//   79     delay_us(80);
+        ; Setup parameters for call to function delay_us
+        MOV       R2,#0x50
+        SJMP      ??temperature_sensor_send_3
+//   80   else
+//   81     delay_us(2);
+??temperature_sensor_send_2:
+        ; Setup parameters for call to function delay_us
+        MOV       R2,#0x2
+??temperature_sensor_send_3:
+        MOV       R3,#0x0
+        LCALL     `??delay_us::?relay`; Banked call to: delay_us
+//   82   //TSENS_SBIT = 1;
+//   83 }
+        SJMP      ??Subroutine2_0
+          CFI EndBlock cfiBlock4
+        REQUIRE _A_P2
+        REQUIRE P2DIR
+//   84 
+//   85 // Reads one bit from bus
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   86 uint8 temperature_sensor_read(void) {
+temperature_sensor_read:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI Function temperature_sensor_read
+        CODE
+        FUNCALL temperature_sensor_read, delay_us
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL temperature_sensor_read, delay_us
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL temperature_sensor_read, delay_us
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV       A,#-0x9
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+//   87   TSENS_SBIT = 1;
+        SETB      0xa0.1
+//   88   TSENS_DIR |= TSENS_BV;  // output
+        ORL       0xff,#0x2
+//   89   TSENS_SBIT = 0;
+        CLR       0xa0.1
+//   90   delay_us(2);
+        ; Setup parameters for call to function delay_us
+        MOV       R2,#0x2
+        MOV       R3,#0x0
+        LCALL     `??delay_us::?relay`; Banked call to: delay_us
+//   91   //TSENS_SBIT = 1;
+//   92   //_delay_us(15);
+//   93   TSENS_DIR &= ~TSENS_BV;  // input
+        ANL       0xff,#0xfd
+//   94   delay_us(5);
+        ; Setup parameters for call to function delay_us
+        MOV       R2,#0x5
+        MOV       R3,#0x0
+        LCALL     `??delay_us::?relay`; Banked call to: delay_us
+//   95   uint8 i = TSENS_SBIT;
+        MOV       R6,0xa0+0x0
+//   96   delay_us(60);
+        ; Setup parameters for call to function delay_us
+        MOV       R2,#0x3c
+        MOV       R3,#0x0
+        SJMP      ?Subroutine0
+          CFI EndBlock cfiBlock5
+        REQUIRE _A_P2
+        REQUIRE P2DIR
+//   97   return i;
+//   98 }
+//   99 
+//  100 // Sends one byte to bus
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  101 void temperature_sensor_send_byte(int8 data) {
+temperature_sensor_send_byte:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function temperature_sensor_send_byte
+        CODE
+        FUNCALL temperature_sensor_send_byte, temperature_sensor_send
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV       A,#-0xa
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+        ; Saved register size: 10
+        ; Auto size: 0
+        MOV       A,R1
+        MOV       R7,A
+//  102   uint8 i, x;
+//  103   for (i = 0; i < 8; i++) {
+        MOV       R6,#0x0
+//  104     x = data >> i;
+//  105     x &= 0x01;
+//  106     temperature_sensor_send(x);
+??temperature_sensor_send_byte_0:
+        ; Setup parameters for call to function temperature_sensor_send
+        MOV       A,R7
+        MOV       ?V0,A
+        RLC       A
+        SUBB      A,0xE0 /* A   */
+        MOV       ?V1,A
+        MOV       A,R6
+        MOV       R0,#?V0
+        LCALL     ?SS_SHR
+        MOV       A,?V0
+        ANL       A,#0x1
+        MOV       R1,A
+        LCALL     `??temperature_sensor_send::?relay`; Banked call to: temperature_sensor_send
+//  107   }
+        INC       R6
+        MOV       A,R6
+        CLR       C
+        SUBB      A,#0x8
+        JC        ??temperature_sensor_send_byte_0
+//  108   //_delay_us(100);
+//  109 }
+          CFI EndBlock cfiBlock6
+        REQUIRE ?Subroutine1
+        ; // Fall through to label ?Subroutine1
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+?Subroutine1:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        MOV       R7,#0x2
+        LJMP      ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock7
+//  110 
+//  111 // Reads one byte from bus
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  112 uint8 temperature_sensor_read_byte(void) {
+temperature_sensor_read_byte:
+          CFI Block cfiBlock8 Using cfiCommon0
+          CFI Function temperature_sensor_read_byte
+        CODE
+        FUNCALL temperature_sensor_read_byte, temperature_sensor_read
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV       A,#-0xa
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+        ; Saved register size: 10
+        ; Auto size: 0
+//  113   uint8 i;
+//  114   uint8 data = 0;
+        MOV       R6,#0x0
+//  115   for (i = 0; i < 8; i++) {
+        MOV       R7,#0x0
+//  116     if (temperature_sensor_read()) data |= 0x01 << i;
+??temperature_sensor_read_byte_0:
+        ; Setup parameters for call to function temperature_sensor_read
+        LCALL     `??temperature_sensor_read::?relay`; Banked call to: temperature_sensor_read
+        MOV       A,R1
+        JZ        ??temperature_sensor_read_byte_1
+        MOV       ?V0,#0x1
+        MOV       ?V1,#0x0
+        MOV       A,R7
+        MOV       R0,#?V0
+        LCALL     ?S_SHL
+        MOV       A,?V0
+        XCH       A,R6
+        ORL       A,R6
+        MOV       R6,A
+//  117     //_delay_us(25);
+//  118   }
+??temperature_sensor_read_byte_1:
+        INC       R7
+        MOV       A,R7
+        CLR       C
+        SUBB      A,#0x8
+        JC        ??temperature_sensor_read_byte_0
+//  119   return (data);
+        MOV       A,R6
+        MOV       R1,A
+        SJMP      ?Subroutine1
+//  120 }
+          CFI EndBlock cfiBlock8
+//  121 
+//  122 // Sends reset pulse
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  123 uint8 temperature_sensor_RST_PULSE(void) {
+temperature_sensor_RST_PULSE:
+          CFI Block cfiBlock9 Using cfiCommon0
+          CFI Function temperature_sensor_RST_PULSE
+        CODE
+        FUNCALL temperature_sensor_RST_PULSE, delay_us
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL temperature_sensor_RST_PULSE, delay_us
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL temperature_sensor_RST_PULSE, delay_us
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL temperature_sensor_RST_PULSE, delay_us
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV       A,#-0x9
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+//  124   TSENS_SBIT = 0;
+        CLR       0xa0.1
+//  125   TSENS_DIR |= TSENS_BV;  // output
+        ORL       0xff,#0x2
+//  126   delay_us(600);
+        ; Setup parameters for call to function delay_us
+        MOV       R2,#0x58
+        MOV       R3,#0x2
+        LCALL     `??delay_us::?relay`; Banked call to: delay_us
+//  127   TSENS_DIR &= ~TSENS_BV;  // input
+        ANL       0xff,#0xfd
+//  128   delay_us(70);
+        ; Setup parameters for call to function delay_us
+        MOV       R2,#0x46
+        MOV       R3,#0x0
+        LCALL     `??delay_us::?relay`; Banked call to: delay_us
+//  129   uint8 i = TSENS_SBIT;
+        MOV       R6,0xa0+0x0
+//  130   delay_us(200);
+        ; Setup parameters for call to function delay_us
+        MOV       R2,#-0x38
+        MOV       R3,#0x0
+        LCALL     `??delay_us::?relay`; Banked call to: delay_us
+//  131   TSENS_SBIT = 1;
+        SETB      0xa0.1
+//  132   TSENS_DIR |= TSENS_BV;  // output
+        ORL       0xff,#0x2
+//  133   delay_us(600);
+        ; Setup parameters for call to function delay_us
+        MOV       R2,#0x58
+        MOV       R3,#0x2
+        LJMP      ?Subroutine0 & 0xFFFF
+          CFI EndBlock cfiBlock9
+        REQUIRE _A_P2
+        REQUIRE P2DIR
+//  134   return i;
+//  135 }
+//  136 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  137 uint16 readTemperature(void) {
+readTemperature:
+          CFI Block cfiBlock10 Using cfiCommon0
+          CFI Function readTemperature
+        CODE
+        FUNCALL readTemperature, temperature_sensor_RST_PULSE
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL readTemperature, temperature_sensor_send_byte
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL readTemperature, temperature_sensor_send_byte
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL readTemperature, delay_ms
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL readTemperature, temperature_sensor_RST_PULSE
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL readTemperature, temperature_sensor_send_byte
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL readTemperature, temperature_sensor_send_byte
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL readTemperature, temperature_sensor_read_byte
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL readTemperature, temperature_sensor_read_byte
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL readTemperature, temperature_sensor_RST_PULSE
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 16, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 16, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        REQUIRE ?V2
+        REQUIRE ?V3
+        REQUIRE ?V4
+        REQUIRE ?V5
+        REQUIRE ?V6
+        REQUIRE ?V7
+        MOV       A,#-0x10
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V7 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V6 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V5 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI V4 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI V3 load(1, XDATA, add(CFA_XSP16, literal(-11)))
+          CFI V2 load(1, XDATA, add(CFA_XSP16, literal(-12)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-13)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-14)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-15)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-16)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 16)
+        ; Saved register size: 16
+        ; Auto size: 0
+//  138   float temperature = 0;
+//  139   uint8 temp1, temp2;
+//  140   if (!temperature_sensor_RST_PULSE()) {
+        ; Setup parameters for call to function temperature_sensor_RST_PULSE
+        LCALL     `??temperature_sensor_RST_PULSE::?relay`; Banked call to: temperature_sensor_RST_PULSE
+        MOV       A,R1
+        JZ        $+5
+        LJMP      ??readTemperature_0 & 0xFFFF
+//  141     temperature_sensor_send_byte(TEMPSENSOR_SKIP_ROM);
+        ; Setup parameters for call to function temperature_sensor_send_byte
+        MOV       R1,#-0x34
+        LCALL     `??temperature_sensor_send_byte::?relay`; Banked call to: temperature_sensor_send_byte
+//  142     temperature_sensor_send_byte(TEMPSENSOR_CONVERT_T);
+        ; Setup parameters for call to function temperature_sensor_send_byte
+        MOV       R1,#0x44
+        LCALL     `??temperature_sensor_send_byte::?relay`; Banked call to: temperature_sensor_send_byte
+//  143     delay_ms(750);
+        ; Setup parameters for call to function delay_ms
+        MOV       R2,#-0x12
+        MOV       R3,#0x2
+        LCALL     `??delay_ms::?relay`; Banked call to: delay_ms
+//  144     temperature_sensor_RST_PULSE();
+        ; Setup parameters for call to function temperature_sensor_RST_PULSE
+        LCALL     `??temperature_sensor_RST_PULSE::?relay`; Banked call to: temperature_sensor_RST_PULSE
+//  145     temperature_sensor_send_byte(TEMPSENSOR_SKIP_ROM);
+        ; Setup parameters for call to function temperature_sensor_send_byte
+        MOV       R1,#-0x34
+        LCALL     `??temperature_sensor_send_byte::?relay`; Banked call to: temperature_sensor_send_byte
+//  146     temperature_sensor_send_byte(TEMPSENSOR_READ_SCRATCHPAD);
+        ; Setup parameters for call to function temperature_sensor_send_byte
+        MOV       R1,#-0x42
+        LCALL     `??temperature_sensor_send_byte::?relay`; Banked call to: temperature_sensor_send_byte
+//  147     temp1 = temperature_sensor_read_byte();
+        ; Setup parameters for call to function temperature_sensor_read_byte
+        LCALL     `??temperature_sensor_read_byte::?relay`; Banked call to: temperature_sensor_read_byte
+        MOV       A,R1
+        MOV       R7,A
+//  148     temp2 = temperature_sensor_read_byte();
+        ; Setup parameters for call to function temperature_sensor_read_byte
+        LCALL     `??temperature_sensor_read_byte::?relay`; Banked call to: temperature_sensor_read_byte
+        MOV       A,R1
+        MOV       R6,A
+//  149     temperature_sensor_RST_PULSE();
+        ; Setup parameters for call to function temperature_sensor_RST_PULSE
+        LCALL     `??temperature_sensor_RST_PULSE::?relay`; Banked call to: temperature_sensor_RST_PULSE
+//  150 
+//  151     if (temp1 == 0xff && temp2 == 0xff) {
+        MOV       A,#-0x1
+        XRL       A,R7
+        JNZ       ??readTemperature_1
+        MOV       A,#-0x1
+        XRL       A,R6
+        JNZ       ??readTemperature_1
+//  152       // No sensor found.
+//  153       return 0;
+        MOV       R2,#0x0
+        SJMP      ??readTemperature_2
+//  154     }
+//  155     temperature = (uint16)temp1 | (uint16)(temp2 & MSK) << 8;
+??readTemperature_1:
+        MOV       A,R6
+        ANL       A,#0x7
+        MOV       ?V4,R7
+        MOV       ?V5,A
+        CLR       A
+        MOV       ?V6,A
+        MOV       ?V7,A
+        MOV       R0,#?V4
+        LCALL     ?UL_TO_FLT
+//  156     // neg. temp
+//  157     if (temp2 & (BV(3)))
+        MOV       DPTR,#__Constant_3d800000
+        MOV       R0,#?V0
+        LCALL     ?L_MOV_X
+        MOV       R0,#?V4
+        MOV       R1,#?V0
+        LCALL     ?FLT_MUL
+        MOV       A,R6
+        MOV       C,0xE0 /* A   */.3
+        JNC       ??readTemperature_3
+//  158       temperature = temperature / 16.0 - 128.0;
+        MOV       DPTR,#__Constant_c3000000
+        MOV       R0,#?V0
+        LCALL     ?L_MOV_X
+        MOV       R0,#?V4
+        MOV       R1,#?V0
+        LCALL     ?FLT_ADD
+//  159     // pos. temp
+//  160     else
+//  161       temperature = temperature / 16.0;
+//  162 
+//  163     return (uint16)(temperature * 100);
+??readTemperature_3:
+        MOV       DPTR,#__Constant_42c80000
+        MOV       R0,#?V0
+        LCALL     ?L_MOV_X
+        MOV       R0,#?V4
+        MOV       R1,#?V0
+        LCALL     ?FLT_MUL
+        MOV       R0,#?V4
+        LCALL     ?FLT_TO_L
+        MOV       R2,?V4
+        MOV       R3,?V5
+        SJMP      ??readTemperature_4
+//  164   } else {
+//  165     // Fail
+//  166     return 1;
+??readTemperature_0:
+        MOV       R2,#0x1
+??readTemperature_2:
+        MOV       R3,#0x0
+??readTemperature_4:
+        MOV       R7,#0x8
+        LJMP      ?BANKED_LEAVE_XDATA
+//  167   }  
+//  168 }
+          CFI EndBlock cfiBlock10
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_3d800000:
+        DD 3D800000H
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_c3000000:
+        DD 0C3000000H
+
+        RSEG XDATA_ROM_C:CONST:REORDER:NOROOT(0)
+        DATA32
+__Constant_42c80000:
+        DD 42C80000H
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??delay_us::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    delay_us
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??delay_ms::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    delay_ms
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??temperature_sensor_send::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    temperature_sensor_send
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??temperature_sensor_read::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    temperature_sensor_read
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??temperature_sensor_send_byte::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    temperature_sensor_send_byte
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??temperature_sensor_read_byte::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    temperature_sensor_read_byte
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??temperature_sensor_RST_PULSE::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    temperature_sensor_RST_PULSE
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??readTemperature::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    readTemperature
+
+        END
+// 
+// 451 bytes in segment BANKED_CODE
+//  48 bytes in segment BANK_RELAYS
+//   2 bytes in segment SFR_AN
+//  12 bytes in segment XDATA_ROM_C
+// 
+//  48 bytes of CODE     memory
+//   0 bytes of CONST    memory (+ 12 bytes shared)
+//   0 bytes of DATA     memory (+  2 bytes shared)
+// 451 bytes of HUGECODE memory
+//
+//Errors: none
+//Warnings: none

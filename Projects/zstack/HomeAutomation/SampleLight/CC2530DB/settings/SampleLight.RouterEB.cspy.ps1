@@ -23,9 +23,9 @@
 
 if ($debugfile -eq "")
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\settings\SampleLight.RouterEB.general.xcl" --backend -f "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\settings\SampleLight.RouterEB.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\settings\SampleLight.RouterEB.general.xcl" --backend -f "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\settings\SampleLight.RouterEB.driver.xcl" 
 }
 else
 {
-& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\settings\SampleLight.RouterEB.general.xcl" --debug_file=$debugfile --backend -f "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\settings\SampleLight.RouterEB.driver.xcl" 
+& "C:\Program Files (x86)\IAR Systems\Embedded Workbench 8.1\common\bin\cspybat" -f "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\settings\SampleLight.RouterEB.general.xcl" --debug_file=$debugfile --backend -f "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\settings\SampleLight.RouterEB.driver.xcl" 
 }

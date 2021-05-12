@@ -47,6 +47,7 @@
 #include "ZDConfig.h"
 
 #include "zcl.h"
+#include "zcl_ms.h"
 #include "zcl_general.h"
 #include "zcl_ha.h"
 #include "zcl_poll_control.h"
@@ -84,6 +85,7 @@
 #define DEFAULT_ON_OFF_STATE LIGHT_OFF
 #define DEFAULT_LEVEL ATTR_LEVEL_MAX_LEVEL
 
+
 /*********************************************************************
  * TYPEDEFS
  */
@@ -102,9 +104,9 @@ const uint16 zclSampleLight_clusterRevision_all = 0x0001; //currently all cluste
 // Basic Cluster
 const uint8 zclSampleLight_HWRevision = SAMPLELIGHT_HWVERSION;
 const uint8 zclSampleLight_ZCLVersion = SAMPLELIGHT_ZCLVERSION;
-const uint8 zclSampleLight_ManufacturerName[] = { 16, 'T','e','x','a','s','I','n','s','t','r','u','m','e','n','t','s' };
-const uint8 zclSampleLight_ModelId[] = { 16, 'R','o','u','t','e','r','0','1',' ',' ',' ',' ',' ',' ',' ',' ' };
-const uint8 zclSampleLight_DateCode[] = { 16, '2','0','2','2','0','4','2','0',' ',' ',' ',' ',' ',' ',' ',' ' };
+const uint8 zclSampleLight_ManufacturerName[] = { 10, 'S','i','m','p','l','e','L','i','n','k' };
+const uint8 zclSampleLight_ModelId[] = { 8, 'R','o','u','t','e','r','0','1' };
+const uint8 zclSampleLight_DateCode[] = { 8, '2','0','2','2','0','4','2','0' };
 const uint8 zclSampleLight_PowerSource = POWER_SOURCE_MAINS_1_PHASE;
 
 uint8 zclSampleLight_LocationDescription[17];
@@ -130,6 +132,19 @@ uint16 zclSampleLight_LevelOnTransitionTime;
 uint16 zclSampleLight_LevelOffTransitionTime;
 uint8  zclSampleLight_LevelDefaultMoveRate;
 #endif
+
+
+// temperature 
+#define MAX_MEASURED_VALUE  10000  // 100.00C
+#define MIN_MEASURED_VALUE  -10000  // -100.00C
+
+
+extern uint16 zclSampleLight_MeasuredValue;
+const uint16 zclSampleLight_temp = 22; 
+extern uint8 zclSampleLight_on; 
+const int16 zclSampleLight_MinMeasuredValue = MIN_MEASURED_VALUE; 
+const uint16 zclSampleLight_MaxMeasuredValue = MAX_MEASURED_VALUE;
+
 
 #if ZCL_DISCOVER
 CONST zclCommandRec_t zclSampleLight_Cmds[] =
@@ -215,18 +230,18 @@ CONST zclAttrRec_t zclSampleLight_Attrs[] =
     ZCL_CLUSTER_ID_GEN_BASIC,
     { // Attribute record
       ATTRID_BASIC_ZCL_VERSION,
-      ZCL_DATATYPE_UINT8,
+      ZCL_DATATYPE_UINT16,
       ACCESS_CONTROL_READ,
-      (void *)&zclSampleLight_ZCLVersion
+      (void *)&zclSampleLight_MeasuredValue
     }
   },
   {
     ZCL_CLUSTER_ID_GEN_BASIC,             // Cluster IDs - defined in the foundation (ie. zcl.h)
     {  // Attribute record
       ATTRID_BASIC_HW_VERSION,            // Attribute ID - Found in Cluster Library header (ie. zcl_general.h)
-      ZCL_DATATYPE_UINT8,                 // Data Type - found in zcl.h
-      ACCESS_CONTROL_READ,                // Variable access control - found in zcl.h
-      (void *)&zclSampleLight_HWRevision  // Pointer to attribute variable
+      ZCL_DATATYPE_UINT16,                 // Data Type - found in zcl.h
+      (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),                // Variable access control - found in zcl.h
+      (void *)&zclSampleLight_on  // Pointer to attribute variable
     }
   },
   {
@@ -289,7 +304,7 @@ CONST zclAttrRec_t zclSampleLight_Attrs[] =
       ATTRID_BASIC_DEVICE_ENABLED,
       ZCL_DATATYPE_BOOLEAN,
       (ACCESS_CONTROL_READ | ACCESS_CONTROL_WRITE),
-      (void *)&zclSampleLight_DeviceEnable
+      (void *)&zclSampleLight_on
     }
   },
   {
@@ -342,6 +357,60 @@ CONST zclAttrRec_t zclSampleLight_Attrs[] =
       (void *)&zclSampleLight_clusterRevision_all
     }
   },
+  
+  
+  
+  
+  
+  
+  
+  // *** Temperature Measurement  ***
+  {
+    ZCL_CLUSTER_ID_MS_TEMPERATURE_MEASUREMENT,
+    { // temperature value
+      ATTRID_MS_TEMPERATURE_MEASURED_VALUE,
+      ZCL_DATATYPE_UINT16,
+      ACCESS_CONTROL_READ,
+      (void *)&zclSampleLight_temp
+    }
+  },
+  
+  {
+    ZCL_CLUSTER_ID_MS_TEMPERATURE_MEASUREMENT,
+    { // min temperature
+      ATTRID_MS_TEMPERATURE_MIN_MEASURED_VALUE,
+      ZCL_DATATYPE_INT16,
+      ACCESS_CONTROL_READ,
+      (void *)&zclSampleLight_MinMeasuredValue
+    }
+  },
+  {
+    ZCL_CLUSTER_ID_MS_TEMPERATURE_MEASUREMENT,
+    { // max tempeerature
+      ATTRID_MS_TEMPERATURE_MAX_MEASURED_VALUE,
+      ZCL_DATATYPE_INT16,
+      ACCESS_CONTROL_READ | ACCESS_REPORTABLE,
+      (void *)&zclSampleLight_MaxMeasuredValue
+    }
+  },
+  {
+    ZCL_CLUSTER_ID_MS_TEMPERATURE_MEASUREMENT,
+    {  // cluster version
+      ATTRID_CLUSTER_REVISION,
+      ZCL_DATATYPE_UINT16,
+      ACCESS_CONTROL_READ | ACCESS_REPORTABLE,
+      (void *)&zclSampleLight_clusterRevision_all
+    }
+  },
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
 #ifdef ZCL_LEVEL_CTRL
   {
@@ -852,6 +921,7 @@ void zclSampleLight_ResetAttributesToDefaultValues(void)
   zclSampleLight_OnOff = DEFAULT_ON_OFF_STATE;
   
   zclSampleLight_IdentifyTime = 0;
+  zclSampleLight_on = 0;
 }
 
 /****************************************************************************

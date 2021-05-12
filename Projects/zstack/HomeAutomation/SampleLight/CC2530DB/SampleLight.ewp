@@ -3496,6 +3496,12 @@
             <name>$PROJ_DIR$\..\Source\OSAL_SampleLight.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\Source\temperature_sensor.c</name>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\Source\temperature_sensor.h</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\Source\zcl_sampleapps_ui.c</name>
         </file>
         <file>

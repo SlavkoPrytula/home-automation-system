@@ -89,6 +89,7 @@
 #include "nwk_util.h"
 
 #include "zcl.h"
+#include "zcl_ms.h"
 #include "zcl_general.h"
 #include "zcl_ha.h"
 #include "zcl_diagnostic.h"
@@ -109,6 +110,9 @@
 #include "hal_key.h"
 
 #include "NLMEDE.h"
+
+
+#include "temperature_sensor.h"
 
 // Added to include TouchLink initiator functionality 
 #if defined ( BDB_TL_INITIATOR )
@@ -150,6 +154,12 @@ byte zclSampleLight_TaskID;
  * LOCAL VARIABLES
  */
 afAddrType_t zclSampleLight_DstAddr;
+zAddrType_t zcl_dstAddr;
+uint16 zclSampleLight_MeasuredValue;
+uint8 zclSampleLight_on;
+uint8 RELAY_STATE = 0;
+uint8 SeqNum = 0;
+
 
 #define ZCLSAMPLELIGHT_BINDINGLIST       2
 static cId_t bindingInClusters[ZCLSAMPLELIGHT_BINDINGLIST] =
@@ -234,6 +244,13 @@ static uint8 zclSampleLight_ProcessInDiscAttrsExtRspCmd( zclIncomingMsg_t *pInMs
 //void zclSampleLight_UiActionToggleLight(uint16 keys);
 //void zclSampleLight_UiUpdateLcd(uint8 uiCurrentState, char * line[3]);
 //void zclSampleLight_UpdateLedState(void);
+
+
+
+
+void zclSampleLight_ReportOnOff( void );
+void zclSampleLight_ReportTemp( void );
+
 
 /*********************************************************************
  * CONSTANTS
@@ -350,9 +367,12 @@ void zclSampleLight_Init( byte task_id )
   RegisterForKeys( zclSampleLight_TaskID );
   
 //  bdb_RegisterCommissioningStatusCB( zclSampleLight_ProcessCommissioningStatus );
-  
+
+
   // Register for a test endpoint
   afRegister( &sampleLight_TestEp );
+ 
+  osal_start_reload_timer( zclSampleLight_TaskID, SAMPLELIGHT_REPORTING_EVT,  1000);
 
 #ifdef ZCL_DIAGNOSTIC
   // Register the application's callback function to read/write attribute data.
@@ -377,8 +397,12 @@ void zclSampleLight_Init( byte task_id )
 //
 //  UI_UpdateLcd();
   
-//    LED(0);
-  HalLedSet ( HAL_LED_2, HAL_LED_MODE_ON );
+
+  zclSampleLight_MeasuredValue = 0;
+//  zclSampleLight_on = 1;
+  
+  
+  HalLedSet ( HAL_LED_ALL, HAL_LED_MODE_ON );
   bdb_StartCommissioning(BDB_COMMISSIONING_MODE_NWK_STEERING | BDB_COMMISSIONING_MODE_FINDING_BINDING);
 
 }
@@ -401,6 +425,33 @@ uint16 zclSampleLight_event_loop( uint8 task_id, uint16 events )
   afIncomingMSGPacket_t *MSGpkt;
 
   (void)task_id;  // Intentionally unreferenced parameter
+  
+  
+  
+  // Report temperature
+  // Event SAMPLELIGHT_REPORTING_EVT
+  //Send toggle every 1000ms
+  if (events & SAMPLELIGHT_REPORTING_EVT) 
+  {
+//	  LED(1, 5);
+//	  osal_start_timerEx(zclSampleLight_TaskID, SAMPLELIGHT_REPORTING_EVT, 1000);
+	  zclSampleLight_ReportTemp();
+	  // LED_01(0);
+	  return (events ^ SAMPLELIGHT_REPORTING_EVT);
+  }
+  
+  
+  zclSampleLight_ReportTemp();
+  
+  
+  if (zclSampleLight_on == 1) {
+	  LED(1);
+  } else {
+	  LED(0);
+  }
+  
+  
+  
 
   if ( events & SYS_EVENT_MSG )
   {
@@ -426,8 +477,13 @@ uint16 zclSampleLight_event_loop( uint8 task_id, uint16 events )
            	// now on network		  
 		  osal_stop_timerEx(zclSampleLight_TaskID, SAMPLEAPP_EVT_BLINK);
 		  HalLedSet( HAL_LED_ALL, HAL_LED_MODE_ON ); 		// stop blinking
-		  HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF ); 		// stop blinking
-          }
+//		  HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF ); 		// stop blinking
+		  zclSampleLight_ReportOnOff();
+          } 
+	  else 
+	  {
+		  // not no the network
+	  }
           break;
           break;
 
@@ -448,7 +504,6 @@ uint16 zclSampleLight_event_loop( uint8 task_id, uint16 events )
   
   if ( events & SAMPLEAPP_EVT_BLINK )
   {
-	  HalLedSet( HAL_LED_ALL, HAL_LED_MODE_BLINK );
 	  return ( events ^ SAMPLEAPP_EVT_BLINK );
   }
   
@@ -458,12 +513,12 @@ uint16 zclSampleLight_event_loop( uint8 task_id, uint16 events )
 	  osal_start_timerEx(zclSampleLight_TaskID, SAMPLEAPP_EVT_BLINK , 100);
 	  
 	  
-	   zAddrType_t dstAddr;
+	   
 	  // Initiate an End Device Bind Request, this bind request will
 	  // only use a cluster list that is important to binding.
-	  dstAddr.addrMode = afAddr16Bit;
-	  dstAddr.addr.shortAddr = 0;   // Coordinator makes the match
-	  ZDP_EndDeviceBindReq( &dstAddr, NLME_GetShortAddr(),
+	  zcl_dstAddr.addrMode = afAddr16Bit;
+	  zcl_dstAddr.addr.shortAddr = 0;   // Coordinator makes the match
+	  ZDP_EndDeviceBindReq( &zcl_dstAddr, NLME_GetShortAddr(),
 			       SAMPLELIGHT_ENDPOINT,
 				ZCL_HA_PROFILE_ID,
 				ZCLSAMPLELIGHT_BINDINGLIST, bindingInClusters,
@@ -486,8 +541,7 @@ uint16 zclSampleLight_event_loop( uint8 task_id, uint16 events )
     return ( events ^ SAMPLEAPP_EVT_LONG );
   }
   
-  
-  
+
   
   
     
@@ -561,10 +615,12 @@ static void zclSampleLight_HandleKeys( byte shift, byte keys )
 
   if ( keys & HAL_KEY_SW_6 )
   {
-	  osal_start_timerEx(zclSampleLight_TaskID, SAMPLEAPP_EVT_LONG, 3000);
+//	  LED(1, 7);
+	  osal_start_timerEx(zclSampleLight_TaskID, SAMPLEAPP_EVT_LONG, 2000);
   }
   else 
   {
+//	  LED(0, 7);
 	  osal_stop_timerEx(zclSampleLight_TaskID, SAMPLEAPP_EVT_LONG);
   }
 
@@ -582,6 +638,77 @@ static void zclSampleLight_HandleKeys( byte shift, byte keys )
 }
 
 
+
+
+void zclSampleLight_ReportOnOff(void) {
+  const uint8 NUM_ATTRIBUTES = 1;
+
+  zclReportCmd_t *pReportCmd;
+
+  pReportCmd = osal_mem_alloc(sizeof(zclReportCmd_t) +
+                              (NUM_ATTRIBUTES * sizeof(zclReport_t)));
+  if (pReportCmd != NULL) {
+    pReportCmd->numAttr = NUM_ATTRIBUTES;
+
+    pReportCmd->attrList[0].attrID = ATTRID_ON_OFF;
+    pReportCmd->attrList[0].dataType = ZCL_DATATYPE_BOOLEAN;
+    pReportCmd->attrList[0].attrData = (void *)(&RELAY_STATE);
+
+    zclSampleLight_DstAddr.addrMode = (afAddrMode_t)Addr16Bit;
+    zclSampleLight_DstAddr.addr.shortAddr = 0;
+    zclSampleLight_DstAddr.endPoint = 1;
+
+    zcl_SendReportCmd(SAMPLELIGHT_ENDPOINT, &zclSampleLight_DstAddr,
+                      ZCL_CLUSTER_ID_GEN_ON_OFF, pReportCmd,
+                      ZCL_FRAME_CLIENT_SERVER_DIR, false, SeqNum++);
+  }
+
+  osal_mem_free(pReportCmd);
+}
+
+
+
+void zclSampleLight_ReportTemp( void )
+{
+	
+//	LED(1, 5);
+//	HalLedSet( HAL_LED_2, HAL_LED_MODE_OFF );
+	
+	zclSampleLight_MeasuredValue = 16;
+	zclSampleLight_MeasuredValue = (uint16)readTemperature();
+  
+//  const uint8 NUM_ATTRIBUTES = 1;
+//
+//  zclReportCmd_t *pReportCmd;
+//
+//  pReportCmd = osal_mem_alloc(sizeof(zclReportCmd_t) +
+//                              (NUM_ATTRIBUTES * sizeof(zclReport_t)));
+//  
+//  if (pReportCmd != NULL) {
+////	LED(0, 5);
+//	pReportCmd->numAttr = NUM_ATTRIBUTES;
+//
+//	pReportCmd->attrList[0].attrID = ATTRID_BASIC_ZCL_VERSION;
+//	pReportCmd->attrList[0].dataType = ZCL_DATATYPE_UINT16;
+//	pReportCmd->attrList[0].attrData = (void *)(&zclSampleLight_MeasuredValue);
+//
+//	zclSampleLight_DstAddr.addrMode = (afAddrMode_t)Addr16Bit;
+//	zclSampleLight_DstAddr.addr.shortAddr = 0;
+//	zclSampleLight_DstAddr.endPoint = 1;
+//
+//	zcl_SendReportCmd(SAMPLELIGHT_ENDPOINT, &zclSampleLight_DstAddr,
+//				      ZCL_CLUSTER_ID_GEN_BASIC, pReportCmd,
+//				      ZCL_FRAME_CLIENT_SERVER_DIR, true, SeqNum++);
+//	   
+//	    
+//	    
+//  }
+//
+//  osal_mem_free(pReportCmd);
+}
+
+
+
 /*********************************************************************
  * @fn      zclSampleLight_ProcessIdentifyTimeChange
  *
@@ -596,7 +723,8 @@ static void zclSampleLight_ProcessIdentifyTimeChange( void )
   if ( zclSampleLight_IdentifyTime > 0 )
   {
     osal_start_timerEx( zclSampleLight_TaskID, SAMPLELIGHT_IDENTIFY_TIMEOUT_EVT, 1000 );
-    HalLedBlink ( HAL_LED_2, 0xFF, HAL_LED_DEFAULT_DUTY_CYCLE, HAL_LED_DEFAULT_FLASH_TIME );
+    HalLedSet(HAL_LED_ALL, HAL_LED_MODE_BLINK);
+//    HalLedBlink ( HAL_LED_2, 0xFF, HAL_LED_DEFAULT_DUTY_CYCLE, HAL_LED_DEFAULT_FLASH_TIME );
   }
   else
   {
@@ -826,11 +954,13 @@ static void zclSampleLight_OnOffCB( uint8 cmd )
   if ( cmd == COMMAND_ON )
   {
     zclSampleLight_OnOff = LIGHT_ON;
+    RELAY_STATE = 1;
   }
   // Turn off the light
   else if ( cmd == COMMAND_OFF )
   {
     zclSampleLight_OnOff = LIGHT_OFF;
+    RELAY_STATE = 0;
   }
   // Toggle the light
   else
@@ -849,12 +979,12 @@ static void zclSampleLight_OnOffCB( uint8 cmd )
   if ( zclSampleLight_OnOff == LIGHT_ON )
   {
 //    HalLedSet( HAL_LED_4, HAL_LED_MODE_ON );
-	  LED(1);
+//	  LED(1, 7);
   }
   else 
   {
 //    HalLedSet( HAL_LED_4, HAL_LED_MODE_OFF );
-	  LED(0);
+//	  LED(0, 7);
   }
 }
 
@@ -1599,5 +1729,4 @@ static uint8 zclSampleLight_ProcessInDiscAttrsExtRspCmd( zclIncomingMsg_t *pInMs
 
 /****************************************************************************
 ****************************************************************************/
-
 

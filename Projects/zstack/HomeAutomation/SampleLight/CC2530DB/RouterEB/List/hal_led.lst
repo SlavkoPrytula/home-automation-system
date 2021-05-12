@@ -1,8 +1,8 @@
 ###############################################################################
 #
-# IAR C/C++ Compiler V10.30.1.6000 for 8051               20/Apr/2021  23:38:55
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               05/May/2021  18:21:27
 # Copyright 2004-2018 IAR Systems AB.
-# Evaluation license - IAR Embedded Workbench for 8051, Evaluation edition 10.30
+# Evaluation license - IAR Embedded Workbench for 8051, Evaluation edition 10.40
 #
 #    Core               =  plain
 #    Code model         =  banked
@@ -12,11 +12,11 @@
 #    Dptr setup         =  1,16
 #                          
 #    Source file        =  
-#        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack 3.0.2\Components\hal\target\CC2530EB\hal_led.c
+#        C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Components\hal\target\CC2530EB\hal_led.c
 #    Command line       =  
-#        -f C:\users\slavko\Temp\EWc142.tmp ("C:\Texas Instruments\Z-Stack
-#        3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Z-Stack
+#        -f C:\users\slavko\Temp\EW225a.tmp ("C:\Texas Instruments\2. main
+#        recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Components\hal\target\CC2530EB\hal_led.c" -D BDB_REPORTING -D
 #        SECURE=1 -D TC_LINKKEY_JOIN -D NV_INIT -D NV_RESTORE -D xZTOOL_P1 -D
 #        xMT_TASK -D xMT_APP_FUNC -D xMT_SYS_FUNC -D xMT_ZDO_FUNC -D
@@ -24,24 +24,22 @@
 #        MULTICAST_ENABLED=FALSE -D ZCL_READ -D ZCL_DISCOVER -D ZCL_WRITE -D
 #        ZCL_BASIC -D ZCL_IDENTIFY -D ZCL_ON_OFF -D ZCL_SCENES -D ZCL_GROUPS -D
 #        ZCL_LEVEL_CTRL -D HAL_LED=TRUE -D HAL_KEY=TRUE -D BLINK_LEDS -lC
-#        "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\RouterEB\List"
-#        -lA "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -lA "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\RouterEB\List"
-#        --diag_suppress Pe001,Pa010 -o "C:\Texas Instruments\Z-Stack
-#        3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Z-Stack
+#        --diag_suppress Pe001,Pa010 -o "C:\Texas Instruments\2. main
+#        recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\RouterEB\Obj"
 #        -e --debug --core=plain --dptr=16,1 --data_model=large
 #        --code_model=banked --calling_convention=xdata_reentrant
 #        --place_constants=data_rom --nr_virtual_regs 16 -f "C:\Texas
-#        Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Z-Stack
+#        Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\Tools\CC2530DB\f8wRouter.cfg"
 #        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRUE
 #        -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8 -DMAC_CFG_RX_MAX=5
-#        -DRTR_NWK) -f "C:\Texas Instruments\Z-Stack
-#        3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Z-Stack
+#        -DRTR_NWK) -f "C:\Texas Instruments\2. main recover\Z-Stack
+#        3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg"
 #        (-DZIGBEEPRO -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
 #        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
@@ -57,101 +55,72 @@
 #        -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000
 #        -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440
 #        -DREJOIN_BACKOFF=900000 -DREJOIN_SCAN=900000 -DENABLE_LED4_DISABLE_S1)
-#        -f "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -f "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\Tools\CC2530DB\f8wZCL.cfg"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\" -I
-#        "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\Source\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\Source\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\ZMain\TI2530DB\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\hal\include\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\include\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\high_level\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mt\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\osal\include\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\services\saddr\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\services\sdata\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\af\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\bdb\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\nwk\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\bdb\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\gp\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\sapi\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\sec\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\sys\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\zcl\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\zdo\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\zmac\"
-#        -I "C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\zmac\f8w\"
 #        -Ohz --require_prototypes)
 #    Locale             =  English_USA.1252
 #    List file          =  
-#        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\RouterEB\List\hal_led.lst
 #    Object file        =  
-#        C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack
-#        3.0.2\Z-Stack
+#        C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
 #        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\RouterEB\Obj\hal_led.r51
 #
 ###############################################################################
 
-C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Z-Stack 3.0.2\Components\hal\target\CC2530EB\hal_led.c
+C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack 3.0.2\Components\hal\target\CC2530EB\hal_led.c
       1          /**************************************************************************************************
       2            Filename:       hal_led.c
       3            Revised:        $Date: 2011-09-15 16:51:11 -0700 (Thu, 15 Sep 2011) $
@@ -206,9 +175,14 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Z-Stack 3.
    \                     _A_P1:
    \   000000                DS 1
 
-   \                                 In  segment SFR_AN, at 0xf4
-   \   unsigned char volatile __sfr P1SEL
-   \                     P1SEL:
+   \                                 In  segment SFR_AN, at 0xf3
+   \   unsigned char volatile __sfr P0SEL
+   \                     P0SEL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xfd
+   \   unsigned char volatile __sfr P0DIR
+   \                     P0DIR:
    \   000000                DS 1
      44          #include "hal_defs.h"
      45          #include "hal_types.h"
@@ -1430,48 +1404,74 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Z-Stack 3.
     516          
 
    \                                 In  segment BANKED_CODE, align 1, keep-with-next
-    517          void LED(uint8 state)
+    517          void LED(uint8 state) {
    \                     LED:
-    518          {
    \   000000                ; Saved register size: 0
    \   000000                ; Auto size: 0
-    519            P1SEL &= ~BV(6); // LED = GPIO
-   \   000000   53F4BF       ANL       0xf4,#0xbf
-    520            
-    521            if (state)	// Switch LED on
-   \   000003   E9           MOV       A,R1
-   \   000004   6004         JZ        ??LED_0
-    522            {
-    523              P1_6 = 1; // ON
-   \   000006   D296         SETB      0x90.6
-   \   000008   8002         SJMP      ??LED_1
-    524            }
-    525            else	// Switch LED off
-    526            {
-    527              P1_6 = 0; // OFF
+    518          //  P1SEL &= ~BV(6); // LED = GPIO
+    519            P0SEL = 0; /* Set pin (sample) as GPIO */
+   \   000000   75F300       MOV       0xf3,#0x0
+    520            P0DIR = 0x80; /* Set pin as input*/
+   \   000003   75FD80       MOV       0xfd,#-0x80
+    521            
+    522            if (state)	// Switch LED on
+   \   000006   E9           MOV       A,R1
+   \   000007   6004         JZ        ??LED_0
+    523            {
+    524          	  P0_7 = 1; // ON	  
+   \   000009   D287         SETB      0x80.7
+   \   00000B   8002         SJMP      ??LED_1
+    525            }
+    526            else	// Switch LED off
+    527            {
+    528          	  P0_7 = 0; // OFF
    \                     ??LED_0:
-   \   00000A   C296         CLR       0x90.6
-    528            }
-    529            
-    530          //  STATE_LED = state;
-    531          }
+   \   00000D   C287         CLR       0x80.7
+    529            }
+    530          //}
+    531            
+    532            
+    533          //  if (state)	// Switch LED on
+    534          //  {
+    535          //	  if (ledNum == 7) {
+    536          //		  P0_7 = 1; // ON
+    537          //	  }
+    538          //	  else if (ledNum == 5) {
+    539          //		  P0_5 = 1; // ON
+    540          //	  }
+    541          //	  
+    542          //  }
+    543          //  else	// Switch LED off
+    544          //  {
+    545          //	  if (ledNum == 7) {
+    546          //		  P0_7 = 0; // OFF
+    547          //	  }
+    548          //	  else if (ledNum == 5) {
+    549          //		  P0_5 = 0; // OFF
+    550          //	  }
+    551          //  }
+    552            
+    553          //  STATE_LED = state;
+    554          }
    \                     ??LED_1:
-   \   00000C   02....       LJMP      ?BRET
-   \   00000F                REQUIRE P1SEL
-   \   00000F                REQUIRE _A_P1
+   \   00000F   02....       LJMP      ?BRET
+   \   000012                REQUIRE P0SEL
+   \   000012                REQUIRE P0DIR
+   \   000012                REQUIRE _A_P0
 
    \                                 In  segment XDATA_ROM_C, align 1
    \                     __Constant_64:
    \   000000   64000000     DD 100
-    532          
-    533          
-    534          
-    535          /***************************************************************************************************
-    536          ***************************************************************************************************/
-    537          
-    538          
-    539          
-    540          
+    555          
+    556          
+    557          
+    558          
+    559          /***************************************************************************************************
+    560          ***************************************************************************************************/
+    561          
+    562          
+    563          
+    564          
 
    Maximum stack usage in bytes:
 
@@ -1522,8 +1522,9 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Z-Stack 3.
       37  HalLedStatusControl
      454  HalLedUpdate
        1  HalSleepLedState
-      15  LED
-       1  P1SEL
+      18  LED
+       1  P0DIR
+       1  P0SEL
        1  _A_P0
        1  _A_P1
        4  __Constant_64
@@ -1531,16 +1532,16 @@ C:\Texas Instruments\Z-Stack 3.0.2-20210417T211827Z-001\Z-Stack 3.0.2\Z-Stack 3.
       54  -- Other
 
  
- 1 053 bytes in segment BANKED_CODE
+ 1 056 bytes in segment BANKED_CODE
     54 bytes in segment BANK_RELAYS
-     3 bytes in segment SFR_AN
+     4 bytes in segment SFR_AN
      4 bytes in segment XDATA_ROM_C
     40 bytes in segment XDATA_Z
  
     54 bytes of CODE     memory
      0 bytes of CONST    memory (+ 4 bytes shared)
-     0 bytes of DATA     memory (+ 3 bytes shared)
- 1 053 bytes of HUGECODE memory
+     0 bytes of DATA     memory (+ 4 bytes shared)
+ 1 056 bytes of HUGECODE memory
     40 bytes of XDATA    memory
 
 Errors: none

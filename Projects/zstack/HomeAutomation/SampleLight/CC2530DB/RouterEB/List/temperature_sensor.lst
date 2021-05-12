@@ -1,0 +1,716 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.30.1.6000 for 8051               05/May/2021  18:21:34
+# Copyright 2004-2018 IAR Systems AB.
+# Evaluation license - IAR Embedded Workbench for 8051, Evaluation edition 10.40
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data_rom
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\Source\temperature_sensor.c
+#    Command line       =  
+#        -f C:\users\slavko\Temp\EW3c35.tmp ("C:\Texas Instruments\2. main
+#        recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\Source\temperature_sensor.c"
+#        -D BDB_REPORTING -D SECURE=1 -D TC_LINKKEY_JOIN -D NV_INIT -D
+#        NV_RESTORE -D xZTOOL_P1 -D xMT_TASK -D xMT_APP_FUNC -D xMT_SYS_FUNC -D
+#        xMT_ZDO_FUNC -D xMT_ZDO_MGMT -D xMT_APP_CNF_FUNC -D
+#        LCD_SUPPORTED=DEBUG -D MULTICAST_ENABLED=FALSE -D ZCL_READ -D
+#        ZCL_DISCOVER -D ZCL_WRITE -D ZCL_BASIC -D ZCL_IDENTIFY -D ZCL_ON_OFF
+#        -D ZCL_SCENES -D ZCL_GROUPS -D ZCL_LEVEL_CTRL -D HAL_LED=TRUE -D
+#        HAL_KEY=TRUE -D BLINK_LEDS -lC "C:\Texas Instruments\2. main
+#        recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\RouterEB\List"
+#        -lA "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\RouterEB\List"
+#        --diag_suppress Pe001,Pa010 -o "C:\Texas Instruments\2. main
+#        recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\RouterEB\Obj"
+#        -e --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data_rom --nr_virtual_regs 16 -f "C:\Texas
+#        Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\Tools\CC2530DB\f8wRouter.cfg"
+#        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_APP_PENDING_QUEUE=TRUE
+#        -DMAC_CFG_TX_DATA_MAX=5 -DMAC_CFG_TX_MAX=8 -DMAC_CFG_RX_MAX=5
+#        -DRTR_NWK) -f "C:\Texas Instruments\2. main recover\Z-Stack
+#        3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg"
+#        (-DZIGBEEPRO -DSECURE=1 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
+#        -DDEFAULT_CHANLIST=0x00000800 -DZDAPP_CONFIG_PAN_ID=0xFFFF
+#        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
+#        -DBEACON_REQUEST_DELAY=100 -DBEACON_REQ_DELAY_MASK=0x00FF
+#        -DLINK_STATUS_JITTER_MASK=0x007F -DROUTE_EXPIRY_TIME=30
+#        -DAPSC_ACK_WAIT_DURATION_POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7
+#        -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3
+#        -DNWK_MAX_DATA_RETRIES=2 -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9
+#        -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40 -DNWK_MAX_BINDING_ENTRIES=4
+#        -DMAX_BINDING_CLUSTER_IDS=4 -DDEFAULT_KEY={0} -DMAC_MAX_FRAME_SIZE=116
+#        -DZDNWKMGR_MIN_TRANSMISSIONS=20 "-DCONST=const __code"
+#        -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE -DPOLL_RATE=1000
+#        -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100 -DREJOIN_POLL_RATE=440
+#        -DREJOIN_BACKOFF=900000 -DREJOIN_SCAN=900000 -DENABLE_LED4_DISABLE_S1)
+#        -f "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\Tools\CC2530DB\f8wZCL.cfg"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\" -I
+#        "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\Source\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\Source\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\ZMain\TI2530DB\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\hal\include\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\include\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\high_level\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\mt\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\osal\include\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\services\saddr\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\services\sdata\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\af\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\bdb\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\nwk\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\bdb\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\gp\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\sapi\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\sec\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\sys\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\zcl\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\stack\zdo\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\zmac\"
+#        -I "C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\..\..\..\..\..\Components\zmac\f8w\"
+#        -Ohz --require_prototypes)
+#    Locale             =  English_USA.1252
+#    List file          =  
+#        C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\RouterEB\List\temperature_sensor.lst
+#    Object file        =  
+#        C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack
+#        3.0.2\Projects\zstack\HomeAutomation\SampleLight\CC2530DB\RouterEB\Obj\temperature_sensor.r51
+#
+###############################################################################
+
+C:\Texas Instruments\2. main recover\Z-Stack 3.0.2\Z-Stack 3.0.2\Projects\zstack\HomeAutomation\SampleLight\Source\temperature_sensor.c
+      1          #include "ZComDef.h"
+      2          #include "OSAL.h"
+      3          #include "AF.h"
+      4          #include "ZDApp.h"
+      5          #include "ZDObject.h"
+      6          #include "MT_SYS.h"
+      7          
+      8          #include "nwk_util.h"
+      9          
+     10          #include "zcl.h"
+     11          #include "zcl_general.h"
+     12          #include "zcl_ha.h"
+     13          #include "zcl_diagnostic.h"
+     14          
+     15          #include "zcl_samplelight.h"
+     16             
+     17          #include "bdb.h"
+     18          #include "bdb_interface.h"
+     19          
+     20           //GP_UPDATE
+     21          #include "gp_interface.h"
+     22             
+     23          #include "onboard.h"
+
+   \                                 In  segment SFR_AN, at 0xa0
+   \   union <unnamed> volatile __sfr _A_P2
+   \                     _A_P2:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xff
+   \   unsigned char volatile __sfr P2DIR
+   \                     P2DIR:
+   \   000000                DS 1
+     24          
+     25          /* HAL */
+     26          #include "hal_lcd.h"
+     27          #include "hal_led.h"
+     28          #include "hal_key.h"
+     29          
+     30          #include "NLMEDE.h"
+     31          
+     32          
+     33          #include "hal_board_cfg.h"
+     34          #include "temperature_sensor.h"
+     35          
+     36          #define MSK      (BV(0) | BV(1) | BV(2))
+     37          #define TEMPSENSOR_SKIP_ROM 		0xCC
+     38          #define TEMPSENSOR_CONVERT_T 		0x44
+     39          #define TEMPSENSOR_READ_SCRATCHPAD         0xBE
+     40          
+     41          
+     42          void delay_us(uint16);
+     43          void delay_ms(uint16);
+     44          void temperature_sensor_send(uint8);
+     45          uint8 temperature_sensor_read(void);
+     46          void temperature_sensor_send_byte(int8);
+     47          uint8 temperature_sensor_read_byte(void);
+     48          uint8 temperature_sensor_RST_PULSE(void);
+     49          
+     50          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     51          void delay_us(uint16 microSecs) {
+   \                     delay_us:
+   \   000000                ; Saved register size: 0
+   \   000000                ; Auto size: 0
+   \   000000   8006         SJMP      ??delay_us_0
+     52            while (microSecs--) {
+     53              asm("nop");
+   \                     ??delay_us_1:
+   \   000002   00           nop
+     54              asm("nop");
+   \   000003   00           nop
+     55              asm("nop");
+   \   000004   00           nop
+     56              asm("nop");
+   \   000005   00           nop
+     57              asm("nop");
+   \   000006   00           nop
+     58              asm("nop");
+   \   000007   00           nop
+     59            }
+   \                     ??delay_us_0:
+   \   000008   EA           MOV       A,R2
+   \   000009   F8           MOV       R0,A
+   \   00000A   EB           MOV       A,R3
+   \   00000B   F9           MOV       R1,A
+   \   00000C   E8           MOV       A,R0
+   \   00000D   24FF         ADD       A,#-0x1
+   \   00000F   1A           DEC       R2
+   \   000010   E9           MOV       A,R1
+   \   000011   34FF         ADDC      A,#-0x1
+   \   000013   FB           MOV       R3,A
+   \   000014   E8           MOV       A,R0
+   \   000015   49           ORL       A,R1
+   \   000016   70EA         JNZ       ??delay_us_1
+     60          }
+   \   000018   02....       LJMP      ?BRET
+     61          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     62          void delay_ms(uint16 milliSecs) {
+   \                     delay_ms:
+   \   000000   74F7         MOV       A,#-0x9
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   EA           MOV       A,R2
+   \   000006   FE           MOV       R6,A
+   \   000007   EB           MOV       A,R3
+   \   000008   FF           MOV       R7,A
+   \   000009   8007         SJMP      ??delay_ms_0
+     63            while (milliSecs--) {
+     64              delay_us(1000);
+   \                     ??delay_ms_1:
+   \   00000B                ; Setup parameters for call to function delay_us
+   \   00000B   7AE8         MOV       R2,#-0x18
+   \   00000D   7B03         MOV       R3,#0x3
+   \   00000F   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+     65            }
+   \                     ??delay_ms_0:
+   \   000012   EE           MOV       A,R6
+   \   000013   F8           MOV       R0,A
+   \   000014   EF           MOV       A,R7
+   \   000015   F9           MOV       R1,A
+   \   000016   E8           MOV       A,R0
+   \   000017   24FF         ADD       A,#-0x1
+   \   000019   1E           DEC       R6
+   \   00001A   E9           MOV       A,R1
+   \   00001B   34FF         ADDC      A,#-0x1
+   \   00001D   FF           MOV       R7,A
+   \   00001E   E8           MOV       A,R0
+   \   00001F   49           ORL       A,R1
+   \   000020   70E9         JNZ       ??delay_ms_1
+     66          }
+   \   000022   80..         SJMP      ??Subroutine2_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ??Subroutine2_0:
+   \   000000   7F01         MOV       R7,#0x1
+   \   000002   02....       LJMP      ?BANKED_LEAVE_XDATA
+     67          
+     68          // Sends one bit to bus
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     69          void temperature_sensor_send(uint8 bit) {
+   \                     temperature_sensor_send:
+   \   000000   74F7         MOV       A,#-0x9
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV       A,R1
+   \   000006   FE           MOV       R6,A
+     70            TSENS_SBIT = 1;
+   \   000007   D2A1         SETB      0xa0.1
+     71            TSENS_DIR |= TSENS_BV;  // output
+   \   000009   43FF02       ORL       0xff,#0x2
+     72            TSENS_SBIT = 0;
+   \   00000C   C2A1         CLR       0xa0.1
+     73            if (bit != 0)
+   \   00000E   6004         JZ        ??temperature_sensor_send_0
+     74              delay_us(8);
+   \   000010                ; Setup parameters for call to function delay_us
+   \   000010   7A08         MOV       R2,#0x8
+   \   000012   8002         SJMP      ??temperature_sensor_send_1
+     75            else
+     76              delay_us(80);
+   \                     ??temperature_sensor_send_0:
+   \   000014                ; Setup parameters for call to function delay_us
+   \   000014   7A50         MOV       R2,#0x50
+   \                     ??temperature_sensor_send_1:
+   \   000016   7B00         MOV       R3,#0x0
+   \   000018   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+     77            TSENS_SBIT = 1;
+   \   00001B   D2A1         SETB      0xa0.1
+     78            if (bit != 0)
+   \   00001D   EE           MOV       A,R6
+   \   00001E   6004         JZ        ??temperature_sensor_send_2
+     79              delay_us(80);
+   \   000020                ; Setup parameters for call to function delay_us
+   \   000020   7A50         MOV       R2,#0x50
+   \   000022   8002         SJMP      ??temperature_sensor_send_3
+     80            else
+     81              delay_us(2);
+   \                     ??temperature_sensor_send_2:
+   \   000024                ; Setup parameters for call to function delay_us
+   \   000024   7A02         MOV       R2,#0x2
+   \                     ??temperature_sensor_send_3:
+   \   000026   7B00         MOV       R3,#0x0
+   \   000028   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+     82            //TSENS_SBIT = 1;
+     83          }
+   \   00002B   80..         SJMP      ??Subroutine2_0
+   \   00002D                REQUIRE _A_P2
+   \   00002D                REQUIRE P2DIR
+     84          
+     85          // Reads one bit from bus
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine0:
+   \   000000   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+   \   000003   EE           MOV       A,R6
+   \   000004   A2E1         MOV       C,0xE0 /* A   */.1
+   \   000006   E4           CLR       A
+   \   000007   33           RLC       A
+   \   000008   F9           MOV       R1,A
+   \   000009                REQUIRE ??Subroutine2_0
+   \   000009                ; // Fall through to label ??Subroutine2_0
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     86          uint8 temperature_sensor_read(void) {
+   \                     temperature_sensor_read:
+   \   000000   74F7         MOV       A,#-0x9
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+     87            TSENS_SBIT = 1;
+   \   000005   D2A1         SETB      0xa0.1
+     88            TSENS_DIR |= TSENS_BV;  // output
+   \   000007   43FF02       ORL       0xff,#0x2
+     89            TSENS_SBIT = 0;
+   \   00000A   C2A1         CLR       0xa0.1
+     90            delay_us(2);
+   \   00000C                ; Setup parameters for call to function delay_us
+   \   00000C   7A02         MOV       R2,#0x2
+   \   00000E   7B00         MOV       R3,#0x0
+   \   000010   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+     91            //TSENS_SBIT = 1;
+     92            //_delay_us(15);
+     93            TSENS_DIR &= ~TSENS_BV;  // input
+   \   000013   53FFFD       ANL       0xff,#0xfd
+     94            delay_us(5);
+   \   000016                ; Setup parameters for call to function delay_us
+   \   000016   7A05         MOV       R2,#0x5
+   \   000018   7B00         MOV       R3,#0x0
+   \   00001A   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+     95            uint8 i = TSENS_SBIT;
+   \   00001D   AEA0         MOV       R6,0xa0+0x0
+     96            delay_us(60);
+   \   00001F                ; Setup parameters for call to function delay_us
+   \   00001F   7A3C         MOV       R2,#0x3c
+   \   000021   7B00         MOV       R3,#0x0
+   \   000023   80..         SJMP      ?Subroutine0
+   \   000025                REQUIRE _A_P2
+   \   000025                REQUIRE P2DIR
+     97            return i;
+     98          }
+     99          
+    100          // Sends one byte to bus
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    101          void temperature_sensor_send_byte(int8 data) {
+   \                     temperature_sensor_send_byte:
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   74F6         MOV       A,#-0xa
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+   \   000005   E9           MOV       A,R1
+   \   000006   FF           MOV       R7,A
+    102            uint8 i, x;
+    103            for (i = 0; i < 8; i++) {
+   \   000007   7E00         MOV       R6,#0x0
+    104              x = data >> i;
+    105              x &= 0x01;
+    106              temperature_sensor_send(x);
+   \                     ??temperature_sensor_send_byte_0:
+   \   000009                ; Setup parameters for call to function temperature_sensor_send
+   \   000009   EF           MOV       A,R7
+   \   00000A   F5..         MOV       ?V0,A
+   \   00000C   33           RLC       A
+   \   00000D   95E0         SUBB      A,0xE0 /* A   */
+   \   00000F   F5..         MOV       ?V1,A
+   \   000011   EE           MOV       A,R6
+   \   000012   78..         MOV       R0,#?V0
+   \   000014   12....       LCALL     ?SS_SHR
+   \   000017   E5..         MOV       A,?V0
+   \   000019   5401         ANL       A,#0x1
+   \   00001B   F9           MOV       R1,A
+   \   00001C   12....       LCALL     `??temperature_sensor_send::?relay`; Banked call to: temperature_sensor_send
+    107            }
+   \   00001F   0E           INC       R6
+   \   000020   EE           MOV       A,R6
+   \   000021   C3           CLR       C
+   \   000022   9408         SUBB      A,#0x8
+   \   000024   40E3         JC        ??temperature_sensor_send_byte_0
+    108            //_delay_us(100);
+    109          }
+   \   000026                REQUIRE ?Subroutine1
+   \   000026                ; // Fall through to label ?Subroutine1
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+   \                     ?Subroutine1:
+   \   000000   7F02         MOV       R7,#0x2
+   \   000002   02....       LJMP      ?BANKED_LEAVE_XDATA
+    110          
+    111          // Reads one byte from bus
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    112          uint8 temperature_sensor_read_byte(void) {
+   \                     temperature_sensor_read_byte:
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000   74F6         MOV       A,#-0xa
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 10
+   \   000005                ; Auto size: 0
+    113            uint8 i;
+    114            uint8 data = 0;
+   \   000005   7E00         MOV       R6,#0x0
+    115            for (i = 0; i < 8; i++) {
+   \   000007   7F00         MOV       R7,#0x0
+    116              if (temperature_sensor_read()) data |= 0x01 << i;
+   \                     ??temperature_sensor_read_byte_0:
+   \   000009                ; Setup parameters for call to function temperature_sensor_read
+   \   000009   12....       LCALL     `??temperature_sensor_read::?relay`; Banked call to: temperature_sensor_read
+   \   00000C   E9           MOV       A,R1
+   \   00000D   6011         JZ        ??temperature_sensor_read_byte_1
+   \   00000F   75..01       MOV       ?V0,#0x1
+   \   000012   75..00       MOV       ?V1,#0x0
+   \   000015   EF           MOV       A,R7
+   \   000016   78..         MOV       R0,#?V0
+   \   000018   12....       LCALL     ?S_SHL
+   \   00001B   E5..         MOV       A,?V0
+   \   00001D   CE           XCH       A,R6
+   \   00001E   4E           ORL       A,R6
+   \   00001F   FE           MOV       R6,A
+    117              //_delay_us(25);
+    118            }
+   \                     ??temperature_sensor_read_byte_1:
+   \   000020   0F           INC       R7
+   \   000021   EF           MOV       A,R7
+   \   000022   C3           CLR       C
+   \   000023   9408         SUBB      A,#0x8
+   \   000025   40E2         JC        ??temperature_sensor_read_byte_0
+    119            return (data);
+   \   000027   EE           MOV       A,R6
+   \   000028   F9           MOV       R1,A
+   \   000029   80..         SJMP      ?Subroutine1
+    120          }
+    121          
+    122          // Sends reset pulse
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    123          uint8 temperature_sensor_RST_PULSE(void) {
+   \                     temperature_sensor_RST_PULSE:
+   \   000000   74F7         MOV       A,#-0x9
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+    124            TSENS_SBIT = 0;
+   \   000005   C2A1         CLR       0xa0.1
+    125            TSENS_DIR |= TSENS_BV;  // output
+   \   000007   43FF02       ORL       0xff,#0x2
+    126            delay_us(600);
+   \   00000A                ; Setup parameters for call to function delay_us
+   \   00000A   7A58         MOV       R2,#0x58
+   \   00000C   7B02         MOV       R3,#0x2
+   \   00000E   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+    127            TSENS_DIR &= ~TSENS_BV;  // input
+   \   000011   53FFFD       ANL       0xff,#0xfd
+    128            delay_us(70);
+   \   000014                ; Setup parameters for call to function delay_us
+   \   000014   7A46         MOV       R2,#0x46
+   \   000016   7B00         MOV       R3,#0x0
+   \   000018   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+    129            uint8 i = TSENS_SBIT;
+   \   00001B   AEA0         MOV       R6,0xa0+0x0
+    130            delay_us(200);
+   \   00001D                ; Setup parameters for call to function delay_us
+   \   00001D   7AC8         MOV       R2,#-0x38
+   \   00001F   7B00         MOV       R3,#0x0
+   \   000021   12....       LCALL     `??delay_us::?relay`; Banked call to: delay_us
+    131            TSENS_SBIT = 1;
+   \   000024   D2A1         SETB      0xa0.1
+    132            TSENS_DIR |= TSENS_BV;  // output
+   \   000026   43FF02       ORL       0xff,#0x2
+    133            delay_us(600);
+   \   000029                ; Setup parameters for call to function delay_us
+   \   000029   7A58         MOV       R2,#0x58
+   \   00002B   7B02         MOV       R3,#0x2
+   \   00002D   02....       LJMP      ?Subroutine0 & 0xFFFF
+   \   000030                REQUIRE _A_P2
+   \   000030                REQUIRE P2DIR
+    134            return i;
+    135          }
+    136          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+    137          uint16 readTemperature(void) {
+   \                     readTemperature:
+   \   000000                REQUIRE ?V0
+   \   000000                REQUIRE ?V1
+   \   000000                REQUIRE ?V2
+   \   000000                REQUIRE ?V3
+   \   000000                REQUIRE ?V4
+   \   000000                REQUIRE ?V5
+   \   000000                REQUIRE ?V6
+   \   000000                REQUIRE ?V7
+   \   000000   74F0         MOV       A,#-0x10
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 16
+   \   000005                ; Auto size: 0
+    138            float temperature = 0;
+    139            uint8 temp1, temp2;
+    140            if (!temperature_sensor_RST_PULSE()) {
+   \   000005                ; Setup parameters for call to function temperature_sensor_RST_PULSE
+   \   000005   12....       LCALL     `??temperature_sensor_RST_PULSE::?relay`; Banked call to: temperature_sensor_RST_PULSE
+   \   000008   E9           MOV       A,R1
+   \   000009   6003         JZ        $+5
+   \   00000B   02....       LJMP      ??readTemperature_0 & 0xFFFF
+    141              temperature_sensor_send_byte(TEMPSENSOR_SKIP_ROM);
+   \   00000E                ; Setup parameters for call to function temperature_sensor_send_byte
+   \   00000E   79CC         MOV       R1,#-0x34
+   \   000010   12....       LCALL     `??temperature_sensor_send_byte::?relay`; Banked call to: temperature_sensor_send_byte
+    142              temperature_sensor_send_byte(TEMPSENSOR_CONVERT_T);
+   \   000013                ; Setup parameters for call to function temperature_sensor_send_byte
+   \   000013   7944         MOV       R1,#0x44
+   \   000015   12....       LCALL     `??temperature_sensor_send_byte::?relay`; Banked call to: temperature_sensor_send_byte
+    143              delay_ms(750);
+   \   000018                ; Setup parameters for call to function delay_ms
+   \   000018   7AEE         MOV       R2,#-0x12
+   \   00001A   7B02         MOV       R3,#0x2
+   \   00001C   12....       LCALL     `??delay_ms::?relay`; Banked call to: delay_ms
+    144              temperature_sensor_RST_PULSE();
+   \   00001F                ; Setup parameters for call to function temperature_sensor_RST_PULSE
+   \   00001F   12....       LCALL     `??temperature_sensor_RST_PULSE::?relay`; Banked call to: temperature_sensor_RST_PULSE
+    145              temperature_sensor_send_byte(TEMPSENSOR_SKIP_ROM);
+   \   000022                ; Setup parameters for call to function temperature_sensor_send_byte
+   \   000022   79CC         MOV       R1,#-0x34
+   \   000024   12....       LCALL     `??temperature_sensor_send_byte::?relay`; Banked call to: temperature_sensor_send_byte
+    146              temperature_sensor_send_byte(TEMPSENSOR_READ_SCRATCHPAD);
+   \   000027                ; Setup parameters for call to function temperature_sensor_send_byte
+   \   000027   79BE         MOV       R1,#-0x42
+   \   000029   12....       LCALL     `??temperature_sensor_send_byte::?relay`; Banked call to: temperature_sensor_send_byte
+    147              temp1 = temperature_sensor_read_byte();
+   \   00002C                ; Setup parameters for call to function temperature_sensor_read_byte
+   \   00002C   12....       LCALL     `??temperature_sensor_read_byte::?relay`; Banked call to: temperature_sensor_read_byte
+   \   00002F   E9           MOV       A,R1
+   \   000030   FF           MOV       R7,A
+    148              temp2 = temperature_sensor_read_byte();
+   \   000031                ; Setup parameters for call to function temperature_sensor_read_byte
+   \   000031   12....       LCALL     `??temperature_sensor_read_byte::?relay`; Banked call to: temperature_sensor_read_byte
+   \   000034   E9           MOV       A,R1
+   \   000035   FE           MOV       R6,A
+    149              temperature_sensor_RST_PULSE();
+   \   000036                ; Setup parameters for call to function temperature_sensor_RST_PULSE
+   \   000036   12....       LCALL     `??temperature_sensor_RST_PULSE::?relay`; Banked call to: temperature_sensor_RST_PULSE
+    150          
+    151              if (temp1 == 0xff && temp2 == 0xff) {
+   \   000039   74FF         MOV       A,#-0x1
+   \   00003B   6F           XRL       A,R7
+   \   00003C   7009         JNZ       ??readTemperature_1
+   \   00003E   74FF         MOV       A,#-0x1
+   \   000040   6E           XRL       A,R6
+   \   000041   7004         JNZ       ??readTemperature_1
+    152                // No sensor found.
+    153                return 0;
+   \   000043   7A00         MOV       R2,#0x0
+   \   000045   8050         SJMP      ??readTemperature_2
+    154              }
+    155              temperature = (uint16)temp1 | (uint16)(temp2 & MSK) << 8;
+   \                     ??readTemperature_1:
+   \   000047   EE           MOV       A,R6
+   \   000048   5407         ANL       A,#0x7
+   \   00004A   8F..         MOV       ?V4,R7
+   \   00004C   F5..         MOV       ?V5,A
+   \   00004E   E4           CLR       A
+   \   00004F   F5..         MOV       ?V6,A
+   \   000051   F5..         MOV       ?V7,A
+   \   000053   78..         MOV       R0,#?V4
+   \   000055   12....       LCALL     ?UL_TO_FLT
+    156              // neg. temp
+    157              if (temp2 & (BV(3)))
+   \   000058   90....       MOV       DPTR,#__Constant_3d800000
+   \   00005B   78..         MOV       R0,#?V0
+   \   00005D   12....       LCALL     ?L_MOV_X
+   \   000060   78..         MOV       R0,#?V4
+   \   000062   79..         MOV       R1,#?V0
+   \   000064   12....       LCALL     ?FLT_MUL
+   \   000067   EE           MOV       A,R6
+   \   000068   A2E3         MOV       C,0xE0 /* A   */.3
+   \   00006A   500F         JNC       ??readTemperature_3
+    158                temperature = temperature / 16.0 - 128.0;
+   \   00006C   90....       MOV       DPTR,#__Constant_c3000000
+   \   00006F   78..         MOV       R0,#?V0
+   \   000071   12....       LCALL     ?L_MOV_X
+   \   000074   78..         MOV       R0,#?V4
+   \   000076   79..         MOV       R1,#?V0
+   \   000078   12....       LCALL     ?FLT_ADD
+    159              // pos. temp
+    160              else
+    161                temperature = temperature / 16.0;
+    162          
+    163              return (uint16)(temperature * 100);
+   \                     ??readTemperature_3:
+   \   00007B   90....       MOV       DPTR,#__Constant_42c80000
+   \   00007E   78..         MOV       R0,#?V0
+   \   000080   12....       LCALL     ?L_MOV_X
+   \   000083   78..         MOV       R0,#?V4
+   \   000085   79..         MOV       R1,#?V0
+   \   000087   12....       LCALL     ?FLT_MUL
+   \   00008A   78..         MOV       R0,#?V4
+   \   00008C   12....       LCALL     ?FLT_TO_L
+   \   00008F   AA..         MOV       R2,?V4
+   \   000091   AB..         MOV       R3,?V5
+   \   000093   8004         SJMP      ??readTemperature_4
+    164            } else {
+    165              // Fail
+    166              return 1;
+   \                     ??readTemperature_0:
+   \   000095   7A01         MOV       R2,#0x1
+   \                     ??readTemperature_2:
+   \   000097   7B00         MOV       R3,#0x0
+   \                     ??readTemperature_4:
+   \   000099   7F08         MOV       R7,#0x8
+   \   00009B   02....       LJMP      ?BANKED_LEAVE_XDATA
+    167            }  
+    168          }
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_3d800000:
+   \   000000   0000803D     DD 3D800000H
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_c3000000:
+   \   000000   000000C3     DD 0C3000000H
+
+   \                                 In  segment XDATA_ROM_C, align 1
+   \                     __Constant_42c80000:
+   \   000000   0000C842     DD 42C80000H
+
+   Maximum stack usage in bytes:
+
+   XSTACK Function
+   ------ --------
+     25   delay_ms
+        9   -> delay_us
+      9   delay_us
+     16   readTemperature
+       16   -> delay_ms
+       16   -> temperature_sensor_RST_PULSE
+       16   -> temperature_sensor_read_byte
+       16   -> temperature_sensor_send_byte
+     25   temperature_sensor_RST_PULSE
+        9   -> delay_us
+     19   temperature_sensor_read
+        9   -> delay_us
+     26   temperature_sensor_read_byte
+       10   -> temperature_sensor_read
+     19   temperature_sensor_send
+        9   -> delay_us
+     26   temperature_sensor_send_byte
+       10   -> temperature_sensor_send
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       5  ??Subroutine2_0
+       9  ?Subroutine0
+       5  ?Subroutine1
+       1  P2DIR
+       1  _A_P2
+       4  __Constant_3d800000
+       4  __Constant_42c80000
+       4  __Constant_c3000000
+      36  delay_ms
+      27  delay_us
+     158  readTemperature
+      48  temperature_sensor_RST_PULSE
+      37  temperature_sensor_read
+      43  temperature_sensor_read_byte
+      45  temperature_sensor_send
+      38  temperature_sensor_send_byte
+      48  -- Other
+
+ 
+ 451 bytes in segment BANKED_CODE
+  48 bytes in segment BANK_RELAYS
+   2 bytes in segment SFR_AN
+  12 bytes in segment XDATA_ROM_C
+ 
+  48 bytes of CODE     memory
+   0 bytes of CONST    memory (+ 12 bytes shared)
+   0 bytes of DATA     memory (+  2 bytes shared)
+ 451 bytes of HUGECODE memory
+
+Errors: none
+Warnings: none
