@@ -1,0 +1,15 @@
+<header class="header">
+    <div class="header-logo-container">
+        <!-- <img src="{{ url_for('static', filename='img/logo.png') }}" alt="HomeAutomation"> -->
+        <h1><a href="#" class="header-logo">Home automation</a></h1>
+    </div>
+
+    <nav class="navigation">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('tempGraph') }}">Temperature graph</a>
+        <a href="{{ url_for('humGraph') }}">Humidity graph</a>
+        <a href="{{ url_for('devices') }}">Devices</a>
+        <a href="{{ url_for('statistics') }}">Statistics</a>
+    </nav>
+
+</header>
