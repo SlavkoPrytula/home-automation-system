@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>Devices</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    </head>
+
+    <body>
+        <div class="wrapper">
+        <!-- Header -->
+        {% include 'header.html' %}
+
+        <!-- Main Section -->
+        <main>
+
+                <section>
+                    <div class="chapter-header">
+                        <h1>Devices</h1>
+                    </div>
+                    <div class="sensor-name">
+                        <p>Xiaomi MiJia temperature & humidity sensor (WSDCGQ01LM)</p>
+                    </div>
+                    <div>
+                        <ul class="graph-selector">
+                            <li class="main-party-type"><a href="{{ url_for('tempGraph') }}">Temperature graph</a></li>
+                            <li class="secondary-party-type"><a href="{{ url_for('humGraph') }}">Humidity graph</a></li>
+                        </ul>
+                    </div>
+
+                </section>
+
+        </main>
+
+        <!-- Footer -->
+        {% include 'footer.html' %}
+        </div>
+    </body>
+</html>

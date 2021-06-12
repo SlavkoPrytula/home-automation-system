@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title>Home</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    </head>
+
+    <body>
+        <div class="wrapper">
+        <!-- Header -->
+        {% include 'header.html' %}
+
+        <!-- Main Section -->
+        <main>
+            <section class="annotation">
+                <p>This is home automation web application to get information and manipulate sensors<p>
+                <p>Made by: Yaroslav Prytula and Ilya Konstantynenko</p>
+                <p>Mentor: Dmytro Ryzenkov</p>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        {% include 'footer.html' %}
+    </div>
+    </body>
+</html>

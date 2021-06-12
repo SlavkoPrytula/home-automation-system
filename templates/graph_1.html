@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Temperature</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+        {% include 'header.html' %}
+        <div class="chapter-header">
+            Temperature graph
+        </div>
+
+        <canvas id="lineChart" width="900" height="400"></canvas>
+        <script>
+            function graphDraw(newData, newTime) {
+            var ctx = document.getElementById("lineChart").getContext("2d");
+            var lineChart = new Chart(ctx, {
+                type: "line",
+                data: {
+                    labels: newTime,
+                    datasets: [
+                    {
+                        label: "Current temperatures",
+                        data: newData,
+                        fill: true,
+                        borderColor: "rgb(32, 150, 80)",
+                        lineTension: 0.5
+                    }
+                    ]
+                },
+                options: {
+                    responsive: false
+                }
+            });
+        }
+
+            setInterval(function() {
+                let url = '/getTemp';
+
+                fetch(url)
+                .then(res => res.json())
+                .then((out) => {
+                console.log('Checkout this JSON! ', out);
+                data = out['tempdata']
+                time = out['temptime']
+                console.log('Checkout this DATA! ', data);
+                })
+                .catch(err => { throw err });
+                graphDraw(data, time);
+            }, 5000);
+        </script>
+
+
+        <nav class="back-navigation">
+            <a href="{{ url_for('devices') }}">Back to devices</a>
+        </nav>
+        {% include 'footer.html' %}
+        </div>
+    </body>
+</html>
